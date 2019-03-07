@@ -1,0 +1,35 @@
+% ******************************
+% General
+% *****************************
+
+% Include author names in TOC + Chapter Headings
+\makeatletter
+
+\let\chauth=\@empty
+\renewcommand{\author}[1]{\def\chauth{#1}}
+
+\titleformat{\chapter}[display]%
+  {\relax}{\mbox{}\oldmarginpar{\vspace*{-3\baselineskip}\color{CTsemi}\chapterNumber\thechapter}}{0pt}%
+  {\raggedright\spacedallcaps}[\normalsize\vspace*{.8\baselineskip}\titlerule%
+                                \vspace*{-2.32\baselineskip}%
+                                \begin{flushright}%
+                                  {\itshape\chauth}%
+                                \end{flushright}%
+                              ]
+
+\makeatother
+
+% Drop chapter number from section headings
+\renewcommand*\thesection{\arabic{section}}
+
+% Convenience macro for adding chapters
+\newcommand{\addchapter}[3]{%
+\begin{refsection}%
+  \author{#2}%
+  \chapter{#1}%
+  \cftaddtitleline{toc}{chapter}{\hspace{3em}\itshape#2}{}%
+  \input{#3}%
+  \markright{\spacedlowsmallcaps{References}}%
+  \printbibliography[heading=subbibliography]%
+\end{refsection}
+}

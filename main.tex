@@ -1,0 +1,73 @@
+\RequirePackage{silence} % :-\
+    \WarningFilter{scrreprt}{Usage of package `titlesec'}
+    %\WarningFilter{scrreprt}{Activating an ugly workaround}
+    \WarningFilter{titlesec}{Non standard sectioning command detected}
+\documentclass[oneside,openright,titlepage,numbers=noenddot,%1headlines,
+               headinclude,footinclude,cleardoublepage=empty,abstract=on,
+               BCOR=5mm,paper=letter,fontsize=11pt
+               ]{scrreprt}
+
+\usepackage{lipsum}
+
+
+%********************************************************************
+% Note: Make all your adjustments in here
+%*******************************************************
+\input{classicthesis-config}
+\input{tweaks}
+
+
+%********************************************************************
+% Bibliographies
+%*******************************************************
+\addbibresource{Bibliographies/Sample.bib}
+
+
+%********************************************************************
+% Hyphenation
+%*******************************************************
+%\hyphenation{put special hyphenation here}
+
+
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
+\begin{document}
+\frenchspacing
+\raggedbottom
+\selectlanguage{american} % american ngerman
+\pagenumbering{roman}
+\pagestyle{plain}
+
+
+%********************************************************************
+% Frontmatter
+%*******************************************************
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/Dedication}
+\include{FrontBackmatter/Acknowledgments}
+\include{FrontBackmatter/Contents}
+
+
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+%\setcounter{page}{90}
+\cleardoublepage % use \cleardoublepage here to avoid problems with pdfbookmark
+
+\addchapter{Sample Chapter}{Jane Doe}{Chapters/Sample}
+
+
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\cleardoublepage
+\include{FrontBackmatter/Colophon}
+
+
+% ********************************************************************
+% Game Over: Restore, Restart, or Quit?
+%*******************************************************
+\end{document}
