@@ -33,3 +33,44 @@
   \printbibliography[heading=subbibliography]%
 \end{refsection}
 }
+
+
+%%%%%%%%%
+% Thoma %
+%%%%%%%%%
+
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{tabularx}
+\usepackage{csquotes}
+
+\tikzstyle{decision} = [rectangle, minimum height=18pt, minimum width=18pt, draw=black, fill=none, thick, inner sep=0pt]
+\tikzstyle{chance} = [circle, minimum width=18pt, draw=black, fill=none, thick, inner sep=0pt]
+\tikzstyle{line} = [draw=none]
+
+\tikzset{
+grow=down,
+sloped,
+join=miter,
+level 1/.style={sibling distance=3 cm,level distance=3.5 cm},
+level 2/.style={sibling distance=3 cm, level distance=3.5 cm},
+level 3/.style={sibling distance=3 cm, level distance=3.5 cm},
+edge from parent/.style={thick, draw=black},
+edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)},
+every node/.style={text ragged, inner sep=1mm}
+}
+
+% \usetikzlibrary{automata,arrows,shapes,snakes,topaths,trees}
+\usetikzlibrary{automata,arrows,shapes,decorations,topaths,trees}
+%\usetikzlibrary{decorations.pathmorphing}
+
+\pgfplotsset{compat=1.7} % added in response to backwards compatibility mode warning
