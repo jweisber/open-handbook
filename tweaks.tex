@@ -34,6 +34,8 @@
 \end{refsection}
 }
 
+\emergencystretch=1em
+
 
 %%%%%%%%%
 % Thoma %
@@ -74,3 +76,14 @@ every node/.style={text ragged, inner sep=1mm}
 %\usetikzlibrary{decorations.pathmorphing}
 
 \pgfplotsset{compat=1.7} % added in response to backwards compatibility mode warning
+
+
+%%%%%%%%%%
+% Briggs %
+%%%%%%%%%%
+
+\usepackage{textcomp}
+\usepackage{tikz-qtree}
+\usepackage{rotating}
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
