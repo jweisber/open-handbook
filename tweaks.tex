@@ -19,8 +19,9 @@
 
 \makeatother
 
-% Drop chapter number from section headings
+% Drop chapter number from section headings, equations,
 \renewcommand*\thesection{\arabic{section}}
+\renewcommand*\theequation{\arabic{equation}}
 
 % Convenience macro for adding chapters
 \newcommand{\addchapter}[3]{%
@@ -36,10 +37,17 @@
 
 \emergencystretch=1em
 
+\DeclareCiteCommand{\citeyearhyper}
+  {}
+  {\bibhyperref{\printdate}}
+  {\multicitedelim}
+  {}
+\newcommand{\citepos}[1]{\citeauthor{#1}'s (\citeyearhyper{#1})}
 
-%%%%%%%%%
-% Thoma %
-%%%%%%%%%
+
+%********
+% Thoma 
+%********
 
 \usepackage{amssymb}
 \usepackage{mathrsfs}
@@ -78,12 +86,28 @@ every node/.style={text ragged, inner sep=1mm}
 \pgfplotsset{compat=1.7} % added in response to backwards compatibility mode warning
 
 
-%%%%%%%%%%
-% Briggs %
-%%%%%%%%%%
+%*********
+% Briggs 
+%*********
 
 \usepackage{textcomp}
 \usepackage{tikz-qtree}
 \usepackage{rotating}
 \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
 \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+
+
+%********
+% Huber
+%********
+
+\usepackage{stmaryrd}
+\usepackage{xcolor}
+\usepackage[eulergreek]{sansmath}
+\usepackage[euler]{textgreek}
+\usetikzlibrary{calc}
+
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\ctrct}{\mathbin{\dot-}}
+\def\dotminus{\mathbin{\ooalign{\hss\raise1ex\hbox{.}\hss\cr
+  \mathsurround=0pt$-$}}}
