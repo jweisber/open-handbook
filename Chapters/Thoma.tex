@@ -10,23 +10,30 @@ Giving a decision problem like this some formal structure may be helpful for a n
 In the case of the decision whether to live on a boat, we could perhaps represent the decision problem as shown in Table \ref{t1}. In this matrix, the rows represent the actions I might take. In our case, these are to either live on a boat, or not to live on a boat. The columns represent the relevant states of the world. These are conditions that are out of my control, but matter for what I should do. Suppose these involve my boat either being seaworthy, or not being seaworthy. I am uncertain which of these states of affairs will come about. Finally, the entries in the matrix describe the possible outcomes I care about that would result from my action combined with a state of the world.
 
 \FloatBarrier
-\begin{table}
+\begin{table}[h]
 \centering
-\begin{tabularx}{\textwidth}{ X|X|X| } \cline{2-3} & Boat seaworthy & Boat not seaworthy \\ \cline{1-3} \multicolumn{1}{|l|} {Live on a boat} & Life on a boat \newline no storm damage & Life on a boat \newline storm damage \\ \hline \multicolumn{1}{|l|} {Stay in home town} & Life as usual & Life as usual \\ \hline \end{tabularx}
+\begin{tabularx}{\textwidth}{ XXX }
+\hline
+                                               & Boat seaworthy & Boat not seaworthy\\\hline\hline
+\multicolumn{1}{l} {\textsc{Live on a boat}} & Life on a boat,\newline no storm damage & Life on a boat,\newline storm damage\\
+\multicolumn{1}{l} {\textsc{Stay in home town}} & Life as usual & Life as usual\\
+\hline 
+\end{tabularx}
 \caption{Should I live on a boat?}
 \label{t1}
 \end{table}
 
 Since Savage's (1954) decision theory, it has become standard to characterise decision problems with state-outcome matrices like the one I just introduced. More generally, let $A_{1} \ldots A_{n}$ be a set of $n$ actions that are open to the agent, and let $S_{1} \ldots S_{m}$ be $m$ mutually exclusive and exhaustive states of the world. These actions and states of the world combine to yield a set of $n \cdot m$ outcomes $O_{11} \ldots O_{nm}$. Table \ref{t2} shows this more general state-outcome matrix.
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
-\begin{tabular}{l|l|l|l|l}
-\cline{2-4}
-                          & $S_{1}$  & ... & $S_{m}$  &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{$A_{1}$}  &$ O_{11}$ & ... & $O_{1m}$ &   \\ \cline{1-4}
-\multicolumn{1}{|l|}{...} & ... & ... & ... &   \\ \cline{1-4}
-\multicolumn{1}{|l|}{$A_{n}$}  & $O_{n1}$ & ... & $O_{nm}$ &   \\ \cline{1-4}
+\begin{tabular}{lllll}
+\hline
+                             & $S_{1}$  & $\ldots$ & $S_{m}$  &   \\\hline\hline
+\multicolumn{1}{l}{$A_{1}$}  &$ O_{11}$ & $\ldots$ & $O_{1m}$ &   \\
+\multicolumn{1}{l}{\vdots}   & \vdots   & $\ddots$ & \vdots   &   \\
+\multicolumn{1}{l}{$A_{n}$}  & $O_{n1}$ & $\ldots$ & $O_{nm}$ &   \\
+\hline
 \end{tabular}
 \caption{State-outcome matrix}
 \label{t2}
@@ -42,13 +49,23 @@ As we will see, the requirement to maximise expected utility takes different for
 
 In our example, suppose that I think that the chances that my boat is seaworthy are 50\%, and that the relevant utilities are the ones given in Table \ref{t3}. In that case, the expected utility of living on a boat will be $0.5 \cdot 200 + 0.5 \cdot 20 = 110$, while the expected utility of staying in my home town is $100$. I conclude I should live on a boat.
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
-\begin{tabular}{lllll}
-\cline{2-4}
-\multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{Boat seaworthy} & \multicolumn{1}{l|}{Boat not seaworthy} & \multicolumn{1}{l|}{\textbf{EU}} &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Live on a boat}    & \multicolumn{1}{l|}{200}               & \multicolumn{1}{l|}{20}                    & \multicolumn{1}{l|}{\textbf{110}}              &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Stay in home town} & \multicolumn{1}{l|}{100}               & \multicolumn{1}{l|}{100}                   & \multicolumn{1}{l|}{\textbf{100}}              &  \\ \cline{1-4}
+\begin{tabular}{llll}
+\hline
+\multicolumn{1}{l}{} & 
+  \multicolumn{1}{c}{Boat seaworthy} & 
+  \multicolumn{1}{c}{Boat not seaworthy} & 
+  \multicolumn{1}{c}{\textbf{EU}} \\\hline\hline
+\multicolumn{1}{l}{\textsc{Live on a boat}} &
+  \multicolumn{1}{c}{$200$} &
+  \multicolumn{1}{c}{$20$} & 
+  \multicolumn{1}{c}{$\boldsymbol{110}$}\\
+\multicolumn{1}{l}{\textsc{Stay in home town}} &
+  \multicolumn{1}{c}{$100$} &
+  \multicolumn{1}{c}{$100$} &
+  \multicolumn{1}{c}{$\boldsymbol{100}$}\\
+\hline
 \end{tabular}
 \caption{Decision problem with utilities}
 \label{t3}
@@ -251,16 +268,15 @@ According to this interpretation, the probability of the state where there is \$
 
 Causal decision theorists take issue with this, because at the time of decision, the agent's actions have no more influence on whether there is money in the opaque box or not. Either there is or there isn't already money in the box. In either case, it is better for you to take two boxes, as Table \ref{t4} illustrates. This kind of dominance reasoning speaks in favour of taking both boxes.
 
-\begin{table}
+\begin{table}[h]
 \centering
-\label{my-label}
-\begin{tabular}{lllll}
-\cline{2-3}
-\multicolumn{1}{l|}{}                & \multicolumn{1}{l|}{Prediction: one box} & \multicolumn{1}{l|}{Prediction: two boxes} &  &  \\ \cline{1-3}
-\multicolumn{1}{|l|}{Take one box}   & \multicolumn{1}{l|}{\$1,000,000}         & \multicolumn{1}{l|}{\$0}                   &  &  \\ \cline{1-3}
-\multicolumn{1}{|l|}{Take two boxes} & \multicolumn{1}{l|}{\$1,001,000}         & \multicolumn{1}{l|}{\$1,000}               &  &  \\ \cline{1-3}
-                                     &                                          &                                            &  &
-\end{tabular}
+  \begin{tabular}{lcc}
+  \hline
+                           & Prediction: one box & Prediction: two boxes\\\hline\hline
+  \textsc{Take one box}    & $\$1,000,000$ & $\$0$ \\
+  \textsc{Take two boxes}  & $\$1,001,000$ & $\$1,000$\\
+  \hline
+  \end{tabular}
 \caption{The Newcomb Problem}
 \label{t4}
 \end{table}
@@ -364,15 +380,15 @@ Assuming separability for preferences in the way that the independence axiom, th
 
 To see how separability may fail, consider the following decision problem, known as the Machina Paradox.\footnote{See, for instance, \citet{Mas-Colell1995}, chapter 6.} Suppose you prefer actually going to Venice to staying at home and watching a movie about Venice. You also prefer watching a movie about Venice to doing nothing and being bored. You are now offered the lotteries described in Table \ref{t5}. Suppose that each lottery ticket is equally likely to be drawn, so that, if we want to apply von Neumann and Morgenstern's framework, each lottery ticket has a probability of 1\%.
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
-\begin{tabular}{lllll}
-\cline{2-3}
-\multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{Tickets 1--99} & \multicolumn{1}{l|}{Ticket 100}         &  &  \\ \cline{1-3}
-\multicolumn{1}{|l|}{Lottery A} & \multicolumn{1}{l|}{Go to Venice}   & \multicolumn{1}{l|}{Bored at home}      &  &  \\ \cline{1-3}
-\multicolumn{1}{|l|}{Lottery B} & \multicolumn{1}{l|}{Go to Venice}   & \multicolumn{1}{l|}{Movie about Venice} &  &  \\ \cline{1-3}
-                                &                                     &                                         &  &
-\end{tabular}
+  \begin{tabular}{lll}
+  \hline
+                      & Tickets 1--99 & Ticket 100\\\hline\hline
+  \textsc{Lottery A}  & Go to Venice  & Bored at home \\
+  \textsc{Lottery B}  & Go to Venice  & Movie about Venice\\
+  \hline
+  \end{tabular}
 \caption{Machina's Paradox}
 \label{t5}
 \end{table}
@@ -385,28 +401,28 @@ This seems to be a valid response in the case of Machina's Paradox. However, the
 
 While this combination of preferences seems sensible, it in fact violates independence and the sure-thing principle, given a natural specification of the outcomes involved. This becomes evident when we represent the two choices in decision matrices, as in Tables \ref{t6} and \ref{t7}.
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
-\begin{tabular}{lllll}
-\cline{2-4}
-\multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{Tickets 1--89} & \multicolumn{1}{l|}{Tickets 90--99} & \multicolumn{1}{l|}{Ticket 100}  &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Lottery C} & \multicolumn{1}{l|}{\$1 million}    & \multicolumn{1}{l|}{\$5 million}     & \multicolumn{1}{l|}{\$0}         &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Lottery D} & \multicolumn{1}{l|}{\$1 million}    & \multicolumn{1}{l|}{\$1 million}     & \multicolumn{1}{l|}{\$1 million} &  \\ \cline{1-4}
-                                &                                     &                                      &                                  &
-\end{tabular}
+  \begin{tabular}{llll}
+  \hline
+                      & Tickets 1--89 & Tickets 90--99 & Ticket 100\\\hline\hline
+  \textsc{Lottery C}  & $\$1$ million & $\$5$ million  & $\$0$ \\
+  \textsc{Lottery D}  & $\$1$ million & $\$1$ million  & $\$1$ million\\
+  \hline
+  \end{tabular}
 \caption{Allais Paradox: First Choice}
 \label{t6}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
-\begin{tabular}{lllll}
-\cline{2-4}
-\multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{Tickets 1--89} & \multicolumn{1}{l|}{Tickets 90--99} & \multicolumn{1}{l|}{Ticket 100}  &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Lottery G} & \multicolumn{1}{l|}{\$0}    & \multicolumn{1}{l|}{\$5 million}     & \multicolumn{1}{l|}{\$0}         &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Lottery H} & \multicolumn{1}{l|}{\$0}    & \multicolumn{1}{l|}{\$1 million}     & \multicolumn{1}{l|}{\$1 million} &  \\ \cline{1-4}
-                                &                                     &                                      &                                  &
-\end{tabular}
+  \begin{tabular}{llll}
+  \hline
+                      & Tickets 1--89 & Tickets 90--99 & Ticket 100\\\hline\hline
+  \textsc{Lottery G}  & $\$0$         & $\$5$ million  & $\$0$ \\
+  \textsc{Lottery H}  & $\$0$         & $\$1$ million  & $\$1$ million\\
+  \hline
+  \end{tabular}
 \caption{Allais Paradox: Second Choice}
 \label{t7}
 \end{table}
