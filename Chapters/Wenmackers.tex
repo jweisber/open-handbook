@@ -279,13 +279,13 @@ Compare to Schoenflies's reaction to Countable Additivity in Borel measure (foot
 } Hence, any later proposal for a new theory of probability, possibly including infinitesimals, has to compete with it. Therefore, we do include Kolmogorov's axioms here, or at least an equivalent formulation thereof \citep[taken from][]{Benci_etal:2013}. $P$ is the probability function and $\Omega$ is the sample space, a set whose elements represent elementary events:
 
 \begin{itemize}
-\item[(K0)] \textsc{Domain and range. }The events are the elements of $\mathfrak{A}$, a $\sigma$-algebra over $\Omega$,\footnote{$\mathfrak{A}$ is a \textit{$\sigma$-algebra} over $\Omega$ if $\mathfrak{A} \subseteq \mathcal{P}\left( \Omega \right)$ such that $\mathfrak{A}$ is closed under complementation, intersection, and countable unions. $\mathfrak{A}$ is called the \textit{event algebra} or \textit{event space}.} and $P$ is a function $P:\mathfrak{A} \rightarrow \mathbb{R}.$
+\item[(K0)] \textsc{Domain and range.} The events are the elements of $\mathfrak{A}$, a $\sigma$-algebra over $\Omega$,\footnote{$\mathfrak{A}$ is a \textit{$\sigma$-algebra} over $\Omega$ if $\mathfrak{A} \subseteq \mathcal{P}\left( \Omega \right)$ such that $\mathfrak{A}$ is closed under complementation, intersection, and countable unions. $\mathfrak{A}$ is called the \textit{event algebra} or \textit{event space}.} and $P$ is a function $P:\mathfrak{A} \rightarrow \mathbb{R}.$
 
-\item[(K1)] \textsc{Non-negativity. } $\forall A\in \mathfrak{A}, P(A)\geq 0.$
+\item[(K1)] \textsc{Non-negativity.} $\forall A\in \mathfrak{A}, P(A)\geq 0.$
 
 \item[(K2)] \textsc{Normalization.} $P(\Omega )=1.$
 
-\item[(K3)] \textsc{Additivity. } $\forall A, B \in \mathfrak{A}$ such that $A\cap B=\varnothing$,
+\item[(K3)] \textsc{Additivity.} $\forall A, B \in \mathfrak{A}$ such that $A\cap B=\varnothing$,
 $$P(A\cup B)=P(A)+P(B).$$
 
 \item[(K4)] \textsc{Continuity.} Let $ A=\bigcup\limits_{n\in \mathbb{N}}A_{n}$,
@@ -423,7 +423,7 @@ For any finite set $A \subset \mathbb{N}$, the numerosity equals the finite card
 
 For an infinite subset $B$, $P(B)$ differs by at most an infinitesimal from the natural density of $B$ (if the latter exists). For example, if $B$ is the set of even numbers, the natural density is $1/2$ and either $P(B)=1/2$ (if the even numbers are in the free ultrafilter used to construct $P$) or $P(B)=(1-1/\alpha)/2$.
 
-For a set that lacks a natural density, $P$ is infinitesimally close to some Banach limit. Different Banach limits of the same set and $P$s constructed by a different free ultrafilter can differ by more than an infinitesimal amount. (See \citealt{KerkvlietMeester:2016} for an example.) In particular, there are subsets of $\mathbb{N}$ for which the possible $P$-values range from an infinitesimal to one minus an infinitesimal. This range can be regarded as a measure of how pathological a set is.
+For a set that lacks a natural density, $P$ is infinitesimally close to some Banach limit. Different Banach limits of the same set and $P$s constructed by a different free ultrafilter can differ by more than an infinitesimal amount. (See \citealp{KerkvlietMeester:2016}, for an example.) In particular, there are subsets of $\mathbb{N}$ for which the possible $P$-values range from an infinitesimal to one minus an infinitesimal. This range can be regarded as a measure of how pathological a set is.
 
 
 %%%
@@ -431,22 +431,22 @@ For a set that lacks a natural density, $P$ is infinitesimally close to some Ban
 In the previous section, we discussed one particular scenario that involves infinitesimal probabilities: a lottery on the set of natural numbers. In this section, we give a more comprehensive overview of common examples that feature in discussions of infinitesimal probabilities. Then we show how we can generalize the approach of the previous section to an all encompassing theory that is able to assign infinitesimal probabilities to all of these scenarios.
 
 \subsection{Common examples}
-We list the examples involving infinitesimal probabilities below, sorted by increasing cardinality of the sample space: finite, countably infinite or uncountably infinite.
+We list the examples involving infinitesimal probabilities below, sorted by increasing cardinality of the sample space: finite, countably infinite, or uncountably infinite.
 
-First, there are some examples with \textbf{finite sample spaces} that allow for infinitely small differences in probability among the possible outcomes. The simplest such case is that of an \emph{almost} fair coin toss, in which there is an infinitesimal advantage to one of the sides.
+First, there are some examples with finite sample spaces that allow for infinitely small differences in probability among the possible outcomes. The simplest such case is that of an \emph{almost} fair coin toss, in which there is an infinitesimal advantage to one of the sides.
 
-Second, there are examples with \textbf{countably infinite sample spaces}, in particular with uniform probability distributions.
+Second, there are examples with countably infinite sample spaces, in particular with uniform probability distributions.
 We already discussed the most common example of this kind: a lottery on the set of natural numbers, in particular a fair one. A fair lottery on $\mathbb{N}$ is also known as the de~Finetti lottery \citep{Bartha:2004} or God's lottery \citep{McCallArmstrong:1989}.
 In this category, there are also fair lotteries on other countable sets, such as $\mathbb{Z}$, $\mathbb{Q}$ and the unit interval of the rational numbers: $[0,1]_\mathbb{Q}$.
 Discussions of non-uniform probability distributions on countable domains are less common, but they do exist, especially in the context of discussions of the incompatibility between CA and uniform probability distributions on countable domains.\footnote{For instance, \citet{Kelly:1996} has reflected on the consequences of denying the existence of a fair infinite lottery: this would have the strange implication that when one wants to test a universal hypothesis by repeated experiments, one would---in the case in which the hypothesis is false---encounter a counterexample sooner rather than later.}
 
-Third, there are examples with \textbf{uncountable sample spaces}, with uniform and arbitrary probability distributions.
-Two popular ways of presenting this is as throwing darts uniformly at the unit interval of the real numbers ($[0,1]_\mathbb{R}$) \citep[\textit{e.g.}, ][]{BernsteinWattenberg:1969} or as a fair spinner with unit circumference ($[0,1[_\mathbb{R}$) \citep[\textit{e.g.}, ][]{Skyrms:1995,Barrett:2010}.\footnote{This example was also mentioned in \citet{Lewis:1980}, as well as many others.} Three-dimensional variations on this theme include the uniform probability on a unit sphere and the associated Borel--Kolmogorov paradox of a meridian versus the equator.
+Third, there are examples with uncountable sample spaces, with uniform and arbitrary probability distributions.
+Two popular ways of presenting this is as throwing darts uniformly at the unit interval of the real numbers, $[0,1]_\mathbb{R}$ \citep[\textit{e.g.}, ][]{BernsteinWattenberg:1969} or as a fair spinner with unit circumference \citep[\textit{e.g.}, ][]{Skyrms:1995,Barrett:2010}.\footnote{This example was also mentioned in \citet{Lewis:1980}, as well as many others.} Three-dimensional variations on this theme include the uniform probability on a unit sphere and the associated Borel--Kolmogorov paradox of a meridian versus the equator.
 A different way of obtaining an uncountable domain is by considering a countably infinite sequence of stochastic processes, each with a countable number of possible outcomes.
-The most common example of this kind is an infinite sequence of tosses with a fair coin (in which the outcomes of the tosses are taken to be statistically independent: an infinite Bernoulli process) \citep[\textit{e.g.}, ][]{Skyrms:1980,Williamson:2007,Weintraub:2008}.\footnote{It should be noted that \citet{Skyrms:1980} refers to the work of \citet{BernsteinWattenberg:1969}, but they only described a hyperreal-valued probability measure on subsets of $[0,1]$. However, for assigning infinitesimal probabilities to infinite sequences of coin tosses, a hyperreal-valued probability measure on subsets of $\{0,1\}^\mathbb{N}$ would be needed instead. Yet, the informal account given by \citet[pp.~30--31]{Skyrms:1980} is consistent with later developments of hyperreal probability functions on $\{0,1\}^\mathbb{N}$ \citep[see, \textit{e.g.}, ][]{Benci_etal:2013}.}
+The most common example of this kind is an infinite sequence of tosses with a fair coin (in which the outcomes of the tosses are taken to be statistically independent: an infinite Bernoulli process; \citealp[\textit{e.g.}, ][]{Skyrms:1980,Williamson:2007,Weintraub:2008}).\footnote{It should be noted that \citet{Skyrms:1980} refers to the work of \citet{BernsteinWattenberg:1969}, but they only described a hyperreal-valued probability measure on subsets of $[0,1]$. However, for assigning infinitesimal probabilities to infinite sequences of coin tosses, a hyperreal-valued probability measure on subsets of $\{0,1\}^\mathbb{N}$ would be needed instead. Yet, the informal account given by \citet[pp.~30--31]{Skyrms:1980} is consistent with later developments of hyperreal probability functions on $\{0,1\}^\mathbb{N}$ \citep[see, \textit{e.g.}, ][]{Benci_etal:2013}.}
 
 Categorizing a probabilistic problem by one of these three labels need not be final.
-Once we have a method of representing probability distributions on uncountable domains, we may arrive back at the finite and countably infinite case by conditionalization (assuming the relevant events are measurable) \citep[\textit{cf}.][]{Skyrms:1983a}.
+Once we have a method of representing probability distributions on uncountable domains, we may arrive back at the finite and countably infinite case by conditionalization (assuming the relevant events are measurable; \citealp[\textit{cf}.][]{Skyrms:1983a}).
 It may also happen that we want to replace a finite sample space by an infinite refinement of it (for instance, a suitable product space of the initial sample space). For instance, \citet[p.~827]{Pedersen:2014a} mentions a case in which ``an agent's state of belief cannot rule out arbitrarily deep[ly] nested subdecompositions of a finite decomposition of a dartboard''.
 
 Some of these scenarios cannot be described by standard probability theory, whereas others---it has been argued---cannot be described adequately by it, or would benefit from an alternative treatment involving infinitesimal probabilities.
@@ -462,60 +462,36 @@ Both the standard and the non-standard limit operation can be understood such as
 A probability function has to assign values to sets in $\mathcal{P}(\mathbb{N})$, not to $\mathbb{N}$ itself, so the appropriateness of using countable sequences and filters on $\mathbb{N}$ to set up such a function is not immediate, even in cases in which the sample space is countable. Observe that we used the countable indices to correspond to the relative frequencies of initial segments of $\mathbb{N}$. Since the usual ordering of the natural numbers induces a natural ordering on this collection of initial segments, we are able to work with sequences of the corresponding relative frequencies and with filters on $\mathbb{N}$.
 
 Our choice for the collection of initial segments may seem self-evident, because we are familiar with it from the context of natural density, but it is not canonical: we could have considered $\mathcal{P}_{\textrm{fin}}(\mathbb{N})$, the collection of all finite subsets of $\mathbb{N}$ (or those except the empty set, $\mathcal{P}_{\textrm{fin}}(\mathbb{N}) \setminus \varnothing$). In that case, we can slightly generalize the approach: $\mathcal{P}_{\textrm{fin}}(\mathbb{N})$ with the subset ordering forms a directed set.\footnote{A directed set $(X, \preccurlyeq)$ is a special case of a preordered set \citep[see, \textit{e.g.},][p.~52]{Schechter:1997}. A preordered set is a pair $(X, \preccurlyeq)$ consisting of a set $X$ and a preorder $\preccurlyeq$ on $X$, \textit{i.e.}, a relation on $X$ that is transitive (for all $x,y,z \in X$, if $x \preccurlyeq y$ and $y \preccurlyeq z$ then $x \preccurlyeq z$) and reflexive (for all $x \in X$, $x \preccurlyeq x$). For a directed set, there is an additional condition on the preorder:
-$$\forall x_1, x_2 \in X, \ \exists y \in X: (x_1 \preccurlyeq y \wedge x_2 \preccurlyeq y).$$} We can use this directed set as an index set, instead of $\mathbb{N}$, obtaining a generalized sequence, also called a `net' \citep[see, \textit{e.g.},][pp.~157--158]{Schechter:1997}: a function from a directed set, which serves as the index set, to a set, $X$. Filters on $\mathbb{N}$ are a special case of this more general set-up, since they are collections of subsets of $\mathbb{N}$ that can be directed by the subset relation.
+$$\forall x_1, x_2 \in X, \ \exists y \in X: (x_1 \preccurlyeq y \wedge x_2 \preccurlyeq y).$$} We can use this directed set as an index set, instead of $\mathbb{N}$, obtaining a generalized sequence, also called a \textit{net} \citep[see, \textit{e.g.},][pp.~157--158]{Schechter:1997}: a function from a directed set, which serves as the index set, to a set, $X$. Filters on $\mathbb{N}$ are a special case of this more general setup, since they are collections of subsets of $\mathbb{N}$ that can be directed by the subset relation.
 
 If we want to assign probability functions to subsets of some sample space $\Omega$ other than $\mathbb{N}$, we can follow a similar approach: change the relevant index set to $\mathcal{P}_{\textrm{fin}}(\Omega) \setminus \varnothing$.
 In this case, we also have to consider free ultrafilters on $\Omega$.
 
-These are the axioms for Non-Archimedean Probability (NAP) theory from \citet{Benci_etal:2013}, where the triple $(\Omega ,P,J)$ is called a `NAP-space:
+These are the axioms for Non-Archimedean Probability (NAP) theory from \citet{Benci_etal:2013}, where the triple $(\Omega ,P,J)$ is called a \textit{NAP space}:
 
 \begin{itemize}
-\item (NAP0) \textbf{Domain and range. }\textrm{The\ events\ are\ all\ the\ elements\ of\ }$\mathcal{P}\left( \Omega \right) $\textrm{\ and\ the\ probability\ is\ a\ function}
+\item[(N0)] \textsc{Domain and range.} The events are all the elements of $\mathcal{P}\left( \Omega \right)$ and $P$ is a function
 $$
 P:\mathcal{P}\left( \Omega \right) \rightarrow \mathcal{R}
 $$
-\textit{where }$\mathcal{R}$\textrm{\ is\ a\ superreal\ field}
-
-\item (NAP1) \textbf{Non-negativity.} $\forall A\in \mathcal{P}\left( \Omega \right)$,
-$$
-P(A)\geq 0
-$$
-
-\item (NAP2) \textbf{Normalization.} $\forall A\in \mathcal{P}\left( \Omega \right)$,
-$$
-P(A)=1\Leftrightarrow A=\Omega
-$$
-
-\item (NAP3) \textbf{Additivity.} $\forall A, B\in \mathcal{P}\left( \Omega \right)$ such that $A\cap B=\varnothing$,
-$$
-P(A\cup B)=P(A)+P(B)
-$$
-
-\item (NAP4)\ \textbf{Non-Archimedean} \textbf{continuity.} $\forall A, B\in \mathcal{P}\left( \Omega \right)$, with $B\neq \varnothing$, \textit{let }$P(A|B)$ \textrm{\ denote\ the\ conditional\ probability,\ namely}
+where $\mathcal{R}$ is a superreal field.
+\item[(N1)] \textsc{Non-negativity.} $\forall A\in \mathcal{P}\left( \Omega \right)$, $P(A)\geq 0$.
+\item[(N2)] \textsc{Normalization.} $\forall A\in \mathcal{P}\left( \Omega \right)$, $P(A)=1\Leftrightarrow A=\Omega.$
+\item[(N3)] \textsc{Additivity.} $\forall A, B\in \mathcal{P}\left( \Omega \right)$ such that $A\cap B=\varnothing$, $$P(A\cup B)=P(A)+P(B).$$
+\item[(N4)] \textsc{Non-Archimedean Continuity.} $\forall A, B\in \mathcal{P}\left( \Omega \right)$, with $B\neq \varnothing$, let $P(A|B)$ denote the conditional probability, namely
 \begin{equation}
 P(A|B)=\frac{P(A\cap B)}{P(B)}.  \label{4+}
 \end{equation}
 Then
-
-\begin{itemize}
-\item $\forall \lambda \in \mathcal{P}_{fin}^0(\Omega )$, $P(A|\lambda )\in \mathbb{R^+}$\textit{\ };
-
-\item \textrm{there\ exists\ an\ algebra\ homomorphism}
-$$
-J:\mathfrak{F}\left( \mathcal{P}_{fin}^0(\Omega ),\mathbb{R}\right) \rightarrow \mathcal{R}
-$$
-\textrm{such\ that\ } $\forall A\in \mathcal{P}(\Omega )$
-$$
-P(A)=J\left( \varphi _{A}\right)
-$$
-\textrm{where}
-$$
-\varphi _{A}(\lambda )=P(A|\lambda ) \textrm{\ for\ any\ } \lambda \in \mathcal{P}_{fin}^0(\Omega).
-$$
+  \begin{itemize}
+  \item $\forall \lambda \in \mathcal{P}_{fin}^0(\Omega)$, $P(A|\lambda )\in \mathbb{R^+}$, and
+  \item there exists an algebra homomorphism
+  $$ J:\mathfrak{F}\left( \mathcal{P}_{fin}^0(\Omega ),\mathbb{R}\right) \rightarrow \mathcal{R} $$
+  such that $\forall A\in \mathcal{P}(\Omega )$, $ P(A)=J\left( \varphi _{A}\right)$,
+  where $ \varphi _{A}(\lambda )=P(A|\lambda ) \textrm{ for any } \lambda \in \mathcal{P}_{fin}^0(\Omega)$.
+  \end{itemize}
 \end{itemize}
-\end{itemize}
-
-Axiom (NAP4) specifies $P$ for an infinite sample space $\Omega$ as a non-standard limit of probability functions restricted to (or conditionalized on) finite subsets of $\Omega$.
+Axiom (N4) specifies $P$ for an infinite sample space $\Omega$ as a non-standard limit of probability functions restricted to (or conditionalized on) finite subsets of $\Omega$.
 
 Some properties of NAP theory:
 \begin{itemize}
@@ -527,7 +503,7 @@ Some properties of NAP theory:
 \end{itemize}
 
 A price one has to pay for all this is that certain symmetries, which hold for standard measures, do not hold for NAP theory. This theory is closely related to numerosity and has a similar Euclidean property: a strict subset has a smaller probability, as is necessary by regularity. Hence, for infinite sample spaces, NAP is bound to violate the Humean principle of one-to-one correspondence. This principle requires that if the elements of a given set can be put in a one-to-one
-correspondence with the elements of another set, then there `size'---or in this case, probability---be equal. Translation symmetries require that $P(A)=P(A+t)$ (with $A, A+t \subseteq \Omega$ and $A+t=\{a+t \mid a\in A\}$). Since this amounts to a particular type of one-to-one correspondence, these symmetries are not guaranteed to hold in NAP (\textit{cf}.\ \citet{Williamson:2007,Parker:2013}, and section~\ref{sec:symm}), although they can hold up to an infinitesimal \citep{BernsteinWattenberg:1969}. \citet{Bartha:2004} and \citet{Weintraub:2008} have pointed out before that these measures are strongly label-dependent, but it is probably more accurate to say that once events have been embedded in a sample space (\textit{i.e.}, each event is described as a particular subset of a particular sample space $\Omega$), this embedding needs to be applied in a consistent way henceforth \citep{Hofweber:2014,Benci_etal:2018}.
+correspondence with the elements of another set, then their ``sizes''---or in this case, probabilities---will be equal. Translation symmetries require that $P(A)=P(A+t)$ (with $A, A+t \subseteq \Omega$ and $A+t=\{a+t \mid a\in A\}$). Since this amounts to a particular type of one-to-one correspondence, these symmetries are not guaranteed to hold in NAP (\textit{cf}.\ \citet{Williamson:2007,Parker:2013}, and section~\ref{sec:symm}), although they can hold up to an infinitesimal \citep{BernsteinWattenberg:1969}. \citet{Bartha:2004} and \citet{Weintraub:2008} have pointed out before that these measures are strongly label-dependent, but it is probably more accurate to say that once events have been embedded in a sample space (\textit{i.e.}, each event is described as a particular subset of a particular sample space $\Omega$), this embedding needs to be applied in a consistent way henceforth \citep{Hofweber:2014,Benci_etal:2018}.
 
 For more details and proofs, see \citet{Benci_etal:2013}. In the next part, we elaborate on the motivation for and the philosophical discussion of these results.
 
@@ -546,17 +522,17 @@ Indeed, we have encountered this motivation for infinitesimal probabilities via 
 
 Depending on the context, this motivation is related to a different kind of modality:
 \begin{itemize}
-  \item objective probability: some chance (quantifying an ontic possibility)
-  \item subjective probability: open-mindedness (quantifying an epistemic possibility)
+  \item objective probability: some chance (quantifying an ontic possibility);
+  \item subjective probability: open-mindedness (quantifying an epistemic possibility).
 \end{itemize}
-We have encountered the epistemic motivation under the name `strict coherence' and `regularity'.
-Alan \citet[p.~1 of draft]{Hajek:2012b} ``canvass[ed] the fluctuating fortunes of a much-touted constraint, so-called \emph{regularity}'', which ``starts out as an intuitive and seemingly innocuous constraint that bridges modality and probability, although it quickly runs into difficulties in its exact formulation''. He takes ``to be its most compelling version: a constraint that bridges doxastic modality and doxastic (subjective) probability''.
-Kenny \citet{Easwaran:2014} presented regularity as a normative constraint on rational credences, which are related to doxastic modality, but he adds that other authors allow for various transmodal connections.
-Dennis Lindley called this demand, that prior probabilities of zero or one should only be assigned to logical truths or falsehoods, ``Cromwell's rule''.\footnote{This is a reference to the following phrase from a 1650 letter by Oliver Cromwell: ``I beseech you, in the bowel of Christ, think it possible you may be mistaken'' \citet[reprinted in][]{Carlyle:1845}. Like strict coherence, Cromwell's rule is clearly intended as a criterion for open-mindedness: even a well-confirmed theory like Einstein's is not as certain as a logical truth. \citet[p.~104]{Lindley:1991} asked us to ``leave a little probability for the moon being made of green cheese; it can be as small as 1 in a million, but have it there since otherwise an army of astronauts returning with samples of the said cheese will leave you unmoved''. And \citet[p.~91]{Lindley:2006} linked this open-mindedness criterion also to the Jain maxim ``It is wrong to assert absolutely''. (This was probably influenced by statistician Kantilal Mardia, who practised Jainism.)}
-Regarding the ontic motivation, Thomas \citet{Hofweber:2014} introduced a minimal constraint (MC) on the proper measurement of chances, which is akin to but not quite the same as regularity, which can be phrased in relation to various modalities. He concludes that (p.~6): ``In the regularity principle, modality is best understood as epistemic, and chance is best understood as credence. In (MC) chance should be understood as objective chance.''
+We have encountered the epistemic motivation under the names `strict coherence' and `regularity'.
+\citet[p.~1 of draft]{Hajek:2012b} ``canvass[es] the fluctuating fortunes of a much-touted constraint, so-called \emph{regularity}'', which ``starts out as an intuitive and seemingly innocuous constraint that bridges modality and probability, although it quickly runs into difficulties in its exact formulation''. He takes ``to be its most compelling version: a constraint that bridges doxastic modality and doxastic (subjective) probability''.
+\citet{Easwaran:2014} presents regularity as a normative constraint on rational credences, which are related to doxastic modality, but he adds that other authors allow for various transmodal connections.
+Dennis Lindley called this demand, that prior probabilities of zero or one should only be assigned to logical truths or falsehoods, ``Cromwell's rule''.\footnote{This is a reference to the following phrase from a 1650 letter by Oliver Cromwell: ``I beseech you, in the bowel of Christ, think it possible you may be mistaken'' \citet[reprinted in][]{Carlyle:1845}. Like strict coherence, Cromwell's rule is clearly intended as a criterion for open-mindedness: even a well-confirmed theory like Einstein's is not as certain as a logical truth. \citet[p.~104]{Lindley:1991} asks us to ``leave a little probability for the moon being made of green cheese; it can be as small as 1 in a million, but have it there since otherwise an army of astronauts returning with samples of the said cheese will leave you unmoved''. And \citet[p.~91]{Lindley:2006} links this open-mindedness criterion also to the Jain maxim ``It is wrong to assert absolutely.'' (This was probably influenced by statistician Kantilal Mardia, who practised Jainism.)}
+Regarding the ontic motivation, \citet{Hofweber:2014} introduces a minimal constraint (MC) on the proper measurement of chances, which is akin to but not quite the same as regularity, which can be phrased in relation to various modalities. He concludes that: ``In the regularity principle, modality is best understood as epistemic, and chance is best understood as credence. In (MC) chance should be understood as objective chance'' (p.~6).
 
-At the root of this common motivation for infinitesimal chances and infinitesimal credences, there may be an even more basic motivation or implicit assumption, which \citet{Skyrms:1983a} called the principle of `ultra-additivity' (and which also constituted my main motivation for starting a research project on infinitesimal probabilities). We discussed this in section~\ref{sec:AdditivityOfP} (see also appendix section~\ref{sec:Zenonian}).
-Thus, the motivation for introducing infinitesimal probabilities can be summarized by the following slogan:\footnote{\citet{Benci_etal:2018} listed perfect additivity as one among four desiderata for their theory, the others being: regularity, totality, and weak Laplacianism.}
+At the root of this common motivation for infinitesimal chances and infinitesimal credences, there may be an even more basic motivation or implicit assumption, which \citet{Skyrms:1983a} calls the principle of ``ultra-additivity'' (and which also constituted my main motivation for starting a research project on infinitesimal probabilities). We discussed this in section~\ref{sec:AdditivityOfP} (see also appendix section~\ref{sec:Zenonian}).
+Thus, the motivation for introducing infinitesimal probabilities can be summarized by the following slogan:\footnote{\citet{Benci_etal:2018} list perfect additivity as one among four desiderata for their theory, the others being: regularity, totality, and weak Laplacianism.}
 \begin{center}
 Without infinitesimals, probabilities just don't add up.
 \end{center}
@@ -566,14 +542,14 @@ Without infinitesimals, probabilities just don't add up.
 \subsection{Other ways to introduce infinitesimal probabilities}
 There do exist ways to formalize infinitesimals other than Robinson's hyperreal numbers. One of them is smooth-infinitesimal analysis (SIA), which describes nilpotent infinitesimals: non-zero numbers whose square is zero. This system relies on intuitionistic logic. However, I am not aware of any proposals for smooth-infinitesimal probabilities.
 
-Then there is the class of Conway numbers, which includes the infinitesimals from any non-standard field. This option has been suggested for application to probability theory, for instance, by \citet{Hajek:2003b} (see section~\ref{sec:pascalswager} below) and
+Then there is the class of Conway numbers, which includes the infinitesimals from any non-standard field. This option has been suggested for application to probability theory, for instance, by \citeauthor{Hajek:2003b} (\citeyear{Hajek:2003b}; see section~\ref{sec:pascalswager} below) and
 by \citet{Easwaran:2014}. I, too, believe this can be a fertile approach. A first proposal has been offered by \citet{ChenRubio:forthc}, but it is too early to evaluate it here.
 
 \subsection{Related approaches without infinitesimals}
-Besides the possibility of introducing infinitesimals within a different framework, there are also relations between hyperreal infinitesimals and systems that do not include any infinitesimal numbers at all. For instance, one may combine an Archimedean quantitative probability theory (in particular, the orthodox approach with real-valued probability functions), with a non-Archimedean qualitative probability theory.\footnote{This was suggested by de~Finetti, \textit{cf}.\ section~\ref{sec:preR}. See also the discussion of the `numerical fallacy' by \citet{Easwaran:2014}.} Moreover, Joseph Y.~\citet{Halpern:2010} revealed some deep connections between hyperreal-valued probability functions, conditional probabilities \citep[including Popper functions; see also Vann][]{McGee:1994}, and lexicographic probabilities. Recently, \citet{BrickhillHorsten:2018} have given a representation theorem that relates NAP functions and Popper functions; they also gave a lexicographic representation.
+Besides the possibility of introducing infinitesimals within a different framework, there are also relations between hyperreal infinitesimals and systems that do not include any infinitesimal numbers at all. For instance, one may combine an Archimedean quantitative probability theory (in particular, the orthodox approach with real-valued probability functions), with a non-Archimedean qualitative probability theory.\footnote{This was suggested by de~Finetti, \textit{cf}.\ section~\ref{sec:preR}. See also the discussion of the ``numerical fallacy'' by \citet{Easwaran:2014}.} Moreover, \citet{Halpern:2010} reveals some deep connections between hyperreal-valued probability functions, conditional probabilities \citep[including Popper functions; see also Vann][]{McGee:1994}, and lexicographic probabilities. Recently, \citet{BrickhillHorsten:2018} have given a representation theorem that relates NAP functions and Popper functions; they also give a lexicographic representation.
 
-\citet{Skyrms:1983b} considered three ways of giving probability assignments a memory. One of his proposals was to ``utilize orders of infinitesimals to implement long term-memory'', such that ``[s]uccessive updatings do not destroy information, but instead push it down to smaller orders of infinitesimals'' (p.~158).
-He evaluated this proposal as having a certain theoretical simplicity, but lacking practical feasibility. However, given that the proposal essentially boils down to introducing lexicographical probabilities, it may turn out that this judgment was too harsh.
+\citet{Skyrms:1983b} considers three ways of giving probability assignments a memory. One of his proposals was to ``utilize orders of infinitesimals to implement long term-memory'', such that ``[s]uccessive updatings do not destroy information, but instead push it down to smaller orders of infinitesimals'' (p.~158).
+He evaluates this proposal as having a certain theoretical simplicity, but lacking practical feasibility. However, given that the proposal essentially boils down to introducing lexicographical probabilities, it may turn out that this judgment was too harsh.
 
 \subsection{Yet another point of view}
 Introducing non-standard probabilities amounts to changing the range of the probability function. \citet{Skyrms:1995} considered an alternative way to achieve strict coherence, which involves changing the domain, such that the events to which infinitesimal probabilities are assigned in the previous approach are no longer in the event space at all.
