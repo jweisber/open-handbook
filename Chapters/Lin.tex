@@ -1,0 +1,999 @@
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\ii}{[\![}
+\newcommand{\jj}{]\!]}
+\newcommand{\ai}{\left<}
+\newcommand{\aj}{\right>}
+\newcommand{\sn}{\mbox{$\;|\!\!\!\sim\,$}}
+\newcommand{\nsn}{\mbox{$\,\not\!|\!\!\!\sim\,$}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\rev}{*}
+
+
+\newcommand{\op}{\begin{itemize}}
+\newcommand{\ed}{\end{itemize}}
+\newcommand{\xm}{\item[]}
+\newcommand{\im}{\item}
+\newcommand{\cm}{\item[$\circ$]}
+
+\newcommand{\nid}{\noindent}
+\newcommand{\cc}{\textsc}
+
+
+% \title{Belief Revision Theory}
+% \author{Hanti Lin \\\\ UC Davis \\ \texttt{ika@ucdavis.edu}}
+% \date{May 22, 2016}
+
+% \begin{document}
+% \maketitle
+
+%\begin{abstract}\noindent 
+We often revise beliefs in response to new information. But which ways of revising beliefs are ``OK'' and which are not? A belief revision theory is meant to provide a general answer, with a sense of ``OK'' that it specifies. This article is an introduction to belief revision theory and its foundations, with a focus on some issues that have not received sufficient attention. First we will see what belief revision theories are, and examine their possible {\em normative or evaluative} interpretations. Second we will compare the standard belief theory called AGM with its alternatives, especially the alternatives that are motivated by nonmonotonic logic and formal learning theory. Third we will discuss counterexamples to some belief revision theories, and categorize how we might explain those counterexamples away. Fourth and finally we will examine a variety of motivated formal techniques for constructing belief revision theories, and discuss how those motivations might be transformed into explicit arguments.
+%\end{abstract}
+
+
+\section{Introduction}\label{lin-intro}
+
+We often revise beliefs in response to new information. But which ways of revising beliefs are ``OK'' and which are not? A belief revision theory is meant to provide a general answer, with a sense of ``OK'' that it specifies.
+
+This article is an introduction to some belief revision theories and their foundations. We will see what belief revision theories are, or could possibly be, {\em as normative or evaluative theories}, and discuss why most belief revision theories in the literature tend to claim to be only about idealized, perfect rationality (sections \ref{lin-normative}--\ref{sec-setting}). We will survey a variety of motivated, formal techniques for constructing belief revision theories, and see how to use these techniques to construct the standard theory called AGM and its dissenters (section \ref{sec-how-to-construct}). We will discuss how we might argue against a belief revision theory (section \ref{sec-argue-against}), and how we might argue for it (section \ref{sec-argue-for}). 
+
+Articles surveying belief revision theories have been available, such as the excellent ones by \citet{sep-logic-belief-revision}, \citet*{rodrigues2011belief}, and \citet{huber2013belief-i,huber2013belief-ii}. To help the reader make the most of the survey articles available, including the present one, let me explain what my emphases will be. \op
+
+	\im Earlier surveys tend to focus on a particular normative or evaluative interpretation of formal theories of belief revision, taking those theories to say something about idealized, perfect rationality. This is the dominant interpretation in the literature. Other possible interpretations will be explored here as well. In fact, the choice among possible interpretations ultimately concerns the choice among very different research programs in belief revision theory---or so I will argue in section \ref{sec-choosing-interpretations}. 
+
+	\im Earlier surveys tend to focus on the standard, AGM theory of belief revision, together with its add-ons and improvements. But I wish to spend more time on dissenters from the AGM theory. In section \ref{sec-ordering}, I will present belief revision theories that disagree with the content of the AGM theory in {\em permitting something that the AGM theory prohibits}. (These theories usually come from so-called {\em nonmonotonic logic}.) In section \ref{sec-Ockham}, I will present belief revision theories that disagree with the spirit of the AGM theory in {\em taking the ultimate concern to be finding the truth} rather than conforming to what intuition says about rationality. (These theories usually come from so-called {\em formal learning theory}.) 
+
+	\im The use of intuitive counterexamples is important when we are against a belief revision theory, and earlier surveys do cover that. But I will make a first step toward categorizing how counterexamples might be explained away. The reason is that the dialectic exchange between alleging-counterexamples and explaining-them-away turns out to raise very interesting issues about the goal and nature of belief revision theory. This will be the highlight of section \ref{sec-argue-against}.  
+
+	\im Earlier surveys tend to focus on various {\em motivated} techniques for constructing theories of belief revision. But I will explore how those motivations could be reconstructed into {\em explicit arguments} for the intended normative claims. This will help us identify and formulate issues of utmost importance to the very foundations of belief revision theory---or so I will argue in section \ref{sec-argue-for}.
+
+\ed Achieving these goals means that I will have to set aside, or just mention in passing, many other interesting topics in belief revision theory. But this is exactly why we need multiple survey articles to complement one another. 
+
+One last point of clarification before we get started, regarding the kind of belief that will concern us in this article. Compare the following examples.
+\begin{itemize}
+	\item[(i)]  Ann is $95\%$ confident that it will rain tomorrow.
+	\item[(ii)] Ann believes that it will rain tomorrow.
+\end{itemize}
+Sentence (i) attributes to Ann a {\em quantitative} doxastic attitude toward a certain proposition, called a {\em credence}. There are infinitely many such quantitative attitudes that she could have had toward that proposition. She could have had, say, credence $50\%$, $50.1\%$, or $50.17\%$ in that proposition. By contrast, sentence (ii) attributes to Ann a {\em qualitative} doxastic attitude toward a certain proposition, call a {\em belief}. There are two qualitative doxastic attitudes she could have had toward that proposition: believing it, or not believing it.\footnote
+	{If you wish, you can count one more attitude: disbelieving a proposition. It is debatable whether disbelieving $P$ can be reduced to believing $\neg P$.} 
+The subject matter of this article is concerned with revision of beliefs (qualitative doxastic attitudes). For revision of credences (quantitative doxastic attitudes), please see the chapter ``Precise Credences'' of this handbook.\footnote
+	{This raises an issue: how should the revision of beliefs and the revision of credences be related? For recent works on this issue, see \citet*{arlo2012belief}, \citet*{lin2012propositional}, and \citet{leitgeb2014stability}. Also see the chapter ``Full and Partial Belief'' of this handbook.} 
+
+
+\section{Belief Revision Theories as Normative Theories}\label{lin-normative}
+
+I mentioned earlier that a belief revision theory is, roughly, a theory saying which ways of belief revision are OK and which are not, which I am going to explain in greater detail in this section. 
+
+\subsection{What a Belief Revision Theory Is Like}\label{sec-composers}
+
+Consider the following constraint on an agent at a time: \op
+
+	\xm \textsc{Preservation.} If the information that agent $A$ receives at time $t$ is compatible with the set of the beliefs that $A$ has just right before $t$, then, right after $t$, agent $A$ retains all of her beliefs in response to that information. 
+
+\ed (By ``the'' information one receives at $t$, we mean the conjunction of {\em all} pieces of information that one receives at $t$.)\footnote
+	{What if one receives no piece of information at $t$? What is the conjunction of the empty set of propositions? Answer: it is a tautology. Think of the conjunction of a set $S$ of propositions to be the weakest proposition that entails every proposition in $S$---or, in terms of algebraic logic, define the conjunction of $S$ as the the greatest lower bound of $S$ in the lattice of propositions under discussion.} 
+This constraint on belief revision is {\em formal} in the sense that it concerns the logical properties of beliefs rather than their particular contents. Due to its formal nature, Preservation usually receives the following reformulation:\op
+
+	\xm \textsc{Preservation.} If $\phi$ is compatible with $B$, then $B$ is a subset of $B * \phi$, where: \op
+	\im $B$ is the set of one's beliefs right before the receipt of new information, 
+	\im $\phi$ is the new information one receives,
+	\im $B * \phi$ is the set of one's new beliefs in response to new information $\phi$.
+	\ed
+\ed Preservation offers just one possible constraint on belief revision, and we will discuss more constraints below. 
+
+Preservation as just formulated is a mere constraint, a condition that one may turn out to satisfy or violate at a time; there is nothing normative or evaluative in itself. But when a belief revision theory contains Preservation, it is typically understood to make the following normative claim:\footnote
+	{
+	We may want to clearly distinguish what is normative (such as `ought') from what is evaluative (such as `good', `rational', and `justified'). But this distinction is irrelevant to the purposes of this article. Understand my use of `normative' to be a shorthand for `normative or evaluative'.
+	} 
+\op
+
+	\xm \textsc{Preservation Thesis (the ``Perfect Rationality'' Version).} One is perfectly rational only if one has never violated, and would never violate, Preservation. 
+
+\ed Once a normative thesis is put on the table, a philosopher's first reaction would be to explore potential counterexamples (no matter whether she wants to confirm or refute the thesis). Here is one: \op 
+ 
+	\xm \textsc{Example (Three Composers).}\footnote
+		{
+		This scenario is adapted from an example due to \citet{stalnaker1994nonmonotonic}. Stalnaker uses it to argue against a different constraint on rational belief revision: \op 
+			\xm \textsc{Rational Monotonicity.} If $\psi$ is compatible with $B * \phi$, then $B * \phi \subseteq B * (\phi \wedge \psi)$. 
+		\ed Stalnaker considers two alternative possibilities: the agent could receive $E$ or $E\wedge E'$ as the information at a certain time. And then Stalnaker asks how the agent should set up a belief revision strategy as a contingency plan to deal with these two possibilities. Substituting $E$ and $E'$ for the $\phi$ and $\psi$ in Rationality Monotonicity, Stalnaker obtains his counterexample to it. That is what Stalnaker does, which appears to be different from what we are doing here about Preservation, for two reasons. First, Preservation and Rational Monotonicity are logically independent. Second, Stalnaker's own example lacks an essential feature of our scenario here: the agent receives two pieces of information, $E$ and $E'$, successively. Indeed, it is the {\em second} revision, prompted by the later information $E'$, that is alleged to violate Preservation. That is, in terms of the $(*)$-notation, it is the revision of the second belief set $B * E$ into the third belief set $(B * E) * E'$ that is alleged to violate Preservation.  That said, it should not be surprising that Stalnaker's case against Rational Monotonicity can be easily modified into a case against Preservation, thanks to the formal resemblance between these two constraints on belief revision. In case you are interested, here is a bit more history about the Composers case: Stalnaker's own example is a variation on an example due to \citet{ginsberg1986counterfactuals}, which is in turn a variation on an example due to \citet{quine1982methods}. Both Ginsberg and Quine use their examples to talk about counterfactuals rather than belief revision.
+		}
+	The agent initially believes the following about the three composers Verdi, Bizet, and Satie: \op
+
+		\xm ($A$) Verdi is Italian;
+		\xm ($B$) Bizet is French;
+		\xm ($C$) Satie is French. 
+
+	\ed Then the agent receives this information: \op
+
+		\xm ($E$) Verdi and Bizet are compatriots. 
+
+	\ed So the agent drops her beliefs in $A$ and in $B$, and retains the belief in $C$ that Satie is French (after all, information $E$ has nothing to do with Satie). Of course, she comes to believe the new information $E$ that Verdi and Bizet are compatriots, while suspecting that Verdi and Bizet might both be Italian, and that they might both be French. So, at this stage, the agent does not rule out the possibility that Verdi is French (and, hence, a compatriot of Satie). So what she believes at this stage is compatible with the following proposition: \op
+
+	\xm $(E')$ Verdi and Satie are compatriots.
+
+\ed But then she receives a second piece of information, which turns out to be $E'$. Considering that she started with initial beliefs $A, B$, and $C$ and received information $E$ and $E'$, now she drops her belief in $C$. 
+
+\ed Let us focus on this agent's second revision of beliefs, prompted by information $E'$. Information $E'$ is compatible with what she believes right before receiving this information, and she drops her belief in $C$ nonetheless. So this agent's second revision of beliefs violates Preservation. But there seems nothing in the specification of the scenario that prevents the agent from being perfectly rational. So this seems to be a counterexample to the Preservation Thesis.
+
+This cannot be the end of the dialectic, of course. We want to think about whether one may save the Preservation Thesis by explaining away the alleged counterexample---an issue that we will revisit in section \ref{sec-argue-against}. This is just to give a taste of what it is like to work in belief revision theory.
+
+
+
+\subsection{What Normative Interpretations Could Be Intended?}\label{sec-interpretations}
+
+The Preservation Thesis is only one of the many normative theses that we can formulate in terms of Preservation. Here is a sample:\op
+
+	\xm\op
+	\im[($T_1$)] An agent is rational at a time only if she does not violate Preservation at that time.
+
+	\im[($T_2$)] An idealized agent is perfectly rational only if she has never violated and would never violate Preservation.
+
+	\im[($T_3$)] A strategy for belief revision is rational only if every possible revision licensed by it does not violate Preservation. 
+
+	\im[($T_4$)] An agent is rational at a time only if, other things being equal, she does not violate Preservation at that time.
+
+	\im[($T_5$)] Other things being equal, an agent should not violate Preservation.
+	\ed
+
+\ed A belief revision theory is meant to affirm or deny some theses like these.
+
+This list is by no means exhaustive. There are at least two dimensions along which we can generate more theses for a belief revision theory to affirm or deny (or be silent about). 
+
+As to dimension one: note that Preservation is only one of the many possible constraints on belief revision. So, in theses $T_1$--$T_5$, we can easily replace Preservation by a distinct constraint on belief revision. 
+
+As to dimension two: note that theses $T_1$--$T_5$ are formulated in terms of `ought' or `rational'. So, if there are multiple senses of `ought', then the above ought-thesis will have to be multiplied. Similarly, if epistemic rationality is not identical to, or is only a special kind of, instrumental rationality, then the above rationality-theses will have to be duplicated. One more example: we might be interested in not only whether one's revision is rational, but also whether it is justified. So, for example, we can consider the thesis that an agent is {\em justified} in revising her beliefs the way she does only if her revision does not violate Preservation. 
+
+So, given a constraint on belief revision (such as Preservation), we can formulate various normative theses in terms of that constraint. A belief revision theory is meant to affirm or deny some such theses.
+
+\subsection{Which Normative Interpretation Is to Be Intended?}\label{sec-choosing-interpretations}
+
+Most belief revision theories in the literature are usually understood to make claims only about idealized rationality, e.g. affirming or denying theses of the form $T_2$. But why? 
+
+Here is a potential reason. Many belief revision theories assume that the agent's belief set $B$ is closed under deduction, so those theories can be interpreted as talking about a logically omniscient agent, who believes every logical consequence of what she believes. So those theories {\em can} be interpreted as talking about a kind of perfect rationality that only a logically omniscient agent can have. But this is not a good reason for {\em restricting} the interpretation to idealized perfect rationality. For, following \citet{levi1983enterprise}, a deductively closed set $B$ of sentences {\em can also} be used to express the commitments of an ordinary, non-idealized agent's beliefs. Under this alternative interpretation, revision of $B$ is revision of the commitments of one's beliefs. 
+
+As it turns out, the decision to focus on certain kinds of normative interpretations rather than some others actually involves a difficult choice among research programs in belief revision theory---or so I shall argue in the following. 
+
+As a preliminary step, let me argue that $T_1$ should not be an intended normative content of a belief revision theory, because $T_1$ has a quite obvious counterexample: \op
+
+	\xm \textsc{Example (One's Embarrassing Past).} Suppose that propositions $A, B, C$ are logically independent, in the sense that all the $8$ $(= 2^3)$ combinations of their truth values are logically possible. An agent started by believing $A$ without commitment to the truth or falsity of $B$ or $C$. Then she received information $B$ and, in response, she somehow dropped her old belief in $A$ and came to believe $\neg A \wedge B$, without commitment to the truth or falsity of $C$. So she violated Preservation at that time. Since then she has retained those beliefs and has not received any new information. Remembering all these in her embarrassing past, now she receives new information $C$. She is wondering what to believe.
+
+\ed What is she supposed to do in order to be a rational agent {\em now}? Since the new information $C$ is compatible with what she believed just now, to satisfy Preservation {\em now} the agent has to continue to believe $\neg A \wedge B$. But, if Preservation really represents such a good standard to abide by, the rational thing for her to do {\em now} is to retract her belief in $\neg A \wedge B$ and come to believe $A$, $B$, and $C$ instead---as if she had never violated Preservation. So $T_1$ should be rejected {\em even} by those who are sympathetic to Preservation as a requirement of rationality. 
+
+It is not just that $T_1$ is false. When we replace the Preservation constraint in $T_1$ by any other formal constraint ever studied in the belief revision literature, the resulting thesis---a {\em formal variant} of $T_1$---is also false. The reason is that the constraints studied in belief revision theory are formal, having nothing to do with the contents of one's beliefs and hence making no reference to one's beliefs about one's revision history. So the case of One's Embarrassing Past can be suitably adapted to refute every formal variant of $T_1$. Lesson: every belief revision theory in the literature, {\em when interpreted to make claims of the form $T_1$}, is false. 
+
+If we are sympathetic to Preservation as a good standard to abide by, there are two possible ways out: \op
+
+	\xm \textsc{Strategy 1 (Get Hands Dirty Today).} Fix thesis $T_1$ by weakening Preservation in such a way that avoids the above counterexample while retaining the spirit of Preservation.
+
+	\xm \textsc{Strategy 2 (Pay off the Debt in the Future).} Deny $T_1$ but affirm $T_2$, $T_3$, $T_4$, $T_5$, or their variants. Namely, redirect our attention, at least for the moment, to idealized rationality, or the rationality of strategies instead of agents, or {\em ceteris paribus} norms. But keep in mind that this incurs a debt: we will, at some point, need to say how the truth of theses like $T_2$--$T_5$ can be employed to shed light on the rationality of a non-idealized agent's belief revision without a {\em ceteris paribus} clause.
+
+\ed These two possible ways out correspond to very different projects one may pursue in belief revision theory. Let me illustrate.
+
+Here is what it is like to pursue Strategy 1 (Get Hands Dirty Today). (To anticipate, it will be very much like looking for the right analysis of knowledge in epistemology.) Consider the following weakening of Preservation: \op
+
+	\xm \textsc{Preservation$^{*}$.} If (i) the new information one receives at $t$ is compatible with the set of beliefs that one has just before $t$ and (ii) one does not believe at $t$ that one has violated Preservation before, then, right after $t$, one retains all of one's beliefs in response to the new information. 
+
+\ed This constraint is non-formal (i.e. referring to contents of one's beliefs), and it weakens Preservation by adding (ii) to the antecedent. Now formulate the following non-formal variant of $T_1$: \op
+
+	\xm 
+	\op
+	\im[($T^{*}_1$)] An agent is rational at a time only if she does not violate Preservation$^{*}$ at that time.
+	\ed
+
+\ed This thesis is logically weaker than $T_1$, weak enough to escape the case of One's Embarrassing Past. For the agent violates antecedent (ii) and, hence, satisfies Preservation$^{*}$ vacuously. The problem with this weakened Preservation$^{*}$ is that it is too weak for those who want to save the spirit of Preservation as a constraint on rational belief revision. Do you think that you violated Preservation at least once in the past? I think I did, although I cannot tell when exactly. Most people, if asked, would say that they violated Preservation at least once in the past, too. So most people satisfy Preservation$^{*}$ vacuously by violating antecedent (ii). Lesson: if we think that the spirit of Preservation is on the right track toward a nontrivial constraint on rational belief revision, we need to weaken Preservation by adding an appropriate antecedent that hits the ``sweet spot,'' making the reformulated Preservation weak enough to avoid potential counterexamples and substantial enough to guide our belief revision. Hitting such a sweet spot might require careful addition of complicated clauses into Preservation, making our hands dirty now.
+
+It is possible to keep our hands clean at least for the moment. If Preservation really represents such a good standard to abide by, then it seems pretty safe to affirm thesis $T_2$. For, in response to One's Embarrassing Past, we can simply judge that the agent in question simply fails to be perfectly rational due to her embarrassing past, no matter how she is going revise her beliefs at the present time. So, to keep our hands clean, we can develop a belief revision theory that only makes claims about idealized, perfect rationality, such as $T_2$. But this only makes our hands clean {\em for the time being}, for it actually incurs a debt that we will have to pay off later. There is nothing wrong in developing a theory of perfect rationality for idealized agents. But we want such a theory to shed light on a theory of rational belief revision for ordinary agents like us. What's the light to be shed? To answer this question is to pay off the debt.
+
+Similarly, if Preservation really represents such a good standard to abide by, it seem pretty safe to affirm thesis $T_3$. For, in response to One's Embarrassing Past, we can say that the revision strategy that the agent has been following through time is simply irrational. But then one day we will have to pay off the debt: we will have to explain how a theory of strategic rationality sheds light on a theory of agential rationality. Similarly, adoption of $T_4$ or $T_5$ incurs its own debt: we will have to say how {\em ceteris paribus} norms would apply to concrete cases, which would require us to develop, for example, a logic for defeasible deontic reasoning.\footnote{See \citet{nute2012defeasible} for a number of approaches to defeasible deontic logic.} So what confronts us is this problem:\op
+
+	\xm \textsc{Choosing Among Research Programs.} Should we get our hands dirty today, or should we incur a debt today and promise to pay it off in the future, by directing our attention to perfect rationality, strategic rationality, or {\em ceteris paribus} rationality? 
+
+\ed The literature, as developed today, seems more inclined to opt for the route of perfect rationality, which is a sociological fact that I do not know how to explain.
+
+I have to confess that many belief revision theorists (including me) have incurred the debt without working hard enough to pay it off. Anyway, in the rest of this article, we will follow the literature, talking about theses of the form $T_2$ most of the time. Just keep in mind that a research program has been chosen (at least tentatively) and it comes with a debt.
+
+
+
+
+\section{Formal Theories of Belief Revision}\label{sec-setting}
+
+A typical belief revision theory has two parts: the {\em formal} part is meant to formulate certain formal constraints on belief revision, and the {\em normative} part is meant to make some normative claims in terms of those constraints. It is time to turn to the formal part. 
+
+Consider a language ${\cal L}$, identified with a set of sentences closed under at least the standard Boolean operations (i.e., `and', `or', and `not'). A finite sequence $(\phi_1, \phi_2, \ldots, \phi_n)$ of sentences in ${\cal L}$ can be understood as a {\em history of inquiry} in which one receives information $\phi_1$, then receives information $\phi_2$, \ldots, and then receives information $\phi_n$. A belief revision strategy is meant to tell one how to change beliefs given any relevant history of inquiry. Accordingly: \op
+
+	\xm \textsc{Definition (Belief Revision Strategy).} A {\em belief revision strategy} over language ${\cal L}$ is a function $S: {\cal I} \to \powerset({\cal L)}$, where: \op
+
+	\im ${\cal I}$ is a nonempty set of finite sequences of sentences in ${\cal L}$ that is {\em closed under subsequences}---that is, whenever ${\cal I}$ contains a nonempty sequence $(\ldots, \phi_n)$, it also contains the truncated sequence $(\ldots)$ that results from deleting the last entry. So the empty sequence, denoted by $(\,)$, is guaranteed by definition to be in ${\cal I}$. Call ${\cal I}$ an information space, meant to contain all the ``relevant'' histories of inquiry in question.
+
+	\im $\powerset({\cal L)}$ is the collection of all subsets of ${\cal L}$, i.e. all sets of sentences in ${\cal L}$;
+
+	\im $S(\phi_1, \phi_2, \ldots, \phi_n)$ is understood as the set of beliefs that strategy $S$ would recommend for an agent at the end of inquiry history $(\phi_1, \phi_2, \ldots, \phi_n)$. In the limiting case, the value of function $S$ at the empty sequence $(\,)$, written $S(\,)$, denotes the set of beliefs recommended at the beginning of the inquiry.
+	\ed
+\ed
+I have to confess that the $S$-notation used here is not quite standard in the literature. But in this article we will encounter three different kinds of belief revision theories, and the $S$-notation is the simplest one for unifying all the three.
+
+A formal theory of belief revision, no matter how it is presented, works by imposing a constraint on belief revision strategies, allowing for some strategies and ruling out the others. Accordingly: \op
+
+	\xm \textsc{Definition (Formal Theory of Belief Revision).} A {\em formal theory of belief revision} over language ${\cal L}$ is (or can be identified with) a set of belief revision strategies over ${\cal L}$. 
+
+\ed A formal belief revision theory $T$ can be turned into a normative theory once it is given a normative interpretation, such as: ``an agent is perfectly rational only if there exists a belief revision strategy in $T$ that she has been following and would continue to follow.'' (Just a reminder: alternative interpretations have been discussed in section \ref{sec-interpretations}.)
+
+\subsection{Simple Belief Revision Theories}
+
+Let ${\cal I}_{\le 1}$ be the set of all sequences of sentences in ${\cal L}$ with lengths $\leq 1$. So it does not consider successive revisions of belief. A belief revision strategy is {\em simple} iff it is defined on ${\cal I}_{\le 1}$. A set of such strategies is called a {\em simple} formal theory of belief revision.
+
+Suppose that we only care about simple belief revision for the moment. Then the $S$-notation just introduced is an overkill, and it would be more convenient to work with the notation of $B$ and $*$ introduced earlier. Here is the translation between these two notations: \op
+
+	\xm $S(\,) = B$, the initial set of beliefs;
+
+	\xm $S(\phi) = B \rev \phi$, the set of new beliefs in light of new information $\phi$. 
+
+\ed So Preservation can be reformulated as follows: \op
+
+	\xm \textsc{Preservation.}  For any $\phi$ compatible with $S(\,)$, $S(\,) \subseteq S(\phi)$.
+	In other words, for any $\phi$ compatible with $B$, $B \subseteq B * \phi$.
+
+\ed The set of simple belief revision strategies that satisfy Preservation is a formal theory of belief revision. It corresponds to a strictly weaker constraint than the standard, AGM belief revision theory, as we will see in section \ref{sec-agm}.
+
+
+\subsection{Iterated Belief Revision Theories}
+
+The information space ${\cal I}_{\leq 1}$ just considered is very small. What about working with a larger information space? Let ${\cal I}_{\textrm{finite}}$ be the set of all finite sequences of sentences in ${\cal L}$. A belief revision strategy $S$ defined on ${\cal I}_{\textrm{finite}}$ says a lot. It says how to revise beliefs when one receives information $\phi_{n+1}$ that follows inquiry history $(\phi_1, \ldots, \phi_{n})$: just change the set of beliefs from $S(\phi_1, \ldots, \phi_{n})$ to $S(\phi_1, \ldots, \phi_{n}, \phi_{n+1})$. It even says how to revise beliefs when one receives information $\phi$ but then, unfortunately, receives information $\neg\phi$: change the set of beliefs from $S(\ldots, \phi)$ to $S(\ldots, \phi, \neg\phi)$. A set of belief revision strategies defined on ${\cal I}_{\textrm{finite}}$ is called an {\em iterated} belief revision theory. 
+
+For example, consider the set of all belief revision strategies $S: {\cal I}_{\textrm{finite}} \to \powerset({\cal L)}$ that satisfy: \op
+
+	\xm \textsc{Iterated Preservation.} For any finite sequence $(\phi_1, \ldots, \phi_{n})$ of sentences and any sentence $\phi_{n+1}$ in ${\cal L}$, if $\phi_{n+1}$ is compatible with $S(\phi_1, \ldots, \phi_{n})$, then $S(\phi_1, \ldots, \phi_{n}) \subseteq S(\phi_1, \ldots, \phi_{n}, \phi_{n+1})$.
+
+\ed This constraint is strictly weaker than many iterated belief revision theories in the literature, as we will see in section \ref{sec-iterated}.
+
+
+
+
+\subsection{Belief Revision Theories for Inductive Inferences}\label{sec-raven}
+ 
+Sometimes we may want to have an information space $\cal I$ that is just right, not too big and not too small. Consider an empirical problem: {\em ``are all ravens black?''} Call this the {\em Raven Problem}. Let language ${\cal L}$ contain the following sentences: \op
+
+		\xm $h$ = the hypothesis ``all ravens are black''; 
+		\\ $b_{i}$ = ``the $i$-th observed raven is black'';
+		\\ $n_{i}$ = ``the $i$-th observed raven is non-black.''
+
+\ed An inquiry history relevant to the Raven Problem describes the color of every raven observed in that history. For example, $(b_{1}, b_{2}, b_{3}, b_{4})$ says that we have observed four ravens and all of them are black; $(b_{1}, b_{2}, b_{3}, b_{4}, n_5)$ says that we have observed five ravens with the first four being black and the last one being non-black. Let ${\cal I}_{\textrm{raven}}$ be the set of all finite sequences whose $i$-th entry is either $b_{i}$ or $n_{i}$. ${\cal I}_{\textrm{raven}}$ is meant to exclude any sequence that contains $h$, because, let us suppose, scientists never receive $h$ as information. In the present case, the point of working with ${\cal I}_{\textrm{raven}}$ (rather than the much larger information space ${\cal I}_{\textrm{finite}}$) is that we want to be clear about which pieces of information can be {\em available} to a scientist for solving the Raven Problem. Furthermore, reference to ${\cal I}_{\textrm{raven}}$ is essential when we define how well a belief revision strategy performs as a solution to the Raven Problem, as we will see in section \ref{sec-Ockham}.
+
+We might come to believe $h$ when they have observed a certain number of black ravens without a single non-black one. But how many black ravens suffice for a rational or justified belief in $h$? A belief revision strategy defined on ${\cal I}_{\textrm{raven}}$ is meant to give an answer. For example, a strategy $S_{\textrm{skep}}$ that follows {\em inductive skepticism} would say that no finite amount of black ravens suffices; that is, $h \not\in S_{\textrm{skep}}(b_1, \ldots, b_n)$ for every positive integer $n$.
+
+
+
+\section{How to Construct Formal Theories}\label{sec-how-to-construct}
+
+In this section we will review a number of techniques for constructing formal theories of belief revision. Those techniques can be taken as mere formal tools for constructing formal theories of belief revision. But those formal techniques are usually associated with some motivations or interpretations, which might do some interesting philosophical work. To anticipate, in section \ref{sec-argue-for} we will examine how interpreted techniques of theory construction could be turned into explicit arguments for normative claims about belief revision.
+
+
+\subsection{Axiomatization}\label{sec-agm}
+
+Consider the following axiom system, stated in terms of $B$ and $*$, where $B + \phi$ denotes the set of logical consequences of $B \cup \{\phi\}$:\op
+
+	\xm \textsc{Axiom System AGM.}
+
+	\xm (Closure) $B \rev \phi$ is closed under logical consequences.
+
+	\xm (Extensionality) If $\phi$ and $\psi$ are logically equivalent, then $B \rev \phi = B \rev \psi$. 
+
+	\xm (Success) $B \rev \phi$ contains $\phi$.
+
+	\xm (Consistency) If $\phi$ is consistent, then $B \rev \phi$ is consistent.
+
+	\xm (Accretion) If $\phi$ is compatible with $B$, then $B \rev \phi = B + \phi$.
+
+	\xm (Super-Accretion) If $\psi$ is compatible with $B \rev \phi$, then $B \rev (\phi \wedge \psi) = (B \rev \phi) + \psi$.
+
+\ed Note that Accretion implies Preservation. These constraints on $B$ and $*$ can be easily translated to constraints on belief revision strategies $S$---just recall the translation provided earlier: $B = S(\,)$ and $B \rev \phi = S(\phi)$. So the AGM axiom system defines a formal theory of simple belief revision, i.e. the set of simple belief revision strategies that satisfy those axioms. The ideas of this belief revision theory can be found in \citet{harper1975rational}, \citet{harper1976rational}, and \citet{levi1978subjunctives}. But this theory is usually called AGM because \citet*{alchourron1985logic} prove a representation theorem for it, to be presented in the next subsection. The axiomatization provided here is equivalent to the standard---but more complicated---axiomatization found in their 1985 paper.
+
+If you think that the AGM axiom system is too strong and would like to work with a weaker one, the following is an option, where the first four axioms are borrowed from AGM: \op
+
+	\xm \textsc{Axiom System P$^{+}$}
+
+	\xm (Closure)
+	
+	\xm (Extensionality)
+	
+	\xm (Success)
+	
+	\xm (Consistency) 
+	
+	\xm (Cautious Monotonicity) If $\psi \in B \rev \phi$, then $B \rev \phi \subseteq B \rev (\phi \wedge \psi)$.
+
+	\xm (Or) If $\psi \in B \rev \phi_1$ and $\psi \in B \rev \phi_2$, then $\psi \in B \rev (\phi_1 \vee \phi_2)$.
+
+\ed I call it P$^{+}$ because this axiom system minus Consistency is, in a sense, equivalent to the well-known system P of nonmonotonic logic.\footnote
+	{
+	This assumes the standard translation between belief revision theory and nonmonotonic logic \citep*{makinson1991relations}, which I present in the appendix (section \ref{app-trans}).
+	}
+Every axiom in P$^+$ can be derived from the AGM axiom system, but the converse does not hold. In particular, axiom system P$^+$ does not imply Accretion because it does not even imply a logically weaker constraint: Preservation (and we will be in a position to prove this claim in section \ref{sec-ordering}).
+
+\subsection{Partial Meet Contraction}\label{sec-contraction}
+
+Let us turn to a second technique for constructing a simple belief revision theory. This technique works pretty much by telling a story of a rational agent who is deciding which beliefs to retain or to abandon. 
+
+Suppose that an agent's new information $\phi$ is incompatible with her belief set $B$. Then, before she adds $\phi$ into her set of beliefs, it seems a good idea for her to drop some old beliefs, i.e. to remove some sentences from $B$ in order to obtain a (smaller) set that does not entail $\neg\phi$, so that the addition of $\phi$ would not cause any inconsistency. Denote this set by $B \div \neg\phi$, called the {\em contracted} set of beliefs free from commitment to $\neg \phi$. Once the agent obtains the contracted belief set $B \div \neg\phi$, she can safely add $\phi$ to it and close it under logical consequences, and thereby obtain $(B \div \neg\phi) + \phi$ as the new belief set. Namely:\op
+
+	\xm \textsc{Levi Identity.} $B * \phi \,=\, (B \div \neg\phi) + \phi$. 
+
+\ed At its core, this amounts to constructing a revision procedure as the concatenation of two other procedures: one for removing beliefs ($\div$) and the other for adding beliefs ($+$).  The process from $B$ to $B \div \neg\phi$ is call {\em contraction}, and the problem is how to find the contracted belief set $B \div \neg\phi$. In most cases there are multiple candidates for $B \div \neg\phi$ (i.e. multiple subsets of $B$ that do not entail $\neg\phi$). Which one would/could serve as the $B \div \neg\phi$ that the agent needs for the sake of rational belief revision? 
+
+That problem has a standard, formal solution, called {\em partial meet contraction}, which is the focus of this subsection. Let $B \bot \neg\phi$ denote the set of all inclusion-maximal subsets of $B$ that do not entail $\neg\phi$. In other words, $B \bot \neg\phi$ contains $X$ iff $X$ is a set obtained by removing no more sentences from $B$ than necessary---retracting no more old beliefs than necessary---in order to achieve compatibility with new information $\phi$. Then, to proceed further, a {\em prima facie} plausible idea is to (i) select ``the best'' candidate in $B \bot \neg\phi$ and let it be the contracted belief set.  What if there is no uniquely best candidate? Then perhaps the agent may try to (ii) arbitrarily select one of the best candidates in $B \bot \neg\phi$, and let it be the contracted belief set. But what if we feel unable to make such an arbitrary selection given multiple best candidates? The standard proposal is to (iii) intersect all of those best candidates and obtain an even smaller set of sentences, to be identified with the contracted belief set $B \div \neg\phi$.
+
+This last idea, (iii), is what underlies so-called partial meet contraction, and can be formally presented as follows. \op
+
+	\xm \textsc{Definition (Selection Function for a Belief Set).} A {\em selection function} for $B$ is a function $\gamma$ such that, for every collection $M$ of subsets of $B$: \op
+		\im[(a)] $\gamma(M) \subseteq M$ if $M \neq \varnothing$,
+		\im[(b)] $\gamma(M) \neq \varnothing$ if $M \neq \varnothing$,
+		\im[(c)] $\gamma(\varnothing) = \{B\}$. 
+	\ed
+
+\ed The idea is that, for any nonempty collection $M$ of candidates, $\gamma$ is meant to return $\gamma(M)$ as the set of best candidates in $M$. Then, for each sentence $\phi$, let $\gamma$ generate $B \div \neg \phi$ as follows:\op
+
+\xm \textsc{Partial Meet Contraction.} $B \div \neg \phi \,=\, \bigcap\gamma(B\bot\neg\phi)$.
+
+\ed (In case you are interested: while the above formalizes idea (iii), it turns out that idea (i) can be modeled by the special case in which $\gamma$ returns a singleton.)
+
+In general, given a selection function $\gamma$ for a belief set $B$, it defines a contraction operator $\div$ by partial meet contraction, which then defines a revision operator $*$ by Levi identity. Initial belief set $B$ and revision operator $*$ then jointly define a simple belief revision strategy. So a set of selection functions generates a set of simple belief revision strategies, i.e. a simple belief revision theory.
+
+We want to sort out selection functions that are  ``OK'' in order to use them to produce belief revision strategies that are ``OK.'' But which selection functions are ``OK''? Imagine that there is a binary relation $\ge$ on subsets of $B$. Understand $X \ge Y$ as saying that $X$ is at least as ``good'' as $Y$ with respect to $\ge$ (so presumably we want $\ge$ to be at least transitive and reflexive). Then we can require $\gamma$ to select the ``best'' items as follows. For any sentence $\phi$ (which serves as the new information) such that $B\bot\neg\phi \neq \varnothing$:
+$$ \gamma(B\bot\neg\phi) = \{X \in B\bot\neg\phi : X \ge Y \mbox{ for all } Y \in B\bot\neg\phi \}.$$
+Whereas if $B\bot\neg\phi = \varnothing$, then $\gamma(B\bot\neg\phi) = \{B\}$. Say that a selection function $\gamma$ for $B$ is {\em transitively $($and reflexively$)$ relational} iff there exists a transitive (and reflexive) relation $\ge$ that generates $\gamma$ in the way just presented.\footnote
+	{Note that {\em not} every transitive and reflexive relation $\ge$ generates a selection function for $B$. This is because a careless design of $\ge$ could easily result in a $\gamma$ that violates condition (b), which is required by the definition of selection functions.}
+It seems tempting to think that a selection function is ``OK'' only if it is transitively and reflexively relational.
+
+It turns out that the transitively relational selection functions generate all and only the simple belief revision strategies that satisfy the AGM axioms---a classic result due to \citet*{alchourron1985logic}. So we have two equivalent presentations of the same set of revision strategies: one is to use the AGM axioms to define a set of revision strategies, and the other is to construct a set of revision strategies from (1) Levi identity, (2) partial meet contraction, and (3) the set of transitively relational selection functions. This is a {\em representation result}, a result saying that two apparently different constructions or definitions lead to one and the same thing. 
+
+If any ``at-least-as-good'' relation $\ge$ employed to define a selection function should be both transitive and reflexive, then the classic AGM representation result seems to miss something: we see transitivity mentioned, but where is reflexivity? Don't worry. \citet{rott1993belief} proves that we can add reflexivity while retaining the representation result; that is, the selection functions that are transitively {\em and reflexively} relational generate all and only the simple belief revision strategies that satisfy the AGM axioms.
+
+
+
+\subsection{Digression: Why Prove Representation Results?}
+
+We have seen a representation result, and will see more. Although representation results are very interesting from a mathematical point of view, it is less clear what their philosophical significance is. So let us step back and think about how a representation result might be put into philosophical service. 
+
+Here is the first possible philosophical service. Suppose that we are searching for counterexamples to the belief revision theory based on, say, partial meet contraction. Then, thanks to the above representation theorem, we are {\em exactly} searching for counterexamples to the belief revision theory based on the AGM axiomatization---with a bonus: it is usually easier to work out putative counterexamples by contemplating on axioms. So a representation result can be instrumental to the search of potential counterexamples. 
+
+But we should not overemphasize the importance of this instrumental role in philosophy. A representation result is sometimes an overkill for this instrumental role. Without a representation result, it is still possible to find a potential counterexample to the belief revision theory based on partial meet contraction. It is not hard to see that any belief revision strategy, if constructed from partial meet contraction, must satisfy the Preservation constraint.\footnote
+	{For, when the new information $\phi$ is compatible with the initial belief set $B$, we have that $B \bot \neg\phi = \{B\}$, and hence the contracted set of beliefs $\bigcap \gamma(B \bot \neg\phi)$ must be $B$ itself, to which the agent is going to add $\phi$ in order to form the new belief set $B * \phi = B + \phi$.}
+So Preservation provides a sound (albeit incomplete) axiomatization of partial meet contraction. If we can find a counterexample to Preservation interpreted as a normative thesis, then we already have a counterexample to the belief revision theory based on partial meet contraction---all done without applying a representation result. 
+
+The lesson seems the following. A partial, sound axiomatization already starts to facilitate the search for potential counterexamples. It would be great if we also have a representation result. For then we are sure that, if there is any genuine counterexample, it must violate at least one of the axioms mentioned in the representation result---look no further. But it is a hard choice as to how much time to invest in trying to prove a representation conjecture only for the sake of this instrumental purpose.
+
+A representation result might provide another philosophical service. Consider the belief revision theory $T$ whose formal part is axiomatized by the AGM axioms. Assume that: \op
+
+	\im[($E$)] We have tried very hard to work out potential counterexamples to $T$ but in vain. 
+
+\ed Then this is good evidence for theory $T$. Now consider the belief revision theory $T'$ whose formal part is constructed from partial meet contraction with transitively and reflexively relational selection functions. And assume that: \op
+
+	\im[($E'$)] The construction procedure of $T'$ seems to describe what a rational agent could follow in order to revise beliefs, and this ``somehow'' lends plausibility to $T'$. 
+
+\ed So now we have evidence for $T$ and distinct, independent evidence for $T'$. But, given the representation result, $T$ and $T'$ are one and the same belief revision theory. So we have two independent pieces of evidence for a single belief revision theory---this is a case of convergence of evidence. So a representation theorem can play an {\em argumentative} role in the convergence of evidence for a belief revision theory. But notice that the existence of this argumentative role is contingent on the truth of $E$ and $E'$. Worse: what $E'$ means is unclear, depending on what is meant by `somehow'---this is an issue we will discuss more in section \ref{sec-arg-construction-1}.
+
+Enough digressions. Let us return to constructions of formal theories of belief revision.
+
+\subsection{Orderings over Possible Worlds}\label{sec-ordering}
+
+If we think that the construction techniques presented above are too restrictive due to their commitment to Preservation, we have to look for more flexible construction techniques, such as the one presented below. 
+
+Imagine that we are trying to determine the revised belief set $B \rev \phi$ in light of new information $\phi$. Assume, for sake of simplicity, that to believe something is to rule out some possibilities (except the limiting case in which one rules out no possibility at all). Which possibilities to rule out? We do not treat all possibilities equally; we treat some as more plausible than some others. We want to rule out the possibilities that are implausible. This inspires the following procedure: \op
+
+	\xm \textsc{Step (I).} Rule out the possibilities in which new information $\phi$ is false.
+	
+	\xm \textsc{Step (II).} Among the possibilities that remain on the table, figure out the worlds that are most plausible, and rule out all the others.
+	
+	\xm \textsc{Step (III).} Believe that the actual world is one of those that remain on the table---that is, let $B \rev \phi$ be the set of sentences that are true in every possibility that remains on the table. 
+
+\ed So a ``more-plausible-than'' relation between possibilities can be used to generate a simple belief revision strategy in steps (I)--(III). This idea can be traced at least back to \citeauthor{shoham1987semantical}'s (\citeyearhyper{shoham1987semantical}) work on so-called ``preferential'' semantics of nonmonotonic logic,\footnote
+	{\citet{shoham1987semantical} talks literally about ``more-preferred-to'' instead of ``more-plausible-than.'' But his point is to use an ordering over possible worlds, no matter how it is to be interpreted.} 
+given \citeauthor{makinson1991relations}' (\citeyearhyper{makinson1991relations}) idea that nonmonotonic logic and (simple) belief revision theory are two sides of the same coin.\footnote
+{See the appendix (section \ref{app-trans}) for a presentation of this idea.}
+
+The informal presentation in the above can be made rigorous as follows. Suppose that we have a set $W$ of possible worlds for interpreting the language $\cal L$ in use. That is, suppose that every sentence $\phi$ in ${\cal L}$ expresses a proposition $|\phi|$, which is a subset of $W$ and understood to contain all and only the worlds at which $\phi$ is true.  There are metaphysical views about what possible worlds are, and there are many different mathematical models that might or might not reflect what they really are (such as identifying possible worlds with purely set-theoretic entities, or sets of linguistic entities, etc.). For present purposes, we only need to care about how we are going to make use of them, rather than what they really are. Assume that ${\cal L}$ is a language for propositional logic. Say that $W$ is a {\em universe} of possible worlds with assignment function $|\cdot|$ for language ${\cal L}$ iff: (1) $|\neg\phi| = W \setminus |\phi|$, (2) $|\phi\wedge\psi| = |\phi|\cap|\psi|$, and (3) $W$ is fine-grained enough so that sentences in $\cal L$ are assigned the same subset of $W$ iff they are logically equivalent.\footnote
+	{A set $\Gamma$ of sentences entails a sentence $\phi$ iff $\bigcap \{ |\psi|: \psi \in \Gamma\} \subseteq |\phi|$, which captures the idea that entailment is truth preservation.} 
+Note that this model of possible worlds is quite flexible: a universe $W$ in use is allowed to be so fine-grained that there are two distinct possible worlds $w, w'$ in $W$ that make exactly the same sentences in $\cal L$ true. Namely, a $W$ in use is allowed to make distinctions that language $\cal L$ does not make (but a richer language possibly does). This flexibility will be crucial later. 
+
+
+Let $\ge$ be a binary relation on a universe $W$ of possible worlds for language ${\cal L}$. For any worlds $w, w' \in W$, understand $w \ge w'$ as saying that $w$ is at least as plausible as $w'$ with respect to $\ge$. World $w$ is (strictly) more plausible than $w'$ with respect to $>$ iff $w \ge w' \not\geq w$. Let $\max(U, \ge)$ denote the set of most plausible worlds in $U$ with respect to $\ge$. To be more precise, $\max(U, \ge)$ is defined to be the set of worlds $w \in U$ such that $w < w'$ for no $w' \in U$.\footnote
+	{
+	Note that this is {\em not} the condition that $w \geq w'$ for all $w' \in U$.
+	} 
+Then use $\ge$ to generate a belief revision strategy $S_{\ge}$ as follows: given new information $\phi$, let the revised belief set $S_{\ge}(\phi)$ contain a sentence $\psi$ iff $\psi$ is true at every possible world in $\max(|\phi|, \ge)$. That is: \op
+
+	\xm \textsc{Definition (Order-Generated Revision Strategy).} 
+	
+	\xm $S_{\ge}(\phi) \;=_\text{def}\; \{\psi \in {\cal L}: |\psi| \supseteq \max(|\phi|, \ge) \}$, 
+	
+		\op\xm which is the revised belief set $B * \phi$; \ed
+
+	\xm $S_{\ge}(\,) \;=_\text{def}\; S_{\ge}(\top) = \{\psi \in {\cal L}: |\psi| \supseteq \max(W, \ge) \}$, 
+	
+		\op\xm which is the initial belief set $B$. \ed
+
+\ed So, given an arbitrary binary relation $\ge$ over $W$, we can use it to generate a simple belief revision strategy $S_{\ge}$. Hence a set $R$ of binary relations can be used to generate a formal theory of simple belief revision, i.e. $\{S_{\ge}: \;\ge\; \in R\}$. 
+
+But which binary relations $\ge$ are ``OK'' for generating revision strategies? We may consider requiring, for example, that any relation $\ge$ in use be a {\em preorder}, i.e. satisfy: \op
+
+	\xm \textsc{Reflexivity.} $w \ge w$, for all $w \in W$;
+	\xm \textsc{Transitivity.} If $w \ge w'$ and $w' \ge w''$, then $w \ge w''$, for all $w, w', w'' \in W$.
+
+\ed And we may consider the stronger requirement that any $\ge$ in use be a {\em complete order}, i.e. a preorder that also satisfies the following: \op
+
+	\xm \textsc{Completeness.} Either $w \ge w'$ or $w \le w'$, for all $w, w' \in W$.
+
+\ed Completeness is a substantial constraint: \op
+
+	\xm \textsc{Observation (I).} Whenever we use complete preorders to generate belief revision strategies, Preservation is guaranteed to be satisfied. 
+	
+	\xm \textsc{Observation (II).} Violation of Preservation becomes possible when we no longer require completeness.
+
+\ed The second observation can be proved in a quite instructive way. The proof strategy is to construct an incomplete preorder of relative plausibility that captures the Three Composers case (which served as an alleged counterexample to Preservation in section \ref{sec-composers}).  Let $I_x$ mean that $x$ is Italian, $F_x$ mean that $x$ is French. Let Verdi, Bizet, and Satie be denoted by $v$, $b$, and $s$, respectively. Let $I_{v} F_{b} F_{s}$ denote the possible world in which Verdi is Italian, Bizet is French, and Satie is French. In general, a possible world assigns the two nationalities ($I$ and $F$) to the three composers ($v$, $b$, and $s$). So there are eight possible worlds total, shown in Figure \ref{lin-fig1}.
+\begin{figure}[ht]
+$$\xymatrix{
+ 	& I_{v} F_{b} F_{s} & 
+\\
+	F_{v} F_{b} F_{s} \ar[ur] & I_{v} I_{b} F_{s} \ar[u] & I_{v} F_{b} I_{s} \ar[ul] 
+\\
+	F_{v} I_{b} F_{s} \ar[ur] \ar[u] & F_{v} F_{b} I_{s} \ar[ul] \ar[ur] & I_{v} I_{b} I_{s} \ar[ul] \ar[u]
+\\
+	& F_{v} I_{b} I_{s} \ar[ul] \ar[u] \ar[ur] &
+}$$
+\caption{Hasse diagram of the Three Composers problem}\label{lin-fig1}
+\end{figure}
+The arrows represent the ordering we are going to define: $w \ge w'$ iff either $w = w'$ or there is a chain of arrows linking $w'$ upward to $w$. (This is called a {\em Hasse diagram}.) The rationale behind this ordering $\ge$ can be seen from the following, equivalent definition of $\ge$: \op
+
+	\im let $I_{v} F_{b} F_{s}$ be the most plausible world, which the agent believes to be the actual world at the initial stage; 
+	
+	\im let $\textsf{diff}(w)$ be the set of composers $x$ such that $w$ differs from the most plausible world $I_{v} F_{b} F_{s}$ in the nationality of composer $x$.
+	 
+	\im $w \ge w'$ iff $\textsf{diff}(w) \subseteq \textsf{diff}(w')$; roughly speaking, the less a world differs from the most plausible world, the more plausible it is.
+		%\footnote{If we want to defend the Preservation constraint on belief revision and, hence, want to require that every preorder in use be complete, we may consider arguing for this: the agent in the Three Composers case {\em should} have revised her beliefs as if the revisions were generated by the following complete order: $w \ge w'$ iff $|\textsf{diff}(w)| \le |\textsf{diff}(w')|$, where $|X|$ is the cardinality of set $X$.}
+
+\ed It is not hard to see that this is an incomplete order. Now we are ready to show that the above plausibility order is a countermodel that witnesses Observation (II). At the initial stage, the agent believes that the actual world is the most plausible world: $I_{v} F_{b} F_{s}$. Then the agent receives the first information $E$, that $v$ and $b$ are compatriots. So the worlds incompatible with that information are to be ruled out, as shown on the left hand side of Figure \ref{lin-fig2}.
+\begin{figure}[ht]
+$$\xymatrix{
+ 	&  & &  	
+			&  & 
+\\
+	F_{v} F_{b} F_{s} \ar@{..}[ur] & I_{v} I_{b} F_{s} \ar@{..}[u] &  \ar@{..}[ul] & 	
+			F_{v} F_{b} F_{s} \ar@{..}[ur] &  \ar@{..}[u] &  \ar@{..}[ul] 
+\\
+	\ar@{..}[ur] \ar@{..}[u] & F_{v} F_{b} I_{s} \ar[ul] \ar@{..}[ur] & I_{v} I_{b} I_{s} \ar[ul] \ar@{..}[u] & 	
+			\ar@{..}[ur] \ar@{..}[u] &  \ar@{..}[ul] \ar@{..}[ur] & I_{v} I_{b} I_{s} \ar@{..}[ul] \ar@{..}[u]
+\\
+	&  \ar@{..}[ul] \ar@{..}[u] \ar@{..}[ur]  &  \ar@{=>}@/_/[r]_{\text{ revision in light of $E'$}} &
+			&  \ar@{..}[ul] \ar@{..}[u] \ar@{..}[ur] &
+}$$
+\caption{Revising in light of $E$, and then $E'$}\label{lin-fig2}
+\end{figure}
+At this stage, the agent believes that the actual world is one of the two most plausible worlds: $F_{v} F_{b} F_{s}$ and $I_{v} I_{b} F_{s}$. Then the agent receives the second information $E'$, that $v$ and $s$ are compatriots. So the worlds incompatible with that information are to be ruled out, as shown on the right hand side of Figure \ref{lin-fig2}. At this final stage, the agent believes that the actual world is one of the two most plausible worlds: $F_{v} F_{b} F_{s}$ and $I_{v} I_{b} I_{s}$. It is routine to verify that the transition from the left to the right represents the agent's second revision of beliefs in the Three Composers case, which violates Preservation. This establishes Observation (II).
+
+There is one more constraint on orders that we need to consider. The Consistency axiom, which occurs in both axiom systems AGM and P$^+$, seems very plausible. But it might be violated when we use a preorder. To see why, consider a preorder $\ge$ and a consistent piece of new information $\phi$ such that every world in $|\phi|$ is less plausible than some other world in $|\phi|$. In that case, $\max(|\phi|, \ge) = \varnothing$ and hence: 
+\begin{eqnarray*}
+	B \rev \phi &=& S_{\ge}(\phi) \\
+		&=& \mbox{the set of sentences in ${\cal L}$ true at every world in $\max(|\phi|, \ge)$} \\
+			&=& \text{the set of sentences in ${\cal L}$ true at every world in $\varnothing$} \\
+				&=& \text{the set of all sentences in ${\cal L}$, which is inconsistent.}
+\end{eqnarray*} 
+And this violates axiom Consistency. To satisfy axiom Consistency, the minimal constraint we need to impose on plausibility orders $\ge$ is this:\op
+
+	\xm {\textbf{${\cal L}$-Smoothness.}}\footnote
+		{
+		This is also called the {\em limit} assumption in the literature on semantics of conditionals. 
+		}
+	For every sentence $\phi$ in ${\cal L}$, if $|\phi|$ is nonempty, then there is no infinite sequence $(w_0, w_1, w_2, \dots)$ on $|\phi|$ such that $w_0 < w_1 < w_2 < \ldots$ .
+
+\ed %This, of course, is not the only way out. An alternative is to require something stronger but perhaps more natural: \op
+
+	%\xm {\textbf (No-Infinite-Ascending-Chain)}	For every nonempty subset $X$ of $W$, there is no infinite sequence $(w_0, w_1, w_2, \dots)$ on $X$ such that $w_0 < w_1 < w_2 < \ldots$
+
+%\ed This is a requirement on every subset of $W$, rather than {\em just} every subset of $W$ that is a proposition expressed by a sentence in ${\cal L}$. At this point you might be wondering why the standard way out is to employ the weaker but cumbersome requirement. The standard reason, which I only intend to report but not to endorse, is that this will give us elegant representation results, to be presented below.
+
+Now we are in a position to state \citeauthor{grove1988two}'s (\citeyearhyper{grove1988two}) representation result: for any simple belief revision strategy $S$ such that $S() = S(\top)$, $S$ satisfies the AGM axiom system iff $S$ is generated by some ${\cal L}$-smooth complete preorder.
+
+Those who would like to relax the Preservation axiom would be more interested in the representation result for axiom system P$^+$: for any simple belief revision strategy $S$ such that $S() = S(\top)$, $S$ satisfies axiom system P$^+$ iff $S$ is generated by some ${\cal L}$-smooth preorder over some universe $W$ of possible worlds. To ensure that the ``only if'' side holds, it is crucial to allow $W$ to be sufficiently fine-grained. This result can be obtained by translating a result in nonmonotonic logic into belief revision theory. To be more precise, this result is translated
+from an immediate corollary of \citepos{kraus1990nonmonotonic} representation theorem for the so-called system P of nonmonotonic logic,\footnote
+	{
+	\citet*{kraus1990nonmonotonic} use a setting slightly different from our current setting: (i) instead of preorders they use strict partial orders, (ii) instead of primitive possible worlds they use indexed valuation functions for atomic sentences, and (iii) instead of using $>$ to mean ``is more plausible than,'' they use $\prec$ (but not the other way round!) to mean ``is preferred to'' or ``is more normal than.'' But these differences between the two mathematical settings do not matter insofar as the underlying idea is concerned.
+	}
+where the translation in use is due to \citet*{makinson1991relations}.\footnote 
+	{
+	Their translation is presented in the appendix (section \ref{app-trans}).
+	}
+
+A technical remark on the use of mathematical tools: 
+\citet{grove1988two} uses the so-called sphere systems, which do the same job as complete preorders in the present context. \citet{kraus1990nonmonotonic} use strict partial orders, which also do the same job as preorders in the present context. It just turns out that, in order to unify these two works in the same setting, it seems most convenient to use preorders.
+
+\subsection{Generalization to Iterated Belief Revision}\label{sec-iterated}
+
+The technique we've just discussed---constructing plausibility orderings---can be easily carried over from simple belief revision to iterated belief revision. 
+
+Let $\ge$ be an order that represents relative plausibility between worlds. Recall how $\ge$ determines a belief revision procedure---in three steps. First, discard the worlds in which $\phi$ is false; second, among the worlds that are still on the table, figure out the worlds that are most plausible with respect to $\ge$, and discard all the others; last, let the agent believe that the actual world is one of those that remain on the table. This is a procedure for ``one-time'' belief revision. Next time we receive new information, how are we to find a plausibility order for our use? It is too bad that the above procedure discards some worlds and thereby destroys the structure of $\ge$. What we need to do, for the sake of iterated belief revisions, is to use the new information to revise the plausibility order $\ge$ we currently have and obtain a new order $\ge_{\rev\phi}$---a new plausibility order that we can use when we receive the next piece of information.
+
+So let an agent start by having a plausibility order $\ge$ and believing that the actual world is among the most plausible worlds, plausible with respect to $\ge$. When she receives new information $\phi_{1}$, she uses the new information to revise the current order $\ge$ into a new one $\ge_{*(\phi_1)}$, and believes that the actual world is among the most plausible worlds, plausible with respect to the new order $\ge_{*(\phi_1)}$. Then, when she receives another piece of information $\phi_{2}$, let her repeat the above procedure: use the latest information $\phi_{2}$ to revise $\ge_{*(\phi_1)}$ into a new order $\ge_{*(\phi_1, \phi_2)}$, and believe that the actual world is among the most plausible worlds, plausible with respect to the latest order $\ge_{*(\phi_1, \phi_2)}$. In general, after receiving a finite stream of information $\phi_1, \phi_2, \ldots, \phi_n$ and revising her plausibility order successively, she will come to believe that the actual world is among the most plausible worlds, plausible with respect to the latest order $\ge_{*(\phi_1, \phi_2, \ldots, \phi_n)}$. To recap: the idea is to construct iterated revisions of plausibility orders:
+$$\xymatrix{
+	\ge \ar[r] & \ge_{*(\phi_1)} \ar[r] & \ge_{*(\phi_1, \phi_2)} \ar[r] & \ge_{*(\phi_1, \phi_2, \phi_3)} \ar[r] & \cdots
+}$$
+and let it generate iterated revisions of beliefs (as byproducts or epiphenomona):
+$$\xymatrix{
+	\ge \ar[r]\ar[d]
+		& \ge_{*(\phi_1)} \ar[r]\ar[d] 
+		& \ge_{*(\phi_1, \phi_2)} \ar[r]\ar[d] 
+		& \ge_{*(\phi_1, \phi_2, \phi_3)} \ar[r]\ar[d] 
+		& \cdots \\
+	S()  
+		& S(\phi_1)  
+		& S(\phi_1, \phi_2)  
+		& S(\phi_1, \phi_2, \phi_3) 
+		& \cdots 
+}$$
+
+This idea can be formalized as follows. A {\em strategy for iterated revision of plausibility orders} is a function $\ge_{*}$ that maps every finite sequence $(\phi_1, \ldots, \phi_n)$ of sentences in language $\cal L$ to a preorder $\ge_{*(\phi_1, \ldots, \phi_n)}$ over $W$. Every order revision strategy $\ge_{*}$ generates a belief revision strategy as follows: \op
+
+	\xm \textsc{Definition (Order-Generated Revision Strategy).}
+	$$S_{\ge_{*}}(\phi_1, \ldots, \phi_n) =_\text{def} \{ \psi \in {\cal L}: |\psi| \supseteq \max(W, \ge_{*(\phi_1, \ldots, \phi_n)}) \},$$
+	i.e. the set of sentences that are true at every possible world that is most plausible with respect to $\ge_{*(\phi_1, \ldots, \phi_n)}$.
+
+\ed This is how iterations of belief revision can be generated from iterations of plausibility order revision. While it might be difficult to construct the former directly, the latter turns out to be not that difficult to construct. Consider the following construction technique called ``cut-and-paste'':\op
+
+	\xm \textsc{Definition (Cut-and-Paste Revision).} Say that $\ge'$ is obtained from $\ge$ by {\em cut-and-paste revision} on a subset $X$ of $W$ iff: \op
+
+		\im[(1)] for all $w, u \in X$, $w \ge' u$ iff $w \ge u$;
+		\im[(2)] for all $w, u \not\in X$, $w \ge' u$ iff $w \ge u$;
+		\im[(3)] for all $w \in X$ and $u \not\in X$, $w > u$.
+	\ed 
+\ed Namely, we ``grab'' the order $\ge$ over the whole $W$, ``cut'' the part of $\ge$ over $X$, and ``paste'' it on ``top'' of the other part $W \setminus X$, making any world inside $X$ more plausible than any world outside $X$ (condition 1), without changing the ordering of the worlds inside $X$ (condition 2), nor changing the ordering of the worlds outside $X$ (condition 3). Here are two examples of cut-and-paste revision: \op
+
+	\xm \textsc{Definition (Conservative and Radical Revisions).}
+
+	\xm {\em Radical revision} of $\ge$ on $\phi$ is cut-and-paste revision of $\ge$ on $|\phi|$. This is sometimes called {\em lexicographic revision}.
+
+	\xm {\em Conservative revision} of $\ge$ on $\phi$ is cut-and-paste revision of $\ge$ on $\max(|\phi|, \ge)$.
+
+\ed Radical revision changes a lot, while conservative revision just does a little. What if we want to revise not that much nor that little, but something in between? Consider the following, very general kind of order revision:\op
+
+	\xm \textsc{Definition (Canonical Revision).} The revision from $\ge$ to $\ge'$ in light of information $\phi$ is said to be {\em canonical} iff: \op
+
+	\im[(1)] $\phi$ is true at all worlds that are most plausible with respect to $\ge'$;
+
+	\im[(2)] for all $w, u \in |\phi|$, $w \ge' u$ iff $w \ge u$;
+
+	\im[(3)] for all $w, u \not\in |\phi|$, $w \ge' u$ iff $w \ge u$;
+
+	\im[(4)] for all $w \in |\phi|$ and $u \not\in |\phi|$:
+		\op
+		\im if $w > u$, then $w >' u$,
+		\im if $w \ge u$, then $w \ge' u$,
+		\im if $w \not\le u$, then $w \not\le' u$.
+		\ed
+	\ed
+\ed Condition (1) ensures that the new information is to be believed. Condition (2) ensures that there is no change to the plausibility relation among the worlds that make $\phi$ true. Condition (3) does something similar, ensuring that there is no change to the plausibility relation among the worlds that make $\phi$ false. Condition (4) appears quite complicated, but it is meant to capture this intuitive idea: given any worlds $w$ and $u$ that make the new information true and false, respectively, the plausibility relation of $w$ to $u$ should not be ``downgraded.'' Radical revisions and conservative revisions are both special cases of canonical revisions. 
+
+So, to construct a formal theory of iterated belief revision, we can proceed by specifying a set ${\cal S}$ of strategies for iterated revision of plausibility orders, and then letting it generate a set of iterated belief revision strategies $\{S_{\ge_*} : \,\, \ge_* \in {\cal S} \}$.
+
+But which ones to put into $\cal S$? There are at least two dimensions to consider. First, do we want to allow some strategies in $\cal S$ to output incomplete orders, or do we want to require every strategy in $\cal S$ to output only complete preorders? Prefer the former option if you like Preservation; otherwise prefer the latter option. Second, do we want to require that every strategy $\ge_{*}$ in $\cal S$ always follow canonical revision, i.e. the revision from $\ge_{*(\ldots)}$ to $\ge_{*(\ldots, \phi)}$ must be a canonical revision on $\phi$? If we do, do we want to require something more, such as that every strategy in $\cal S$ always follow radical revision, or that every strategy in $\cal S$ always follow conservative revision, or some other constraint? 
+
+\citet{darwiche1997logic}, for example, opt for complete preorders together with canonical revision. Some think that the requirement of canonical revision is too weak: \citet{boutilier1996iterated} adds the requirement of conservative revision; \citet{jin2007iterated} add the requirement that, for all worlds $w, u$ such that $w \in |\phi|$ and $u \not\in |\phi|$, if $w \ge_{\rev(\ldots)} u$, then $w >_{\rev(\ldots, \phi)} u$. Some others think that even the requirement of canonical revision is too strong: \citet{stalnaker2009iterated} proposes a counterexample, which we will discuss in section \ref{sec-misspecification}. 
+
+% It is interesting to note that almost all authors writing on iterated belief revision, including those just mentioned, require that the preorders in use be complete. So they are committed to the Preservation constraint. 
+
+%But if there is a genuine counterexample to Preservation as a rationality constraint, then there is every reason for us to employ possibly incomplete preorders and to explore whether doing so will encounter some philosophical or technical difficulties.
+
+% Most theories of iterated belief revision developed to date are constructed by iterated revisions of plausibility orders, as described above. They are usually accompanied by a technique of theory construction that we discussed earlier: axiomatizations, together with representation results. But what about applying iteration to another technique of theory construction: partial meet contraction? Can we develop a method for iterations of partial meet contractions? What about iterating revisions of the relations $\ge$ used to define selection functions $\gamma$? This is still an open question to date, because the relations $\ge$ used to define selection functions in partial meet contraction are, unfortunately, relations between sets of sentences, not relations between possible worlds, and this makes the situation quite difficult to handle. A set of sentences that entails the new information should be made more plausible with respect to the revised order $\ge'$, while a set of sentences that contradicts the new information should be made less plausible. What about a set of sentences that neither entails nor contradicts the new information? Well, it depends---and it is not easy to say precisely what this dependency relation is.
+
+\subsection{Learning-Theoretic Analysis}\label{sec-Ockham}
+
+
+Perhaps a belief revision strategy is better insofar as it better serves the goal of one's inquiry, e.g. the goal of {\em learning} whether all ravens are black. In this subsection, we will construct a belief revision theory by addressing the issue of how to choose belief revision strategies that serve the goal of learning well---this is an issue typically addressed in {\em formal learning theory}. We will be guided by two questions. First, how are we to define when a belief revision strategy performs well with respect to the goal of learning? No matter how we are to define learning performance, the performance of a strategy is typically contingent upon what the world is like, something that we have no control over and lack knowledge about. There might be a strategy that performs well in one case but poorly in another case, and an alternative strategy that performs in the opposite way. This brings out the second question: which strategy is better and which is to be ruled out by our belief revision theory? This is essentially a decision problem, and we will need some decision theory to help us out. 
+
+Recall the Raven Problem of section \ref{sec-raven}: ``are all ravens black?'' To choose among belief revision strategies for solving that problem, let us draw a decision table.
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccc}
+	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, b_2, \ldots, n_{101}$ & \ldots 
+\\ \hline\hline
+  	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ &&&&&& \\
+  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ &&&&&& \\
+  	$S_{\textrm{skep}}$ &&&&&& \\
+\end{tabular}
+\caption{A decision table for the Raven Problem}\label{lin-table1}
+\end{table}
+Table \ref{lin-table1}, like any typical decision table, has three kinds of elements: (i) columns, (ii) rows, and (iii) cells. The {\em columns} correspond to the relevant, mutually exclusive possibilities. Recall that $h$ is the hypothesis that all ravens are black, $b_i$ means that the $i$-th raven observed is black, and $n_i$ means that it is nonblack. So, for example, the first column ``$h$'' corresponds to the possibility in which $h$ is true and, hence, all ravens are black. The column ``$\neg h, b_1, \dots, b_i, n_{i+1}$'' corresponds to the possibility in which not all ravens are black and the first nonblack raven to be observed is the $(i+1)$-th one. The {\em rows} correspond to the options to choose from. In the above table there are only three options---three belief revision strategies---which I will define soon. Each row and each column intersects at a {\em cell}, in which we will specify the outcome of the corresponding option in the corresponding possibility. Each of those outcomes will concern {\em how well} a belief revision strategy serves the goal of learning---in the present case, learning whether all ravens are black. Then, with all those outcomes specified, we will use a decision rule to sort out the options that are ``OK'' from those that are not ``OK.'' 
+
+The three strategies listed in the decision table are defined as follows. The {\em skeptic} strategy $S_{\textrm{skep}}$ always asks one to believe the logical consequences of one's accumulated information, no more and no less. That is:
+$$S_{\textrm{skep}}(\phi_1, \ldots, \phi_i) =_\text{def} \mathsf{Cn}\{\phi_1, \ldots, \phi_i\},$$
+where $\mathsf{Cn}\,X$ denotes the set of logical consequences of $X$, for any set $X$ of sentences. So, for example, $S_{\textrm{skep}}(b_1, b_2, \dots, b_{i-1}, n_i)$ contains $\neg h$ because $n_i$ entails $\neg h$. But $S_{\textrm{skep}}(b_1, b_2, \dots, b_i)$ excludes $h$ no matter how large $i$ is---so this strategy is what the inductive skeptic would recommend.  
+
+A non-skeptic {\em Ockham} strategy is a strategy that starts from asking one to believe just the logical consequences of the accumulated information, but after observing sufficiently many black ravens in a row without any counterexample, it asks one to believe $h$, the simpler hypothesis between $h$ and $\neg h$, following a form of {\em Ockham's Razor}. For example, consider the following strategy:
+$$S_{\textrm{non-skep}}^{\textrm{\,ock}} (\phi_1, \ldots, \phi_i) =_\text{def} 
+	\begin{cases}
+	{\mathsf Cn}\{\phi_1, \ldots, \phi_i, h\} & \parbox[t]{.35\textwidth}{if $i \ge 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
+	{\mathsf Cn}\{\phi_1, \ldots, \phi_i\} & \mbox{otherwise.}
+	\end{cases}$$
+This strategy says that $100$ black ravens suffice for the inductive leap. We can replace $100$ with another positive integer, which would generate another non-skeptic Ockham strategy.
+
+A non-skeptic {\em non-Ockham} strategy works as follows: when seeing more and more black ravens in a row without any nonblack raven, this strategy will start to ask one to believe $\neg h$ at some point---violating Ockham's Razor---and it will ask one to believe $h$ at a later point. For example, consider the following strategy:
+$$
+S_{\textrm{non-skep}}^{\textrm{\,non-ock}} (\phi_1, \ldots, \phi_i) =_\text{def} 
+	\begin{cases}
+	{\mathsf Cn}\{\phi_1, \ldots, \phi_i, \neg h\} & \parbox[t]{.3\textwidth}{if $50 \le i < 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
+
+	{\mathsf Cn}\{\phi_1, \ldots, \phi_i, h\} & \parbox[t]{.3\textwidth}{if $i \ge 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
+
+	{\mathsf Cn}\{\phi_1, \ldots, \phi_i\} & \mbox{otherwise.}
+	\end{cases}
+$$
+What makes it non-Ockham is the first clause. Replacement of $50$ and $100$ with other numbers $m$ and $n$ (where $m < n$) would generate other non-skeptic non-Ockham strategies. 
+
+For the sake of simplicity, let us compare just the three strategies explicitly defined above, although infinitely many more can be considered if we wish. So we have only three rows in the decision table to think about.
+
+Next: fill the cells  with specifications of outcomes. The kind of outcome to be specified should say how well a strategy performs to help one achieve the goal, where the present goal is set to learn whether all ravens are black. The following introduces two performance criteria.
+
+Say that a strategy {\em will learn} whether $h$ is true given a column $C$ iff, whenever $C$ holds and one obtains more and more information, there will be a ``learning moment'' at which the strategy asks one to believe the unique answer in $\{h, \neg h\}$ that is true given $C$, and to hold on to that answer henceforth. To be more precise: \op
+
+	\xm \textsc{Definition (Learning with Respect to the Raven Problem).} A strategy $S$ {\em will learn} whether $h$ is true given column $C$ iff: \op
+
+		\xm for any infinite sequence $(\phi_1, \phi_2, \ldots)$ such that: \op
+
+			\im every finite segment of $(\phi_1, \phi_2, \ldots)$ is in the information space ${\cal I}_\text{raven}$ in use (that  is, every entry $\phi_i$ is either $b_i$ or $n_i$),
+
+			\im the conjunction $\bigwedge_{i \ge 1} \phi_i$ is compatible with possibility $C$,
+
+		\ed there exists a natural number $n$, called a ``learning moment,'' such that: \op
+
+			\im  for each $i\ge n$, $S(\phi_1, \phi_2, \ldots, \phi_i)$ is consistent and entails the unique sentence in $\{h, \neg h\}$ that is true given $C$.
+		\ed\ed
+
+\ed Here I only define the concept of learning for solving the Raven Problem, but generalization is straightforward---please see appendix (section \ref{app-learning}). An essential feature of this definition is that it refers to the information space ${\cal I}_\text{raven}$ in use, which is meant to include all and only the pieces of information that can be {\em available} to the inquirer. In principle we can try to solve the Raven Problem by adopting a strategy for iterated belief revision, which is defined on the much larger information space ${\cal I}_\text{finite}$ that contains all finite sequences of sentences. But, in that case, we still need to use the smaller information space ${\cal I}_\text{raven}$ to correctly define (or characterize) when a strategy will learn the true answer given a column.
+
+We are now in a position to fill some cells with (partial) outcomes: see Table \ref{lin-table2}.
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccc}
+	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, b_2, \ldots, n_{101}$ & \ldots \\
+	\hline\hline
+  	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ &&&&&& \\
+  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ &&&&&& \\
+	$S_{\textrm{skep}}$ & No & Yes & Yes & \ldots & Yes & \ldots
+\end{tabular}
+\caption{Decision table for the Raven Problem continued}\label{lin-table2}
+\end{table}
+An occurrence of ``Yes'' in a cell means: ``yes, the strategy will learn whether $h$ is true given the column.'' Similarly, ``No'' means: ``no, it won't learn.'' Just to check that we get this part right: given the first column ``$h$'' (``all ravens are black''), when more and more black ravens are observed, the skeptic strategy will never ask one to believe the true answer $h$, and hence, it will not learn whether $h$ is true given column ``$h$.'' That said, the skeptic strategy will learn whether $h$ is true given any other column ``$\neg h, b_1, \ldots, n_{i+1}$'': the right answer is obtained, and held on to, beginning from the $(i+1)$-th observation, because $n_{i+1}$ entails $\neg h$. It is not hard to verify that the cells left blank in the above should all be filled with ``Yes.''
+
+We want to think about, not just whether a strategy will learn, but also how well it learns. Consider this situation: one believes $X$ and then comes to believe something else that contradicts $X$ and then comes (back!) to believe $X$. In that case, say that one has an {\em opinion cycle}. The more opinion cycles a strategy incurs, the worse it performs. Now, for each cell, let us specify (i) whether the strategy will learn and (ii) how many opinion cycles it will incur: see Table \ref{lin-table3}.
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccc}
+	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, b_2, \ldots, n_{101}$ & \ldots \\
+	\hline\hline
+	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ & (Yes, $0$) & (Yes, $0$) & (Yes, $0$) & \ldots & (Yes, $0$) & \ldots \\
+  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ & (Yes, $0$) & (Yes, $0$) & (Yes, $0$) & \ldots & (Yes, $1$) & \ldots \\
+  	$S_{\textrm{skep}}$ & (No, $0$) & (Yes, $0$) & (Yes, $0$) & \ldots & (Yes, $0$) & \ldots 
+\end{tabular}
+\caption{Decision table for the Raven Problem complete}\label{lin-table3}
+\end{table}
+For example, given the column ``$\neg h, b_1, \dots, b_i, n_{i+1}$'' with $i \ge 100$, the non-skeptic non-Ockham strategy will generate $1$ opinion cycle: it asks one to believe $\neg h$ on the $50$th observation, believe $h$ on the $100$th, and switch back to the belief in $\neg h$ on the $(i+1)$-th, which forms an opinion cycle. 
+
+With our decision table complete, it is time to apply a decision rule to sort out the strategies that are ``OK.'' Let us try applying the so-called {\em Maximin} rule. According to Maximin, we are to, first, figure out the worst possible outcome of each option, and then judge that an option is ``OK'' iff\footnote
+	{In case you want to be more careful: to make the Maximin rule compatible with the Weak Dominance principle, `iff' should be weakened to `only if'.} 
+its worst outcome is one of the best among the worst outcomes of the options on the table. Namely, Maximin asks one to {\em maxi}mize the {\em min}imal payoff. Presumably, learning is better than failing to learn, and less opinion cycles are better than more opinion cycles. So we identify the worst outcomes as in Table \ref{lin-table4}.
+\begin{table}[ht]
+\centering
+\begin{tabular}{lc}
+	& worst outcome
+\\ \hline\hline
+  	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ & (Yes, $0$) \\
+  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ & (Yes, $1$) \\
+  	$S_{\textrm{skep}}$ & (No, $0$)
+\end{tabular}
+\caption{Worst possible outcomes for the Raven Problem}\label{lin-table4}
+\end{table}
+It follows that, according to Maximin, only the non-skeptic Ockham strategy is ``OK.''  
+
+The above considers only three specific revision strategies---just for the sake of illustration. It is straightforward to cover all possible revision strategies for solving the Raven Problem: just add a row to the decision table for each of those strategies, and specify the outcomes in the new cells. Once that is done, we can apply the Maximin rule to the fully completed decision table, and single out the revision strategies that Maximin judges to be ``OK.'' These ``OK'' revision strategies form a set, i.e. a formal theory of belief revision. If we only consider the two performance criteria just presented---(i) whether a strategy will learn and (ii) how many opinion cycles it will incur---then Maximin favors only the non-skeptical Ockham strategies.
+
+To sum up: a belief revision theory can be constructed in terms of the learning performances of belief revision strategies, together with decision-theoretic tools such as decision tables, decision rules, and preference relations between outcomes. This idea admits of many possible implementations: \op
+
+	\im {\em We may consider drawing the decision table in a different way.}
+	
+		Have we considered all the relevant, possible columns? Are the columns fine-grained enough? If a column $C$ is so unspecific that it does not determine the total number of opinion cycles that a strategy $S$ will incur, should we fine-grain column $C$ into more specific possibilities?
+
+	\im {\em We may consider enriching the specifications of outcomes.}
+	
+		We have only talked about whether one will learn and how many opinion cycles one will produce. But do we also want to consider other kinds of learning performance? Think about these: how many retractions of beliefs will be incurred? How many times will one conjecture a false answer? how fast will the true answer be learned?
+
+	\im {\em We may consider other decision rules.} 
+	
+		How about other decision rules like Minimax Regret, Maximax, or even Maximization of Expected Utility if this does not beg the inductive skeptic's question? 
+
+\ed All those considerations and their possible variants, in combination, provide what we may call the learning-theoretic toolkit for constructing various formal theories of belief revision. But which specific tools {\em should} we use in order to construct a belief revision theory that has a plausible normative interpretation? This issue will be revisited in section \ref{sec-arg-construction-2}.
+
+The learning-theoretic analysis presented above is just a ``baby version'' for the sake of illustration. It is adapted from \citet{genin2015theory} and \citet*{kelly2016realism}, which build on \citet{schulte1999means} and \citet{kelly2007simplicity}. Also see \citet{kelly1999iterated} for an application of learning-theoretic analysis to iterated belief revision, where we care about the possibility of receiving mutually contradictory pieces of information.
+
+
+\subsection{Other Construction Techniques}\label{sec-other}
+
+There are many other techniques for constructing belief revision theories. Let me mention some of the most influential ones.\op
+
+	\im Instead of using plausibility orderings over possible worlds, we may use orderings over sentences, the so-called {\em epistemic entrenchment} orderings \citep{gardenfors1988revisions}. This idea has been applied to both simple belief revision and iterated belief revision \citep{nayak1994iterated}. 
+
+	\im On the approach of partial meet contraction, it is standardly assumed that a belief set $B$ be closed under logical consequence, but we may relax that assumption, letting $B$ be a mere set of sentences, called a {\em belief base}, on which the agent bases other beliefs \citep{hansson1994taking,hansson1999textbook}. 
+
+	\im If we think that almost all formal theories of simple belief revision in the literature are too strong, we can resort to the standard translation between simple belief revision and nonmonotonic inference \citep*{makinson1991relations}, which I present in the appendix (section \ref{app-trans}), and then translate a sufficiently weak nonmonotonic logic into an equally weak theory of belief revision. The literature of nonmonotonic logic does provide very weak systems, such as \citepos{reiter1980logic} default logic.\footnote
+		{
+		Reiter's default logic is only one of the many approaches to nonmonotonic logic; see \citet*{brewka2008nonmonotonic} for a review.
+		}
+	When we translate Reiter's default logic into belief revision theory, the result is even weaker than system P$^+$, let alone AGM.\footnote
+		{
+		This observation is due to \citet{makinson1988general}.
+		}
+
+	\im \citet{spohn1988ordinal} proposes an approach to iterated belief revision theory, which considers belief revisions in situations of the following kind: an agent receives new information, but she is not fully certain whether it is true, and somehow has a clear idea of how uncertain she is supposed to be, where the uncertainty in question is measured by ordinal numbers. See the entry on ranking theory in this volume.
+
+\ed For an extensive, detailed survey of construction techniques, see \citet*{rodrigues2011belief}.
+
+
+
+\section{How to Argue Against}\label{sec-argue-against}
+
+To argue against a normative theory of belief revision, the paradigmatic way is to provide intuitive counterexamples. But an alleged counterexample usually raises a question: ``is that a genuine counterexample?'' Let us think about this issue by discussing concrete examples.
+
+\subsection{Three Composers Revisited}
+
+Recall the case of Three Composers, which we considered in section \ref{sec-composers}. To facilitate cross reference, let me reproduce it below:\op
+ 
+	\xm \textsc{Example (Three Composers).} Consider three composers: Verdi, Bizet, and Satie. The agent initially believes: \op
+
+		\xm ($A$) Verdi is Italian;
+		\xm ($B$) Bizet is French;
+		\xm ($C$) Satie is French. 
+
+	\ed Then the agent receives this information: \op
+
+		\xm ($E$) Verdi and Bizet are compatriots. 
+
+	\ed So she retains the belief in $C$ that Satie is French (after all, information $E$ has nothing to do with Satie), but drops her beliefs in $A$ and in $B$. Then the agent receives another piece of information: \op
+
+	\xm $(E')$ Verdi and Satie are compatriots,
+
+	\ed which is compatible with what she believes right before this new information arrives. Considering that she started with initial beliefs $A, B$, and $C$ and has received two pieces of information $E$ and $E'$, now she drops her belief in $C$. 
+
+\ed Let us recall that the second revision is an alleged counterexample to Preservation as a necessary condition of perfect rationality. 
+
+Anyone who wants to defend Preservation as a necessary condition of perfect rationality may try responding in either of the following two ways. First, the defender may try explaining why the agent in the Three Composers case is actually irrational---although it is not clear to me how this can be done.
+
+The second possible response proceeds as follows. $E'$ seems not the kind of thing that we can actually receive as new information. We would come to believe $E'$ by inferring it from the new information that we can actually receive, such as ``my music teacher just told me that Verdi and Satie are compatriots,'' or ``I just saw a chart coloring composers in terms of their nationalities; it assigns the same color, red, to Verdi and Satie but I do not know which nationality corresponds to red.'' So the scenario {\em misspecifies} the new information that the agent actually receives. A realistic scenario should be more complicated than the one told above. So the above scenario also {\em underspecifies} how exactly the agent comes to gain the new belief in $E'$ and drop the old belief in $C$. The goal of this response is to show that, no matter how we retell the original Three Composers scenario in a way free from misspecification and underspecification, the retold story will not be a counterexample to Preservation. 
+
+There is, of course, an issue whether this line of response can, or cannot, be developed successfully to save Preservation.\footnote
+	{I thank Horacio Arl\'{o}-Costa for bringing this possible response to my attention.} 
+I have to confess that I am unable to see how the defenders of Preservation can succeed. So, to see how one may explain an alleged counterexample away by pointing to underspecification or misspecification, let me provide other examples in the following two subsections.
+
+
+\subsection{Underspecification}
+
+\citet*{katsuno2003difference} argue that the AGM theory is not universally applicable. They propose the following counterexample: \op
+
+	\xm \textsc{Example (Book and Magazine).} Suppose that the agent believes that there is either a book on the table ($B$) or a magazine on the table ($M$), but not both. Consider two alternative developments of this scenario:
+
+	{\em Case 1:} The agent is told that there is a book on the table. She then concludes $B$ and $\neg M$.
+
+	{\em Case 2:} The agent is told that a book has been put on the table. She then concludes $B$ but continues to suspend judgment about $M$. 
+
+\ed So the agent starts by believing $B \vee M$ and $\neg(B \wedge M)$. Katsuno and Mendelzon agree that the AGM theory can easily explain Case 1 as follows: the agent receives information $B$ and, hence, by the Accretion axiom in the AGM theory, she comes to believe $\neg M$. But Katsuno and Mendelzon think that Case 2 is a counterexample to the Accretion axiom in the AGM theory because (i) the new information is compatible with the old beliefs and (ii) the new information plus the old beliefs entails $\neg M$, which the agent does not believe after the revision.
+
+The lesson they want to draw is that we need a theory of belief revision like AGM to deal with Case 1, but we need a distinct theory, what they call a theory of {\em belief update}, to deal with Case 2. 
+
+But the AGM theorist could respond by saying that Katsuno and Mendelzon underspecify Case 2. Here is one possible way to specify Case 2 with sufficient detail. \op
+
+	\xm {\em Case 2':} The agent starts by believing not only that $B \vee M$ and $\neg(B \wedge M)$ are both true at $t_0$, but also that if a book is put on the table at $t_1 (> t_0)$, then, first, $B$ is true at $t_1$ and, second, $M$ is true at $t_0$ iff $M$ is true at $t_1$. Then the agent is told, at $t_1$, that a book is indeed put on the table at $t_1$. In this case she should continue to suspend judgment about $M$. 
+
+\ed Given this more detailed specification of Case 2, the AGM theorist can use the Accretion axiom to explain why the agent should suspend judgment about $M$ at $t_1$. Note that the new information is consistent with the set of her old beliefs. Furthermore, the new information plus the set of her old beliefs is silent about the truth value of $M$ at $t_1$ (and this is made clear by explicit references to times $t_0$ and and $t_1$). Therefore, by Accretion one should suspend judgment about the truth value of $M$ at $t_1$. 
+
+So Katsuno and Mendelzon's alleged counterexample does not really refute the AGM theory. The lesson is that an alleged counterexample may fail to work due to underspecification. 
+
+I want to make a second point. Belief revision theory is very interdisciplinary, studied by philosophers, logicians, and computer scientists. There are people belonging to all the three groups, but there are also people belonging to only one or two. So different belief revision theorists might have very different goals in mind when using counterexamples. A sympathetic reading of Katsuno and Mendelzon's paper---a paper in artificial intelligence---suggests that they are interested in situations where the object language is so austere that it contains no tense operators or referential expressions about time. So the conclusion they want to draw can be charitably understood as saying that, given that the object language is so austere (and hence computationally easier to deal with), the AGM theory when restricted to that language cannot accommodate Case 2.  This conclusion should be very interesting to computer scientists: it would be interesting to see if Case 2 can be accommodated by an algorithm that manipulates a very simple language and implements a non-AGM belief revision theory. It is just that this conclusion, although interesting in computer science, is not equally interesting in epistemology.
+
+
+\subsection{Misspecification}\label{sec-misspecification}
+
+
+\citet{stalnaker2009iterated} argues against the following constraint on iterated belief revision: \op
+
+	\xm \textsc{Axiom C2 (Darwiche and Pearl, 1997).} $S(\phi_1, \ldots, \phi_n, \alpha, \beta) = S(\phi_1, \ldots, \phi_n, \beta)$, whenever the latest information $\beta$ is incompatible with the preceding information $\alpha$.
+
+\ed This says, roughly, that when one receives information $\alpha$ and then the next piece of information $\beta$ contradicts $\alpha$, one ought to revise beliefs as if one had only received $\beta$ without receiving $\alpha$. Darwiche \& Pearl's Axiom C2 is among the weakest studied in the belief revision literature. Indeed, it is satisfied by every revision strategy that always follows canonical revision (which is the weakest requirement of iterated belief revision discussed in section \ref{sec-iterated}). But \citet{stalnaker2009iterated} proposes a counterexample to Axiom C2: \op
+
+	\xm \textsc{Example (Coin Flipping).} 
+	A fair coin is flipped in each of the two rooms, 1 and 2. Alice and Bert (who I initially take to be reliable) report to me, independently, about the results: Alice tells me that the coin in room 1 came up heads, while Bert tells me the same about the coin in room 2. So I believe what they tell me at {\em stage one}. But then Carla and Dora, also two independent witnesses whose reliability, in my view, trumps that of Alice and Bert, give me information that conflicts with what I heard from Alice and Bert. Carla tells me that the coin in room 1 came up tails, and Dora tells me the same about the coin in room 2. These two reports are also given independently, though we may assume simultaneously.\footnote
+		{This simultaneity assumption is crucial for Stalnaker's purposes. Although this kind of simultaneity (relative to the agent's frame of reference) is extremely rare, it is still possible. So this example is a genuine possibility.}
+	This is {\em stage two}. Finally, {\em stage three}: Elmer, whose reliability trumps everyone else, tells me that that the coin in room 1 in fact landed heads. (So Alice was right after all.) What should I now believe about the coin in room 2?
+
+\ed It seems that the agent, at the final stage, should believe that the coin in room 2 came up tails, for Elmer says nothing that contradicts what Dora says. But this result, Stalnaker claims, violates Darwiche \& Pearl's Axiom C2. To see why, let: \op
+
+	\xm $\alpha =$ the conjunction of what Carla says and what Dora says;
+	\\ $\beta = $ what Elmer says.
+
+\ed The latest information $\beta$ contradicts the information $\alpha$ obtained at the preceding stage, and it does so only because it contradicts the first conjunct of $\alpha$ (i.e. what Carla says). But Axiom C2 asks the agent to act as if information $\alpha$ were not received at all and, hence, as if Dora's testimony were not received. By contrast, we seem to have the intuition that the agent should retain her belief in what Dora says---after all, the latest information $\beta$ does not undermine what Dora says. The problem with Axiom C2 seems to be this: it requires that Dora's testimony be discredited {\em only} because it arrived at the same time as someone else's discredited testimony.
+
+Those who want to defend Darwiche \& Pearl's Axiom C2 might respond that Stalnaker actually {\em misspecifies} the information in question. The agent does not really receive any information whose content is that the coin in room Y came up Z. The information received should be of this form: ``agent X says that the coin in room Y came up Z.'' That is, the real information should not be the content of what people say, but should report the fact that those people say such and such things. Then there is no contradiction between the earlier information and the later information in the Coin Flipping case, and hence there is no violation of Axiom C2---or so the response concludes.
+
+So, if the above response is right, Stalnaker's alleged counterexample fails to work due to misspecification. 
+
+This hypothetical exchange between Stalnaker and the defender of Axiom C2 raises a deep question. The clash between Stalnaker's counterexample and the defender's response can be taken as a debate over {\em what counts as information}, assuming that both parties employ the same conception of information. But what if Stalnaker and the defender presuppose distinct conceptions of information? That is, what if they are talking past each other? This question points to a debate concerning the nature or goal of belief revision theory. According to the conception of information used in Stalnaker's specification of the scenario, the information that the agent receives takes the following forms: \op
+
+	\xm ($E_1$) Agent X says that the coin in room Y came up Z.
+	\\ ($E_2$) The coin in room Y came up Z.
+
+\ed 
+But according to another conception of information---the one used in the response---the agent only receives information of the form $E_1$, while $E_2$ comes to be believed as a result of revising the agent's old beliefs in light of information $E_1$. Now, if the two parties do presuppose distinct conceptions of information, the real debate is this:\op
+
+	\xm \textsc{Choice among Conceptions of Information.} Which conception of information should be the one used in belief revision theory? Or, without presupposing that there is a unique conception of information to be used in belief revision theory, how should those conceptions of information play their respective roles in belief revision theory? 
+
+\ed These are difficult questions to answer. If we are going to have two conceptions of information in belief revision theory, then we will have to rewrite the formal theories presented above, for they simply do not distinguish different conceptions of information. If we are to stick with the more permissive conception of information that Stalnaker has in mind, then it seems that we are developing a belief revision theory that does not address an important kind of belief revision, i.e. the cases in which $E_2$ is believed as a result of belief revision in light of information $E_1$. But if, instead, we are to stick with the more restrictive conception of information, then we will create a slippery slope. Which of the following is the information that the agent receives?\op
+
+	\xm ($E_0$) Agent X utters `the coin in room Y came up Z'. 
+	\\ ($E_1$) Agent X says that the coin in room Y came up Z.
+	\\ ($E_2$) The coin in room Y came up Z.
+
+\ed If we want a restrictive conception that excludes $E_2$ as information, why not go for the most restrictive conception that allows only $E_0$ as information, and take the other two to be something that the agent might come to believe by revising old beliefs in light of the sole information $E_0$? And, if we really adopt such a restrictive conception of information, then it seems pointless to develop a theory of iterated belief revision that aspires to take care of so many cases, including the cases in which one receives information $\alpha$ and later receives information $\beta$ that contradicts $\alpha$. These cases would be made impossible or extremely rare by the most restrictive conception of information. 
+
+So which conception(s) of information should we use in belief revision theory? That is a tough issue, not usually discussed by belief revision theorists. But \citet{gardenfors1988knowledge}, for example, does elaborate on the conception of information that he intends to work with.
+
+We arrived at a foundational issue from an alleged counterexample to a belief revision theory. Discussions about counterexamples are important because we may use them to refute theories, but also because they sometimes raise deep questions concerning what exactly we want to theorize about. 
+
+
+\section{How to Argue For}\label{sec-argue-for}
+
+Arguments for particular belief revision theories do not usually receive explicit formulations in the literature. But two argumentative approaches are discernible in the literature. On the first approach, one argues for a belief revision theory in terms of how well it survives alleged counterexamples. On the second approach, a formal but motivated construction of a belief revision theory is somehow ``transformed'' into an argument for the theory. Let me explain these two approaches in turn.
+
+\subsection{Argument from Surviving Alleged Counterexamples}
+
+We use intuitive examples to refute general theories. So a possible argument schema we may use is the following.\op
+
+	\im[(i)] We have worked very diligently in search of intuitive counterexamples to this normative theory of belief revision but have not been able to find a genuine counterexample. 
+
+	\im[(ii)] Therefore, this theory is plausible.
+
+\ed This argument is certainly not valid, but perhaps it is harmless to make it valid by adding a premise: if (i) then (ii).
+
+That is the first approach we may adopt in order to argue for a belief revision theory, but hopefully not the only approach. We may have conflicting intuitions about concrete examples. When we do, we will debate over premise (i). So it would be great to explore whether there are more theoretical, general considerations that can help us resolve or mitigate our disagreement. That brings us to the second approach.
+
+%\begin{quotation} \noindent [My] system of inductive logic $\ldots$ is intended as a rational reconstruction $\ldots$ of inductive thinking, as customarily applied in everyday life and in science.  $\ldots$  An entirely different question is the problem of the validity of our or any other proposed system of inductive logic, and thereby of the customary methods of inductive thinking.  This is the genuinely philosophical problem of induction. (Carnap 1945: 95-6) \end{quotation}
+
+\subsection{Argument from Construction: Partial Meet Contraction}\label{sec-arg-construction-1}
+
+On the second approach, a construction of a formal belief revision theory is to be interpreted and then turned into an argument for a normative theory of belief revision. I will illustrate with two construction techniques: first with partial meet contraction (in this subsection), and then with the learning-theoretic analysis (in the next subsection).
+
+Belief revision theorists working on partial meet contraction seem to have the following line of thought in mind. Recall that this construction technique generates belief revision strategies $S$ as follows: 
+	\begin{eqnarray*}
+	S(\phi) &=_{(0)}& B * \phi \\
+			&=_{(1)}& (B \div  \neg\phi) \,+\, \phi \\
+			&=_{(2)}& \bigcap \gamma(B \bot \neg\phi) \,+\, \phi \\
+			&=_{(3)}& \bigcap \{ X \in B\bot\neg\phi : X \ge Y \mbox{ for all } Y \in B\bot\neg\phi \} \,+\, \phi.
+	\end{eqnarray*}
+These equations jointly describe a {\em formal} procedure by which we can use a binary relation $\ge$ over sets of sentences to generate a belief revision strategy $S$. Under a suitable interpretation, this procedure may tell a {\em story} about a rational agent who is trying to revise beliefs, about the sensible considerations that she has, and about the rational decisions that she makes. In fact, this story was already sketched in section \ref{sec-contraction}, in which all formal apparatuses---ranging from $\div$, $\bot$, $\gamma$, to $\ge$---were introduced with motivations. (Of course, there are details to be filled into the story sketched in that section, and some parts of the story may require fine-tuning to make the whole story plausible.) Some belief revision theorists such as \citet{gardenfors1984epistemic} do take the story---the interpreted formal procedure---very seriously, and they think that the story somehow lends plausibility to the belief revision theory they construct. 
+
+The question I want to discuss here is how the above line of thought can possibly be turned into an explicit argument with a clearly specified normative conclusion. Let us explore some possibilities. Suppose that the procedure ($0$)--($3$) of partial meet contraction has been given an interpretation in line with the motivations provided in section \ref{sec-contraction}. Suppose, further, that the normative thesis to be argued for is this: \op
+
+	\xm \textsc{Putative Conclusion.} An agent is perfectly rational only if she has been following, and would continue to follow, a belief revision strategy $S$ that is constructible through procedure ($0$)--($3$).
+
+\ed Note that this putative conclusion does not make the implausibly strong claim that an agent is perfectly rational only if she {\em actually} follows procedure ($0$)--($3$); there may be distinct procedures leading to the same final product. Now add the following premise: \op
+
+	\xm \textsc{Premise (I).} Procedure ($0$)--($3$), under such and such an interpretation, describes a possible process for perfectly rational belief revision.
+
+\ed But the above premise {\em alone} does not suffice, for it only describes procedure ($0$)--($3$) as {\em one} possible process for perfectly rational belief revision. This leaves us with the following open question: \op
+
+	\xm \textsc{Open Question.} Is there a procedure that describes another possible process for perfectly rational belief revision, but generates a belief revision strategy not constructible through procedure ($0$)--($3$)? 
+
+\ed 
+% How about taking about preservation here?
+If the answer is ``yes,'' then the putative conclusion is false. So, to make the argument valid, we need to add {\em at least} the following premise (or something to the same effect): \op
+
+	\xm \textsc{Premise (II).} The answer to the above question is ``no.'' 
+
+\ed But this second premise is far from obvious, so an argument for it is required. Indeed, since procedure ($0$)--($3$) is committed to the AGM axioms and, hence, to Preservation, the Three Composers case is a potential counterexample to Premise (II).  Perhaps one can try to argue that procedure ($0$)--($3$) describes a very ``paradigmatic'' process for perfectly rational belief revision---so paradigmatic that the answer to the open question is ``no,'' and that the putative conclusion must be true. It remains to explore how one may elaborate on this line of thought. 
+
+So, for those who are sympathetic to the philosophical significance of partial meet contraction ($0$)--($3$), a foundational issue in belief revision theory is how we may provide more premises besides (I) and produce a sensible, valid argument for the putative conclusion.
+
+But even if such an argument can be produced, Premise (I) can be challenged. That is, one may challenge the very possibility of a workable interpretation of procedure ($0$)--($3$). Recall the main idea of this procedure. Suppose that one receives information $\phi$, and that $\phi$ is incompatible with the set $B$ of one's old beliefs. Then some old beliefs have to be retracted before $\phi$ is added to one's stock of beliefs. That is, before one adds $\phi$, one needs to find a contracted set $B \div \neg\phi$ of beliefs, a subset of $B$ that is compatible with $\phi$. It is hypothesized that one should not retract beyond necessity (but why?).\footnote
+	{For more on this issue, see \citet{rott2000two}.} 
+So let the agent consider all elements of the remainder set $B\bot\neg\phi$, i.e. all inclusion-maximal subsets of $B$ that are compatible with $\phi$. Then let relation $\geq$  sort out the ``best'' of those subsets. The intersection of those best subsets, $\bigcap \{ X \in B\bot\neg\phi : X \ge Y \mbox{ for all } Y \in B\bot\neg\phi \}$, is then identified with the contracted set of beliefs, $B \div \neg\phi$. That's the main idea. But that raises an issue concerning the right interpretation of $\ge$. Let us try the following interpretation:\op
+
+	\xm \textsc{Interpretation of $\ge$ (1).} $X \ge Y$ means that $X$ is at least as good as $Y$ as a candidate for $B \div \neg\phi$.
+
+\ed Under this interpretation, the intersection of the ``best'' candidates for $B \div \neg\phi$ (``best'' with respect to $\geq$) may not be a ``best'' candidate for $B \div \neg\phi$ (``best,'' again, with respect to $\geq$). So a non-optimal candidate may be selected! So this particular interpretation of $X \ge Y$ makes the construction process incoherent: one does not choose from the best candidates, but opts for the intersection of the best candidates, which may be sub-optimal.  
+
+What else could $X \ge Y$ mean? Let us try \citeauthor{gardenfors1984epistemic}' (\citeyearhyper{gardenfors1984epistemic}) suggestion:\op
+
+	\xm \textsc{Interpretation of $\ge$ (2).} $X \ge Y$ means that $X$ is epistemically at least as ``important'' as $Y$.
+
+\ed Following this interpretation, procedure ($0$)--($3$) assumes that the contracted belief set $B \div \neg\phi$ must be the intersection of the most ``epistemically important'' elements of $B\bot\neg\phi$. G\"{a}rdenfors' interpretation of $\ge$ does not cause any incoherence, but he leaves us with some unanswered questions. First, how should we understand the concept that G\"{a}rdenfors refers to as epistemic importance? Second, why the contracted belief set {\em should} be the intersection of the epistemically most important candidates? That is, why the concepts of belief contraction and epistemic importance are normatively related that way? Plausible answers to these questions are required if we want to use G\"{a}rdenfors' interpretation of $\ge$ to defend Premise (I) and, ultimately, to argue for the putative conclusion listed above.
+
+
+So there are a number of issues to address if we want to take seriously the construction of partial meet contraction and turn it into an explicit argument. For more on how we may take partial meet contraction seriously, see \citet{gardenfors1984epistemic}, \citet{levi2004mild}, and \citet{arlo2006contraction}.
+
+
+\subsection{Argument from Construction: Learning-Theoretic Analysis}\label{sec-arg-construction-2}
+
+Let us examine another technique for constructing belief revision theories: learning-theoretic analysis. Recall that this construction selects belief revision strategies according to some decision rule (section \ref{sec-Ockham}). This suggests the following argument schema, where $T$ is a formal theory of belief revision, i.e. a set of revision strategies.\op
+
+	\xm \textsc{Premise (I).} Decision rule $D$ judges every strategy not in $T$ to be inferior to some strategy in $T$.
+
+	\xm \textsc{Premise (II).} If decision rule $D$ judges a strategy $S$ to be inferior to some other strategy, then $S$ is not rational (or epistemically justified, or the like).
+
+	\xm \textsc{Putative Conclusion.} Therefore, a strategy is rational (or epistemically justified, or the like) only if it is in $T$.  
+
+\ed Now we can turn the learning-theoretic analysis in section \ref{sec-Ockham} into an explicit argument for a belief revision theory. Let $D$ be the Maxmin rule, $T$ be the set of all belief revision strategies for the Raven Problem except the following two kinds: the skeptic strategies $S_{\textrm{skep}}$ and the non-skeptic non-Ockham strategies $S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$. Recall that strategies of these two kinds are judged by the Maximin rule to be inferior to some strategy in ${T}$, e.g. some non-skeptic Ockham strategy $S_{\textrm{non-skep}}^{\textrm{\,ock}}$.
+
+So we have formulated an explicit argument. Since that argument is valid, let us turn to worries about its two premises.
+
+The more urgent worry is about Premise (II): which decision rule is the right one to apply? In section \ref{sec-Ockham}, we apply the Maximin decision rule. But is Maximin the right decision rule for singling out rational or epistemically justified strategies of belief revision? Many decision theorists think that, in many situations, the Maximin rule is too pessimistic to be the right rule to apply. Indeed, the dominant view in decision theory is that a correct decision rule has to involve one's degrees of belief over the columns in the decision table, rather than (pessimistically) focusing on the worst possible outcomes.
+
+There is a possible response in favor of applying Maximin to {\em some contexts}. The learning-theoretic analysis is actually developed to address the so-called problem of induction. Namely, it is meant to respond to the inductive skeptic's questions: ``how can we justify induction?'', ``how can we justify inductive strategies rather than skeptical strategies?'', and ``how can we justify the use of a particular inductive strategy rather than an alternative inductive strategy?'' To properly address these tough questions, we cannot rely on anyone's degrees of belief over the columns in the decision table---for fear of begging the skeptic's question. So, to make a decision without begging the skeptic question, the right decision rule, if there is one, has to be a qualitative decision rule. And the Maximin rule seems a good candidate---or so this response suggests and promises to elaborate. This idea, which favors the use of Maximin in some contexts, may be traced at least back to \citepos{wald1950statistical} Maximin foundation of statistical inference.
+
+Note that those sympathetic to the above line of thought do not have to stick with Maximin but can switch to, and argue for, another qualitative decision rule that does not presuppose degrees of belief. \citet{kelly2007simplicity}, for example, proposes a kind of dominance principle that applies to the worst-case bounds of ``complexity classes''---a decision rule inspired by how computer scientists evaluate the efficiency of problem-solving algorithms.
+
+Let us now turn to Premise (I). Even if Maximin (or some other qualitative decision rule) is the right one to apply when we respond to the inductive skeptic's challenge, does it really rule out the skeptic strategy and the non-skeptic non-Ockham strategy? What if Maximin is {\em misapplied} in section \ref{sec-Ockham}? Here are some possibilities of misapplication to think about. \op
+
+	\im First, is there a missing column? Think about the unfortunate possibility in which (a) not all ravens are black, (b) we will observe one black raven after another {\em ad infinitum}, but (c) we will never observe a nonblack raven. We did {\em not} put this column into the decision table in section \ref{sec-Ockham}. Are we justified in missing that column? After we add this additional column, will Maximin still favor the non-skeptic Ockham strategy? 
+
+	\im Second, have the outcomes in the cells been specified with sufficient detail? Why care just about whether a strategy will learn and how many opinion cycles will be produced? If we add more epistemic considerations into the cells, will Maximin still favor the non-skeptic Ockham strategy? 
+
+\ed It remains to explore how these two questions may be answered. See \citet{kelly2007simplicity} for further discussion.
+
+% Premise I is typically a logical consequence of the definitions of the $D$ and $T$ under discussion {\em plus} an assumed preference relation over the outcomes that we specify in the decision table. So a debate might arise regarding whether the assumed preference is ``OK'' in one sense or another.
+
+
+\section{Concluding Remarks}\label{lin-conclusion}
+
+We have discussed a number of foundational issues about belief revision theory. Let us recap what we have covered. Have a look at the italicized terms below: \op
+
+	\xm A belief revision theory is meant to make \textit{normative or evaluative}$_\text{(i)}$ \textit{claims}$_\text{(ii)}$ about revision of beliefs in light of new \textit{information}$_\text{(iii)}$.
+
+\ed With respect to (i), we have noted that alternative normative interpretations can be given to a formal belief revision theory, and have seen that the choice among those possible interpretations amounts to the choice among very different research programs in belief revision theory (section \ref{sec-choosing-interpretations}). With respect to (ii), we have examined some methods that we may use to argue for or against the claims that a belief revision theory is intended to make (sections \ref{sec-argue-against} and \ref{sec-argue-for}), including various potential difficulties or issues that we need to address when trying to apply those argumentative methods. With respect to (iii), we have only briefly discussed the issue of what counts as information and the problem of choosing among different conceptions of information (section \ref{sec-misspecification}). 
+
+% There are many philosophical issues about belief revision theory that we have not discussed, and it is even impossible to give a comprehensive list here. Let me mention just one more issue in passing, if only to show how much connected belief revision theory is to some other fields in philosophy.
+
+For discussions of other philosophical issues, see \citet{levi1983enterprise}, \citet{levi1991fixation}, \citet{levi2004mild}, \citet{gardenfors1988knowledge}, \citet{rott2000two}, \citet{rott2001change}, \citet{hansson1999textbook}, \citet{hansson2003ten}, and \citet{gillies2004epistemic}. 
+
+
+\section{Appendix}
+
+\subsection{Nonmonotonic Logic and Belief Revision Theory}\label{app-trans}
+
+A {\em nonmonotonic consequence relation} is a binary relation $\sn$ between sentences. Understand $\phi \sn \psi$ as saying of $\sn$ that it licenses the inference from $\phi$ to $\psi$---a possibly defeasible, inductive, or plausible inference. Nonmonotonic logic, if broadly construed, aims at distinguishing nonmonotonic consequence relations that are good in one sense or another. There are many approaches to nonmonotonic logic; they differ in the procedures that are used to sort out ``good'' nonmonotonic consequence relations; see \citet*{brewka2008nonmonotonic} for a review.
+
+\citet*{makinson1991relations} propose a translation between simple belief revision strategies $S$ and nonmonotonic consequence relations $\sn$. Their translation is based on the following bridge principle (which I state in terms of the $S$-notation used here): 
+	$$\psi \in S(\phi) \;\;\text{iff}\;\; \phi \sn \psi.$$ 
+To be more precise: given any simple belief revision strategy $S$, we can use the bridge principle to define a nonmonotonic consequence relation $\sn_{\!S}$ as follows: $\phi \sn_{\!S} \psi$ iff $\psi \in S(\phi)$. Conversely, given any nonmonotonic consequence relation $\sn$, we can use the bridge principle to define a simple belief revision strategy $S_{\,|\!\sim}$ as follows: $S_{\,|\!\sim}(\phi) =_\text{def} \{\psi: \phi \sn \psi\}$ and $S_{\,|\!\sim}() =_\text{def} S_{\,|\!\sim}(\top)$, where $\top$ is a tautology. 
+
+This establishes a one-to-one correspondence between all nonmonotonic consequence relations and all simple belief revision strategies $S$ such that $S() = S(\top)$.
+
+\subsection{General Definition of Learning}\label{app-learning}
+
+Let an information space $\cal I$ be given, which contains some finite sequences of sentences, meant to represent possible {\em available} pieces of information. Let a question $\cal Q$ be identified with a set of mutually incompatible sentences, called the {\em potential answers} to $\cal Q$. The potential answers to $\cal Q$ may, or may not, be jointly exhaustive---let the disjunction of the potential answers to $\cal Q$ be understood as the {\em presupposition} of question $\cal Q$. Let a decision table be given, together with a set ${\cal C}$ of columns as mutually incompatible possibilities. Those columns/possibilities are assumed to be so specific that each column $C \in {\cal C}$ either entails exactly one potential answer to question $\cal Q$ or it entails the negation of $Q$'s presupposition. With respect to the above setting $({\cal Q}, {\cal I}, {\cal C})$, define the following concepts: \op
+
+	\im An {\em $\cal I$-information stream} is an infinite sequence $(\phi_1, \phi_2, \ldots)$ of sentences such that its finite initial segments are all in $\cal I$.
+	
+	\im Say that an $\cal I$-information stream $(\phi_1, \phi_2, \ldots)$ is {\em compatible} with a column $C \in {\cal C}$ iff the infinite conjunction $\bigwedge_{i \ge 1} \phi_i$ is compatible with possibility $C$.
+	
+	\im The {\em true answer} to question $\cal Q$ given column $\cal C$, written $\mathsf{Ans}({\cal Q} \mid {\cal C})$, is defined as the unique potential answer to $\cal Q$ that $C$ entails, if such a unique answer exists; otherwise, $\mathsf{Ans}({\cal Q} \mid {\cal C})$ is undefined. 
+	
+\ed We are finally in a position to define learning with respect to the above setting: \op
+
+	\im Say that a strategy $S$ {\em will learn} the true answer to question $Q$ given column $C$ just in case: \op
+	
+		\im[(1)] the true answer $\mathsf{Ans}({\cal Q} \mid {\cal C})$ exists;
+		
+		\im[(2)] for each $\cal I$-information stream $(\phi_1, \phi_2, \ldots)$ compatible with $C$, there exists $n \ge 1$, called a ``learning moment,'' such that for each $i\ge n$, $S(\phi_1, \phi_2, \ldots, \phi_i)$ is consistent and entails $\mathsf{Ans}({\cal Q} \mid {\cal C})$.
+	\ed
+\ed   
+
+
+
+\section*{Acknowledgements}
+
+I am indebted to Kevin Kelly and Horacio Arl\'{o}-Costa for teaching me so much about belief revision theory. This article, and I as a belief revision theorist, would have been impossible without them. I am indebted to the two editors, Jonathan Weisberg and Richard Pettigrew, for their endless patience and very helpful comments. I am also indebted to Ted Shear for his incredibly detailed comments and useful suggestions, and to Adam Sennet and Rachel Boddy for their stimulating questions.
