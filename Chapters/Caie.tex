@@ -1,0 +1,1696 @@
+% \usepackage{natbib,amsfonts,amsmath,amssymb,epsfig,graphicx,lscape,longtable,multirow,epigraph,tikz,verbatim}
+% \usepackage{stmaryrd}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{automata} 
+
+%Thanks to Richard Pettigrew and Jonathan Weisberg for extremely helpful comments on an earlier draft of this material.
+
+There are at least three natural ways of interpreting the object of study of doxastic logic.
+On one construal, doxastic logic studies certain general features of the doxastic states of actual agents. 
+On another construal, it studies certain general features of \textit{idealized} doxastic states.
+While on yet another construal, doxastic logic provides a normative account of what features an agent's doxastic state ought to have on pain of irrationality.
+
+The field of doxastic logic was initiated by \citet{Hintikka1}, where techniques from modal logic were employed to model  doxastic and epistemic states and to characterize certain valid principles governing such states.
+The theory presented by \citeauthor{Hintikka1} provides an account of certain synchronic principles governing doxastic states.
+That theory, however, is silent on the question of how the doxastic states of an agent over time are or should be related.
+Later work, initiated by \citet{AGM}, sought to provide an account of how an agent will or should revise her doxastic state in the light of new evidence.
+According to the accounts developed out of \citeauthor{AGM}, a characterization of an agent's doxastic state should include, in addition to the set of beliefs the agent has, a characterization of the agent's belief revision policy. 
+
+One of the characteristic features of the models developed by \citeauthor{Hintikka1} is that they provide a natural way of modeling the higher-order beliefs of an agent, i.e., the agent's beliefs about her own beliefs.
+The models developed out of \citeauthor{AGM}, however, don't provide a natural way of characterizing an agent's higher-order beliefs about her belief revision policy.
+More recent work in dynamic doxastic logic has attempted to remedy this defect by providing a semantics for an object language that includes not only a unary belief operator but also a binary belief revision operator.
+
+In \autoref{caie-section1}, I'll outline the theory developed by \citeauthor{Hintikka1} and briefly discuss how this theory looks given each of the above construals.
+In \autoref{caie-section2}, I'll consider the theory of belief revision that developed out of \citeauthor{AGM}.
+In \autoref{caie-section3}, I'll discuss more recent work in dynamic doxastic logic.
+And, finally, in \autoref{caie-section4}, I'll consider some paradoxes of doxastic logic and the bearing that these have on some of the accounts considered in \autoref{caie-section1}--\ref{caie-section3}.
+
+
+
+\section{Static Doxastic Logic}\label{caie-section1}
+
+In \autoref{caie-section1-1}, I'll first provide a quick overview of the basic theory developed by \citet{Hintikka1}.
+In \autoref{caie-section1-2}, I'll then consider how these doxastic models may be extended to characterize the doxastic states of multiple agents and various collective doxastic properties.
+The presentation of this material will work under the assumption that the theory serves to characterize certain features of an \textit{idealized} doxastic state.
+Having outlined the basic theory, however, in \autoref{caie-section1-5}, I'll consider how the theory looks under alternate interpretations.
+
+
+\subsection{Basic Doxastic Logic}\label{caie-section1-1}
+
+
+Let $\mathcal{L}$ be a propositional language.
+We assume that $\mathcal{L}$ includes the Boolean connectives $\lnot$ and $\vee$, and in addition a unary operator $B_\alpha$.
+The intuitive gloss of $B_\alpha$ will be ``Alpha believes that\ldots''.
+Other connectives may be defined in the standard manner.
+Being a sentence of $\mathcal{L}$ is characterized as follows.
+\begin{itemize}
+\item If $\phi$ is an atomic propositional sentence letter, then $\phi$ is a sentence.
+\item If $\phi$ and $\psi$ are sentences, then so is $\phi \vee \psi$.
+\item If $\phi$ is a sentence, then so are $\lnot \phi$ and $B_\alpha \phi$.
+\item Nothing else is a sentence.
+\end{itemize}
+
+A \textit{Kripke model} for our language $\mathcal{L}$ is a tuple $M = \langle W, R_\alpha, \llbracket \cdot \rrbracket \rangle$.
+$W$ is a set of points that we'll call \textit{possible worlds}.
+$R_\alpha$ is a binary relation on $W$, i.e., $R_\alpha \subseteq W \times W$, that we'll call the \textit{accessibility relation}.
+And $\llbracket \cdot \rrbracket$ is the \textit{interpretation function} mapping propositional letters to sets of possible worlds.
+
+We can think of the accessibility relation $R_\alpha$ as serving to represent the set of worlds that are doxastic possibilities for an agent $\alpha$ relative to some world $w$.
+In particular, if $w'$ is such that $\langle w, w' \rangle \in R_\alpha$, then we can think of $w'$ as being a possible world that is left open given all that the agent believes at $w$.
+
+The truth of a sentence $\phi$ at a world $w$ in a Kripke model $M$ (for short: $\llbracket \phi \rrbracket^w_m = 1$) may be defined as follows.
+
+\begin{itemize}
+\item If $\phi$ is a propositional letter, then $\llbracket \phi \rrbracket^w_m = 1$ just in case $ w \in \llbracket \phi \rrbracket $.
+\item $\llbracket \lnot \phi \rrbracket^w_m = 1$ just in case $\llbracket \phi \rrbracket^w_m \neq 1$.
+\item $\llbracket \phi \vee \psi \rrbracket^w_m = 1$ just in case $\llbracket \phi \rrbracket^w_m = 1$ or $\llbracket \psi \rrbracket^w_m = 1$.
+\item $\llbracket B_\alpha \phi \rrbracket^w_m = 1$ just in case $\llbracket \phi \rrbracket^{w'}_m = 1$, for every $w'$ such that $w R_\alpha w'$.
+\end{itemize}
+
+We let $\vdash_x \phi$ mean that that there is a sequence of formulas $\phi_1,\ldots,\phi$ such that each item in the sequence is either an axiom of the logical system $X$ or follows from items earlier in the sequence by one of the inference rules of $X$.
+Then $\vdash_k$ may be characterized as follows.
+
+\begin{quote}
+\textsc{Axioms of K}
+\begin{itemize}
+\item[(P)]\quad Axioms of propositional logic
+\item[(K)]\quad $B_\alpha(\phi \rightarrow \psi) \rightarrow (B_\alpha \phi \rightarrow B_\alpha \psi)$.
+\end{itemize}
+\end{quote}
+
+\begin{quote}
+\textsc{Inference Rules of K}
+\begin{itemize}
+\item[(MP)]\quad $\left(\vdash_k \phi \; \bigwedge \; \vdash_k \phi \rightarrow \psi\right)  \Rightarrow \; \vdash_k \psi$.
+\item[(N)]\quad $\vdash_k \phi \Rightarrow \; \vdash_k B_\alpha \phi$.
+\end{itemize}
+\end{quote}
+
+%Given our interpretation of the operator $B_\alpha$, \textsf{(N)}, then, tells us that Alpha believes all theorems of the system $K$, while \textsf{(K)} tells us that Alpha believes all of the logical consequences of their beliefs.
+
+
+Let $\mathcal{K}$ be the class of Kripke models, and let $\models_{\mathcal{K}} \phi$ mean that, for every Kripke model $M$, and every $w \in W$, $\llbracket \phi \rrbracket^w_m =1$. 
+Then two basic results in modal logic are:\footnote{For proofs of these results see, e.g., \citet{HughesCresswell}, \citet{Chellas}, or \citet{Blackburn}.}
+
+\begin{quote}
+
+\textsc{Theorem 1.}\quad $\vdash_k \phi \Rightarrow \; \models_{\mathcal{K}} \phi$.
+
+\textsc{Theorem 2.}\quad $\models_{\mathcal{K}} \phi \Rightarrow \; \vdash_k \phi$.
+
+\end{quote}
+\textsc{Theorem 1} tells us that $\vdash_k$ is sound with respect to the class of models $\mathcal{K}$, and \textsc{Theorem 2} tells us that $\vdash_k$ is complete with respect to this class of models.
+
+The first assumption that we'll make is that the beliefs of an \textit{idealized} doxastic state may be represented by a Kripke model.
+Given the soundness of $\vdash_k$, it follows from this assumption that:
+
+\begin{quote}
+\begin{itemize}
+\item[(B$_N$)] if $\phi$ is a logical validity, then $\phi$ is believed by an idealized doxastic agent; 
+\item[(B$_K$)] an idealized doxastic agent believes all of the logical consequences of her beliefs.
+\end{itemize}
+\end{quote}
+If, in addition, we assume that, for any model $M \in \mathcal{K}$, there is some idealized doxastic state that is represented by $M$, then the soundness and completeness of $\vdash_k$ entail that (B$_N$) and (B$_K$) provide a complete characterization of those properties that are shared by every idealized doxastic state. 
+
+We can characterize certain subsets of $\mathcal{K}$ by properties of $R_\alpha$.
+
+\begin{quote}
+\textsc{Def.}\; We say that $R_\alpha$ is \textit{serial} just in case, for every $w \in W$, there is some $w' \in W$ such that $w R_\alpha w'$
+
+\textsc{Def.}\; We say that $R_\alpha$ is \textit{transitive} just in case, for every $w, w', w'' \in W$, if $w R_\alpha w'$ and $w' R_\alpha w''$, then $w R_\alpha w''$.
+
+\textsc{Def.}\; We say that $R_\alpha$ is \textit{Euclidean} just in case, for every $w, w', w'' \in W$, if $w R_\alpha w'$ and $w R_\alpha w''$, then $w' R_\alpha w''$.
+\end{quote}
+We'll let $\mathcal{K}_D$ be the subset of Kripke models whose accessibility relation is serial, $\mathcal{K}_4$ the subset of Kripke models whose accessibility relation is transitive, and $\mathcal{K}_5$ the subset of Kripke models whose accessibility relation is Euclidean.
+
+Assume that $\mathcal{L}$ has only propositional letters $p$ and $q$.
+Then we can represent a Kripke model for $\mathcal{L}$ by a diagram like \autoref{caie-fig1}.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm]
+
+\node[state] at (0, 0) (w1)  {{\small $w_1$}};
+\node[state] at (4, 0)  (w2) {{\small $w_2$}};
+\node[state] at (8, 0) (w3)  {{\small $w_3$}};
+
+\path[->] (w1) edge node {} (w2)
+(w2) edge node {} (w1)
+(w2) edge node {} (w3)
+(w3) edge node {} (w2)
+(w1) edge [loop above] node {} (w1)
+(w2) edge [loop above] node {} (w2)
+(w3) edge [loop above] node {} (w3);
+
+\draw (0, -0.7) node {{\small $p, q$}};
+\draw (4, -0.7) node {{\small $p, \lnot q$}};
+\draw (8, -0.7) node {{\small $\lnot p, \lnot q$}};
+
+%\node[0, 0] (w_1) {{\tiny $w_1$};
+%\draw (w_1) circle (10pt);
+
+
+%\draw (4, 0) circle (10pt);
+%\draw (8, 0) circle (10pt);
+%\draw [<->] (0.4, 0) -- (3.6, 0);
+%\draw [<->] (4.4, 0) -- (7.6, 0);
+%\draw (0, 0) node {{\tiny $w_1$}};
+%\draw (4, 0) node {{\tiny $w_2$}};
+%\draw (8, 0) node {{\tiny $w_3$}};
+%\path (-0.25, 0.25) edge [loop above] node {} (0.25, 0.5);
+\end{tikzpicture}
+\caption{Diagram of a Kripke model}\label{caie-fig1}
+\end{figure}
+In this model $R_\alpha$ is reflexive and serial, but neither transitive nor Euclidean.
+
+We can further consider the logical systems that arise when one adds certain axioms to $K$.
+For example, as additional possible axioms, we have:
+
+\begin{quote}
+\begin{itemize}
+\item[(D)]\quad $B_\alpha \phi \rightarrow \lnot B_\alpha \lnot \phi$.
+\item[(4)]\quad $B_\alpha \phi \rightarrow B_\alpha B_\alpha \phi$.
+\item[(5)]\quad $\lnot B_\alpha \phi \rightarrow B_\alpha \lnot B_\alpha \phi$
+\end{itemize}
+\end{quote}
+
+
+We'll denote the result of adding some axiom $X$ to $K$, $KX$.
+We have, then, the following soundness and completeness results.
+\begin{quote}
+\textsc{Theorem 3.}\quad $\vdash_{kd} \phi \Leftrightarrow \; \models_{\mathcal{K}_D} \phi$.
+
+\textsc{Theorem 4.}\quad $\vdash_{kd4} \phi \Leftrightarrow \; \models_{\mathcal{K}_D \cap \mathcal{K}_4} \phi$.
+
+\textsc{Theorem 5.}\quad $\vdash_{kd45} \phi \Leftrightarrow \; \models_{\mathcal{K}_D \cap \mathcal{K}_4 \cap \mathcal{K}_5} \phi$.
+\end{quote}
+These results tell us the following.
+First, if we assume that each idealized doxastic state can be modeled by some $M \in \mathcal{K}_D$, then we have:
+\begin{quote}
+\begin{itemize}
+\item[(B$_D$)] an idealized doxastic agent's beliefs will be consistent.
+\end{itemize}
+\end{quote}
+And, if we further assume that, for each $M \in \mathcal{K}_D$, there is some idealized doxastic state that is represented by $M$, then it follows that (B$_N$), (B$_K$) and (B$_D$) provide a complete characterization of those properties that are shared by every idealized doxastic state. 
+
+Second, if we assume that, in addition, each idealized doxastic state can be modeled by some $M \in \mathcal{K}_D \cap \mathcal{K}_4$, then we also have:
+\begin{quote}
+\begin{itemize}
+\item[(B$_4$)] if an idealized doxastic agent believes $\phi$, then she will believe that she believes $\phi$. 
+\end{itemize}
+\end{quote}
+We'll call this property \textit{positive transparency}.
+
+If we further assume that, for each $M \in \mathcal{K}_D \cap \mathcal{K}_4$, there is some idealized doxastic state that is represented by $M$, then it follows that (B$_N$), (B$_K$), (B$_D$) and (B$_4$) provide a complete characterization of those properties that are shared by every idealized doxastic state. 
+
+Finally, if we assume that, in addition, each idealized doxastic state can be modeled by some $M \in  \mathcal{K}_D \cap \mathcal{K}_4 \cap \mathcal{K}_5$, then we also have:
+\begin{quote}
+\begin{itemize}
+\item[(B$_5$)] if an idealized doxastic agent fails to believe $\phi$, then she will believe that she fails to believe $\phi$.
+\end{itemize}
+\end{quote}
+We'll call this property \textit{negative transparency}.
+
+If we further assume that, for each $M \in \mathcal{K}_D \cap \mathcal{K}_4 \cap \mathcal{K}_5$, there is some idealized doxastic state that is represented by $M$, then it follows that (B$_N$), (B$_K$), (B$_D$), (B$_4$), and (B$_5$) provide a complete characterization of those properties that are shared by every idealized doxastic state. 
+
+In the doxastic logic literature, it is typically assumed that every idealized doxastic state can be represented by some element of $\mathcal{K}_D \cap \mathcal{K}_4 \cap \mathcal{K}_5$, and that each element of this set accurately represents some idealized doxastic state.
+Given this assumption, then, the logic governing the operator $B_\alpha$ is the modal logic KD45.
+
+Note that the following principle is not assumed to hold:
+\begin{quote}
+\begin{itemize}
+\item[(T)]\quad $B_\alpha \phi \rightarrow \phi$.
+\end{itemize}
+\end{quote}
+That is, we do not assume that our idealized doxastic states are error-free. 
+An ideal belief state, on this picture, need not be one that only includes true beliefs.
+\begin{quote}
+\textsc{Def.}\; We say that $R_\alpha$ is \textit{reflexive} just in case, for every $w \in W$, $w R_\alpha w$.
+\end{quote}
+The axiom (T) is guaranteed to hold in any Kripke model whose accessibility relation is reflexive.
+Importantly, then, we do not assume that a model $M$ representing an idealized doxastic state has a reflexive accessibility relation.
+
+
+\subsection{Group Beliefs}\label{caie-section1-2}
+
+So far, our doxastic models have treated the doxastic state of only a single agent. 
+This restriction, however, can be easily relaxed.
+Instead of a single operator $B_\alpha$, let $\mathcal{L}$ now contain a series of operators $B_{\alpha_1}, B_{\alpha_2},\ldots,B_{\alpha_r}$.
+A Kripke model for $\mathcal{L}$ will be a tuple $\langle W, R_{\alpha_1}, R_{\alpha_2}\ldots,R_{\alpha_r}, \llbracket \cdot \rrbracket \rangle$, and truth-at-a-point in such a model will be defined in the obvious way.
+As with the case of our individual models, we can impose various restrictions for each $R_{\alpha_i}$ such as seriality, transitivity etc.
+We'll let $\mathcal{K}^\alpha$ be the set of Kripke models for $\mathcal{L}$.
+We'll let $D^\alpha$, $\mathcal{K}^\alpha_4$, $\mathcal{K}^\alpha_5$ be, respectively, the set of Kripke models for $\mathcal{L}$ such that each accessibility relation is serial, transitive, and Euclidean.
+
+
+This type of model allows us to simultaneously represent the doxastic states of multiple agents.
+Furthermore, it allows us to represent certain collective properties of the doxastic states of groups  that cannot be represented by a set of individual Kripke models for each agent in the group.\footnote{See, e.g., \citet{Fagin}, \citet{Halpern1}, \citet{Halpern2}, and \citet{Halpern3} for important work on the doxastic and epistemic properties of groups.}
+Let's consider how such features may be represented in this sort of model.
+In particular, we will consider how in such models we can represent the group doxastic properties of \textit{common belief} and \textit{distributed belief}.
+
+\subsubsection{Common Belief}\label{caie-section1-3}
+
+What is it for $\phi$ be a matter of common belief amongst a group of agents?
+The intuitive idea is that common belief is a matter of each agent in the group believing $\phi$, and each agent believing that each agent believes $\phi$, and each agent believing that each agent believes that each agent believes $\phi$\ldots, and so on, ad infinitum.\footnote{The concepts of common belief and common knowledge and the role that these play in reasoning were introduced in \citet{Lewis7}. See also \citet{Aumann2} for another influential early treatment of these ideas. See \citet{Barwise1} for alternative analyses of the notions of common belief and common knowledge.}
+This sort of group doxastic property can be represented in our models as follows.
+\begin{quote}
+\textsc{Def.}\; We will say that $w$ and $w'$ are \textit{$n$-connected} just in case there is some series of worlds $w_1,\ldots,w_{n + 1}$ such that $w = w_1$, $w_{n+1} = w'$ and for each pair $\langle w_i, w_{i+1} \rangle$ there is some $R_{\alpha_j}$ such that $w_i R_{\alpha_j} w_{i+1}$. We'll write $w R_n w'$ to indicate that $w$ and $w'$ are $n$-connected.
+\end{quote}
+So, for example, the set of 1-connected worlds will just be those pairs of worlds such that there is some $j$ such that $w R_{\alpha_j} w'$, while the set of 2-connected worlds will just be those pairs of worlds that are connected via the belief accessibility relation of at most two agents, etc.
+
+Let the schematic abbreviation $B_{\alpha^n} \phi$ be inductively characterized as follows:
+\begin{quote}
+\textsc{Def.}\; 
+\begin{enumerate}
+\item $B_{\alpha^1} \phi =_{\textrm{df}} B_{\alpha_1} \phi \wedge B_{\alpha_2} \phi \wedge\ldots\wedge B_{\alpha_r} \phi$, 
+\item $B_{\alpha^n} \phi =_{\textrm{df}} B_{\alpha_1} B_{\alpha^{n-1}} \phi \wedge B_{\alpha_2} B_{\alpha^{n-1}} \phi \wedge\ldots\wedge B_{\alpha_r} B_{\alpha^{n-1}} \phi$.
+\end{enumerate}
+\end{quote}
+So $B_{\alpha^1}$ abbreviates the claim that each agent in the group believes $\phi$.
+While $B_{\alpha^n}$ abbreviates the claim that each agent in the group believes that everyone in the group believes $\phi$ to level $n-1$.
+As a further definitional abbreviation, we let:
+\begin{quote}
+\textsc{Def.}\; $M_\alpha^n \phi =_{\textrm{df}} B_{\alpha^1} \phi \wedge\ldots\wedge B_{\alpha^n} \phi$.
+\end{quote}
+We will read $M_\alpha^n \phi$ as saying that there is \textit{mutual belief of degree n} that $\phi$ amongst $\alpha_1, \ldots, \alpha_r$.
+
+
+Given these definitions, it follows that the truth of $B_{\alpha^n} \phi$ and $M_{\alpha^n} \phi$, relative to a point $w$, in a model $M$, may be characterized as follows.
+\begin{itemize}
+\item[] $\llbracket B_{\alpha^n} \phi \rrbracket^w = 1$ just in case $\llbracket \phi \rrbracket^{w'} = 1$, for every $w'$ such that  $w R_n w'$.
+\item[] $\llbracket M_{\alpha^n} \phi \rrbracket^w = 1$ just in case $\llbracket \phi \rrbracket^{w'} = 1$, for every $w'$  such that there is some $1 \leq i \leq n$ such that $w R_i w'$.
+\end{itemize}
+
+
+So far we haven't added any expressive power to our language. 
+Each operator $B_{\alpha^n}$ and $M_{\alpha^n}$ is merely an abbreviation for some formula already in $\mathcal{L}$.
+Suppose, however, that we wanted to say that $\phi$ is a matter of common belief amongst $\alpha_1,\ldots,\alpha_r$.
+The natural way to express this is to say that, for each $n$, $M_{\alpha^n} \phi$ holds.
+Expressing common belief in this way, though, would require quantificational devices or devices of infinite conjunction that our language lacks.
+This doesn't, however, mean that we can't express the property of common belief in a propositional modal language.
+To do so, however, we need to add a new operator to our language.
+
+
+Let $\mathcal{L}$, then, be the language that includes, in addition to each of the operators $B_{\alpha_i}$, an operator $C_\alpha$.
+A Kripke model for our new language $\mathcal{L}$ will still be a tuple $M = \langle W, R_{\alpha_1}, R_{\alpha_2}\ldots,R_{\alpha_r},  \llbracket \cdot \rrbracket \rangle$.
+Given our relations $R_{\alpha_i}$, we can define the following relation on points in $W$:
+
+\begin{quote}
+\textsc{Def.}\; Let $R^+_{1} = \bigcup_{n \geq 1} R_{n}$. 
+%\textsc{Def.}\; Let $R_{1} = \bigcup_{n \geq 1} R_{\alpha_n}$. 
+%
+%\textsc{Def.}\; Given a binary relation $R \subseteq X \times X$, we let $\textsf{Tran}(R)$ be the set of $R' \subset X \times X$ such that (i) $R'$ is transitive, and (ii) $R \subseteq R'$.
+%
+%\textsc{Def.}\; Let $R^+_{1} = \bigcap\textsf{Tran}(R)$
+\end{quote}
+
+\noindent
+$R^+_{1}$ is the so-called \textit{transitive closure} of $R_{1}$.\footnote{This is the smallest transitive relation containing $R_{1}$. To see why this is a transitive relation, assume that we have $w_1 R^+_{1} w_2$ and $w_2 R^+_{1} w_3$.
+Then we have that there is some $n$ such that $w_1 R_{n} w_2$, i.e., $w_1$ and $w_2$ are $n$-connected.
+And we also have that there is some $m$ such that $w_2 R_{m} w_3$, i.e., $w_2$ and $w_3$ are $m$-connected.
+But, given this, it follows that we have $w_1 R_{n + m} w_3$, i.e., $w_1$ and $w_3$ are $(n + m)$-connected.}
+Given this definition, we have that $w R^+_{1} w'$ just in case there is some $n$ such that $w R_{n} w'$.
+Thus $w R^+_{1} w'$ holds just in case there is some finite length path connecting $w$ and $w'$ via the accessibility relations $R_{\alpha_i}$.
+
+Note that since $R^+_{1}$ is definable in terms of the $R_{\alpha_i} \in M$, we do not need to include this relation in $M$ in order to appeal to it in characterizing the truth of certain sentences in such a model.
+
+We can now characterize the truth of a sentence $C_{\alpha} \phi$ relative to a world of evaluation in $M$ as follows:
+\begin{itemize}
+\item[] $\llbracket C_{\alpha} \phi \rrbracket^w = 1$ just in case $\llbracket \phi \rrbracket^{w'} = 1$, for every $w'$  such that $w R^+_{1} w'$.
+\end{itemize}
+
+What are the logical properties governing  the common belief operator $C_\alpha$?
+We can characterize the logic of this operator as follows.
+Let $K_\alpha$ be the multi-modal logic characterized by each instance (N), and the relevant instance of (K), for each operator $B_{\alpha_i}$.
+(Similarly for $KD_\alpha$, $KD4_\alpha$ and $KD45_\alpha$.)
+And let $K_\alpha^c$ (or $KD_\alpha^c$, $KD4_\alpha^c$ and $KD45_\alpha^c$) be the axiomatic system we get by adding to $K_\alpha$ (or $KD_\alpha$, $KD4_\alpha$ and $KD45_\alpha$) the following axiom and rule of inference:
+\begin{quote}
+\begin{itemize}
+\item[(C$_1$)]\quad $C_\alpha \phi \rightarrow M_\alpha^1( \phi \wedge C_\alpha \phi)$.
+\item[(R$_1$)]\quad $\vdash_{k_\alpha^c}  \phi \rightarrow M_\alpha^1(\psi \wedge \phi) \Rightarrow \; \vdash_{k_\alpha^c} \phi \rightarrow C_\alpha \psi$.
+\end{itemize}
+\end{quote}
+We, then, have the following soundness and completeness result:\footnote{See \citet{Halpern1} for a proof of this. \citet{Halpern1}, in fact, includes an additional axiom stating $M_\alpha^1 \phi \leftrightarrow (B_{\alpha_1} \phi \wedge\ldots\wedge B_{\alpha_1} \phi)$. This, however, is a \textit{definitional} truth and so is not strictly speaking required as an axiom.}
+\begin{quote}
+\textsc{Theorem 6.}\quad $\vdash_{k_\alpha^c}  \phi \Leftrightarrow \; \models_{\mathcal{K}^\alpha} \phi$.
+\end{quote}
+Similar results show that $KD_\alpha^c$ is sound and complete with respect to $D^\alpha$, that $KD4_\alpha^c$ is sound and complete with respect to $D^\alpha \cap \mathcal{K}^\alpha_4$, and that $KD45_\alpha^c$ is sound and complete with respect to $D^\alpha \cap \mathcal{K}^\alpha_4 \cap \mathcal{K}^\alpha_5$.
+The logic governing $C_\alpha$, then, is characterized by adding (C$_1$) and (R$_1$) to the axioms governing the operators $B_{\alpha_i}$.
+
+Now it's clear that the structural properties of the accessibility relation $R^+_{1}$ will supervene on the structural properties of the accessibility relations $R_{\alpha_i}$.
+Importantly, though, the structural properties of $R^+_{1}$ may be distinct from those of $R_{\alpha_i}$.
+In certain cases, $R^+_{1}$ may have additional structural properties to those of $R_{\alpha_i}$, while in other cases, $R^+_{1}$ may lack certain structural properties had by each of the  $R_{\alpha_i}$.
+Given such discrepancies, then, the logic governing common belief may be distinct from the logic governing individual belief.
+Let's consider, briefly, some ways in which common belief may inherit some of the logical properties governing individual belief and some ways in which the logic governing common belief may come apart from the logical properties governing individual belief.
+
+First, note that the transitive closure of a serial relation is also serial.
+If, then, each $R_{\alpha_i}$ is serial, $R^+_1$ will also be serial.
+And so, if the logic governing individual beliefs includes the principle (D), then so will the logic governing common belief.
+Thus, if the individual agents that we are representing are such that their beliefs are guaranteed to be consistent, then so too will the common beliefs of this group.
+
+We have, then:
+\begin{quote}
+\begin{itemize}
+\item[(D)] \quad $\models_{\mathcal{D}^\alpha} C_\alpha \phi \rightarrow \lnot C_\alpha \lnot \phi$.
+\end{itemize}
+\end{quote}
+Next, note that, given its definition, $R^+_{1}$ is guaranteed to be transitive. 
+In particular, it will satisfy this property whether or not all $R_{\alpha_i}$ do.
+In this manner, then, $R^+_{1}$ may have a structural feature that some $R_{\alpha_i}$ lack.
+Given that $R^+_{1}$ is transitive, we have then:
+\begin{quote}
+\begin{itemize}
+\item[(4)] \quad $\models_{\mathcal{K}^\alpha} C_\alpha \phi \rightarrow C_\alpha C_\alpha \phi$.
+\end{itemize}
+\end{quote}
+Common belief, then, is guaranteed to be positively transparent, even if individual beliefs are not.
+
+Finally, note that while each $R_{\alpha_i}$ being serial entails that $R^+_1$ is serial, it does \textit{not} follow that if each $R_{\alpha_i}$ is Euclidean then $R^+_1$ will also be Euclidean.\footnote{See \citet{Lismont}, \citet{Colombetti}, and \citet{Bonanno} for proofs and discussion of this result.}
+Thus, even if the logic of individual belief entails that individual belief is negatively transparent, it does not follow that common belief must also be negatively transparent.
+
+\subsubsection{Distributed Belief}\label{caie-section1-4}
+
+What is it for $\phi$ to be a matter of distributed belief?
+The intuitive idea is that $\phi$ is a distributed belief amongst some group of agents just in case $\phi$ is a consequence of what all of the agents believe.
+
+To express this notion, we'll introduce the operator $D_\alpha$ to our language $\mathcal{L}$. 
+A model for $\mathcal{L}$ will still be a tuple $M = \langle W, R_{\alpha_1}, R_{\alpha_2}\ldots,R_{\alpha_r},  \llbracket \cdot \rrbracket \rangle$.
+We define the following relation amongst the members of $W$, given our relations $R_{\alpha_i}$.
+\begin{quote}
+\textsc{Def.}\; Let $w R_d w'$ just in case for every $R_{\alpha_i}$, $w R_{\alpha_i} w'$.
+\end{quote}
+Truth-at-a-world for a formula $D_\alpha \phi$, in a model $M$, can, then, be characterized as follows:
+\begin{itemize}
+\item[] $\llbracket D_{\alpha} \phi \rrbracket^w = 1$ just in case $\llbracket \phi \rrbracket^{w'} = 1$, for every $w'$  such that $w R_d w'$.
+\end{itemize}
+
+We can characterize the logic of this operator as follows.
+Again let $K_\alpha$ be the multi-modal logic characterized by each instance (N), and the relevant instance of (K), for each operator $B_{\alpha_i}$.
+And let $K_\alpha^d$  be the axiomatic system we get by adding to $K_\alpha$  the relevant instance of (K) for the operator $D_{\alpha}$, as well an axiom of the following form, for each $\alpha_i$:
+\begin{quote}
+\begin{itemize}
+\item[(D$_1$)]\quad $D_\alpha \phi \rightarrow B_{\alpha_i} \phi$.
+\end{itemize}
+\end{quote}
+
+We, then, have the following soundness and completeness result:\footnote{See \citet{Halpern1}.}
+\begin{quote}
+\textsc{Theorem 7.}\quad $\vdash_{k_\alpha^d}  \phi \Leftrightarrow \; \models_{\mathcal{K}^\alpha} \phi$.
+\end{quote}
+
+Similarly, if we let $K4_\alpha$ ($K45_\alpha$) be the the multi-modal logic characterized by each instance (N), and the relevant instances of (K) and (4) (and (5)), for each operator $B_{\alpha_i}$, and let $K4_\alpha^d$ ($K45_\alpha^d$)  be the axiomatic system we get by adding to $K4_\alpha$ ($K45_\alpha$) the relevant instances of (K) and (4) (and (5)) for the operator $D_{\alpha}$, then we can also show that $K4_\alpha^d$ ($K45_\alpha$) is sound and complete with respect to $\mathcal{K}^\alpha_4$ ($\mathcal{K}^\alpha_4 \cap \mathcal{K}^\alpha_5$).
+
+It's clear that the structural properties of $R_d$ will supervene on the structural properties of the accessibility relations $R_{\alpha_i}$.
+While, though, $R_d$ may inherit certain structural properties from $R_{\alpha_i}$, other structural properties of $R_d$  may be distinct from those of $R_{\alpha_i}$.
+
+First, note that if each $R_{\alpha_i}$ is transitive, then $R_d$ is transitive.
+Similarly, if each $R_{\alpha_i}$ is Euclidean, then $R_d$ is Euclidean.
+It's for this reason that if the logic governing the $B_{\alpha_i}$ includes the principles (4) or (5), so too will the logic governing $D_\alpha$.
+
+Importantly, however, it doesn't follow from the fact that each $R_{\alpha_i}$ is serial, that $R_d$ is also serial. 
+For it doesn't follow from the fact that, for each $w$, and each $R_{\alpha_i}$, there is $w'$ such that $w R_{\alpha_i} w'$, that for each $w$ there is some $w'$ such that $w R_d w'$.
+For while, for some $w$, it may be the case that, for each $R_{\alpha_i}$, there is some $w'$ such that $w R_{\alpha_i} w'$, this $w'$ need not be the same in each case. 
+Even, then, if the logic governing each $B_{\alpha_i}$ includes the principle (D), it doesn't follow this will be a principle governing $D_\alpha$.
+Even, then, if each individual's beliefs are consistent, the distributed beliefs of the group need not be.
+
+
+
+\subsection{Some Remarks on the Interpretation of the Formalism}\label{caie-section1-5}
+
+So far, we've been assuming that our doxastic models represent the doxastic states of certain \textit{idealized} agents.
+And, as we've noted, there is a standard assumption in the literature that the logic governing such states is KD45.
+It would, however, be a mistake, I think, to take there to be a substantive question of whether or not the logic governing idealized doxastic states \textit{really} is KD45 or some other logic.
+Instead, I think it is much more natural to think of these principles as simply \textit{codifying} a certain idealization. 
+On this view, then, there are various types of idealized doxastic states that we might investigate.
+For example, we might consider those doxastic states that can be represented by some model in $\mathcal{K}$.
+Doxastic states of this type would be logically omniscient and closed under logical consequence, but perhaps not consistent or perhaps not positively or negatively transparent.
+Or we might consider those doxastic states that can be represented by some model in $ \mathcal{K} \cap \mathcal{D} \cap \mathcal{K}_4$.
+Doxastic states of this type would be logically omniscient, closed under logical consequence, consistent and positively transparent, but not negatively transparent.
+And so on.
+Now different types of idealized doxastic states may be useful or illuminating for different purposes, but it seems implausible to me that any one of these idealizations stands out as being of significantly greater theoretical importance than all of the others.
+
+One might, however, endorse the bolder hypothesis that our doxastic models are, in fact, intended to represent necessary features of any possible doxastic state.
+Given this view, the question of whether such models are appropriate and, if so, which constraints should be endorsed, becomes a substantive question.
+Some have, indeed, argued that the nature of doxastic states makes it the case that they may be represented by models in $\mathcal{K}$.\footnote{See e.g., \citet{Stalnaker2}, \citet{Lewis4}, and \citet{Lewis5}. Both Stalnaker and Lewis, however, recognize that there must be a sense in which agents may have contradictory beliefs or fail to have beliefs that are closed under logical consequence. \citet{Lewis6} argues that we may think of an agent's doxastic state as consisting of various fragments, where each fragment may be represented by a possible worlds model. An agent, then, may have inconsistent beliefs by having fragments that disagree, and the agent may have beliefs that fail to be logically closed by believing, say, $\phi$ relative to one fragment and $\phi \rightarrow \psi$ relative to another, but not believing $\psi$ relative to any fragment.}
+Others have argued that the nature of doxastic states makes it the case that principles such as (B$_4$) and (B$_5$) will be satisfied and so models in $\mathcal{K}_4$ or $\mathcal{K}_5$ may serve to represent such states.\footnote{See, for example, \citet{Shoemaker2,Shoemaker1} for arguments that, at least in certain cases, positive introspection should hold as a constitutive matter.}
+These claims, however, are quite controversial, and it would take us too far afield now to assess their plausibility.\footnote{The arguments in \citet{Williamson4}, for example, put serious pressure on the idea that the transparency principles (B$_4$) and (B$_5$) will hold for actual agents.}
+Suffice it to say, there are certain accounts of the nature of doxastic states according to which such states may in fact be accurately represented by the sorts of models we've been considering, while, according to other accounts, certain doxastic states---indeed the types of doxastic states that actual agents tend to have---cannot be accurately represented by the sorts of models that we've been considering.
+
+A third way of interpreting our doxatic models, which should be distinguished from the first interpretation, has it that the role of this class of models is to codify certain general principles that a rational agent's doxastic state \textit{ought} to satisfy.
+Here we might profitably consider, as an analogous view, the Bayesian account of credal rationality.
+According to a subjective Bayesian, the class of probability functions defined over some algebra $\mathcal{A}$ represents the class of rationally permissible credal states defined over $\mathcal{A}$.
+Those features, then, that are common to all such functions represent rational requirements on any credal state defined over such an algebra.
+Similarly, one might hold that the class of models $\mathcal{K}$ (or the class $\mathcal{K} \cap \mathcal{D} \cap \mathcal{K}_4$ etc.) represent the class of rationally permissible doxastic states.
+Those features, then, that are common to this class, i.e., the valid formulas given the class of models, represent, on this view, rational requirements on any doxastic state.
+
+Now this view may seem to be a mere notational variant on the first interpretation.
+However, concluding this would, I think, be a mistake.
+What an actual agent ought to believe and what an idealized agent would believe are not the same thing.
+Here's a somewhat facile, but I think sufficiently instructive example that illustrates this point.
+An idealized agent would, plausibly, believe that they are idealized.
+However, a rational agent, who is not an idealized agent, should not be rationally required to believe that they are idealized.
+Thus, a representation of what an idealized doxastic state would look like is not, thereby, a representation of what doxastic features a rational agent ought to have.
+
+The view that our doxastic models serve to codify rational requirements on doxastic states, again, makes it a substantive question which class of Kripke models, if any, we should take as the appropriate class for formulating our doxastic logic. 
+One may, for example, maintain that doxastic states ought to be such that they're consistent and closed under logical entailment, but deny that doxastic states ought to be transparent on pain of irrationality.
+Once again, the issues here are subtle and we will simply content ourselves with flagging the issues, without making any attempt to resolve them.
+
+Having noted these three possible roles that our doxastic models may play, it is worth highlighting that different classes of models might, in fact, play different roles. 
+So, for example, one might maintain that the class $\mathcal{K}$ is the smallest class that serves to characterize how a rational agent's doxastic state ought to be.
+But one might still find it profitable to investigate what features are exhibited by the sorts of idealized doxastic states characterized by, say, $\mathcal{K} \cap \mathcal{D} \cap \mathcal{K}_4$.
+
+In what follows, I will often continue to speak as if the Kripke models, as well as other models we'll introduce, are meant to represent idealized doxastic states.
+However, in certain cases a normative or descriptive interpretation may seem more natural and so I will sometimes talk as if the models in question are meant to describe such facts.
+In each case, though, it is worth bearing in mind the alternative interpretations that are available.
+
+
+
+
+\section{Belief Revision}\label{caie-section2}
+
+So far we've seen how to represent certain features of idealized doxastic states. 
+In particular, we've seen how to represent the beliefs of an idealized doxastic agent, including beliefs about that agent's beliefs, as well as beliefs about other agents' beliefs. 
+The models that we've looked at, however, say nothing about how idealized doxastic states should change given new information.
+In this section we'll look at an influential account of belief revision called AGM.\footnote{This account developed out of \citet{AGM}. For a comprehensive survey see \citet{Gardenfors1}. See also \citet{Huber1} for a helpful treatment of this and other related material.}
+
+The basic theory of AGM consists of a set of formal postulates that serve to codify rational constraints on belief revision, expansion and contraction.
+In addition to such formal postulates, however, various authors have provided models of how functions meeting these constraints may be determined.
+We'll begin, in \autoref{caie-section2-1}, by considering the basic postulates of AGM.
+In \autoref{caie-section2-2}, we'll then consider some possible connections between rational belief revision, expansion and contraction.
+In \autoref{caie-section2-3}, we'll consider some models for belief revision and contraction.
+And, finally, in \autoref{caie-section2-4} we'll look at some additional postulates that have been proposed to handle the phenomenon of iterated belief revision. 
+
+
+\subsection{AGM: The Basic Postulates}\label{caie-section2-1}
+
+
+Let $\mathcal{L}$ be a set of sentences closed under the standard Boolean operators, and let $\Gamma \subseteq \mathcal{L}$ be a set of such sentences. 
+We'll denote by $Cl(\Gamma)$ the logical closure of $\Gamma$.
+In standard presentations of this theory, it is assumed that rational agents have belief states that can be (at least partially) modeled by logically closed sets of sentences.
+In this section, we will follow this practice as well.
+Note that this marks a departure from our treatments of belief states in the previous section, where such states were modeled as sets of possible worlds.
+We'll let $B$ be a possible belief set, i.e, a set of sentences such that $B = Cl(B)$.
+We denote the set of belief sets $\mathcal{B}$.
+
+We'll first consider the AGM postulates governing rational belief expansion.
+We let $+: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be a function mapping pairs of belief sets and sentences to belief sets.
+We'll let $B^+_\phi$ be the result of applying the function $+$ to the belief set $B$ and sentence $\phi$.
+According to AGM, rational belief expansions must satisfy the following constraints.
+
+
+\begin{itemize}
+
+%\item[B$^+_1$:] $B^+_\phi = Cl(B^+_\phi)$
+
+\item[](B$^+_1$)\quad $\phi \in B^+_\phi$.
+\item[](B$^+_2$)\quad $B \subseteq B^+_\phi$.
+\item[](B$^+_3$)\quad If $\phi \in B$, then $B = B^+_\phi$.
+\item[](B$^+_4$)\quad If $A \subseteq B$, then $A^+_\phi \subseteq B^+_\phi$.
+\item[](B$^+_5$)\quad For any operation $\#$ satisfying B$^+_1$--B$^+_4$, $B^+_\phi \subseteq B^\#_\phi$.
+
+%For every $B$ and every $\phi$, $B^+_\phi$ is the smallest set satisfying B$^+_1$-B$^+_5$
+
+\end{itemize}
+
+We can think of expansion as an operation that increases the agents belief set $B$ to accommodate belief in $\phi$.
+Then (B$^+_1$) tells us that, given this operation, $\phi$ will be a part of the resultant belief set.
+While (B$^+_2$) tells us that everything that was believed prior to the operation is believed after the operation.
+Also (B$^+_3$) tells us that, if $\phi$ is already believed, given $B$, then the expansion operation is trivial.
+Additionally (B$^+_4$) tells us that the expansion operation is monotone, i.e., that it preserves the subset relation.
+And, finally, (B$^+_5$) tells us that, in a specific sense, expansion is the most conservative operation with the preceding characteristics.
+
+It can be shown that (B$^+_1$)--(B$^+_5$) uniquely pin down the expansion operator. 
+Thus:
+\begin{quote}
+\textsc{Theorem 8.}\; A function $+$ satisfies (B$^+_1$)--(B$^+_5$) just in case $B^+_\phi = Cl(B \cup \{ \phi \}$).\footnote{See \citet{Gardenfors1}.}
+\end{quote}
+
+Next, we consider belief revision.
+We let $*: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be a function mapping pairs of belief sets and sentences to belief sets.
+According to AGM, rational belief revisions must satisfy the following constraints.
+\begin{itemize}
+\item[](B$^*_1$) \quad $\phi \in B^*_\phi$.
+\item[](B$^*_2$) \quad  $B^*_\phi \subseteq B^+_\phi$.
+\item[](B$^*_3$) \quad If $\lnot \phi \not \in B$, then $B^+_\phi \subseteq B^*_\phi$.
+\item[](B$^*_4$) \quad $B^*_\phi = \mathcal{L}$ just in case $ \models \lnot \phi$.
+\item[](B$^*_5$) \quad If $\models \phi \leftrightarrow \psi$, then $B^*_\phi = B^*_\psi$.
+\item[](B$^*_6$) \quad $B^*_{\phi \wedge \psi} \subseteq (B^*_\phi)^+_\psi$.
+\item[](B$^*_7$) \quad If $\lnot \psi \not \in B^*_\phi$, then $(B^*_\phi)^+_\psi \subseteq B^*_{\phi \wedge \psi}$.
+\end{itemize}
+
+Like expansion, we can think of revision as an operation that changes an agent's belief set $B$ to accommodate belief in $\phi$.
+Unlike expansion, though, in belief revision certain beliefs may be discarded to accommodate $\phi$.
+
+Constraint (B$^*_1$) tells us that, given this operation, $\phi$ will be a part of the resultant belief set.
+While (B$^*_2$) tells us that everything that is believed given belief revision will be believed given belief expansion.
+Also (B$^*_3$) tells us that the reverse is also true, and so expansion and revision deliver the same output, when $\phi$ is logically compatible with $B$.
+And (B$^*_4$) tell us that that the result of belief revision will be a consistent belief set just in case $\phi$ is itself logically consistent.
+Constraint (B$^*_5$) tells us that logically equivalent sentences induce the same revision operation on a belief set.
+And (B$^*_6$) tells us that everything that is believed after revising a belief set given a conjunction $\phi \wedge \psi$, will be believed after first revising the same belief set given $\phi$ and then expanding the resultant belief set given $\psi$.
+Finally, (B$^*_7$) tell us that the reverse is true, and so revising given $\phi$ and then expanding given $\psi$ delivers the same output as revising given $\phi \wedge \psi$, when $\psi$ is consistent with the result of revision given $\phi$.
+
+
+Unlike with the constraints on $+$, these constraints do \textit{not} suffice to uniquely determine the function $*$.
+Instead, there is a non-empty, non-singleton, set of functions that satisfy (B$^*_1$)--(B$^*_7$).
+
+Finally, we consider belief contraction.
+We let $-: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be a function mapping pairs of belief sets and sentences to belief sets.
+According to AGM,  rational belief contractions must satisfy the following constraints.
+\begin{itemize}
+\item[](B$^-_1$) \quad $B^-_\phi \subseteq B$.
+\item[](B$^-_2$) \quad If $\phi \not \in B$, then $B^-_\phi = B$.
+\item[](B$^-_3$) \quad If $\not \models \phi$, then $\phi \not \in B^-_\phi$.
+\item[](B$^-_4$) \quad If $\phi \in B$, then $B \subseteq (B^-_\phi)^+_\phi$.
+\item[](B$^-_5$) \quad If $\models \phi \leftrightarrow \psi$, then $B^-_\phi = B^-_\psi$.
+\item[](B$^-_6$) \quad $B^-_\phi \cap B^-_\psi \subseteq B^-_{\phi \wedge \psi}$.
+\item[](B$^-_7$) \quad If $\phi \not \in B^-_{\phi \wedge \psi}$, then $B^-_{\phi \wedge \psi} \subseteq B^-_{\phi}$.
+\end{itemize}
+
+We can think of contraction as an operation that changes an agent's belief set $B$ to accommodate the removal of a belief $\phi$.
+
+Constraint (B$^-_1$) tells us that belief contraction does not introduce any new beliefs.
+While (B$^-_2$) tells us that if the agent does not already believe $\phi$, then the result of contracting by $\phi$ leaves the agent's belief set unchanged.
+Then (B$^-_3$) tells us that if $\phi$ is not a logical truth, then $\phi$ will not be in any belief set that is contracted by $\phi$.
+And (B$^-_4$) tells us that if a belief set $B$ contains $\phi$, then the result of contracting this belief set by $\phi$ and then expanding the resulting set by $\phi$ will contain everything that is in $B$.
+Next (B$^-_5$) tells us that logically equivalent sentences induce the same contraction operation on a belief set.
+And (B$^-_6$) tells us that every belief that remains when a belief set is contracted by $\phi$ and by $\psi$ will remain when the belief set is contracted by $\phi \wedge \psi$.
+Finally, (B$^-_7$) tells us that if $\phi$ is not in the belief set that results from contracting a belief set $B$ by $\phi \wedge \psi$, then everything that results from contracting $B$ by $\phi \wedge \psi$ will be in the set that result from contracting $B$ by $\phi$.
+
+As with the constraints on $*$, these constraints do not uniquely determine the function $-$.
+Again, there is a non-empty, non-singleton set of functions that satisfy each of (B$^-_1$)--(B$^-_7$).
+
+
+\subsection{Relations Between Operations}\label{caie-section2-2}
+
+Given these rational constraints on contraction, revision and expansion, it is natural to ask what connections there might be between these three operations.
+In this section, we'll consider some possible options.
+
+So far we've been talking as if agents adopt \textit{distinct} policies of rational belief revision, contraction and expansion.
+Following \citet{Levi1}, however, one might maintain that agents only really adopt policies of contraction and expansion, and that a policy of revision is determined by the latter two policies in the following manner.
+\begin{quote}
+\textsc{Constitutive Levi Identity.}\quad $B^*_\phi =_{\text{df}} (B^-_{\lnot \phi})^+_\phi$.
+\end{quote}
+If the claim that the adoption of a rational revision policy simply consists in the adoption of rational contraction and expansion policies is to be at all plausible, it must be the case that, given the putative analysis, it is ensured that the resulting revision policy will indeed be rational given that the contraction and expansion policies are.
+The following result shows that, given the \textsc{Constitutive Levi Identity}, this is so.
+\begin{quote}
+\textsc{Theorem 9.}\; If $-$ satisfies (B$^-_1$)--(B$^-_3$) and (B$^-_5$)--(B$^-_7$), and $+$ satisfies (B$^+_1$)--(B$^+_5$), then, given the \textsc{Constitutive Levi Identity}, $*$ satisfies (B$^*_1$)--(B$^*_7$).\footnote{See \citet{Gardenfors1}, ch. 3.6.}
+\end{quote}
+
+Now even if one wants to reject the claim that the adoption of a belief revision policy simply consists in the adoption of expansion and contraction policies, one should, I think, nonetheless hold that there are important rational constraints governing which policies of belief revision, expansion and contraction an agent may simultaneously adopt.
+In particular, whether one thinks that rational belief revision should be \textit{analyzed} in terms of rational belief contraction and expansion, one should, I think, endorse the following normative constraint.
+\begin{quote}
+\textsc{Normative Levi Identity.}\; If $*$ is an agent's revision policy, $-$ her contraction policy, and $+$ her expansion policy, then the agent ought to be such that  $B^*_\phi = (B^-_{\lnot \phi})^+_\phi$.
+\end{quote}
+
+Two points are worth mentioning here.
+
+First, the \textsc{Normative Levi Identity} does, indeed, impose a substantive constraint in addition to those imposed by (B$^+_1$)--(B$^+_5$), (B$^*_1$)--(B$^*_7$), and (B$^-_1$)--(B$^-_7$).
+For there are functions $+$, $*$ and $-$ that satisfy (B$^+_1$)--(B$^+_5$), (B$^*_1$)--(B$^*_7$), and (B$^-_1$)--(B$^-_7$), respectively, but that fail to jointly satisfy the condition that $B^*_\phi = (B^-_{\lnot \phi})^+_\phi$.\footnote{This follows from the fact that there is a unique function $+$ satisfying conditions (B$^+_1$)--(B$^+_5$), together with the fact that there are multiple functions $*$ and $-$ satisfying (B$^*_1$)--(B$^*_7$), and (B$^-_1$)--(B$^-_7$) respectively.}
+%In such a case, it certainly seems that even if there is no rational criticism that can be made of each of these functions individually, the combination of such functions ought to be avoided.
+
+Second, \textsc{Theorem 9} guarantees that the constraints imposed by the \textsc{Normative Levi Identity} are, indeed, consistent with the constraints imposed by (B$^+_1$)--(B$^+_5$), (B$^-_1$)--(B$^-_7$), and (B$^*_1$)--(B$^*_7$).
+For there are functions $-$ and $+$ that satisfy the constraints imposed by (B$^-_1$)--(B$^-_7$), and  (B$^+_1$)--(B$^+_5$), and it follows from this fact, together with \textsc{Theorem 9} that, given such functions, there is a function $*$ that satisfies the constraints imposed by (B$^*_1$)--(B$^*_7$), and, in addition, is such that $B^*_\phi = (B^-_{\lnot \phi})^+_\phi$.
+
+Another option, following \citet{Harper1}, is to maintain that agents only really adopt policies of revision and expansion.
+In particular, one may maintain that an agent's policy of contraction is determined by her policy of revision as follows.
+\begin{quote}
+\textsc{Constitutive Harper Identity.}\quad $B^-_\phi =_{\text{df}} B \cap B^*_{\lnot \phi}$.
+\end{quote}
+
+If the claim that the adoption of a rational contraction policy simply consists in the adoption of a rational revision policy is to be at all plausible, it must the case that, given the putative analysis, it is ensured that the resulting contraction policy will indeed be rational given that the revision policy is.
+The following result shows that, given the \textsc{Constitutive Harper Identity}, this is so.
+\begin{quote}
+\textsc{Theorem 10.}\; If $*$ satisfies (B$^*_1$)--(B$^*_7$), then, given the \textsc{Constitutive Harper Identity}, $-$ satisfies (B$^-_1$)--(B$^-_7$).\footnote{See \citet{Gardenfors1} ch. 3.6.}
+\end{quote}
+
+
+Now, again, even if one wants to reject the claim that the adoption of a belief contraction policy simply consists in the adoption of a revision policy, one should, I think, still hold that there are important rational constraints governing which contraction and revisions policies an agent may simultaneously adopt.
+In particular, whether one thinks that rational belief contraction should be analyzed in terms of rational belief revision, one should, I think, endorse the following normative constraint:
+\begin{quote}
+\textsc{Normative Harper Identity.}\; If $*$ is an agent's belief revision policy, and $-$  her belief contraction policy, then the agent ought to be such that $B^-_\phi = B \cap B^*_{\lnot \phi}$.
+\end{quote}
+
+Two points are, again, worth mentioning here.
+
+First, the \textsc{Normative Harper Identity} provides a substantive constraint in addition to (B$^*_1$)--(B$^*_7$) and (B$^-_1$)--(B$^-_7$).
+For there are functions $*$ and $-$ that satisfy the latter constraints but for which the identity $B^-_\phi = B \cap B^*_{\lnot \phi}$ fails to hold.\footnote{This follows from the fact that there are multiple functions $*$ and $-$ satisfying (B$^*_1$)--(B$^*_7$), and (B$^-_1$)--(B$^-_7$) respectively.}
+
+Second, \textsc{Theorem 10} guarantees that the constraint imposed by the \textsc{Normative Harper Identity} is consistent with the constraints imposed by (B$^*_1$)--(B$^*_7$) and (B$^-_1$)--(B$^-_7$).
+For there is some function $*$ satisfying (B$^*_1$)--(B$^*_7$), and so, given \textsc{Theorem 10}, it follows that there is some other function $-$ satisfying (B$^-_1$)--(B$^-_7$), such that $B^-_\phi = B \cap B^*_{\lnot \phi}$.
+
+
+\subsection{AGM: Models}\label{caie-section2-3}
+
+
+Constraints (B$^-_1$)--(B$^-_7$) determine a class of rational contraction functions, while (B$^*_1$)--(B$^*_7$) determine a class of rational revision functions.
+There are, however, other ways of characterizing the classes determined by (B$^-_1$)--(B$^-_7$)  and (B$^*_1$)--(B$^*_7$).
+In particular, we can provide models of possible features of an agent's doxastic state that might serve to determine which rational revision or contraction policy she adopts, and we can show that, given certain rational constraints on such features, the classes of rationally permissible revision or contraction functions are the same classes as those determined by (B$^-_1$)--(B$^-_7$) and (B$^*_1$)--(B$^*_7$).
+
+
+\subsubsection{Sphere Systems}\label{caie-section2-3-1}
+
+We first consider a model of how an agent's doxastic state might serve to determine a rational revision policy.\footnote{See \citet{Grove1} for the initial development of this model. The model is, in certain respects, notably similar to the semantic theory for counterfactuals developed in \citet{Lewis1}.}
+In rough outline, we may think of an agent's doxastic state, in addition to determining a belief set, as also determining, for each possible belief set $B$, an ordering of plausibility amongst various maximal consistent descriptions of how the world might be.
+Given a doxastic state with such structure, we may think of the agent as adopting a revision policy such that, given a belief set $B$ and a sentence $\phi$, the resulting revised belief set is just the intersection of the most plausible maximal consistent descriptions of how the world might be that contain $\phi$.
+
+A little more pedantically: Let $\mathcal{W}$ be the set of maximal consistent subsets of $\mathcal{L}$.
+Following the literature, we'll refer to these as \textit{possible worlds}.
+It is, however, worth keeping in mind that, as sets of of sentences, these differ from the possible worlds considered in the previous section.
+For any belief set $B$, we let $\llbracket B \rrbracket = \{w \in \mathcal{W}: B \subseteq w \}$.
+And for any $P \subseteq \mathcal{W}$, we let $B_P = \cap \{w: w \in P \}$.
+
+Let \textbf{S} be a set of subsets of $\mathcal{W}$.
+We call \textbf{S} a \textit{system of spheres centered on B} just in case \textbf{S} satisfies the following conditions.
+\begin{quote}
+\textsc{Ordering.}\quad For every $S, S' \in \textbf{S}$, either $S \subseteq S'$ or $S' \subseteq S$.
+
+\textsc{Centering.}\quad $\llbracket B \rrbracket \in \textbf{S}$, and for every $S \in \textbf{S}$, $\llbracket B \rrbracket \subseteq S$.
+
+\textsc{Universality.}\quad $\mathcal{W} \in \textbf{S}$.
+
+\textsc{Limit Assumption.}\quad Let $\phi$ be a sentence. If there is some $S \in \textbf{S}$ such that $S \cap \llbracket \phi \rrbracket \neq \emptyset$, then there is some $S \in \textbf{S}$ such that (i) $S \cap \llbracket \phi \rrbracket \neq \emptyset$, and  (ii) for every $S' \in \textbf{S}$ such that $S' \cap \llbracket \phi \rrbracket \neq \emptyset$, $S \subseteq S'$.
+\end{quote}
+
+\textsc{Ordering} tells us that the members of \textbf{S} can be totally ordered by the subset relation.
+\textsc{Centering} tells us that the set of worlds that are compatible with the belief set $B$ is a member of \textbf{S} that is minimal with respect to the subset ordering on \textbf{S}.
+\textsc{Universality} tells us that the set of all worlds is itself a member of \textbf{S}.
+And, finally, the \textsc{Limit Assumption} tells us that for any sentence $\phi$ if the set of $S \in \textbf{S}$ such that $\phi$ is true at some world in $S$ is non-empty, then this set has a least element relative to the  subset ordering on \textbf{S}.
+
+If $\not \models \lnot \phi$, then we let $S_\phi$ be the smallest sphere intersecting $\phi$.
+Given \textsc{Universality} and the \textsc{Limit Assumption}, such a sphere is guaranteed to exist.
+And if $\models \lnot \phi$, then we let $S_\phi = \mathcal{W}$.
+We let $C_S(\phi) = \llbracket \phi \rrbracket \cap S_\phi$.
+
+Let $\mathcal{S}$ be a function that maps each $B \in \mathcal{B}$ to a system of spheres centered on $B$.
+Call this a \textit{sphere function}.
+We denote the sphere system determined by a sphere function $\mathcal{S}$, for some belief set $B$, by $\mathcal{S}_B$.
+Finally, let $f: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be a function such that there is some sphere function $\mathcal{S}$ such that for every $B \in \mathcal{B}$ and $\phi \in \mathcal{L}$, $f(B, \phi) = \cap C_{\mathcal{S}_B}(\phi)$.
+We call this a \textit{sphere revision function}.
+
+We can think of a sphere revision function, determined by some sphere function $\mathcal{S}$, as mapping a belief state $B$ and a sentence $\phi$ to the belief state that is determined by the worlds at which $\phi$ holds that, according to $\mathcal{S}$, are closest to $B$.
+
+More precisely, we can think of a sphere revision function, determined by some sphere function $\mathcal{S}$, as operating in the following manner.
+Given a belief set $B$ and a sentence $\phi$, we first look at the sphere system centered on $B$ determined by $\mathcal{S}$.
+Next we find the smallest sphere that is compatible with $\phi$, and consider the set of worlds within this sphere at which $\phi$ holds.
+The sphere revision function, then, returns as a belief set the set of sentences that are true at every world within this set.
+
+The following theorem shows that the adoption of a rational revision function can always be modeled in terms of the adoption of a sphere revision function determined by some sphere function $\mathcal{S}$, and that, conversely, the adoption of a sphere revision function determined by some sphere function $\mathcal{S}$ will always correspond to the adoption of a rational revision function.
+\begin{quote}
+\textsc{Theorem 11.}\; Function $f$ is a sphere revision function just in case $f$ satisfies (B$^*_1$)--(B$^*_7$).\footnote{See \citet{Grove1}.}
+\end{quote}
+
+We can support the claim that a system of spheres may be thought of as encoding a relation of doxastic plausibility as follows.
+Call a relation $\leq$ over $\mathcal{W}$ with the following properties, a $B$\textit{-plausibility ordering}.
+\begin{quote}
+\textsc{Connectivity.}\; For every $w, w' \in \mathcal{W}$, either $w \leq w'$ or $w' \leq w$.
+
+\textsc{Transitivity.}\; If $w \leq w'$ and $w' \leq w''$, then $w \leq w''$.
+
+\textsc{$\phi$-Minimality.}\; If $\llbracket \phi \rrbracket \neq \emptyset$, then $\{w \in \llbracket \phi \rrbracket: w \leq w' \text{ for all } w' \in  \llbracket \phi \rrbracket \} \neq \emptyset$.
+
+\textsc{$B$-Minimality.}\; $w \leq w'$ for all $w' \in \mathcal{W}$ just in case $w \in \llbracket B \rrbracket$.
+\end{quote}
+
+Given a  $B$-plausibility ordering $\leq$, let $S_w = \{w' \in \mathcal{W}: w' \leq w \}$.
+We let $\mathcal{S}_{\leq} = \{S_w: w \in \mathcal{W} \}$.
+It can be shown that:
+\begin{quote}
+\textsc{Theorem 12.}\; For any $B$-plausibility ordering $\leq$, $\mathcal{S}_{\leq}$ is a system of spheres centered on $B$, and for any system of spheres $\mathcal{S}$ centered on $B$, there is a unique $B$-plausibility ordering $\leq$, such that $\mathcal{S} = \mathcal{S}_{\leq}$.\footnote{See \citet{Gardenfors1}.}
+\end{quote}
+
+A system of spheres, thus, encodes an ordering over possible worlds, and it is this plausibility ordering, that, according to this model, serves to determine how a rational agent will revise her belief set $B$ given some sentence $\phi$.
+
+Given \textsc{Theorem 10}, we can also use this model to provide a model of how  an agent might adopt a rational contraction function.
+Given the adoption of a sphere revision function determined by some $\mathcal{S}$, the agent would adopt a policy of contracting a belief set $B$, given some sentence $\phi$, so that her new belief set is given by the set of sentences that are true in all and only the worlds in $C_S(\lnot \phi) \cup \llbracket B \rrbracket$.
+That is, such an agent will contract her belief set by $\phi$ by adding to the set of worlds representing this set, the most plausible $\lnot \phi$ worlds.
+Such a policy will be guaranteed to satisfy (B$^-_1$)--(B$^-_7$).
+
+
+\subsubsection{Epistemic Entrenchment}\label{caie-section2-3-2}
+
+Next, we consider a model of how an agent's doxastic state might serve to determine a rational belief contraction policy.\footnote{See \citet{GardenforsMakinson1} for this type of model.}
+In rough outline, we may think of an agent's doxastic state, in addition to determining a belief set, as also determining, for each belief set $B$, a binary relation on the set of sentences of $\mathcal{L}$ that encodes information about how epistemically entrenched such sentences are, given the belief set $B$.
+While the notion of epistemic entrenchment is best thought of as being functionally defined via its role in the following account of belief contraction, one can think of an epistemic entrenchment ordering, roughly, as corresponding to an ordering representing how committed an agent is to retaining certain beliefs, given that they have a belief set $B$.
+
+Given a doxastic state that determines an entrenchment ordering for each belief set $B$, we may think of the agent as adopting a contraction policy such that, given a belief set $B$ and a sentence $\phi$, the agent restricts $B$ to the subset of elements $\psi$ such that either $\psi$ is a theorem or $\psi \vee \phi$ is more epistemically entrenched than $\phi$.
+
+A little more pedantically: let $\leq$ be a binary relation over $\mathcal{L}$.
+We let $\phi < \psi =_{\text{df}} \phi \leq \psi \wedge \psi \not \leq \psi$. 
+We call $\leq$ a $B$-\textit{entrenchment relation} just in case it satisfies the following postulates.
+\begin{quote}
+\textsc{E1.}\; If $\phi \leq \psi$ and $\psi \leq \xi$, then $\phi \leq \xi$.
+
+\textsc{E2.}\; If $\phi \models \psi$, then $\phi \leq \psi$.
+
+\textsc{E3.}\; For all $\phi$, $\psi$, either $\phi \leq \phi \wedge \psi$ or $\psi \leq \phi \wedge \psi$.
+
+\textsc{E4.}\; If $B \neq \mathcal{L}$, then $\phi \in B$ just in case $\phi \leq \psi$, for all $\psi$.
+
+\textsc{E5.}\; If $\psi \leq \phi$, for all $\psi$, then $\models \phi$.
+\end{quote}
+
+Let $\preceq : \mathcal{B} \rightarrow \mathcal{P}(\mathcal{L} \times \mathcal{L})$ be a function that maps each $B \in \mathcal{B}$ to a binary relation over $\mathcal{L}$.
+We denote each such relation by $\preceq_B$.
+If each $\preceq_B$ is a $B$-entrenchment relation, we'll call $\preceq$ an \textit{entrenchment function}.
+Let $C_{\preceq}: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be a function such that $C_{\leq}(B, \phi) = \{\psi: \psi \in B \; \text{and either} \; \phi < \phi \vee \psi \; \text{or} \; \models \psi \}$.
+Let $f: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be a function such that there is some entrenchment function $\preceq$ such that for every $B \in \mathcal{B}$ and $\phi \in \mathcal{L}$, $f(B, \phi) = C_{\leq}(B, \phi)$.
+We call this an \textit{entrenchment contraction function}.
+
+The following theorem shows that the adoption of a rational contraction function can always be modeled in terms of the adoption of an entrenchment contraction function determined by some entrenchment function $\preceq$, and that, conversely, the adoption of an entrenchment contraction function determined by some some entrenchment function $\preceq$ will always correspond to the adoption of a rational contraction function.
+\begin{quote}
+\textsc{Theorem 13.}\; Function $f$ is an entrenchment contraction function just in case $f$ satisfies (B$^-_1$)--(B$^-_7$).\footnote{See \citet{GardenforsMakinson1}.}
+\end{quote}
+
+Given \textsc{Theorem 9}, we can also use this model to provide a model of how  an agent might adopt a rational revision function. 
+Given the adoption of an entrenchment contraction function determined by some $\preceq$, the agent would adopt the policy of revising a belief set $B$ given $\phi$, by first contracting $B$ to the subset of elements $\psi \in B$ such that either $\psi$ is a theorem or $\psi \vee \lnot \phi$ is more epistemically entrenched that $\lnot \phi$, and then expanding the resulting set by $\phi$.
+Such a policy will be guaranteed to satisfy (B$^*_1$)--(B$^*_7$).
+
+
+\subsection{Iterated Belief Revision}\label{caie-section2-4}
+
+If an agent has adopted a revision policy $*$ satisfying (B$^*_1$)--(B$^*_7$),  then not only is it determined how the agent should revise her current belief set $B$, given some information $\phi$, but it is also determined how the agent should revise this new belief set, given additional information $\psi$.
+For a revision policy satisfying (B$^*_1$)--(B$^*_7$) determines how any belief set should be revised given any piece of information.
+It has, however, been suggested that the AGM postulates provide implausible results when we consider which patterns of iterated belief revision they count as rationally permissible and rationally mandated.\footnote{See, for example, \citet{Boutilier1}, \citet{DarwichePearle}, and \citet{Stalnaker1}.}
+In response to these putative problems, various emendations of, or additions to, the AGM postulates have been suggested.
+In this section, we'll consider some putative problems with iterated belief revision that arise for AGM and look at a few solutions that have been suggested.
+
+
+
+\subsubsection{Problems with Iterated Belief Revision in AGM}\label{caie-section2-4-1}
+
+There are two types of problems that the AGM revision postulates have been thought to have with iterated belief revision.
+On the one hand, the AGM revision postulates have been thought to be too permissive, vindicating as rational certain patterns of iterated belief revision that would seem to be irrational.
+On the other hand, the AGM revision postulates have been thought to be too restrictive, ruling out as irrational certain patterns of iterated belief revision that would seem to be rational.
+Let me say a bit more about each of these worries in turn.
+
+
+
+The first problem stems from the fact that (B$^*_1$)--(B$^*_7$) put very few constraints on iterated belief revision.
+To see this, let $b$ be some particular belief set.
+We'll, then, let ($b^*_1$)--($b^*_7$) be the postulates that result from (B$^*_1$)--(B$^*_7$) by saturating the variable $B$ ranging over elements of $\mathcal{B}$ with the particular element $b \in \mathcal{B}$.
+Then ($b^*_1$)--($b^*_7$) provide constraints on a function $b*: \mathcal{L} \rightarrow \mathcal{B}$ mapping sentences to belief sets.
+In particular, they provide constraints on functions that tell us how the belief set $b$ should be revised given new information.
+Call such a function a \textit{$b$-revision function}.
+\begin{quote}
+\textsc{Def.}\; For any function $f: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$, let $f^b$ be the function such that $< l_x, b_y > \; \in f^b \leftrightarrow \; < b, l_x, b_y > \; \in f$.
+
+\textsc{Def.}\; For any function $f: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$, and any function $g: \mathcal{L} \rightarrow \mathcal{B}$, let $f/g_b: \mathcal{B} \times \mathcal{L} \rightarrow \mathcal{B}$ be the function such that if $b_x \neq b$, then $< b_x, l_y, b_z > \; \in f \leftrightarrow \; < b_x, l_y, b_z > \; \in f/g_b$, while $< b, l_y, b_z > \; \in f/g_b \leftrightarrow \; <  l_y, b_z > \in g$.
+\end{quote}
+
+We can think of $f^b$ as the $b$-revision function determined by the revision function $f$.
+And we can think of $f/g_b$ as the revision function that results from swapping $g_b$ for the $b$-revision function determined by $f$.
+We, then, have the following results.
+\begin{itemize}
+\item For any $f$ satisfying (B$^*_1$)--(B$^*_7$) and any $b \in \mathcal{B}$, $f^b$ will satisfy ($b^*_1$)--($b^*_7$).
+\item For any $g$ satisfying ($b^*_1$)--($b^*_7$), and any $f$ satisfying (B$^*_1$)--(B$^*_7$), $f/g_b$ will also satisfy (B$^*_1$)--(B$^*_7$).
+\end{itemize}
+What this shows is that functions satisfying (B$^*_1$)--(B$^*_7$) can be thought of as the result of freely choosing, for each $b \in \mathcal{B}$, some function satisfying ($b^*_1$)--($b^*_7$).
+Thus (B$^*_1$)--(B$^*_7$) allow us to mix-and-match $b$-revision functions as we like.
+
+This degree of freedom, however, has problematic consequences.
+For a $b$-revision function $f: \mathcal{L} \rightarrow \mathcal{B}$ can be seen as encoding  \textit{conditional beliefs}. 
+We'll say that the conditional belief $\phi | \psi$ is accepted by $f$ just in case $\phi \in f(\psi)$.
+The fact that (B$^*_1$)--(B$^*_7$) allow for arbitrary mixing and matching of $b$-revision functions, shows that (B$^*_1$)--(B$^*_7$) impose almost no constraints on which conditional beliefs an agent should maintain or give up when changing her belief set in light of some new information.
+
+Here's an example that illustrates the problem.\footnote{This type of example and others may be found in \citet{DarwichePearle}.}
+
+
+\begin{quote}
+
+\textsc{Flying Bird.} You initially believe of some animal in the distance that it's neither a bird, $\lnot B$, nor can it fly, $\lnot F$.
+You, however, have the conditional belief that it can fly, given that it's a bird, $F | B$.
+That is, you are disposed to come to believe that the animal can fly, were you to learn that it's a bird.
+Now you learn that the animal can indeed fly, and as a result you give up the conditional belief $F | B$, and form the conditional belief $\lnot F | B$.
+\end{quote}
+
+This sort of transition will seem to many to be irrational.
+Learning that the consequent of a conditional belief is true would seem to provide no evidence against that conditional belief.
+However, this transition will be sanctioned as rationally permissible given (B$^*_1$)--(B$^*_7$).
+Examples such as this have convinced a number of authors that further constraints, in addition to (B$^*_1$)--(B$^*_7$), are required to adequately constrain rational revision functions. 
+
+To see why one might think that (B$^*_1$)--(B$^*_7$) are not only too permissive but also too restrictive, note that if an agent adopts a revision policy  satisfying (B$^*_1$)--(B$^*_7$), then which belief set she should have, given some information $\phi$, is a function of her current belief set.
+This, however, has the following consequence.
+Given the adoption of a revision policy satisfying (B$^*_1$)--(B$^*_7$), an agent who starts out with a belief set $B$ and who then receives a series of information $\psi_1, \psi_2,\ldots,\psi_3$ that she uses to successively revise her beliefs and who, as a result, winds up, again, with belief set $B$, is rationally required to revise this belief set given some information $\phi$ in exactly the same manner as she would have revised this belief set, given $\phi$, prior to receiving the series of information $\psi_1, \psi_2,\ldots,\psi_3$.
+One might, however, think that a series of information that would ultimately leave an agent's belief set unchanged could rationally lead to a change in the agent's conditional beliefs.\footnote{For worries in this vicinity see \citet{Levi2} and \citet{DarwichePearle}.}
+This sort of change, however, is ruled out as irrational by the AGM postulates.
+
+
+
+\subsubsection{Iterated Belief Revision Functions}\label{caie-section2-4-2}
+
+We'll first consider an amendment to the AGM account of rational revision that is meant to address the first problem.
+We'll, then, consider an alternative amendment that addresses both the first and the second problem.
+
+In response to worries about the excessive permissiveness of AGM, \citet{Boutilier1} proposes a much more restricted account of rational belief revision.
+Perhaps the simplest way to present the account is by appeal to Grove's model in which a revision policy is represented by a set of total pre-orders over the space of possible worlds.
+
+Let $\preceq$ be a function mapping each $B$ to a $B$-plausibility ordering $\preceq_B$.
+As we noted earlier, each function satisfying (B$^*_1$)--(B$^*_7$) may be represented by some such function $\preceq$.
+For each $B$, let $C(B, \phi) = \{w: \phi \in w \; \text{and} \; w \preceq_B w', \;\text{for each} \; w' \; \text{such that} \; \phi \in w' \}$.
+\citet{Boutilier1} suggests that in order for $\preceq$ to represent a rational revision function, in addition to each $\preceq_B$ being a $B$-plausibility ordering, it must also satisfy the following.
+\begin{quote}
+\textsc{Boutilier's Constraint.}\; $\preceq_{C(B, \phi)}$ must be such that for all $w, w' \not \in C(B, \phi)$, $w \preceq_{C(B, \phi)} w'$ just in case $w \preceq_{B} w'$.
+\end{quote}
+The idea here is that a rational agent, in revising her beliefs in response to some information $\phi$, should adjust her plausibility ordering over worlds in such a way that the most plausible $\phi$-worlds are ranked highest in her new plausibility ordering but otherwise leaves the plausibility ordering amongst worlds untouched.
+An agent who adjusts her belief state in this manner will effectively make the minimal adjustments to her conditional beliefs as is necessary in order to accommodate $\phi$.
+
+It is easy enough to see that the constraints that \citet{Boutilier1} suggests rule out as irrational the problematic case of revision in \textsc{Flying Bird}.
+It has been argued, however, that Boutiller's account of belief revision demands that too many conditional beliefs be preserved, and that this has undesirable consequences about when an agent may be rationally required to give up certain beliefs. \citet{DarwichePearle} give the following example.
+\begin{quote}
+\textsc{Sequential Red Bird.}\; You are initially uncertain about whether a certain animal is a red, $R$, or is a bird, $B$.
+You then get information that the animal is a bird, $B$.
+Then you get information, from a different source, that the animal is red, $R$.
+However, further consultation with an expert indicates that, in fact, the first piece of evidence was wrong and, in fact, the animal is not a bird, $\lnot B$.
+As a result, you wind up believing that the animal is not a bird, $\lnot B$, but that the animal is red, $R$.
+\end{quote}
+Intuitively, this process of revision would seem to be perfectly rational.
+The constraints on revision proposed by \citet{Boutilier1}, however, deem this process of revision irrational.
+To see this, consider the following model.
+Let $w_1 = R \wedge B$, $w_2 = \lnot R \wedge B$, $w_3 = R \wedge \lnot B$ and $w_4 =  \lnot R \wedge \lnot B$.
+At $t_1$, your plausibility ordering is such that:
+\begin{quote}
+($t_1$)\quad $w_1 = w_2 = w_3 = w_4$.
+\end{quote}
+Upon getting the information $B$, at $t_2$ you minimally adjust your ordering, in accord with the Boutillier model, so that: 
+\begin{quote}
+($t_2$)\quad $w_1 = w_2 < w_3 = w_4$.
+\end{quote}
+Then, at $t_3$, upon getting the information $R$, you again minimally adjust your ordering so that: 
+\begin{quote}
+($t_3$)\quad $w_1 < w_2 < w_3 = w_4$.
+\end{quote}
+Finally, upon getting the information $\lnot B$, you once again minimally adjust your plausibility ordering, so that at $t_4$ we have:
+\begin{quote}
+($t_4$)\quad $w_3 = w_4 < w_1 < w_2$.
+\end{quote}
+And so, what we find is that, upon making these minimal adjustments, you will fail to believe $R$, since this is a proposition that is false at some world that is amongst the most plausible according to your plausibility ordering at $t_4$.
+
+The problem may be diagnosed as follows.
+When you start out uncertain about $R$ and $B$, you lack the conditional belief $R | \lnot B$.
+For, in your state at the time, you would not come to believe that the animal is red if you were to learn that the animal is not a bird.
+On the Boutillier model, however, when you get information $\phi$, you should minimally adjust your conditional beliefs, i.e., you should only change your conditional beliefs insofar as such a change is forced on you by taking what were previously the most plausible $\phi$-worlds to now be the most plausible worlds tout court.
+Since coming to believe $B$  and then $R$ does not force one to accept the conditional belief $R | \lnot B$, the Boutillier model requires that you continue to lack the conditional belief $R | \lnot B$.
+And so, when you come to believe $\lnot B$, since you lack the appropriate conditional belief that would sanction your continuing to believe $R$, you must give up this belief.
+
+The point that would seem to clearly emerge from this type of example is that if we want to allow that an agent may rationally preserve certain beliefs that she forms over time, we need to allow the agent to adjust her conditional beliefs in certain non-minimal ways that are precluded given the Boutillier model.
+
+In response to the problems of iterated revision faced, on the one hand, by \citet{AGM}, and, on the other hand, by \citet{Boutilier1}, \citet{DarwichePearle} offer an alternative account of iterated revision.
+Their account is intended to offer stricter constraints on iterated belief revision than those imposed by \citet{AGM}, while allowing for certain permissible variations in how an agent's conditional beliefs may be updated over time that are ruled out by \citet{Boutilier1}.
+In addition, their theory is designed to accommodate the second worry about iterated belief revision for AGM considered in \autoref{caie-section2-4-1}.
+
+According to \citet{DarwichePearle}, belief revision should not be thought of, fundamentally, in terms  mapping one belief \textit{set} to another.
+Instead, belief revision should be thought of as mapping one belief \textit{state} to another, where a belief state here is something that determines a belief set but, in addition, encodes information about the agent's conditional beliefs.
+We can model such a state as a plausibility ordering over the set of possible worlds.\footnote{We can, of course, think of the acceptance of a belief revision function on the AGM picture as adopting a policy for mapping one belief state to another. However, importantly, on the AGM account all that matters for this mapping is what the belief set looks like.}
+
+Let $\mathcal{G}$ be the set of belief states.
+For each $G \in \mathcal{G}$, we'll let $\text{\textit{Bel}}(G)$ be the belief set determined by $G$.
+Let $\circ: \mathcal{G} \times \mathcal{L} \rightarrow \mathcal{G}$, be a function mapping pairs of belief states and sentences to belief states.
+Paralleling the AGM postulates, Darwiche and Pearle suggest the following constraints for such a function.
+\begin{itemize}
+\item[](G$^\circ_1$) \quad $\phi \in \text{\textit{Bel}}(G^\circ_\phi)$.
+\item[](G$^\circ_2$) \quad $\text{\textit{Bel}}(G^\circ_\phi) \subseteq \text{\textit{Bel}}(G)^+_\phi$.
+\item[](G$^\circ_3$) \quad If $\lnot \phi \not \in \text{\textit{Bel}}(G)$, then $\text{\textit{Bel}}(G)^+_\phi \subseteq \text{\textit{Bel}}(G^\circ_\phi)$.
+\item[](G$^\circ_4$) \quad $\text{\textit{Bel}}(B^\circ_\phi) = \mathcal{L}$ just in case $ \models \lnot \phi$.
+\item[](G$^\circ_5$) \quad If $\models \phi \leftrightarrow \psi$, then $G^\circ_\phi = G^\circ_\psi$.
+\item[](G$^\circ_6$) \quad $\text{\textit{Bel}}(G^\circ_{\phi \wedge \psi}) \subseteq \text{\textit{Bel}}(G^\circ_\phi)^+_\psi$.
+\item[](G$^\circ_7$) \quad If $\lnot \psi \not \in \text{\textit{Bel}}(G^\circ_\phi)$, then $\text{\textit{Bel}}(G^\circ_\phi)^+_\psi \subseteq \text{\textit{Bel}}(G^\circ_{\phi \wedge \psi})$.
+\end{itemize}
+In addition, however, Darwiche and Pearle also propose the following constraints.
+\begin{itemize}
+\item[](G$^\circ_8$) \quad If $\phi \models \psi$, then $\text{\textit{Bel}}((G^\circ_\psi)^\circ_\phi) = \text{\textit{Bel}}(G^\circ_\phi)$.
+\item[](G$^\circ_9$) \quad If $\phi \models \lnot \psi$, then $\text{\textit{Bel}}((G^\circ_\psi)^\circ_\phi) = \text{\textit{Bel}}(G^\circ_\phi)$.
+\item[](G$^\circ_{10}$) \quad If $\text{\textit{Bel}}(G^\circ_\phi) \models \psi$, then $\text{\textit{Bel}}((G^\circ_\psi)^\circ_\phi) \models \psi$.
+\item[](G$^\circ_{11}$) \quad If  $\text{\textit{Bel}}(G^\circ_\phi) \not \models \lnot \psi$, then $\text{\textit{Bel}}((G^\circ_\psi)^\circ_\phi) \not \models \lnot \psi$.
+\end{itemize}
+
+
+\citet{DarwichePearle} then show how revision functions satisfying these constraints may be modeled. 
+Let $\preceq$ now be a function that maps each \textit{belief state} G to a total pre-order on the set of possible worlds $\preceq_G$. 
+(Again we'll think of possible worlds as maximal consistent sets of $\mathcal{L}$.)
+We let $w_1 \prec_G w_2 =_{\text{df}} w_1 \preceq_G w_2 \; \text{and} \; w_2 \not \preceq_G w_1$.
+%Let $f: \mathcal{G} \times \mathcal{L} \rightarrow \mathcal{G}$.
+\begin{quote}
+\textsc{Def.}\; We say that $\preceq$ is a \textit{faithful assignment} just in case:
+\begin{itemize}
+\item[(i)] if $\text{\textit{Bel}}(G) \subseteq w_1 \; \text{and} \; \text{\textit{Bel}}(G) \subseteq w_2$, then $w_1 \preceq_G w_2$ and $w_2 \preceq_G w_1$;
+\item[(ii)] $\text{\textit{Bel}}(G) \subseteq w_1,  \text{\textit{Bel}}(G) \not \subseteq w_2$, then $w_1 \prec_G w_2$.
+%\item[(iii)] If $G_1 = G_2$, then $\preceq_{G_1} = \preceq_{G_2}$
+\end{itemize}
+\end{quote}
+
+Let $f: \mathcal{G} \times \mathcal{L} \rightarrow \mathcal{G}$.
+We again let $B_P = \cap \{w: w \in P \}$, given a set of worlds $P$.
+And for each $G \in \mathcal{G}$, and each $\preceq$ we let $C_\preceq(G, \phi) = \{w: \phi \in w \; \text{and} \; w \preceq_G w', \;\text{for each} \; w' \; \text{such that} \; \phi \in w' \}$.
+\citet{DarwichePearle} show:
+\begin{quote}
+\textsc{Theorem 14.}\; Function $f$ satisfies (G$^\circ_1$)--(G$^\circ_7$) just in case there exists a faithful assignment $\preceq$ such that $\text{\textit{Bel}}(G^f_\phi) = B_{C_\preceq(G, \phi)}$.
+\end{quote}
+In addition, \citet{DarwichePearle} show:
+\begin{quote}
+\textsc{Theorem 15.}\;  If $f$ satisfies (G$^\circ_1$)--(G$^\circ_7$), then $f$ satisfies (G$^\circ_8$)--(G$^\circ_{11}$) just in case $f$ and any corresponding faithful assignment $\preceq$ such that $\text{\textit{Bel}}(G^f_\phi) = B_{C_\preceq(G, \phi)}$ satisfy:
+\begin{itemize}
+\item[(iii)] if $\phi \in w_1$ and $\phi \in w_2$, then $w_1 \preceq_{G} w_2$ if and only if $w_1 \preceq_{G^f_\phi} w_2$;
+\item[(iv)]  if $\lnot \phi \in w_1$ and $\lnot \phi \in w_2$, then $w_1 \preceq_G w_2$ if and only if $w_1 \preceq_{G^f_\phi} w_2$;
+\item[(v)] if $\phi \in w_1$ and $\lnot \phi \in w_2$, then if $w_1 \prec_G w_2$, then $w_1 \prec_{G^f_\phi} w_2$;
+\item[(vi)] if $\phi \in w_1$ and $\lnot \phi \in w_2$, then if $w_1 \preceq_G w_2$, then $w_1 \preceq_{G^f_\phi} w_2$.
+\end{itemize}
+\end{quote}
+
+Given \textsc{Theorem 14} and \textsc{Theorem 15}, we can think of an agent's belief state as being representable by a total pre-order over the space of possible worlds, while the agent's rational revision policy may be represented as a function mapping a pair of such a pre-order and a sentence to another pre-order.
+A rational revision policy will be representable by a function, $\circ$, that maps each such pre-order, $G$, and each sentence, $\phi$, to a pre-order $G^\circ_\phi$, such that:
+\begin{itemize}
+\item the minimal worlds in $G^\circ_\phi$ are the minimal $\phi$-worlds in $G$;
+\item the ordering amongst the $\phi$-worlds in $G^\circ_\phi$ is exactly the ordering of the $\phi$-worlds in $G$;
+\item the ordering amongst the $\lnot \phi$-worlds in $G^\circ_\phi$ is exactly the ordering of the $\lnot \phi$-worlds in $G$;
+\item any strict or weak preference for a $\phi$-world $w_1$ over a $\lnot \phi$-world $w_2$ in $G$ is preserved in $G^\circ_\phi$.
+\end{itemize}
+
+Note, however, that the Darwiche and Pearl's account does not require that strict or weak preferences for $\lnot \phi$-worlds over $\phi$-worlds, given $G$, be preserved in $G^\circ_\phi$.
+More specifically, unlike on the Boutillier model, the Darwiche and Pearl account allows that a $\phi$-world $w_1$, which is non-minimal in $G$ and which may not be strictly preferable to some $\lnot \phi$-world $w_2$ may be strictly preferable to $w_2$ relative to $G^\circ_\phi$.
+And this allows Darwiche and Pearl to deal with the problematic case \textsc{Sequential Red Bird}.
+
+Again let $w_1 = R \wedge B$, $w_2 = \lnot R \wedge B$, $w_3 = R \wedge \lnot B$ and $w_4 =  \lnot R \wedge \lnot B$.
+At $t_1$, your plausibility ordering is such that:
+\begin{quote}
+($t'_1$) \quad $w_1 = w_2 = w_3 = w_4$.
+\end{quote} 
+And, again, given the Darwiche and Pearl model, upon getting the information $B$, at $t_2$ you will adjust your ordering so that: 
+\begin{quote}
+($t'_2$) \quad $w_1 = w_2 < w_3 = w_4$.
+\end{quote}
+At $t_3$, however, upon getting the information $R$, the Darwiche and Pearl model allows you to adjust your ordering such that:
+\begin{quote}
+($t'_3$) \quad $w_1 < w_2 < w_3 < w_4$.
+\end{quote} 
+Compare this to the ordering that is required by the Boutillier model: $w_1 < w_2 < w_3 = w_4$.
+The key difference here is that, upon getting the information $R$, \citet{Boutilier1} requires that you only promote the most plausible $R$-world.
+\citet{DarwichePearle}, however, allows that each of the $R$-worlds may be promoted.
+And, given the ordering $w_1 < w_2 < w_3 < w_4$, upon getting the information $\lnot B$ at $t_4$ you will adjust your ordering so that: 
+\begin{quote}
+($t'_4$) \quad $w_3 < w_4 < w_1 < w_2$. 
+\end{quote} 
+And so what we find is that at the end of this process you will believe $\lnot B$ and you will believe $R$.
+
+The postulates proposed in \citet{DarwichePearle}, however, are not without problems.
+In particular, (G$^\circ_9$) would seem to be subject to potential counterexamples.
+Thus consider the following case:\footnote{See, e.g., \citet{Stalnaker1} for this type of example.}
+\begin{quote}
+\textsc{Conjunctive Red Bird.} You are initially uncertain about whether a certain animal is a red, $R$, or is a bird, $B$.
+Moreover you start out assuming that information about whether or not the animal is a bird, gives you no information about the animal's color.
+In particular, you do not have the conditional belief $R | \lnot B$.
+You then get information that the animal is a red bird, $R \wedge B$.
+However, further consultation with an expert indicates that, in fact, the animal is not a bird, $\lnot B$.
+As a result, you wind up believing that the animal is not a bird, $\lnot B$, but that the animal is red, $R$.
+\end{quote}
+Intuitively this would seem to be a rational progression of belief revision.
+This progression, however, is ruled out as irrational given (G$^\circ_9$).
+To see this, note that since $\lnot B$ is incompatible with $R \wedge B$, (G$^\circ_9$) requires that the result of your revising, given $\lnot B$, the belief state you have after incorporating $R \wedge B$, be the same as the belief state that would have resulted had you first gotten the information $\lnot B$.
+But since you start out lacking the conditional belief $R | \lnot B$, (G$^\circ_9$), then, precludes your continuing to believe $R$ once you accept $\lnot B$.
+
+The problem here would seem to be that upon getting some information, say $R \wedge B$, it may be rational for one to take various parts of that information to be independent of others in the sense that one takes it that one part is true, conditional on some other part turning out to be false.
+But (G$^\circ_9$) precludes assuming this sort of independence.
+It's hard to see, however, why such assumptions of independence should be rationally precluded.
+
+
+\section{Dynamic Doxastic Logic}\label{caie-section3}
+
+The models developed in \autoref{caie-section1} allowed us to represent an agent's beliefs, including various higher-order beliefs about the agent's own beliefs.
+Those models, however, failed to represent important features of an agent's doxastic state.
+In particular, they failed to provide any representation of an agent's conditional beliefs. 
+The AGM models, on the other hand, allowed us to capture this feature of an agent's doxastic state.
+However, the AGM models failed to provide any representation of an agent's higher-order beliefs.
+
+In this section, we'll begin by presenting models, in the style of Hintikka, that allow us to represent both an agent's unconditional beliefs and her conditional beliefs, and also allow us to represent various higher-order conditional and unconditional beliefs.
+We'll, then, consider how to add to the language dynamic operators that serve to express how an agent's beliefs, both conditional and unconditional, would be revised in light of new information.
+
+\subsection{Doxastic Plausibility Models}\label{caie-section3-1}
+
+Let $\mathcal{L}$ be a propositional language including the standard Boolean connectives.
+In addition, we'll assume that $\mathcal{L}$ contains a binary operator $B_\alpha(\cdot, \cdot)$. 
+As a notational simplification, we will write the second argument as a superscript, so that $B_\alpha(\phi, \psi) =_{\text{df}} B^\psi_\alpha \phi$.
+The intuitive gloss of $B^\psi_\alpha \phi$ will be ``Alpha believes $\phi$, conditional on $\psi$.''
+
+A \textit{plausibility model}  for $\mathcal{L}$ is a tuple $M = \langle W, \leq, \llbracket \cdot \rrbracket \rangle$.
+$W$, as before, is a set of worlds, and $\llbracket \cdot \rrbracket$ is the \textit{interpretation function} mapping propositional letters to sets of possible worlds.
+$\leq$ is a \textit{ternary} relation on $W$.
+We write this as: $w_1 \leq_w w_2$.
+The intuitive gloss on this is that, relative to Alpha's plausibility ordering in $w$, $w_1$ is at least as plausible as $w_2$.
+We assume that, for each $w$, $\leq_w$ is connected, transitive and satisfies $\phi$-minimality.
+For ease of reference, we list these conditions again.
+\begin{quote}
+\textsc{Connectivity.}\; For every $w', w'' \in \mathcal{W}$, either $w' \leq_w w''$ or $w'' \leq_w w'$.
+
+\textsc{Transitivity.}\; If $w' \leq_w w''$ and $w'' \leq_w w'''$, then $w' \leq_w w'''$.
+
+\textsc{$\phi$-Minimality.}\; For each $Q \subseteq W$ such that $Q \neq \emptyset$, $\{w' \in Q: w' \leq_w w'', \; \text{for all} \; w'' \in  Q \} \neq \emptyset$.
+\end{quote}
+
+The truth of a sentence $\phi$ at a world $w$ in a plausibility model $M$ may be defined inductively in the standard manner.
+Here we simply give the condition for $B^\psi_\alpha(\phi)$.
+\begin{quote}
+\textsc{Def.}\; $\llbracket \phi \rrbracket_m =_{\text{df}} \{w: \llbracket \phi \rrbracket_m^w = 1 \}$.
+
+\textsc{Def.}\; For each $Q \subseteq W$, we let $Min_{\leq_w}(Q) =_{\text{df}} \{w' \in Q: w' \leq_w w'', \; \text{for all} \; w'' \in  Q \}$
+\end{quote}
+We then say:
+\begin{itemize}
+\item[] $\llbracket B^\psi_\alpha \phi \rrbracket^w_m = 1$ just in case $Min_{\leq_w}(\llbracket \psi \rrbracket_m) \subseteq \llbracket \phi \rrbracket_m$.
+\end{itemize}
+
+We'll take the notion of unconditional belief to be defined in terms of conditional belief as follows:
+\begin{quote}
+\textsc{Def.}\; $B_\alpha \phi = B_\alpha^\top \phi$.
+\end{quote}
+
+Our models here, of course, look quite a lot like the Grove models from \autoref{caie-section2-3-1}. 
+There are, however, some differences that are worth highlighting.
+One, not terribly important, difference is that, in these models, we once again take possible worlds to be primitive entities, instead of maximally consistent sets of sentences.
+Another, more significant, difference is that our doxastic plausibility models, unlike the Grove models, are defined for a language with an iterable operator that expresses conditional belief.
+Our models, then, are able to represent the conditional and unconditional beliefs of an agent who has conditional and unconditional beliefs about her own conditional and unconditional beliefs.
+
+We can provide an axiomatic theory for our language $\mathcal{L}$ that is sound and complete with respect to the class of plausibility models so characterized.
+We'll call this theory $C$.
+\begin{quote}
+\textsc{Axioms of C}
+\begin{itemize}
+\item[](C$_1$) \quad $B_\alpha^\phi \phi$.
+\item[](C$_2$) \quad $(B_\alpha^\phi \psi \wedge B_\alpha^\psi \phi) \rightarrow (B_\alpha^\phi \xi \leftrightarrow B_\alpha^\psi \xi)$.
+\item[](C$_3$) \quad $(B_\alpha^{\phi \vee \psi} \phi) \vee (B_\alpha^{\phi \vee \psi} \psi) \vee (B_\alpha^{\phi \vee \psi} \xi \leftrightarrow (B_\alpha^{\phi} \xi \wedge B_\alpha^{\psi} \xi))$.
+\end{itemize}
+\end{quote}
+\begin{quote}
+\textsc{Inference Rules of C}
+\begin{itemize}
+\item[](TI) \quad  If $(\phi_1 \wedge\ldots\wedge \phi_n) \rightarrow \psi$ is a tautology, then $\vdash_{c} \phi_1 \wedge\ldots\wedge \phi_n \Rightarrow \; \vdash_{c} \psi$.\footnote{It is assumed, for both rules, that if $n = 0$, then $(\phi_1 \wedge\ldots\wedge \phi_n) = \top$, and so the conditional $(\phi_1 \wedge\ldots\wedge \phi_n) \rightarrow \psi$ is equivalent to $\psi$.}
+\item[](DWC) \quad If $\vdash_{c} (\phi_1 \wedge\ldots\wedge \phi_n) \rightarrow \psi$ then $\vdash_{c} (B_\alpha^{\xi} \phi_1 \wedge\ldots\wedge B_\alpha^{\xi}\phi_n) \rightarrow B_\alpha^{\xi} \psi$.
+\end{itemize}
+\end{quote}
+Axiom (C$_1$) tells us that, for every $\phi$, Alpha believes $\phi$ conditional on $\phi$.
+Axiom (C$_2$) tells us that if Alpha believes $\psi$ conditional on $\phi$, and $\phi$ conditional on $\psi$, then, for any $\xi$, Alpha believes $\xi$ conditional on $\phi$ just in case they believe $\xi$ conditional on $\psi$.
+Axiom (C$_3$) tells us that Alpha is such that, conditional on $\phi \vee \psi$, either they believe $\phi$, or they believe $\psi$, or, for every $\xi$, they believe $\xi$ just in case they believe $\xi$ conditional on $\phi$ and conditional on $\psi$.
+Rule (TI) tells us that the system C is closed under logical entailment.
+And, finally, (DWC) tells us that Alpha's conditional beliefs are closed under entailment given C.
+
+
+Let $\mathcal{P}$ be the set of plausibility models satisfying the constraints we've laid down.
+We, then, have the following result.
+\begin{quote}
+\textsc{Theorem 16.}\quad $\vdash_{c} \phi \Leftrightarrow \; \models_{\mathcal{P}} \phi$.\footnote{For a proof of this result see \citet{Lewis8}. Lewis' proof concerns the logic of conditionals, but the same proof applies when we replace the conditional $\phi > \psi$ with $B_\alpha^\phi(\psi)$.}
+\end{quote}
+
+As with the case of our earlier Kripke models, we can characterize subsets of $\mathcal{P}$ by imposing constraints on the plausibility relation $\leq$.
+\begin{quote}
+\textsc{Def.}\; We say that $\leq$ is \textit{minimally homogeneous} just in case for every $w$, every $z \in Min_{\leq_w}(W)$ is such that $\leq_w = \leq_z$.
+\textsc{Def.}\; We say that $\leq$ is \textit{minimally weakly homogeneous} just in case for every $w$, every $z \in Min_{\leq_w}(W)$ is such that if $w_1 \not <_w w_2$ then $w_1 \not <_z w_2$.
+\end{quote}
+
+Let $\mathcal{P}_H$ be the members of $\mathcal{P}$ such that $\leq$ is minimally homogeneous.
+And let $\mathcal{P}_{WH}$ be the members of $\mathcal{P}$ such that $\leq$ is minimally weakly homogeneous.
+Now consider the following positive and negative introspection principles.
+\begin{quote}
+(C$_4$)\quad $B_\alpha^\phi(\psi) \rightarrow B_\alpha(B_\alpha^\phi(\psi))$.
+
+(C$_5$)\quad $\lnot B_\alpha^\phi(\psi) \rightarrow B_\alpha(\lnot B_\alpha^\phi(\psi))$.
+\end{quote}
+Principle (C$_4$) tells us that if Alpha believes $\psi$ conditional on $\phi$, then Alpha believes that they believe $\psi$ conditional on $\phi$.
+And (C$_5$) tells us that if Alpha does not believe $\psi$ conditional on $\phi$, then Alpha believes that they do not believe $\psi$ conditional on $\phi$.
+
+We can show:
+\begin{quote}
+\textsc{Theorem 17.}\; Principle (C$_5$) is valid relative to the class $\mathcal{P}_{WH}$.
+\end{quote} 
+To see why this result holds, note that for there to be conditional beliefs in $z$ that are not in $w$ there need to be strict preferences amongst worlds in $z$ that are not strict preferences in $w$.
+That is, if two worlds differ only in that certain strict preferences, $w_1 <_w w_2$, relative to $w$, are weak preferences, $w_1 \leq_z w_2$ and $w_2 \leq_z w_1$, relative to $z$, then while there will be certain conditional beliefs had at $w$ that will not be had at $z$ there will be no additional conditional beliefs at $z$. 
+Thus, if, in accordance with the condition of minimal weak homogeneity, each of the most plausible worlds $z$, relative to $w$, imposes no strict preferences that are not imposed in $w$, then any conditional belief that Alpha fails to have in $w$, will also be such that Alpha fails to have it in $z$.
+And so, if $\leq$ is minimally weakly homogeneous, then, for any $w$, if Alpha fails to believe some $\phi$ conditional on $\psi$, then she will also fail to believe $\phi$ conditional on $\psi$ relative to the most plausible worlds, given $w$, and so Alpha, at $w$, will believe that she fails to believe $\phi$ conditional on $\psi$.
+
+We can also show the following.
+\begin{quote}
+\textsc{Theorem 18.}\; Principles (C$_4$) and (C$_5$) are valid relative to the class $\mathcal{P}_{H}$.
+\end{quote}
+This result should be obvious, since any two worlds $w$ and $z$, such that $\leq_w = \leq_z$, will agree about all conditional belief facts.
+It's worth, however, pointing out that there is no weaker condition on $\leq$ that will ensure the validity of (C$_4$).
+The reason for this is that if two worlds $w$ and $z$ are such that $\leq_w \neq \leq_z$, then there will be some possible assignment such that the conditional beliefs relative to $w$ will differ from those at $z$.
+To see this, assume that we have $w_1 \leq_w w_2$ and $w_1 \not \leq_z w_2$, and so $w_2 <_z w_1$. 
+Let $\phi$ and $\psi$ be atomic sentences such that $I(\phi) = \{w_1, w_2 \}$ and $I(\psi) = \{w_2\}$.
+Then, given our assumptions about $\leq$, relative to these assignments, we will have $\llbracket B_\alpha^\phi \psi \rrbracket_m^z = 1$ and $\llbracket B_\alpha^\phi \psi \rrbracket_m^w = 0$.
+Thus, minimal homogeneity is the weakest condition on $\leq$ that will ensure that, for every $w$, every conditional belief in $w$ is a conditional belief in each of the minimal worlds (relative to $w$).
+
+Our plausibility models can clearly be generalized to the multi-agent setting.
+And in such models, various conditional generalizations of the group doxastic properties of common and distributed belief can be represented.
+We won't, however, consider such models here.
+Instead, we'll move on to consider how certain dynamic operators, representing facts about how an agent's conditional beliefs would be revised given new information, may be added to our language.
+
+\subsection{Dynamic Operators}\label{caie-section3-2}
+
+Let us add to our language $\mathcal{L}$ the following binary operator $[^*_\alpha]$.
+The rough intuitive reading of $[^*_\alpha \phi] \psi$ will be ``$\psi$ holds after Alpha revises its belief state given information $\phi$.''
+A model for our augmented language will still be a tuple $M = \langle W, \leq, \llbracket \cdot \rrbracket \rangle$, with $\leq$ subject to the same constraints.
+In order to characterize truth-at-a-world for formulas of the form $[^*_\alpha \phi] \psi$, however, we first need to characterize an operation on the set of models $\mathcal{P}$.
+
+For illustrative purposes, we'll assume that rational belief revision for idealized agents works in the manner described in \citet{Boutilier1}.
+That is, given an agent with a plausibility ordering over the space of worlds, such an agent will revise their belief state, given information $\phi$, by minimally adjusting their plausibility ordering so that the order remains the same except that the most plausible $\phi$ worlds are now the most plausible worlds tout court.
+\begin{quote}
+\textsc{Def.}\; For each $w \in W$ and $Q \subseteq W$, let $C(\leq_w, Q) = \{ z \in W: z \in Q \; \text{and for all} \; x \in Q$, $z \leq_w x \}$.
+
+\textsc{Def.}\; For each $w \in W$ let $\leq^{*q}_w$ be the binary relation on $W$ such that (i) for every $z \in C(\leq_w, Q)$ and every $x \in W$, $z  \leq^{*q}_w x$, and (ii) for every $x, z \in W - C(\leq_w, Q)$ $z  \leq^{*q}_w x$ iff $z \leq_w x$.\footnote{Note that given that $\leq_w$ is transitive, connected and satisfies $\phi$-minimality, so too will $\leq^{*q}_w$.}
+\end{quote}
+
+We can now characterize the truth of a sentence $[^*_\alpha \phi] \psi$ at a world $w$ in a model $M = \langle W, \leq, \llbracket \cdot \rrbracket \rangle$. We say:
+\begin{itemize}
+\item[] $\llbracket [^*_\alpha \phi] \psi \rrbracket^w_m = 1$ iff $\llbracket \psi \rrbracket^w_{m'} = 1$, where $M' = \langle W, \leq', \llbracket \cdot \rrbracket \rangle$ is such that for each $z \in W$ $\leq'_z = \leq^{*\llbracket \phi \rrbracket}_z$.
+\end{itemize}
+
+Operators such as $B_\alpha$ in our earlier Kripke models, or $B_\alpha^\phi$ in our current plausibility models, function by shifting the world of evaluation.
+Operator $[^*_\alpha \phi]$ is, however, quite different in nature. 
+Instead of shifting the world parameter of evaluation, $[^*_\alpha \phi]$ shifts the \textit{model} of evaluation.
+We'll call operators that have the semantic function of shifting models of evaluation in this manner \textit{dynamic operators}.
+
+It has been shown, in \citet{vanBentham}, that if we add to $C$ the following so-called reduction axioms, we get an axiomatic system that is sound and complete relative to the class of models $\mathcal{P}$ given this semantics.
+\begin{quote}
+\begin{itemize}
+\item[(C$_6$)]\quad $[^*_\alpha \phi] \psi$ for each atomic $\psi$.
+\item[(C$_7$)]\quad $[^*_\alpha \phi] \lnot \psi \leftrightarrow \lnot [^*_\alpha \phi] \psi$.
+\item[(C$_8$)]\quad $[^*_\alpha \phi] \psi \wedge \xi \leftrightarrow [^*_\alpha \phi] \psi \wedge [^*_\alpha \phi] \xi$.
+\item[(C$_9$)]\quad $[^*_\alpha \phi] B_\alpha^\psi(\xi) \leftrightarrow [(B_\alpha^\phi \lnot [^*_\alpha \phi] \psi) \wedge (B_\alpha^{[^*_\alpha \phi](\psi)} [^*_\alpha \phi]\xi)] \; \vee$
+\item[]\hfill $[(\lnot B_\alpha^\phi \lnot [^*_\alpha \phi]\psi ) \wedge (B_\alpha^{\phi \wedge [^*_\alpha \phi] \psi} [^*_\alpha \phi]\xi)]$.
+\end{itemize}
+\end{quote}
+Axiom (C$_6$) tells us that atomic statements will not change their truth-value when Alpha revises its belief state given information $\phi$.
+Axiom (C$_7$) tells us $\lnot \psi$ will hold when  Alpha revises its belief state given information $\phi$ just in case $\psi$ does not hold when Alpha revises its belief state given information $\phi$.
+Axiom (C$_8$) tells us that a conjunction will hold when Alpha revises its belief state given information $\phi$ just in case both of the conjuncts hold.
+These latter conditions are all fairly intuitive.
+Unfortunately, axiom (C$_9$) is much more unwieldy and lacks a simple intuitive gloss. 
+This principle tells us that at least one of the following two conditions must obtain.
+\begin{itemize}
+\item[(i)] Alpha believes $\xi$, conditional on $\psi$, when Alpha revises its belief state given information $\phi$ just in case, (a) conditional on $\phi$, Alpha believes that it's not the case that if they revise their belief state given $\phi$, then $\psi$ will hold, and (b) conditional on $\psi$ holding, if Alpha revises its belief state given $\phi$, then Alpha believes that if they revise their belief state given $\phi$, then $\xi$ holds.
+\item[(ii)] (a) It is not the case that, conditional on $\phi$, Alpha believes that it's not the case that, if Alpha revises their beliefs given $\phi$, then $\psi$, and (b) Alpha believes, conditional on the conjunction of $\phi$ and the claim that if Alpha revises their beliefs given $\phi$, then $\psi$ will hold, that if Alpha revises their beliefs given $\phi$, then $\xi$ will hold.
+\end{itemize}
+
+
+One thing that these reduction axioms highlight is that the addition of  $[^*_\alpha]$ to our language $\mathcal{L}$ in fact adds no real expressive power.
+For the reduction axioms show that any formula involving such an operator is equivalent to some formula that doesn't contain this operator.
+The equivalent $[^*_\alpha]$-free formulas may, however, be extremely complex.
+The introduction of $[^*_\alpha]$, then, provides a way of expressing, in a concise manner, claims that might otherwise lack a simple expression.
+
+I said earlier that the rough gloss on $[^*_\alpha \phi] \psi$ will be ``$\psi$ holds after Alpha revises its belief state given information $\phi$.''
+However, the semantics for $[^*_\alpha]$ encodes certain idealizing assumptions about what happens when an agent revises her beliefs given new information.
+In particular, the semantics we've outlined entails that if  $\phi$ is an atomic sentence, then, when an agent gets new information $\phi$, not only will the agent come to believe $\phi$, but the agent will believe that they believe $\phi$, and believe that they believe that they believe $\phi$, and so on.
+Let $B_\alpha^n$ abbreviate $n$ iterations of $B_\alpha$.
+Then, if $\phi$ is atomic, we have that, for any $n$, $\llbracket [^*_\alpha \phi] B_\alpha^n \phi \rrbracket_m^w = 1$, for all worlds $w$ and models $M$. 
+New information, at least when it concerns some atomic proposition, will, on this model, be transparent to an agent.
+
+The reason that such formulas are valid, given our semantics, is that an evaluation of the truth of $[^*_\alpha \phi] \psi$ in a model $M$ at a world $w$, requires us to assess $\psi$ at $w$ relative to a model $M'$ which differs from $M$ in that the best $\phi$-worlds relative to $\leq_w$ are the best worlds relative to each $\leq_z$.
+On this semantic theory, $[^*_\alpha \phi]$ effects a global shift on the plausibility ordering.
+In order to avoid the assumption that new information will not only be believed, but also believed to be believed etc., one would need to take the operator $[^*_\alpha \phi]$ to simply shift the the model $M$ to a model $M'$ whose plausibility ordering only differs relative to the world of evaluation $w$.
+We won't, however, look at these alternative semantic treatments here.
+
+We've seen, then, how we can introduce a dynamic operator into our language that, in a certain sense, corresponds to the belief revision policy of \citet{Boutilier1}.
+As noted earlier, though, any belief revision policy satisfying the AGM postulates can be thought of as a function mapping a belief state encoding conditional beliefs to another such state.
+Given any such policy $f$, then, we can introduce a dynamic operator $[^f]$.
+A formula of the form $[^f \phi] \psi$ will be true in a model M at a world $w$ just in case $\psi$ is true in a model $M'$ at $w$, where $M'$ is the model which shifts each $\leq_z$ to $f(\leq_z)$.
+
+The application of dynamic operators in doxastic and epistemic logic is a rapidly developing area of study.
+In addition to expressing the sorts of revision that AGM was concerned with, dynamic operators can also be used to express other sorts of doxastic and epistemic changes, such as the doxastic results of so-called public announcements, which make certain pieces of information common knowledge amongst a group of agents.
+The literature here is vast and growing, and a thorough survey is beyond the scope of this work.
+Our goal here has, instead, been to simply give a sense of how such dynamic operators function.
+The following, though, provides a small sample of work in this tradition: \citet{BaltagMoss1}, \citet{Segerberg2}, \citet{Segerberg1}, \citet{Ditmarsch2}, \citet{Baltagsmets1},  \citet{Baltagsmets3}, \citet{Rott1}, \citet{LeitgebSegerberg1}, \citet{vanBentham}, \citet{Ditmarsch1}, \citet{Baltagsmets2}, \citet{vanBentham2}  \citet{Girard1}.
+
+
+\section{Doxastic Paradoxes}\label{caie-section4}
+
+In this final section, we'll look at two doxastic paradoxes and consider, on the one hand, how some of the tools developed in the previous sections may be brought to bear to analyze these cases, and, on the other hand, how such paradoxes may serve to call into question certain assumptions made earlier about the principles governing the doxastic states of idealized agents.
+
+\subsection{Moore's Paradox}\label{caie-section4-1}
+
+As \citet{Moore1} famously noted, there is something decidedly odd about the sentence `$\phi$ and I don't believe $\phi$'.
+What is puzzling about the case is that, while claiming that $\phi$ and I don't believe $\phi$ would seem, in some way, to be incoherent, the claim itself is perfectly consistent.
+There is nothing that prevents it from being true that $\phi$ and I don't believe $\phi$. 
+
+\citet{Hintikka1} argued that the oddity of Moore paradoxical sentences such as $\phi \wedge \lnot B_\alpha \phi$ can be explained by the fact that such claims are unbelievable for agents whose doxastic states meet certain constraints. 
+Thus, let us assume that Alpha is an agent whose doxastic state is consistent, closed under logical consequence, and satisfies positive introspection.
+Given these assumptions, we can show that the following can never be true $B_\alpha(\phi \wedge \lnot B_\alpha \phi)$.
+For assume that it is.
+Then since Alpha's doxastic state is closed under logical consequence we have $B_\alpha \phi$ and $B_\alpha \lnot B_\alpha \phi$.
+And, since Alpha's doxastic state satisfies positive introspection, we have $B _\alpha B_\alpha \phi$.
+But, then, contrary to our assumption, Alpha's doxastic state is inconsistent.
+
+Besides being unbelievable for certain agents, Moore paradoxical sentences have other odd features.
+Let us assume that our agent Alpha's idealized doxastic state is consistent, logically closed, and satisfies positive and negative introspection.
+Then such an agent's doxastic state may be represented by a KD45 model.
+More specifically, we can represent the agent's doxastic state, as well as other facts about the world, by a particular point $w$ in a some KD45 model $M = \langle W, R_\alpha, \llbracket \cdot \rrbracket \rangle$.
+
+Now given an idealized agent such as Alpha, whose doxastic state may be represented by a particular point $w$ in a some KD45 model $M$, we can represent the change in such an agent's doxastic state that results from getting some true information $\phi$ by the point $w$ in a model $M_\phi$.
+In particular, let $W^\phi = W \cap \llbracket \phi \rrbracket_m$, $R_\alpha^\phi = R_\alpha \cap W^\phi \times W^\phi$, and $\llbracket \cdot \rrbracket^\phi = \llbracket \cdot \rrbracket \cap W^\phi$.
+Then the model representing Alpha's doxastic state, after Alpha has received some true information $\phi$ will be $M_\phi = \langle W^\phi, R_\alpha^\phi, \llbracket \cdot \rrbracket^\phi \rangle$.
+We can think of $M_\phi$ as the model that results when one removes from $M$ all of the worlds in which $\phi$ is false and then minimally adjusts the accessibility relation and valuation function.
+
+Interestingly, there are certain sentences $\phi$ that, while true relative to $w$ and $M$, may be false relative to $w$ and $M_\phi$.
+Indeed, there are certain sentences $\phi$ that are \textit{guaranteed} to be false relative to $w$ and $M_\phi$.
+Call such sentences \textit{self-refuting}.
+If $\phi$ is an atomic sentence, then the Moore paradoxical sentence $\phi \wedge \lnot B_\alpha \phi$ is a paradigmatic case of a self-refuting sentence.
+
+
+Let $M$ be a KD45 model and $w$ such that $\llbracket \phi \wedge \lnot B_\alpha \phi \rrbracket^w_m = 1$.
+Let $M' = M_{\phi \wedge \lnot B_\alpha \phi}$.
+Then it's guaranteed that $\llbracket \phi \wedge \lnot B_\alpha \phi \rrbracket^w_{m'}= 0$.
+For, since any world in $M$ in which $\phi$ is false makes $\phi \wedge \lnot B_\alpha \phi$ false, each $\lnot \phi$-world in $M$ will be removed from $M'$.
+But, then, since $\phi$ is atomic, it follows that $\phi$ must be true for every world in $M'$.
+But this guarantees that we have $\llbracket B_\alpha \phi \rrbracket^w_{m'} = 1$ and so $\llbracket \phi \wedge \lnot B_\alpha \phi \rrbracket^w_{m'}= 0$.
+Indeed, we can see that this reasoning establishes that, for each $w' \in W'$,  $\llbracket \phi \wedge \lnot B_\alpha \phi \rrbracket^{w'}_{m'}= 0$. 
+
+Moore paradoxical sentences, then, are not only unbelievable for certain idealized agents, they are also such that if they are true and learned to be so by such an agent then they become false.\footnote{\citet{HollidayIcard1} show that, in a certain sense, for intropective agents all self-refuting formulas are Moore paradoxical in character.}
+While Moore paradoxical sentences may be true, their truth is, in a particular manner, unstable.
+
+The fact that a Moore paradoxical sentence $\phi \wedge \lnot B_\alpha \phi$ fails to hold for each point in the model $M_{\phi \wedge \lnot B_\alpha \phi}$ is relevant for the assessment of certain principles of belief revision.
+For recall that, in AGM, it is assumed that $\phi \in B^*_\phi$.
+That is, upon revising their belief set by $\phi$, an ideal agent will believe $\phi$.
+This, of course, seems prima facie quite plausible, but Moore paradoxical sentences would seem to provide a counterexample to this claim.
+For, given that one's doxastic state upon learning $\phi \wedge \lnot B_\alpha \phi$ is represented by $M_{\phi \wedge \lnot B_\alpha \phi}$, we've seen that, upon revising one's belief set given $\phi \wedge \lnot B_\alpha \phi$, this sentence will not be believed.
+
+
+Now there are a few ways of responding to this worry.
+
+First, one could grant that this is a counter-example to (B$^*_1$) formulated as an unrestricted principle governing belief revision.
+However, one could claim that this principle, properly understood, should only apply to sentences that don't contain any belief operators.
+And, indeed, we can show that any sentence $\phi$ that doesn't contain such operators will be guaranteed to hold at any point $w$ in $M_\phi$, if it held at $w$ in $M$.\footnote{Indeed the class of formulas with this property is larger than the class of formulas lacking any belief operators. See \citet{HollidayIcard1}. So there is room to  enlarge the scope of this principle to certain sentences containing belief operators.}
+And, furthermore, as we earlier noted, the languages that the proponents of AGM initially considered simply had no resources for talking about particular agent's beliefs or revision policies.
+
+
+Another response, though, would be to argue that, properly construed, belief revision should concern \textit{propositions}.
+The correct principle in the vicinity, then, is that if one learns some proposition $\phi$, then one's revised belief state, in light of this, should include that proposition.
+One may argue, then, that if we think of the objects of belief as propositions and so revision policies as concerning which propositions one should believe, given new information, the problem for (B$^*_1$), so construed, disappears.
+For while Moore paradoxical sentences are self-refuting, Moore-paradoxical \textit{propositions} are not.\footnote{To be clear, by `proposition' I mean an \textit{eternal} proposition, i.e., something that determines a function from worlds to truth-values. The present points don't hold if one thinks that the objects of belief are temporal propositions, i.e., things that only serve to determine a function from world, time pairs to truth-values.}
+For a Moore-paradoxical proposition will be time-indexed. 
+But, if one learns between $t_1$ and $t_2$, that $\phi$ held at $t_1$ but one did not believe $\phi$, this claim will remain true and may be consistently believed at $t_2$.
+
+The AGM account of belief revision was formulated on the assumption that the objects of belief are sentences.
+Moorean phenomena, however, make it apparent that, if one wants to maintain one of the most basic principles of the theory, then the correct formulation of this theory should, instead, take the objects of belief to be propositions. 
+
+
+\subsection{The Burge-Buridan Paradox}\label{caie-section4-2}
+
+So far we've assumed that an idealized agent will have beliefs that are consistent, logically omniscient, closed under logical consequence, and that satisfy positive introspection.
+A close cousin of Moore's paradox, however, would seem to show that these constraints cannot be jointly satisfied if the expressive power of the language over which our doxastic models are defined is enriched in a certain manner.
+
+%First let me try to give you an intuitive feel for paradoxical case we'll be interested in.
+%We'll then see how the paradox can be formalized, and why it would seem to rule out certain consistent, logically closed and positively transparent doxastic states.
+
+We'll call sentences such as the following \textit{Burge-Buridan sentences}: ``I don't believe that this sentence is true.''\footnote{This type of sentence was first discussed in the modern literature in \citet{Burge2}, who attributes the paradox it raises to Buridan. For other discussion see, e.g., \citet{Burge1}, \citet{Conee1}, \citet{Sorensen1}, \citet{Caie4}, and \citet{Caie2}.} If we consider an agent who can entertain the proposition expressed by a sentence such as this, we can show, given plausible auxiliary assumptions, that this agent cannot satisfy all of the constraints we've imposed on idealized doxastic states.
+
+So far, we have been working with propositional languages.
+To treat the Burge-Buridan sentence in a formal setting, however, we need to add to our language $\mathcal{L}$ a single predicate $T(\cdot)$, as well as a single term $ \beta$.
+The intuitive interpretation of $T(\beta)$ will be that the sentence referred to by $ \beta$ is true.
+Being a sentence of our predicate language $\mathcal{L}$ may be defined in the standard manner.
+
+We will stipulate that in our language $\mathcal{L}$ the term $ \beta$ refers to the sentence $\lnot B_\alpha T(\beta)$.
+As an instance of the T-schema, then, we have:
+\begin{quote}
+(T) \quad $T(\beta) \leftrightarrow \lnot B_\alpha T(\beta)$
+\end{quote}
+
+Given a conception of logic on which the valid principles governing truth count as logical truths, it is quite plausible that (T) will count as a logical truth.\footnote{Note that this instance of the T-schema is compatible with classical logic. This is established by the model given below. Even, then, if one thinks that cases such as the Liar paradox should lead us to reject certain instances of the T-schema as invalid, we don't have similar reason to reject \textit{this} instance of the T-schema.}
+Assume, then, that our idealized agent Alpha satisfies logical omniscience.
+Then, we have $B_\alpha(T(\beta) \leftrightarrow \lnot B_\alpha T(\beta))$.
+Now we can show that Alpha's doxastic state cannot also be consistent, logically closed and satisfy positive transparency.
+Our proof will proceed by cases.
+First, assume $\lnot B_\alpha T(\beta)$.
+Then, it follows by closure that  $B_\alpha T(\beta)$ which, of course, contradicts our assumption.
+Next, assume $B_\alpha T(\beta)$.
+Then, by closure we have $B_\alpha \lnot B_\alpha T(\beta)$.
+But, by positive introspection, we also have $B_\alpha B_\alpha T(\beta)$.
+And so Alpha fails to have a consistent doxastic state.
+
+Although Alpha cannot have a doxastic state that is consistent, logically omniscient,  logically closed and positively transparent, there is no problem, in principle, with Alpha having a doxastic state that satisfies only the first three constraints. 
+To do so, we provide a model in which these properties will be satisfied. 
+
+A doxastic model for $\mathcal{L}$ is a tuple $M = \langle W, R_\alpha, D, \llbracket \cdot \rrbracket \rangle$.
+$W$ and $R_\alpha$ are the same as in our earlier propositional doxastic models, while $D$ is a set of objects, and $\llbracket \cdot \rrbracket$ is a function which assigns, to propositional letters, subsets of $W$, to singular terms, elements of $D$, and, to unary predicates, functions mapping elements of $w$ to subsets of $D$.
+Truth in such a model is defined in the obvious way.
+
+Now, let $W = \{w_1 , w_2, \}$, let $R_\alpha = \{ \langle w_1, w_2 \rangle, \langle w_2, w_1 \rangle \}$ and let $\llbracket T \rrbracket = \{ \langle w_1, \{  \beta  \} \rangle, \langle w_2, \emptyset \rangle \}$.
+Then we have $\llbracket T(\beta) \rrbracket^{w_1}_m = \llbracket \lnot B_\alpha T(\beta) \rrbracket^{w_1}_m = 1$ and $\llbracket \lnot T(\beta) \rrbracket^{w_2}_m = \llbracket B_\alpha T(\beta) \rrbracket^{w_2}_m = 1$.
+We may picture this model as in \autoref{caie-fig-2}.
+\begin{figure}
+\centering
+\begin{tikzpicture}
+
+\node[state] at (0, 0) (w1)  {{\small $w_1$}};
+\node[state] at (4, 0)  (w2)   {{\small $w_2$}};
+%\node[state] at (8, 0) (w3)  {{\tiny $w_3$}};
+
+\path[->] (w1) edge node {} (w2)
+(w2) edge node {} (w1);
+%(w2) edge node {} (w3)
+%(w3) edge node {} (w2)
+%(w1) edge [loop above] node {} (w1)
+%(w2) edge [loop above] node {} (w2)
+%(w3) edge [loop above] node {} (w3);
+
+\draw (0, -0.8) node {{\small $T(\beta), \lnot B_\alpha T(\beta)$}};
+\draw (4, -0.8) node {{\small $\lnot T(\beta), B_\alpha T(\beta)$}};
+\end{tikzpicture}
+\caption{Modeling the Burge-Buridan sentence}\label{caie-fig-2}
+\end{figure}
+
+ 
+In the model under consideration, $\llbracket  \beta  \rrbracket = \lnot B_\alpha T(\beta)$.
+This corresponds to our stipulation that the sentence of $\mathcal{L}$, $\lnot B_\alpha T(\beta)$, will be the denotation of the term $\beta$.
+Moreover, for each world $w$, $\llbracket T(\beta) \rrbracket^w_m = 1$ just in case $\llbracket \lnot B_\alpha T(\beta) \rrbracket^w_m = 1$.
+This corresponds to the assumption that the T-schema for $\beta$ is believed by Alpha to hold.
+Alpha moreover will believe all propositional logical truths, as well as any other logical truth that follows from the assumption that the T-schema holds.
+Since the relation $R_\alpha$ is serial, it follows that Alpha's doxastic state is consistent.
+And, as with any possible worlds doxastic model, Alpha's beliefs will be closed under logical consequence.
+
+Thus, while idealized agents can be consistent, logically omniscient, and have beliefs that are closed under logical consequence, they cannot always be, in addition, positively transparent.
+
+Now, there are certain ways around this result.
+For example, if we weaken our background logic governing the Boolean connectives,  then we can show that the Burge-Buridan sentences do not preclude an idealized agent from satisfying positive and negative transparency, in addition to consistency, omniscience, and logical closure.\footnote{See \citet{Caie2} for a proof of this.}
+However, in order for this to be a non-ad hoc move, the weakening of the background logic would need to be sufficiently independently motivated. 
+And whether this is so is a controversial matter.
+
+We've considered two classes of sentences, the Moore-paradoxical and the Burge-Buridan sentences.
+It's worth noting, however, that the latter class is really a subclass of the former.
+In general, a Moore-paradoxical sentence is one that has the following form $\phi \wedge \lnot B \phi$.
+A Burge-Buridan sentence, on the other hand, has the form $\lnot B T(\beta)$, where $\beta$ refers to that very sentence. 
+On the surface, of course, this does not seem to have the form of a Moore-paradoxical sentence.
+However, given the plausible assumption that $T(\beta)$ and $\lnot B T(\beta)$ are logically equivalent, then we get that $\lnot B T(\beta)$ is, in fact, equivalent to $T(\beta) \wedge \lnot B T(\beta)$.
+Thus a Burge-Buridan sentence, while not having the overt form of a Moore-paradoxical sentence, is equivalent to a Moore-paradoxical sentence.
+This sub-class of the Moore-paradoxical sentences, however, have striking consequences that other members of the class of Moore-paradoxical sentences lack.
+For it's only with these degenerate cases of Moore-paradoxicality that we find that transparency assumptions come into conflict with other plausible principles governing idealized doxastic states.
+
+
+% \begin{thebibliography}{55}
+% \providecommand{\natexlab}[1]{#1}
+% \providecommand{\url}[1]{\texttt{#1}}
+% \expandafter\ifx\csname urlstyle\endcsname\relax
+%   \providecommand{\doi}[1]{doi: #1}\else
+%   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+% \bibitem[Alchourr\'{o}n et~al.(1985)Alchourr\'{o}n, G\"{a}rdenfors, and
+%   Makinson]{AGM}
+% Carlos~E Alchourr\'{o}n, Peter G\"{a}rdenfors, and David Makinson.
+% \newblock On the logic of theory change: Partial meet contraction and revision
+%   functions.
+% \newblock \emph{Journal of Symbolic Logic}, 50:\penalty0 510--530, 1985.
+
+% \bibitem[Aumann(1976)]{Aumann2}
+% Robert Aumann.
+% \newblock Agreeing to disagree.
+% \newblock \emph{The Annals of Statistics}, pages 1236--1239, 1976.
+
+% \bibitem[Baltag and Smets(2006{\natexlab{a}})]{Baltagsmets1}
+% Alexandru Baltag and Sonja Smets.
+% \newblock Conditional doxastic models: A qualitative approach to dynamic belief
+%   revision.
+% \newblock \emph{Electronic Notes in Theoretical Computer Science},
+%   165:\penalty0 5--21, 2006{\natexlab{a}}.
+
+% \bibitem[Baltag and Smets(2006{\natexlab{b}})]{Baltagsmets3}
+% Alexandru Baltag and Sonja Smets.
+% \newblock Dynamic belief revision over multi-agent plausibility models.
+% \newblock \emph{Proceedings of LOFT}, 6:\penalty0 11--24, 2006{\natexlab{b}}.
+
+% \bibitem[Baltag et~al.(1998)Baltag, Moss, and Solecki]{BaltagMoss1}
+% Alexandru Baltag, Lawrence Moss, and Slawomir Solecki.
+% \newblock The logic of piblic announcements, common knowledge and private
+%   suspicions.
+% \newblock In \emph{Proceedings of the 7th Conference on Theoretical Aspects of
+%   Rationality and Knowledge}, pages 43--56. Morgan Kaufmann Publishers, 1998.
+
+% \bibitem[Barwise(1988)]{Barwise1}
+% Jon Barwise.
+% \newblock Three views of common knowledge.
+% \newblock In \emph{Proceedings of the 2nd Conference on Theoretical Aspects of
+%   Reasoning about Knowledge}, pages 365--379. Morgan Kaufmann Publishers Inc.,
+%   1988.
+
+% \bibitem[Beltag and Smets(2008)]{Baltagsmets2}
+% Alexandru Beltag and Sonja Smets.
+% \newblock A qualitative theory of dynamic interactive belief revision.
+% \newblock \emph{Logic and the Foundations of Game and Decision Theory},
+%   3:\penalty0 9--58, 2008.
+
+% \bibitem[Blackburn et~al.(2001)Blackburn, de~Rijke, and Venema]{Blackburn}
+% Patrick Blackburn, Maarten de~Rijke, and Yde Venema.
+% \newblock \emph{Modal Logic}.
+% \newblock Cambridge University Press, 2001.
+
+% \bibitem[Bonanno and Nehring(2000)]{Bonanno}
+% Giacomo Bonanno and Klaus Nehring.
+% \newblock Common belief with the logic of individual belief.
+% \newblock \emph{Mathematical Logic Quarterly}, 46\penalty0 (1):\penalty0
+%   49--52, 2000.
+
+% \bibitem[Boutilier(1996)]{Boutilier1}
+% Craig Boutilier.
+% \newblock Iterated revision and minimal revision of conditional beliefs.
+% \newblock \emph{Journal of Philosophical Logic}, 25:\penalty0 262--305, 1996.
+
+% \bibitem[Burge(1978)]{Burge2}
+% Tyler Burge.
+% \newblock Buridan and epistemic paradox.
+% \newblock \emph{Philosophical Studies}, 34:\penalty0 21--35, 1978.
+
+% \bibitem[Burge(1984)]{Burge1}
+% Tyler Burge.
+% \newblock Epistemic paradox.
+% \newblock \emph{Journal of Philosophy}, 81\penalty0 (1):\penalty0 5--29, 1984.
+
+% \bibitem[Caie(2011)]{Caie4}
+% Michael Caie.
+% \newblock \emph{Paradox and Belief}.
+% \newblock PhD thesis, University of California, Berkeley, 2011.
+
+% \bibitem[Caie(2012)]{Caie2}
+% Michael Caie.
+% \newblock Belief and indeterminacy.
+% \newblock \emph{The Philosophical Review}, 121\penalty0 (1):\penalty0 1--54,
+%   2012.
+
+% \bibitem[Chellas(1980)]{Chellas}
+% Brian Chellas.
+% \newblock \emph{Modal Logic: An Introduction}.
+% \newblock Cambridge University Press, 1980.
+
+% \bibitem[Colombetti(1993)]{Colombetti}
+% Marco Colombetti.
+% \newblock Formal semantics for mutual belief.
+% \newblock \emph{Artificial Intelligence}, 63\penalty0 (341-353), 1993.
+
+% \bibitem[Conee(1987)]{Conee1}
+% Earl Conee.
+% \newblock Evident, but rationally unacceptable.
+% \newblock \emph{Australasian Journal of Philosophy}, 65:\penalty0 316--326,
+%   1987.
+
+% \bibitem[Darwiche and Pearl(1997)]{DarwichePearle}
+% Adnan Darwiche and Judea Pearl.
+% \newblock On the logic of iterated belief revision.
+% \newblock \emph{Artificial Intelligence}, 89:\penalty0 1--29, 1997.
+
+% \bibitem[Fagin et~al.(1991)Fagin, Halpern, and Vardi]{Fagin}
+% Ronald Fagin, Joseph Halpern, and Moshe Vardi.
+% \newblock A model-theoretic analysis fo knolwedge.
+% \newblock \emph{Journal of ACM}, 38\penalty0 (2):\penalty0 382--428, 1991.
+
+% \bibitem[G\"{a}rdenfors(1988)]{Gardenfors1}
+% Peter G\"{a}rdenfors.
+% \newblock \emph{Knowledge in Flux: Modeling the Dynamics of Epistemic States}.
+% \newblock MIT Press, 1988.
+
+% \bibitem[G\"{a}rdenfors and Makinson(1988)]{GardenforsMakinson1}
+% Peter G\"{a}rdenfors and David Makinson.
+% \newblock Revisions of knowledge systems using epistemic entrenchment.
+% \newblock In \emph{Proceedings of the 2nd Conference on Theoretical Aspects of
+%   Reasoning about Knowledge}, pages 83--95, San Francisco, 1988. Morgan
+%   Kaufmann.
+
+% \bibitem[Girard and Rott(2014)]{Girard1}
+% Patrick Girard and Hans Rott.
+% \newblock Belief revision and dynamic logic.
+% \newblock (ms.), 2014.
+
+% \bibitem[Grove(1988)]{Grove1}
+% Adam Grove.
+% \newblock Two modellings for theory change.
+% \newblock \emph{Journal of Philosophical Logic}, 17:\penalty0 157--170, 1988.
+
+% \bibitem[Halpern and Moses(1984)]{Halpern2}
+% Joseph Halpern and Yoram Moses.
+% \newblock Knowledge and common knowledge in a distributed environment.
+% \newblock In \emph{Proceedings of the 3rd ACM Confernece on Principles of
+%   Distributed Computing}, pages 50--61, 1984.
+
+% \bibitem[Halpern and Moses(1992)]{Halpern1}
+% Joseph Halpern and Yoram Moses.
+% \newblock A guide to completeness and complexity for modal logics of knowledge
+%   and belief.
+% \newblock \emph{Artificial Intelligence}, 54\penalty0 (319-379), 1992.
+
+% \bibitem[Halpern et~al.(1995)Halpern, Moses, and Vardi]{Halpern3}
+% Joseph Halpern, Yoram Moses, and Moshe Vardi.
+% \newblock \emph{Reasoning About Knowledge}.
+% \newblock MIT Press, 1995.
+
+% \bibitem[Harper(1976)]{Harper1}
+% William Harper.
+% \newblock Rational conceptual change.
+% \newblock \emph{PSA}, 2:\penalty0 462--494, 1976.
+
+% \bibitem[Hintikka(1962)]{Hintikka1}
+% Jaakko Hintikka.
+% \newblock \emph{Knowledge and Belief: An Introduction to the Logic of the Two
+%   Notions}.
+% \newblock Cornell University Press, 1962.
+
+% \bibitem[Holliday and Icard(2010)]{HollidayIcard1}
+% Wesley~H. Holliday and Thomas~F. Icard.
+% \newblock Moorean phenomena in epistemic logic.
+% \newblock In L.~Beklemishev, V.~Goranko, and V.~Shehtman, editors,
+%   \emph{Advances in Modal Logic}, volume~8, pages 178--199, 2010.
+
+% \bibitem[Huber(2016)]{Huber1}
+% Franz Huber.
+% \newblock Ranking theory.
+% \newblock In Richard Pettigrew and Jonathan Weisberg, editors, \emph{The Open
+%   Handbook of Formal Epistemology}. 2016.
+
+% \bibitem[Hughes and Cresswell(1996)]{HughesCresswell}
+% George~Edward Hughes and Maxwell~John Cresswell.
+% \newblock \emph{A New Introduction to Modal Logic}.
+% \newblock Psychology Press, 1996.
+
+% \bibitem[Leitgeb and Segerberg(2007)]{LeitgebSegerberg1}
+% Hannes Leitgeb and Krister Segerberg.
+% \newblock Dynamic doxastic logic: Why, how and where to?
+% \newblock \emph{Synthese}, 155:\penalty0 167--190, 2007.
+
+% \bibitem[Levi(1977)]{Levi1}
+% Isaac Levi.
+% \newblock Subjunctives, dispositions and chances.
+% \newblock \emph{Synthese}, 34:\penalty0 423--455, 1977.
+
+% \bibitem[Levi(1988)]{Levi2}
+% Isaac Levi.
+% \newblock Iteration of conditionals and the ramsey test.
+% \newblock \emph{Synthese}, 76:\penalty0 49--81, 1988.
+
+% \bibitem[Lewis(1969)]{Lewis7}
+% David Lewis.
+% \newblock \emph{Convention}.
+% \newblock Cambridge University Press, 1969.
+
+% \bibitem[Lewis(1971)]{Lewis8}
+% David Lewis.
+% \newblock Completeness and decidability of three logics of counterfactual
+%   conditionals.
+% \newblock \emph{Theoria}, 37\penalty0 (1):\penalty0 74--85, 1971.
+
+% \bibitem[Lewis(1973)]{Lewis1}
+% David Lewis.
+% \newblock \emph{Counterfactuals}.
+% \newblock Harvard University Press, Cambridge, MA, 1973.
+
+% \bibitem[Lewis(1974)]{Lewis4}
+% David Lewis.
+% \newblock Radical interpretation.
+% \newblock \emph{Synthese}, 23:\penalty0 331--44, 1974.
+
+% \bibitem[Lewis(1999)]{Lewis5}
+% David Lewis.
+% \newblock Reduction of mind.
+% \newblock In \emph{Papers on Metaphysics and Epistemology}. Cambridge
+%   University Press, 1999.
+
+% \bibitem[Lewis(2000)]{Lewis6}
+% David Lewis.
+% \newblock Logic for equivocators.
+% \newblock In \emph{Papers in Philosophical Logic}. Cambridge University Press,
+%   2000.
+
+% \bibitem[Lismont and Mongin(1994)]{Lismont}
+% Luc Lismont and Philippe Mongin.
+% \newblock On the logic of common belief and common knowledge.
+% \newblock \emph{Theory and Decision}, 37:\penalty0 75--106, 1994.
+
+% \bibitem[Moore(1942)]{Moore1}
+% George~Edward Moore.
+% \newblock A reply to my critics.
+% \newblock In P.~Schilpp, editor, \emph{The Philosophy of G.E. Moore}, volume~4
+%   of \emph{The Libraray of Living Philosophers}, pages 535--677. Northwester
+%   University, 1942.
+
+% \bibitem[Rott(2006)]{Rott1}
+% Hans Rott.
+% \newblock Shifting priorities: Simple representations of twenty-seven iterated
+%   theory change operations.
+% \newblock In H.~Lagerlund, S.~Lindstrom, and R.~Sliwinski, editors,
+%   \emph{Modality Matters}, volume~53, pages 359--385. Uppsala Philosophical
+%   Studies, 2006.
+
+% \bibitem[Segerberg(1998)]{Segerberg2}
+% Krister Segerberg.
+% \newblock Irrevocable belief revision in dynamic doxastic logic.
+% \newblock \emph{Notre Dame Journal of Formal Logic}, 39:\penalty0 287--306,
+%   1998.
+
+% \bibitem[Segerberg(2001)]{Segerberg1}
+% Krister Segerberg.
+% \newblock The basic dynamic doxastic logic of agm.
+% \newblock In M.A. Williams and H.~Rott, editors, \emph{Frontiers in Belief
+%   Revision}, pages 57--84. Dordrecht: Kluwer, 2001.
+
+% \bibitem[Shoemaker(1996{\natexlab{a}})]{Shoemaker1}
+% Sydney Shoemaker.
+% \newblock On knowing one's own mind.
+% \newblock In \emph{The First-Person Perspecive and Other Essays}, pages 25--49.
+%   Cambridge University Press, 1996{\natexlab{a}}.
+
+% \bibitem[Shoemaker(1996{\natexlab{b}})]{Shoemaker2}
+% Sydney Shoemaker.
+% \newblock Moore's paradox and self-knowledge.
+% \newblock In \emph{The First-Person Perspecive and Other Essays}, pages 74--96.
+%   Cambridge University Press, 1996{\natexlab{b}}.
+
+% \bibitem[Sorensen(1988)]{Sorensen1}
+% Roy Sorensen.
+% \newblock \emph{Blindspots}.
+% \newblock Oxford University Press, 1988.
+
+% \bibitem[Stalnaker(1984)]{Stalnaker2}
+% Robert Stalnaker.
+% \newblock \emph{Inquiry}.
+% \newblock MIT Press, 1984.
+
+% \bibitem[Stalnaker(2009)]{Stalnaker1}
+% Robert Stalnaker.
+% \newblock Iterated belief revision.
+% \newblock \emph{Erkenntnis}, 70\penalty0 (2):\penalty0 189--209, 2009.
+
+% \bibitem[van Bentham(2007)]{vanBentham}
+% Johan van Bentham.
+% \newblock Dynamic logic for belief revision.
+% \newblock \emph{Journal of Applied Non-Classical Logics}, 17\penalty0
+%   (2):\penalty0 129--155, 2007.
+
+% \bibitem[van Bentham(2011)]{vanBentham2}
+% Johan van Bentham.
+% \newblock \emph{Logical Dynamics of Information and Interaction}.
+% \newblock Cambridge University Press, 2011.
+
+% \bibitem[van Ditmarsche(2005)]{Ditmarsch2}
+% Hans van Ditmarsche.
+% \newblock Prolegomena to dynamic logic for belief revision.
+% \newblock \emph{Synthese}, 147:\penalty0 229--275, 2005.
+
+% \bibitem[van Ditmarsche et~al.(2008)van Ditmarsche, van~der Hoek, and
+%   Kooi]{Ditmarsch1}
+% Hans van Ditmarsche, Wiebe van~der Hoek, and Barteld Kooi.
+% \newblock \emph{Dynamic Epistemic Logic}.
+% \newblock Springer, 2008.
+
+% \bibitem[Williamson(2000)]{Williamson4}
+% Timothy Williamson.
+% \newblock \emph{Knowledge and it's Limits}.
+% \newblock Oxford University Press, 2000.
+
+% \end{thebibliography}
