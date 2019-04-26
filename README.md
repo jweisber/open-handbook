@@ -6,12 +6,12 @@ Code for a book in progress, *The Open Handbook of Formal Epistemology*. Find th
 - "Decision Theory", by Johanna Thoma: needs final pass before page-proofs.
 - "Imprecise Probabilities", by Anna Mahtani: needs final pass before page-proofs.
 - "Primitive Conditional Probabilities", by Kenny Easwaran: no work yet.
-- "Infinitesimal Probabilities", by Sylvia Wenmackers: no work yet.
+- "Infinitesimal Probabilities", by Sylvia Wenmackers: needs final pass before page-proofs.
 - "Comparative Probabilities", by Jason Konek: no work yet.
-- "Belief Revision Theory", by Hanti Lin: no work yet.
+- "Belief Revision Theory", by Hanti Lin: needs final pass before page-proofs.
 - "Ranking Theory", by Franz Huber: needs final pass before page-proofs.
 - "Full & Partial Belief", by Konstantin Genin: no work yet.
-- "Doxastic Logic", by Michael Caie: no work yet.
+- "Doxastic Logic", by Michael Caie: needs final pass before page-proofs.
 - "Conditionals", by R. A. Briggs: needs final pass before page-proofs.
 
 To compile run `latexmk -pdf main` in the project directory.
