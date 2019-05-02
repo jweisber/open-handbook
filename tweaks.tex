@@ -46,9 +46,13 @@
   {}
 \newcommand{\citepos}[1]{\citeauthor{#1}'s (\citeyearhyper{#1})}
 
-\renewcommand\labelitemi{$\rhd$}
+\renewcommand\labelitemi{$\circ$}
 \renewcommand\labelitemii{$\diamond$}
+
+\newcommand{\given}{\mathbin{|}}
 %\usepackage{MnSymbol}
+
+\newcommand*{\definitionautorefname}{Definition}
 
 %***********
 % Mahtani 
@@ -103,6 +107,16 @@ every node/.style={text ragged, inner sep=1mm}
 %************
 
 \usepackage{commath}
+
+
+%************
+% Easwaran 
+%************
+
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
 
 
 %******
