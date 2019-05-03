@@ -144,7 +144,7 @@ At this point, we end our historical overview. Some of the more recent approache
 \parthead{II}{Mathematical preliminaries\label{part:math}}
 In this part, we will briefly review some common non-standard tools and the dual notions of filters and ideals. We will apply these notions in the ultrafilter construction of the hyperreals. We also present the axioms of standard probability theory. After that, we will be properly equipped to address infinitesimal probabilities in the context of countable lotteries as well as other cases.
 
-\section{Common non-standard tools}\label{sec:commonNStools}
+\section{Common Non-standard Tools}\label{sec:commonNStools}
 
 In this section, we review some common tools that appear in (nearly) all approaches to non-standard analysis.\footnote{For further information, see also \citet[section~1]{Benci_etal:2006a} and \citet[section~1.2]{Cutland:1983}.}
 
@@ -167,7 +167,7 @@ We assume that $\forall n \in \mathbb{N}, \ {^\ast n}=n$ and that $\mathbb{N} \n
 In the literature, two notations occur for the star map: before or after the standard object. In this chapter, I have opted for the former notation, because it allows us to read the $^\ast$-symbol as the prefix `hyper-'. For instance, ${^\ast \mathbb{R}}$ are the hyperreals.
 
 
-\subsection{Internal and external objects}\label{sec:intext}
+\subsection{Internal and External Objects}\label{sec:intext}
 
 It is important to realize that the star-map does \emph{not} produce all the objects in the superstructure of ${^\ast \mathbb{R}}$; it only maps to the internal objects, which live in  ${^\ast V}(\mathbb{R}) \subsetneq V({^\ast \mathbb{R}})$.
 
@@ -188,7 +188,7 @@ Some examples of internal objects ($\in {^\ast V}(\mathbb{R})$):
   \item the full powerset of the hyperextension of a standard, infinite set, $A$: $\mathcal{P}({^\ast A})$, which is the collection of \emph{all} subsets of ${^\ast A}$, both internal and external.
 \end{itemize}
 
-\subsection{Transfer principle}
+\subsection{Transfer Principle}
 Consider some standard objects $A_1,\ldots,A_n$ and consider a property of these objects expressed as an \textit{elementary sentence} (a bounded quantifier formula in first-order logic): $P(A_1,\ldots,A_n)$.
 Then, the \textit{Transfer} principle says:
 $$
@@ -196,20 +196,20 @@ P(A_1,\ldots,A_n) \mathrm{\ is\ true\ } \Leftrightarrow P({^\ast A}_1,\ldots,{^\
 $$
 Observe: this is an implementation of Leibniz's ``law of continuity'' (or ``\textit{souverain principe}'') in NSA \citep[see][section~4.3]{KatzSherry:2012a}. It may be helpful to consider two examples.
 
-\paragraph{Example 1: well-ordering of $\mathbb{N}$}
+\paragraph{Example 1: Well-ordering of $\mathbb{N}$}
 Consider the following sentence: ``Every non-empty subset of $\mathbb{N}$ has a least element.'' Transfer does \emph{not} apply to this, because the sentence is not elementary. Indeed, we can find a counterexample in ${^\ast \mathbb{N}}$: the set of infinite hypernatural numbers, ${^\ast \mathbb{N}} \setminus \mathbb{N}$, does not have a least element. (Of course, this is an external object.)
 
 If we rephrase the well-ordering of $\mathbb{N}$ as follows: ``Every non-empty element of $\mathcal{P}(\mathbb{N})$ has a least element,'' then we \emph{can} apply Transfer to this.
 The crucial observation to make here is that ${^\ast \mathcal{P}}(\mathbb{N}) \subsetneq \mathcal{P}({^\ast \mathbb{N}})$.
 
-\paragraph{Example 2: completeness of $\mathbb{R}$}
+\paragraph{Example 2: Completeness of $\mathbb{R}$}
 Consider the following sentence: ``Every non-empty subset of $\mathbb{R}$ which is bounded above has a least upper bound.'' Again, Transfer does not apply to this, for the same reason as in Example 1. A counterexample in ${^\ast \mathbb{R}}$ is $hal(0)$, the set of infinitesimals. (Again, an external object.)
 
 If we rephrase the completeness property of $\mathbb{R}$ as follows: ``Every non-empty element of $\mathcal{P}(\mathbb{R})$ which is bounded above has a least upper bound,'' then we can apply Transfer to it. Similarly as before, the crucial remark is that ${^\ast \mathcal{P}}(\mathbb{R}) \subsetneq \mathcal{P}({^\ast \mathbb{R}})$.
 
 %%%%%%%%%%%%%%%%%%%%%%
 
-\section{Filters and ideals}\label{sec:filters}
+\section{Filters and Ideals}\label{sec:filters}
 The introduction mentioned two ingredients for a new number system: the second one is a selection rule. This idea can be formalized using either filters or ideals. These are dual notions, and both are collections of subsets from an index set that fulfil additional criteria.
 
 Intuitively, a filter on a set is a collection of its subsets that are ``large enough,'' whereas an ideal is a collection of its subsets that are ``small enough'' or ``negligible.'' The meanings of `large enough' and `small enough' are given by the formal definitions.
@@ -237,8 +237,8 @@ Given a (proper) filter on $X$, $\mathcal{F}$, the corresponding (proper) \texti
 $$\mathcal{I} = \{ X \setminus F \mid F \in \mathcal{F} \}.$$
 The smallest proper ideal is simply $\{ \varnothing \}$. The ideal corresponding to a free ultrafilter is called a \textit{Boolean prime ideal}.
 
-\section{Application of free ultrafilters: hyperreal numbers}\label{sec:hyperreal}
-\subsection{Constructing the real and hyperreal numbers}
+\section{Application of Free Ultrafilters: Hyperreal Numbers}\label{sec:hyperreal}
+\subsection{Constructing the Real and Hyperreal Numbers}
 In the introduction, we indicated that both the standard real numbers and the hyperreal numbers can be defined as equivalence classes of sequences.\footnote{We will not consider Dedekind cuts or other constructions.} They differ in the collection of sequences on which they operate and in the equivalence relation that they impose.
 
 The real numbers can be constructed based on rational-valued Cauchy sequences. The set of such functions is defined as follows:
@@ -253,7 +253,7 @@ Consider the old equivalence class of the sequences that we have come to regard 
 Does this give us old wine in new packages? Not quite: it is more like breaking the chemical bonds in the molecules of the wine, and maybe even breaking the atoms---tearing apart the very fabric of what the original numbers are made of, and recombining the fragments in a novel way (with a completely different order structure): we get an entirely new set of numbers out of the operation.
 Observe that we still have infinitely many real-valued sequences in the equivalence class of the hyperreal number zero (those that differ from zero at only finitely many positions), but---in as far as they converge in the standard sense at all---only a strict subset of them converge to the real number zero.
 
-\subsection{Remarks on the ultrapower construction}
+\subsection{Remarks on the Ultrapower Construction}
 When a free ultrafilter is applied in the ultrapower construction of the hyperreal numbers, its various properties affect the properties of the hyperreals in the following ways (see section~\ref{sec:alternative}):
 \begin{itemize}
   \item the upper set property of a filter is required to obtain an equivalence relation on $\mathbb{R}^\mathbb{N}$;
@@ -266,7 +266,7 @@ Although free ultrafilters can be proven to exist (given the usual set-theoretic
 If we drop the condition of being free, and apply the Fr\'{e}chet filter instead, we obtain a weaker but constructive model of the hypernatural numbers.
 Let us consider the implication for probability by considering the example of a fair lottery on $\mathbb{N}$. On the one hand, using a Fr\'{e}chet filter would still allow us to obtain probability functions that take infinitesimal values for finite events. On the other hand, the system is too weak to obtain probability functions that are defined on all of $\mathcal{P}(\mathbb{N})$. For instance, the subset of odd numbers and the subset of even numbers are neither in the Fr\'{e}chet filter nor in the corresponding ideal, so according to this filter and ideal they are neither large nor small, such that these events would not receive any probability value.
 
-\section{Kolmogorov's axioms for probability theory}\label{sec:KolmAxioms}
+\section{Kolmogorov's Axioms for Probability Theory}\label{sec:KolmAxioms}
 Since this theory does not contain actual infinitesimals, it may seem of less importance for the topic of this chapter. However, Kolmogorov's approach was very successful and influential: it lies at the basis of the contemporary presentation of probability theory as a special case of measure theory, which itself is a branch of real analysis (calculus).\footnote{For the incorporation of probability theory into measure theory, Kolmogorov's assumption of Countable Additivity was crucial. This move was motivated by mathematical convenience, rather than by philosophical reflection on the meaning of probability. Kolmogorov stated (with original italics):
 \begin{quote}
 Infinite fields of probability occur only as idealized models of real random processes. \emph{We limit ourselves, arbitrarily, to only those models which satisfy Axiom VI}. \citep[p.~15]{Kolmogorov:1933}
@@ -301,12 +301,12 @@ Second, assuming the other axioms, (K4) is equivalent to requiring countable add
 
 \noindent In the historical overview, we have already encountered two approaches to probability theory that allow infinitesimal probabilities: the axiomatization of \citet{Nelson:1987} and the work of \citet{Loeb:1975}. What is missing so far is an axiomatization of a theory that assigns probabilities to standard infinite sets (such as $\mathbb{N}$, on which Nelson's approach is silent) and that allows infinitesimal or other hyperreal values in the final result (unlike Loeb's approach, which is geared toward obtaining results in the standard domain). This is the purpose of the current part.
 
-\section{Infinitesimal probabilities and countable lotteries}\label{sec:natural}
+\section{Infinitesimal Probabilities and Countable Lotteries}\label{sec:natural}
 Within philosophy, infinitesimal probabilities have often been discussed in the context of the following example: a lottery on the natural numbers, $\mathbb{N}$, in particular a fair one (\textit{i.e.}, a lottery in which each individual ticket receives the same probability as any other one). Since this example is so common, we discuss it first, before setting up a more general framework in the next section.\footnote{In order to describe probability functions on infinite sample spaces, focusing on $\mathbb{N}$ as the sample space may seem like a very natural starting point, because $\mathbb{N}$ is the canonical example of a set with the smallest infinite cardinality.
 It will turn out that in some sense this problem is not the easiest one to describe, because it is in lockstep with other (less obvious) occurrences of $\mathbb{N}$. Among the infinite sets, $\mathbb{N}$ is our usual benchmark, so we use it in and out of season. As a result, there are hidden symmetries in the problem of a (fair) lottery on $\mathbb{N}$, which make it harder to analyze it. To understand this statement, we first need to encounter the problems alluded to, so we will progress as planned, but I will return to this observation in the middle of section~\ref{sec:AdditivityOfP}.}
 We start from a real-valued approach (in which zero is the only infinitesimal) and investigate which modifications are required in order to allow for the assignment of non-zero infinitesimal probabilities.\footnote{The current section presents some of the ideas originally developed in \citet{WenmackersHorsten:2013} in a more straightforward way.}
 
-\subsection{Lotteries on initial segments of $\mathbb{N}$}
+\subsection{Lotteries on Initial Segments of $\mathbb{N}$}
 Ultimately, we want to describe a lottery, fair or weighted, on $\mathbb{N}$, but we start by considering a lottery, fair or weighted, on an arbitrary initial segment of $\mathbb{N}$: the sample space (set of atomic possible outcomes) is $\Omega_n=\{1,\ldots,n\}$. First, we introduce weights: a real number $w_i$ for each of the elements $i$ of $\Omega_n$. Without loss of generality, we may assume these weights to be normalized, such that $\sum_{i=1}^{n} w_i=1$ (\textit{e.g.}, in a fair lottery $w_i=1/n$ for all $i$). Then, we define the probability on $\Omega_n$, $P_n$, of an arbitrary subset of $\mathbb{N}$, $A$, as follows:
 $$ P_n(A)= \sum_{i=1}^{n}w_i \times \#(A \cap \{i\}), $$
 where $\#$ is the counting measure for finite sets. (This suffices: although $A$ can be an infinite set, $A \cap \{i\}$ is empty or singleton.)
@@ -321,7 +321,7 @@ P_n(A) & = & \sum_{i=1}^{n}w_i \times \#(\bigcup_{k=1}^{m}A_k \cap \{i\})
 \end{array}
 $$}
 
-\subsection{Taking the limit}
+\subsection{Taking the Limit}
 Now, we want to consider a lottery on $\Omega=\mathbb{N}$, rather than on $\Omega_n=\{1,\ldots,n\}$.
 The idea is to consider the lottery on $\mathbb{N}$ as the limiting case of a sequence of finite lotteries.
 This idea seems apt, since we have $\Omega= \lim_{n\rightarrow\infty} \cup_{i=1}^{n} \Omega_i$.\footnote{On the other hand, the ordered set $(\mathbb{N},<)$ is qualitatively different from any $(\Omega_n,<)$: unlike all of its initial segments, $\mathbb{N}$ does not have a last element. This observation is suggestive of taking a different kind of limit, which involves a hyperfinite set (which does have a last element) rather than a standard infinite one.}
@@ -339,7 +339,7 @@ For those who have the intuition that the probability of a particular outcome in
 Nevertheless, it may bother some that this function does not allow us to distinguish between the impossible event (represented by $A=\varnothing$) and some infinitely unlikely but possible events. The worry is that the probabilities of these events are represented by the same infinitesimal, and since there can only be one zero (\textit{i.e.}, neutral element under addition), this observation may motivate a search for \emph{non-zero infinitesimals}. However, this worry may be partially addressed by considering a non-Archimedean ordering of the events, which is a question for qualitative probability theory\footnote{Recall the work by \citet{deFinetti:1931} as discussed in section~\ref{sec:preR}. See also \citet{Pedersen:2014a}, \citet[p.~17]{Easwaran:2014}, and Konek (this volume).} rather than for quantitative probability theory.
 Despite this, there is an underlying issue that cannot be addressed without considering numerical probabilities: it is that of additivity. We consider this in the next section.
 
-\subsection{Additivity of $P$: finite, countable, or ultra}\label{sec:AdditivityOfP}
+\subsection{Additivity of $P$: Finite, Countable, or Ultra}\label{sec:AdditivityOfP}
 We briefly mentioned (section~\ref{part:hist}) that Leibniz's approach to the calculus was based on infinite sums (integrals), unlike Newton's, for whom the notion of ``fluxions'' (derivatives) was more basic. Since infinitesimals were most prominent in Leibniz's approach, it should come as no surprise that the concept of infinitesimal probabilities is closely connected to foundational discussions concerning the additivity of probability values.
 
 \citet{Skyrms:1983a} interprets the intuition that measures should be regular (that only the null set should receive measure zero) as a Zenonian intuition (\textit{cf.}\ section~\ref{sec:Zenonian} of the appendix): a whole of positive magnitude should not be made up of parts of measure zero.
@@ -393,7 +393,7 @@ Within the context of standard probability theory, we have a single infinitesima
 The first reason is related to a more general observation: like any real number, zero is the limit of qualitatively different sequences (of rational or real numbers). In particular, sequences may differ in their speed of convergence. The rate at which the corresponding sequence of relative frequencies tends to zero is smaller for a singleton event (the convergence of $1/n$ is linear) than it is for the set of perfect squares (the convergence of $1/n^2$ is quadratic) or for the powers of two (the convergence of  $1/2^n$ is exponential). This suggests that within the collection of sequences that are considered to be infinitesimal, and thus to converge to zero, some are smaller than others (even though their limits are all defined to be zero when working within the real numbers).
 This brings us to reconsider what the real number zero is, continuing along the lines set out in the introduction, and to define an alternative limit operation on sequences. One way to achieve this is found in the construction of a non-standard model of a real closed field as was shown in section~\ref{sec:hyperreal}.
 
-\subsection{Alternative approach with non-zero infinitesimal probabilities}\label{sec:alternative}
+\subsection{Alternative Approach with Non-Zero Infinitesimal Probabilities}\label{sec:alternative}
 We apply the equivalence relation discussed that is used to construct the hyperreals (section~\ref{sec:hyperreal}) to the sequence of relative frequencies belonging to initial segments of $\mathbb{N}$. This results in a different kind of probability function, which takes its values in the $[0,1]$ interval of the hyperreal numbers.\footnote{Actually, it is more accurate to say: \emph{a} set of hyperreal numbers (\textit{cf}.\ footnote~\ref{fn:a-not-the}), because the result of the construction depends on the free ultrafilter and there are uncountably many. We do not dwell on the issue of non-uniqueness now, but we will come back to it in section~\ref{sec:objections}.}
 
 \citet{WenmackersHorsten:2013} assumed all of NSA as given, whereas we mainly needed this alternative equivalence relation on the sequences of relative frequencies in order to obtain a hyperreal-valued probability value on $\mathbb{N}$ that allows for an infinite additivity principle.
@@ -427,10 +427,10 @@ For a set that lacks a natural density, $P$ is infinitesimally close to some Ban
 
 
 %%%
-\section{More scenarios involving infinitesimal probabilities}\label{sec:more}
+\section{More Scenarios Involving Infinitesimal Probabilities}\label{sec:more}
 In the previous section, we discussed one particular scenario that involves infinitesimal probabilities: a lottery on the set of natural numbers. In this section, we give a more comprehensive overview of common examples that feature in discussions of infinitesimal probabilities. Then we show how we can generalize the approach of the previous section to an all encompassing theory that is able to assign infinitesimal probabilities to all of these scenarios.
 
-\subsection{Common examples}
+\subsection{Common Examples}
 We list the examples involving infinitesimal probabilities below, sorted by increasing cardinality of the sample space: finite, countably infinite, or uncountably infinite.
 
 First, there are some examples with finite sample spaces that allow for infinitely small differences in probability among the possible outcomes. The simplest such case is that of an \emph{almost} fair coin toss, in which there is an infinitesimal advantage to one of the sides.
@@ -453,7 +453,7 @@ Some of these scenarios cannot be described by standard probability theory, wher
 So far, we have seen isolated recipes for hyperreal-valued probability functions: \citet{BernsteinWattenberg:1969} gave a recipe to assign uniform probabilities to subsets of the unit interval of the real numbers. And, in the previous section, we discussed a recipe for assigning regular probabilities to the canonical countably infinite sample space, $\mathbb{N}$.
 In the end, we would like to have a method that is fully general, which can be applied to all the examples above, and more. We describe such a method below.
 
-\subsection{Non-Archimedean probability (NAP) theory}\label{sec:NAP}
+\subsection{Non-Archimedean Probability (NAP) Theory}\label{sec:NAP}
 In this section, we will review some crucial elements that allow us to generalize the approach from section~\ref{sec:natural}.\footnote{The information given here suffices to get a rough idea of the approach. Further details (for instance, restrictions on the free ultrafilter to secure certain properties of the resulting probability functions) can be found in \citet{Benci_etal:2013}.}
 In section~\ref{sec:alternative}, we replaced the standard limit operation that associates at most one real number with a sequence of (possibly weighted) relative frequencies by a non-standard limit that associates a hyperreal number with each of these sequences.
 Sequences can be thought of as functions from $\mathbb{N}$ (the index set) to some set, $X$. In the case of relative frequencies $X=\mathbb{Q}$, but in general we allow real-valued weights, so then $X=\mathbb{R}$.
@@ -512,7 +512,7 @@ For more details and proofs, see \citet{Benci_etal:2013}. In the next part, we e
 %\newpage
 \parthead{IV}{Philosophical discussion}\label{part:phil}
 %%%%%%%
-\section{Motivations for infinitesimal probabilities}
+\section{Motivations for Infinitesimal Probabilities}
 In the foregoing parts, we have encountered motivations for introducing infinitesimal probabilities as given by various authors. Most of these motivations occurred in the context of a particular interpretation of probability, with some arguing for the relevance of infinitesimal chances and others advocating for the introduction of infinitesimal credences. In this section, we search for the leitmotifs that arise from this polyphony.
 
 Let us first revisit \citet{BernsteinWattenberg:1969}: although they gave a probabilistic scenario as the motivation of their paper, the technical details of their results do not depend on the interpretation in terms of probability. If we want a measure of length that allows us to represent the length of countable collections of points as a non-zero infinitesimal, we can use the result of \citet{BernsteinWattenberg:1969} without modification. On the one and, it may fit even better in such a context, since the Lebesgue measure was originally motivated as an idealization of length measurements. Hence, obtaining a non-standard measure that is infinitely close to Lebesgue measure (at least, where the latter is defined) can be regarded as an alternative idealization of length measurements.
@@ -538,20 +538,20 @@ Without infinitesimals, probabilities just don't add up.
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Alternatives to hyperreal probabilities}\label{sec:OtherApproaches}
-\subsection{Other ways to introduce infinitesimal probabilities}
+\section{Alternatives to Hyperreal Probabilities}\label{sec:OtherApproaches}
+\subsection{Other Ways to Introduce Infinitesimal Probabilities}
 There do exist ways to formalize infinitesimals other than Robinson's hyperreal numbers. One of them is smooth-infinitesimal analysis (SIA), which describes nilpotent infinitesimals: non-zero numbers whose square is zero. This system relies on intuitionistic logic. However, I am not aware of any proposals for smooth-infinitesimal probabilities.
 
 Then there is the class of Conway numbers, which includes the infinitesimals from any non-standard field. This option has been suggested for application to probability theory, for instance, by \citeauthor{Hajek:2003b} (\citeyear{Hajek:2003b}; see section~\ref{sec:pascalswager} below) and
 by \citet{Easwaran:2014}. I, too, believe this can be a fertile approach. A first proposal has been offered by \citet{ChenRubio:forthc}, but it is too early to evaluate it here.
 
-\subsection{Related approaches without infinitesimals}
+\subsection{Related Approaches Without Infinitesimals}
 Besides the possibility of introducing infinitesimals within a different framework, there are also relations between hyperreal infinitesimals and systems that do not include any infinitesimal numbers at all. For instance, one may combine an Archimedean quantitative probability theory (in particular, the orthodox approach with real-valued probability functions), with a non-Archimedean qualitative probability theory.\footnote{This was suggested by de~Finetti, \textit{cf}.\ section~\ref{sec:preR}. See also the discussion of the ``numerical fallacy'' by \citet{Easwaran:2014}.} Moreover, \citet{Halpern:2010} reveals some deep connections between hyperreal-valued probability functions, conditional probabilities \citep[including Popper functions; see also Vann][]{McGee:1994}, and lexicographic probabilities. Recently, \citet{BrickhillHorsten:2018} have given a representation theorem that relates NAP functions and Popper functions; they also give a lexicographic representation.
 
 \citet{Skyrms:1983b} considers three ways of giving probability assignments a memory. One of his proposals was to ``utilize orders of infinitesimals to implement long term-memory,'' such that ``[s]uccessive updatings do not destroy information, but instead push it down to smaller orders of infinitesimals'' (p.~158).
 He evaluates this proposal as having a certain theoretical simplicity, but lacking practical feasibility. However, given that the proposal essentially boils down to introducing lexicographical probabilities, it may turn out that this judgment was too harsh.
 
-\subsection{Yet another point of view}
+\subsection{Yet Another Point of View}
 Introducing non-standard probabilities amounts to changing the range of the probability function. \citet{Skyrms:1995} considers an alternative way to achieve strict coherence, which involves changing the domain, such that the events to which infinitesimal probabilities are assigned in the previous approach are no longer in the event space at all.
 In this context, he cites (Jeffrey's translation of) \citet{Kolmogorov:1948}:
 \begin{quote}
@@ -562,7 +562,7 @@ Let me unpack this. In \citepos{Kolmogorov:1933} approach, the sample space was 
 Although no infinitesimal probabilities occur in the second approach, it is still relevant in the context of the current chapter, because of an interesting analogy: in both cases, starting from the orthodox approach, a symmetry is quotiented out to arrive at the new structure (\textit{cf}.\ the reference to quotient spaces in the introduction).
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section[Infinitesimal Probability and Infinite utility]{Interplay between infinitesimal probabilities and infinite utilities: Pascal's wager}\label{sec:pascalswager}
+\section[Infinitesimal Probability and Infinite Utility]{Interplay between infinitesimal probabilities and infinite utilities: Pascal's wager}\label{sec:pascalswager}
 
 
 We have seen in section~\ref{sec:postR}, that discussions of rational degrees of belief often proceed via a betting interpretation (\textit{e.g.}, motivating adherence to the axioms of probability theory by the avoidance of a sure loss). As such, they involve considerations of monetary loss or gain. However, the subjective value of money need not be linear. Therefore, it is useful to introduce \textit{utility} as a more abstract measure that represents subjective worth directly. Utility is usually taken to be a real-valued (interval scale) measure.
@@ -579,7 +579,7 @@ On p.~38, H\'ajek writes that ``the infinitesimal probability can `cancel' the i
 The idea of cancelling is indeed what NSA allows us to formalize: each infinitesimal is the reciprocal of an infinite number and vice versa. Multiplying an infinite hyperreal number and its multiplicative inverse, a particular infinitesimal, yields unity. So, on the one hand, we may obtain finite (non-infinite) and non-infinitesimal values by multiplying infinite and infinitesimal numbers. On the other hand, there are also combinations of infinite and infinitesimal numbers whose product is an infinitesimal or an infinite number. More details can be found in \citet{Wenmackers:forthc}. For a treatment with surreal probabilities and utilities, see \citet{ChenRubio:forthc}: their approach also allows them to treat the St.~Petersburg paradox.
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{The Lockean thesis and relative infinitesimals}\label{sec:LT}
+\section{The Lockean Thesis and Relative Infinitesimals}\label{sec:LT}
 Whereas standard probability measures may seem too coarse-grained for some applications, where we would like to distinguish between possible and impossible events, they may not seem coarse-grained enough for other applications, as we will see in this section.
 
 Suppose that you have detailed knowledge of the probabilities in a given situation. It has been argued that it may still be beneficial to hold some full (dis-)beliefs \citep{Foley:2009}. But when is it rational to believe something in this case? The Lockean thesis suggests that it is rational to believe a statement if the probability of that statement is sufficiently close to unity.\footnote{This is reminiscent of the concept of ``moral certainty''; see also footnote~\ref{fn:Cournot}.} This is usually modelled by means of a probability threshold. As is demonstrated by the Lottery Paradox \citep{Kyburg:1961}, the threshold-based model is incompatible with the Conjunction Principle. Moreover, it can be objected that the actual probabilities are too vague to put a sharp threshold on them, and that a threshold should be context-dependent.
@@ -589,10 +589,10 @@ Based on certain analogies between large and infinite lotteries, \citet{Wenmacke
 The basic idea is to interpret the Lockean thesis as follows: it is rational to believe a statement if the probability of that statement is indistinguishable from unity (in a given context). The context-dependent indistinguishability relation is then modelled using the notion of differences up to a level-dependent, ultrasmall number. These ultrasmall numbers, also called ``relative infinitesimals,'' are ordinary real numbers, which are merely unobservable, or do not have a unique name, in a given context. The aggregation rule for this model is the ``Stratified conjunction principle,'' which entails that the conjunction of a standard number of rational beliefs is rational, whereas the conjunction of an ultralarge number of rational beliefs is not necessarily rational.\footnote{Although this model is intended to describe beliefs that are almost certain, it can be used for weaker forms of belief by substituting a lower number instead of unity.}
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Recent objections and open questions}\label{sec:objections}
+\section{Recent Objections and Open Questions}\label{sec:objections}
 In this section, we give a brief overview of developments from the two last decades in which new objections against and defences for infinitesimal probabilities have been added to the literature. It may be too early to evaluate the most recent collection of attempted refutations and acclaims for infinitesimal probabilities. Still, we briefly mention some here. More discussion can be found in \citet{Benci_etal:2018}.
 
-\subsection{Symmetry constraints and label invariance}\label{sec:symm}
+\subsection{Symmetry Constraints and Label Invariance}\label{sec:symm}
 In a number of publications, Paul Bartha applies ideas from non-standard measure theory to problems in the philosophy of probability.
 \citet{BarthaHitchcock:1999} use NSA in the usual way, \textit{i.e.}, in order to obtain a real-valued probability function.
 \citet{BarthaJohns:2001} also consider the application of NSA to a probabilistic setting, but they favour a simpler appeal to symmetry in order to obtain the conditional probabilities relevant to their problem.
@@ -605,7 +605,7 @@ Williamson contrasts his finding with that of Elga: whereas \citet{Elga:2004} fi
 More recently, \citet{Benci_etal:2018} analyze Williamson's argument in the light of NAP theory. They, too, conclude that isomorphic events cannot be assigned equal hyper\-real-valued probabilities without contradicting the assumptions on which this theory relies.
 Simultaneously, \citet{Howson:2017} argues---without using any details of NAP theory---that ``it is not regularity which fails in the non-standard setting but a fundamental property of shifts in Bernoulli processes.'' \citet{Parker:unpubl} argues that these objections to the argument of \citet{Williamson:2007} fail.
 
-\subsection{Non-uniqueness of hyperreal probabilities}
+\subsection{Non-uniqueness of Hyperreal Probabilities}
 \citet{Elga:2004} considers the zero-fit problem of the ``best system'' analysis of laws: if all systems of laws assign probability zero to the actual history up to now, then one cannot identify the best system based on a measure of goodness-of-fit. He entertains the option of applying non-standard probability functions and thus to assign a non-zero infinitesimal probability to the actual history, thereby escaping a zero fit. Ultimately, however, he rejects this proposal:
 \begin{quote}
 We have required our nonstandard probability function to be regular, and to approximate given standard probability functions. But those requirements only very weakly constrain the probabilities those functions assign to any individual outcome. [...] And the fit of a system associated with such a function is just the chance it assigns to actual history. So the fit of such a system indicates nothing about how well its chances accord with actual history.
@@ -624,7 +624,7 @@ At least some of the worries related to arbitrariness are alleviated if we take 
 More generally, various authors argue that hyperreal numbers are not quite right for the task at hand (\textit{e.g.}, that the infinitesimals are too small; \citealp{Easwaran:2014,Pruss:2014}). \citet[pp.~34--35]{Easwaran:2014} argues that ``the structure of the hyperreals goes beyond the physical structure of credences'' and that they ``can't provide a faithful model of credences of the sort wanted by defenders of Regularity.''
 On the other hand, \citet{Hofweber:2014} tries to defend infinitesimal chances and outlines some additional principles (non-locality, flexibility, and arbitrary additivity) that are required for a theory to capture our concept of chance. Also \citet{Benci_etal:2018} are optimistic that NAP theory can be defended against many of the previously raised objections.
 
-\subsection{Cardinality considerations}
+\subsection{Cardinality Considerations}
 \citet{Hajek:2012b} argues that regularity is an untenable constraint on credences, even if we allow probability functions to take hyperreal values. He invites us to ``imagine a spinner whose possible landing points are randomly selected from the $[0, 1)$ interval of the hyperreals,'' concluding that regularity fails if we apply the same interval of hyperreals as the range of a function that assigns probabilities to events associated with this hyperreal spinner.
 He envisages
 \begin{quote}
@@ -650,7 +650,7 @@ Theories that lack normalization or countable additivity, are not guaranteed to 
 %%%%%%%%%%%%%%%%%%%%%%
 %\newpage
 %\part*{}
-\section[Epilogue]{Epilogue: on the value of methodological pluralism}
+\section[Epilogue]{Epilogue: On the Value of Methodological Pluralism}
 I would like to end this chapter with some remarks that may apply to formal epistemology (and related endeavours) more generally. Only by comparing different methodologies may one obtain some indication of their strengths and limitations and how they distort the results.
 
 We tend not to notice what is always present. An atmosphere was present before our ancestors developed eyes and to this day the air between us remains invisible to us. By experimenting with other gas mixtures, we learn, not only about those new substances, but also about the air that surrounds us. We become aware of its weight, its oxygen content, and its capacity to carry our voice.
@@ -663,7 +663,7 @@ Investigating in a formal way a rich concept such as probability cannot be carri
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section[Appendix: Historical Sources]{Appendix: Historical sources concerning infinitesimal probabilities (1870--1989)}
+\section[Appendix: Historical Sources]{Appendix: Historical Sources Concerning Infinitesimal Probabilities (1870--1989)}
 This part does not contain an overarching story arc, but it can be used as an annotated bibliography or to look up specific details.
 
 Despite its length, this appendix does not pretend to be exhaustive; some developments---especially the early ones---are merely sketched.
@@ -671,7 +671,7 @@ The subdivision into decades is indicative rather than strict. Usually, the publ
 
 \subsection{Before 1960: pre-Robinsonian era}
 
-\subsubsection*{The 1870s: The real numbers and the standard limit}\label{sec:standardcalc}
+\subsubsection*{The 1870s: The Real Numbers and the Standard Limit}\label{sec:standardcalc}
 The modern approach to standard analysis was developed by ``the great triumvirate'' \citep[p.~298]{Boyer:1949}: Georg Cantor, Richard Dedekind, and Karl Weierstrass. First, Cantor gave a construction of the real numbers via Cauchy sequences (recall section~\ref{sec:alternative}). Then, Dedekind gave an alternative construction of the real numbers via Dedekind cuts (which we will not discuss). Weierstrass introduced the modern epsilon-delta definition of the limit (which builds on earlier work by Bernard Bolzano in the 1810s and by Augustin-Louis Cauchy in the 1820s).
 
 As an example, we consider the derivative as a limit of the quotient of differences and express this limit in terms of an epsilon-delta definition:
@@ -684,7 +684,7 @@ $$\lim_{\Delta x\rightarrow0} \frac{\Delta y}{\Delta x} = L$$
 if and only if
 $$\forall \epsilon > 0 \in \mathbb{R}, \ \exists \delta > 0 \in \mathbb{R}: \forall \Delta x \in \mathbb{R} \left( 0 < |\Delta x| < \delta \Rightarrow | \frac{\Delta y}{\Delta x} - L| < \epsilon \right).$$
 
-\subsubsection*{The 1880s: The Archimedean axiom}
+\subsubsection*{The 1880s: The Archimedean Axiom}
 In the introduction, we encountered the criterion to decide whether a number system is Archimedean or non-Archimedean (condition \ref{eq:inf}).
 In particular, hyperreal fields are non-Archimedean and those can be employed to represent infinitesimal probabilities.
 Here, we investigate the origins of this sense of the word `Archimedean'.
@@ -693,28 +693,28 @@ Around 225~BC, Archimedes of Syracuse published two volumes known in English as 
 In a paper on ancient Greek geometry, Otto \citet{Stolz:1883} discussed this postulate, which he calls ``\textit{das Axiom des Archimedes}'' for ease of reference. Although Stolz was well aware that Archimedes himself attributed an application of this axiom to earlier geometers, apparently he did not notice that the axiom also appeared in Euclid's Elements \citep[p.~888]{Bair-etal:2013}.
 In his textbook on arithmetic, which was very influential according to \citet[p.~5]{Ehrlich:2006}, \citet{Stolz:1885} presented examples of \textit{Gr{\"o}ssensysteme} (systems of magnitudes) that fail to satisfy this Archimedean axiom, whereas systems that are continuous in the sense of Dedekind do satisfy it.
 
-\subsubsection*{The 1890s: Infinitesimal probabilities in a geometric context}
+\subsubsection*{The 1890s: Infinitesimal Probabilities in a Geometric Context}
 In 1891, Giulio Vivanti and Rodolfo Bettazzi discussed infinitesimal line segments in the context of probability \citep[see][]{Ehrlich:2006}.
 In these early discussions, infinitesimal probabilities are considered in the context of a geometric interpretation of probability. As such, this provides an interesting contrast to the more recent literature, in which infinitesimal probabilities are usually introduced in the context of subjective interpretations of probability (related to a criterion of open-mindedness).
 
 Later on, in the 1910s, Federigo Enriques discussed the (impossibility of) infinitesimal probabilities on two occasions, again in a geometric context.\footnote{Thanks to Philip Ehrlich for this addition. He is planning an article on the work of Enriques; meanwhile, \citet{Ehrlich:2006} contains the relevant references.}
 
-\subsubsection*{The 1900s: Measurability and non-measurability}
+\subsubsection*{The 1900s: Measurability and Non-measurability}
 Building on {\'E}mile Borel's countably additive measure from the 1890s, Henri Lebesgue introduced his translation invariant and countably additive measure in 1902. In 1905, Giuseppe Vitali gave the first example of a non-Lebesgue measurable set. See for instance \citet{Skyrms:1983a} for some discussion.\footnote{\citet{Skyrms:1983a} argues that the Peano-Jordan measure (which preceded the Borel measure) only employs ideas that were available in Plato's time, whereas Borel measure crucially relies on distinctions among infinite cardinalities only introduced by Cantor. Peano-Jordan measure is finitely additive, which follows from its definition, and it lacks the stronger property of countable additivity (CA). Borel measure is CA, but this has to be specified in the definition by hand. Skyrms observes that this approach was contested, for instance by Schoenflies in 1900, who objected that the matter of extending additivity into the infinite cannot be settled by positing it. Lebesgue measure is CA, too, and it is translation invariant, which is appealing to our intuitions.\label{fn:Schoenflies}}
 
 \subsubsection*{The 1930s: Kolmogorov, Skolem, and de~Finetti}
 
-\paragraph{Kolmogorov's probability measures}\label{sec:Kolmogorov}
+\paragraph{Kolmogorov's Probability Measures}\label{sec:Kolmogorov}
 Andrey \citet{Kolmogorov:1933} introduced probability as a one-place function with as the domain a field of sets over a given sample space and as the range the unit interval of the real numbers. In the first chapter of his book, he laid out an elementary theory of probability ``in which we have to deal with only a finite number of events.'' The axioms for the elementary case stipulate non-negativity, normalization, and the addition theorem (now called ``finite additivity,'' FA).
 In the second chapter, dealing with the case of ``an infinite number of random events,'' Kolmogorov introduced an additional axiom: the Axiom of Continuity. Together with the axioms and theorems for the finite case (in particular, FA), this leads to the generalized addition theorem, called ``$\sigma $-additivity'' or ``countable additivity'' (CA) in the case where the event space is a Borel field (or $\sigma $-algebra, in modern terminology). We reviewed his axiomatization in section~\ref{sec:KolmAxioms}.
 
-\paragraph{Skolem's non-standard models of Peano arithmetic}\label{sec:skolem}
+\paragraph{Skolem's Non-standard Models of Peano Arithmetic}\label{sec:skolem}
 The second-order axioms for arithmetic are categoric: all models are isomorphic to the intended model $\langle \mathbb{N},0,+1 \rangle$, a triple consisting of the domain of discourse (infinite set of natural numbers), a constant element (zero), and the successor function (unary addition).
 \citet{Dedekind:1888} was the first to prove this. His ``rules'' for arithmetic were turned into axioms by Giuseppe \citet{Peano:1889}, giving rise to what we now call ``Peano Arithmetic'' (PA).
 
 The first-order axioms for arithmetic are non-categoric: there exist non-standard models $\langle {^\ast\mathbb{N}},{^\ast0},{^\ast+}{1} \rangle$ that are not isomorphic to $\langle \mathbb{N},0,+1 \rangle$. Thoralf \citet{Skolem:1934} was the first who proved this.\footnote{See \citet[section~3]{Stillwell:1977} and \citet[section~3.2]{Kanovei_etal:2013} for some comments on the direct construction given by \citet{Skolem:1934}. In contrast to Skolem's result, the proof given in modern presentations usually relies on the Compactness property of first-order logic. First, consider a first-order language for arithmetic, $\mathcal{L}_{PA}$, which has a name for each natural number. Call PA the set of sentences in $\mathcal{L}_{PA}$ that are true about arithmetic. Then, add a new constant, $c$, to the language and consider PA', which is the union of the PA and $\{c>0,c,>1,c>2, \ldots\}$. Since each finite subset of PA' has a model (in which $c$ is a natural number that is larger than any of the other natural numbers that are named in the the finite subset), it follows from the Compactness of first-order logic that PA' has a model (which contains a copy of the natural numbers and in which $c$ is an infinite hypernatural number).\label{fn:Skolem}} With the L\"{o}wenheim-Skolem theorem, it can be proven that there exist models of any cardinality. ${^\ast\mathbb{N}}$ contains finite numbers as well as infinite numbers. We now call ${^\ast\mathbb{N}}$ a set of hypernatural numbers.\footnote{For a discussion of the order-type of countable non-standard models of arithmetic, see \textit{e.g.}\ \citet[Ch.~25, p.~302--318]{Boolos_etal:2007} and \citet{McGee:2002}. More advanced topics can be found in the book by \citet{KossakSchmerl:2006}.}
 
-\paragraph{De Finetti on non-Archimedean probability rankings\label{sec:dF}}
+\paragraph{De Finetti on Non-Archimedean Probability Rankings\label{sec:dF}}
 In 1931, Bru\-no de Finetti addressed the relation between qualitative and quantitative probability. Qualitative probability deals with ordering or ranking events by a partial order relation, $\succeq$, interpreted as ``at least as likely as.'' Quantitative probability deals with probability functions that assign numerical values---usually real numbers---to events.
 
 On pp.~313--314, \citet[section~13]{deFinetti:1931} presented four postulates for the probability ordering.\footnote{Thanks to Paul Pedersen for some pointers to de Finetti's early work on non-Archimedean probability rankings.} In particular, the second postulate states that every event that is merely possible (rather than impossible or certain) is strictly more likely than the impossible event and strictly less likely than the certain event. He considers the question whether such a ranking is compatible with the usual way of measuring probabilities by real numbers. De Finetti observed that such a probability ranking has a non-Archimedean structure, whereas real-valued probability functions are Archimedean. Related to this point, \citet[p.~316]{deFinetti:1931} wrote:
@@ -730,13 +730,13 @@ As a result, the partial order on the probability of events (which is just the o
 In 1936, de Finetti reflected on the meaning of possible events (\textit{i.e.}, events represented by non-empty sets) that have probability zero. He agrees with Borel and L{\'e}vy\footnote{See also footnote~\ref{fn:Cournot} for the relation to Cournot's principle.} that these are merely theoretical constructs: they do not represent events that are practically observable, but are merely defined as limiting cases thereof. They would require information from infinitely many experiments or an experiment involving an absolutely exact measurement, both of which exceed what is practically achievable.\footnote{This is the relevant quote in French \citep[p.~577]{deFinetti:1936}: ``\textit{Il n'y a pas de doute, ainsi que l'a remarqu\'{e} M.\ Borel, et comme cela se trouve tr\`{e}s clairement expliqu\'{e} dans le trait\'{e} de M. L\'{e}vy, que la notion d'\'{e}v\'{e}nement possible et de probabilite nulle est purement th\'{e}orique, car il s'agit en g\'{e}neral d'\'{e}v\'{e}nements d\'{e}finis comme des cas limites d'\'{e}v\'{e}nements pratiquement observables, et leur v\'{e}rification exigerait par cons\'{e}quent une \emph{infinit\'{e}} d'exp\'{e}riences ou une exp\'{e}rience comportant une mensuration absolument \emph{exacte}}.''}
 In this context, and unlike the 1931 article, de Finetti did consider the option of infinitesimal probability values and even an infinite hierarchy thereof (``\textit{chacune infiniment petite par rapport \'{a} la pr\'{e}c\'{e}dente}'', p.~583). Ultimately, however, he advocated sticking to real numbers as probabilities and dropping the assumption of countable additivity (p.~584), which is a position he stood by throughout all of his later work (see section~\ref{sec:dF2}).
 
-\subsubsection*{The 1950s: From weak to strict coherence}\label{sec:coherence}
+\subsubsection*{The 1950s: From Weak to Strict Coherence}\label{sec:coherence}
 In the context of Bayesianism and decision theory, infinitesimal probabilities have been discussed in relation to ``strict coherence''\footnote{In the early literature, there circulated other names for this criterion as well: `strict fairness' (Kemeny) and [strong] `rationality' (Lehman, Adams). See \citet[p.~114]{Carnap:1971b} for a helpful overview of the terminology in the early literature.} and ``regularity.'' This discussion started in the 1950s, with the Ph.D.\ dissertation of Abner Shimony followed by the publication of \citet{Shimony:1955}.
 
 Earlier, both Frank P.~\citet{Ramsey:1926} and \citet{deFinetti:1937} had combined a subjective interpretation of probability with an important rationality constraint, imposed on the set of an agent's degrees of belief: in order to be considered rational, a person's set of beliefs must meet the condition of ``coherence.'' This condition can be regarded as a probabilistic extension of the consistency condition from classical logic.
 In particular, an agent's degrees of belief are coherent just in case no Dutch book can be made against the agent: no finite combination of bets, of which the prizes are set in accordance with the agent's degrees of belief, should lead to a sure loss. \Citet{deFinetti:1937} showed that an agent's degrees of belief are coherent (and thus that no Dutch Book can be made against him) just in case his degrees of belief are such that they respect the axioms for finitely additive probability functions.
 
-\paragraph{Shimony's strict coherence}
+\paragraph{Shimony's Strict Coherence}
 \citet{Shimony:1955} strengthened the earlier notion of coherence (now called ``weak coherence'') to that of coherence ``in the strong sense'' (now ``strict coherence''): no finite combination of bets, of which the prizes are set according to the agent's degrees of belief, should lead to a sure loss (as before) or a possible net loss without the possibility of a net profit (stronger condition).
 To obtain strong coherence, Shimony had to strengthen one of the probability axioms accordingly.
 The original axiom says that the degree of confirmation (or conditional credence) of some hypothesis $h$ given a piece of evidence $e$ is $1$ if $e$ entails $h$, whereas the stronger version reads: the degree of confirmation of $h$ given $e$ is $1$ if and only if $e$ entails $h$.
@@ -748,7 +748,7 @@ An appropriate betting quotient would be an `infinitesimal', which is neither $0
 \end{quote}
 Shimony also remarked that strong coherence on infinite sets of belief cannot be used to justify CA (which he calls ``the Principle of Complete Additivity'' on p.~18).
 
-\paragraph{Strict coherence without infinitesimals}
+\paragraph{Strict Coherence Without Infinitesimals}
 The work on strict coherence initiated by Shimony was soon picked up by others. Some of the ensuing publications were related to the notion of ``regularity.'' In the context of finite sample spaces, Rudolf \citet[Ch.~5]{Carnap:1950} had introduced regularity as the condition that a function should assign positive values to state descriptions that sum to unity. In particular, he applied this condition to credence functions (probability functions in the sense of rational degrees of belief) associated with a finite set of state descriptions (finite sample space).\footnote{For infinite sample spaces, \citet{Carnap:1950} considers limits of unconditional and conditional probability functions; although those limit functions may assign zero to state descriptions, Carnap calls them ``regular,'' too. This usage should be contrasted with that in contemporary writings on infinitesimal credences, where regularity is (equivalent to) the condition that a probability function should assign strictly positive values to singleton events, even for infinite sample spaces.}
 
 Combining the earlier result of \citet{Shimony:1955} on the one hand and that of John G.~\citet{Kemeny:1955} and R.~Sherman \citet{Lehman:1955} on the other hand, we have that a probability function on a finite sample space is strictly coherent if and only if it is ``regular'' \citep[\textit{cf}.][p.~15]{Carnap:1971a}.
@@ -758,7 +758,7 @@ Ernest W.~\citet{Adams:1959,Adams:1962,Adams:1964} was interested in the case of
 So, none of these authors did follow up on Shimony's remark regarding infinitesimal probabilities.
 An important exception was Carnap: in 1960, he explicitly considered the option of non-real-valued degrees of belief that admit infinitesimal values. (Although this work was published posthumously, in 1980, we do discuss it already at this point.)
 
-\paragraph{Carnap's quest for non-Archimedean credences}
+\paragraph{Carnap's Quest for Non-Archimedean Credences}
 Inspired by Shimony's work on strict coherence, \citet{Carnap:1980} considered a language with real-valued functions, $\mathcal{L}$, and a credence function with non-Archimedean range, $\mathcal{C}$. He wrote (p.~146):
 \begin{quote}
 we could regard these axioms as axioms of regularity for $\mathcal{L}$; and we would call $\mathcal{C}$ regular iff it fulfilled all these axioms. However, to carry out this program would be a task beset with great difficulties.
@@ -766,10 +766,10 @@ we could regard these axioms as axioms of regularity for $\mathcal{L}$; and we w
 The first problem he considered is that of finding axioms for the binary relations $IS$ (to be read as: `is Infinitely Small compared to') and $SEq$ (to be read as: ``is Smaller or Equal in size to''), both defined on the class of all subsets of the set of real numbers.\footnote{Upon publication of these notes, \citet{Hoover:1980} remarked that one of the axioms Carnap had proposed for $SEq$ was in contradiction with the others (axiom 3f on p.~147 amounted to countable additivity, which is incompatible with a non-Archimedean range); also one of the proposed axioms for $IS$ was in contradiction with the others (axiom 7p on p.~148).} Further on, Carnap considered the problem of constructing a measure function $\pi$ that is defined on all subsets of the set of real numbers. He stated (p.~154, italics in the original):
 ``The values of $\pi$ are not real numbers but numbers of a \emph{non-Archimedean number system} $\Omega$ to be constructed.''
 
-\subsection{The 1960s: Robinson's NSA and Bernstein \& Wattenberg's non-standard probability}
+\subsection{The 1960s: Robinson's NSA and Bernstein \& Wattenberg's Non-standard Probability}
 The development of non-standard analysis by Abraham Robinson in the 1960s allowed for a formal and consistent treatment of infinitesimal numbers. Soon enough, this work was applied to measure theory in general and to probability theory in particular. Beyond this point, some technical notions from NSA appear: please consult sections~\ref{sec:commonNStools} and \ref{sec:filters} for the meaning of unfamiliar terms.
 
-\subsubsection*{Non-standard models of real closed fields and Robinson's NSA}\label{sec:RCFs}
+\subsubsection*{Non-standard Models of Real Closed Fields and Robinson's NSA}\label{sec:RCFs}
 \citet{Robinson:1961,Robinson:1966} founded the field of NSA: he combined some earlier results from mathematical logic\footnote{See \citet[p.~48]{Robinson:1966} for some references. In particular, \citet{Hewitt:1948} had constructed hyperreal fields using an ultrapower construction and \citet{Los:1955} had proven a transfer theorem for these fields.} in order to develop an alternative framework for differential and integral calculus based on infinitesimals and infinitely large numbers.
 
 Robinson's hyperreal numbers are a special case of a real closed field (RCF). In general, a RCF is any field that has the same first-order properties as $\mathbb{R}$.
@@ -794,7 +794,7 @@ $$
 $$
 ${^\ast\mathbb{R}}$ contains finite, infinite and infinitesimal numbers; we call ${^\ast\mathbb{R}}$ a set of hyperreal numbers.
 
-\subsubsection*{Bernstein \& Wattenberg's non-standard probability function}
+\subsubsection*{Bernstein \& Wattenberg's Non-standard Probability Function}
 The infinitesimal numbers contained in the unit interval of a non-standard model of a RCF can be used to represent infinitesimal probabilities. Allen R. Bernstein and Frank Wattenberg (\citeyearhyper{BernsteinWattenberg:1969}) were the first to apply Robinson's NSA in a probabilistic setting and thus to describe infinitesimal probabilities in a mathematically rigorous framework. On p.~171, they stated the following goal: ``Suppose that a dart is thrown, using the unit interval as a target; then what is the probability of hitting a point?'' They followed up this question with an informal answer:
 \begin{quote}
 Clearly this probability cannot be a positive real number, yet to say that it is zero violates the intuitive feeling that, after all, there is some chance of hitting the point.
@@ -808,9 +808,9 @@ Thus, for example, it is now possible to say that `the probability of hitting a 
 \end{quote}
 Of course, the former probability being half that of the latter also applies if both probabilities are zero, rather than infinitesimals.\footnote{This observation is due to Alan H\'ajek, whose copy of the article I was allowed to copy.} This observation is only relevant if an additional assumption is made, for instance that the probabilities are non-zero or that the former should be smaller than the latter.
 
-\subsection{After 1969: Further developments and philosophical discussions}
+\subsection{After 1969: Further Developments and Philosophical Discussions}
 \subsubsection*{The 1970s: Further mathematical developments}
-\paragraph{Parikh \& Parnes' conditional probability functions}
+\paragraph{Parikh \& Parnes' Conditional Probability Functions}
 Starting from a standard absolute probability function, the ratio formula does not always suffice to define a conditional probability function. This may fail in two ways: the probabilities may be undefined (non-measurable events) or the conditioning event may have probability zero.
 The non-standard absolute probability function obtained by \citet{BernsteinWattenberg:1969} does allow us to define a non-standard absolute probability function for all pairs of subsets of the real numbers by the usual ratio formula, provided that the conditioning event is non-empty. By taking the standard part, we obtain a real-valued function defined for all pairs of subsets of the real numbers (as long as the conditioning event is non-empty).
 However, Rohit Parikh and Milton Parnes (\citeyearhyper{ParikhParnes:1974}) remarked that the conditional probability function so obtained does not necessarily exhibit translation invariance in the following sense:
@@ -821,13 +821,13 @@ where $A+x$ is the set obtained by adding $x$ to all elements of $A$ and $P$ is 
 Using techniques from NSA (in particular, hyperfinite sets), \citeauthor{ParikhParnes:1974} constructed standard conditional probability functions, each fulfilling a number of algebraic conditions that correspond with our intuitions. Apart from a condition that entails the above criterion of translation invariance, they also obtained: (i) $P(B,B)=1$ for all $B$, (ii) if $B=[0,1]_\mathbb{Q}$ (the unit interval of $\mathbb{Q}$ with endpoints included) and $0 \leq a < b \leq 1$, then $P([a,b],B)=b-a$, and (iii) $P(A,B)=0$ whenever $A$ is finite and $B$ is not.\footnote{Observe that these conditional probability functions violate regularity, but this should not be surprising since they are real-valued.} It requires a bit more effort (choosing a suitable ideal on $\mathbb{R}$, \textit{cf.}\ section~\ref{sec:filters}) to obtain a function $P$ such that the following stronger version of (iii) also holds: $P(A,B)=0$ whenever $A$ is countable and $B$ is not.
 After proving the relevant existence theorems, they showed that the cardinality of the set of standard conditional probability functions satisfying the various combinations of properties is $2^c$, with $c$ the cardinality of the continuum.
 
-\paragraph{Henson's representation theorem}
+\paragraph{Henson's Representation Theorem}
 Meanwhile, C.~Ward \citet{Henson:1972} showed that for every standard, finitely additive probability measure that assigns zero to finite sets there exists a non-standard representation. Once again, the proof relies on a hyperfinite counting measure on a hyperfinite subset of the hyperextension of the sample space of the standard function. He also considered the special case in which the standard measure is countably additive. As is typical in the context of NSA, Henson showed how to apply his result in order to obtain a shorter proof of a standard result (in section 2 of his paper).\footnote{See also \citet{HofweberSchindler:2016} for ``a new and completely elementary proof of this fact.''}
 
-\paragraph{Loeb measure}
+\paragraph{Loeb Measure}
 Seminal contributions to non-standard measure theory were obtained by Peter A.~\citet{Loeb:1975}. A good overview of this topic (up to the early 1980s) can be found in \citet{Cutland:1983}. Loeb measures require more advanced technical knowledge than any of the other approaches covered in this chapter. In particular, they require non-standard models with a saturation beyond countable saturation.\footnote{In the construction of ${^\ast\mathbb{R}}$, we used a free ultrafilter on $\mathbb{N}$ (see part~\ref{part:math}). This is sufficient to obtain a model with countable saturation. It is possible to fix a free ultrafilter on an infinite index set of higher cardinality. In particular, by choosing ``good'' ultrafilters, it is possible to arrive at the desired level of saturation in a single step \citep[section~10]{Keisler:2010}. See \citet[pp.~104--108]{HurdLoeb:1985} for more on saturation.}
 
-\paragraph{De Finetti's response\label{sec:dF2}}
+\paragraph{De Finetti's Response\label{sec:dF2}}
 As indicated in section~\ref{sec:dF}, de Finetti wrote on the topic of non-Archimedean probability rankings well before the development of NSA. Although he lived long enough and was aware of the development of NSA, he never showed much interest in applying it to his own work on probability. This can be seen by inspecting his work from the 1970s.
 
 In the second volume of his 1974 book, de Finetti famously returned to the discussion of possible events with zero probability---a topic already on his mind (and in his publications) in the 1930s.
@@ -851,7 +851,7 @@ I only attended a few talks on non-standard analysis and I have to say that I am
 
 \subsubsection*{The 1980s: Skyrms, Lewis, and Nelson}
 
-\paragraph{Skyrms on infinitesimal chances}
+\paragraph{Skyrms on Infinitesimal Chances}
 \citet{Skyrms:1980} argued that propensity (for instance, the bias parameter in a binomial distribution) does not equal the limiting relative frequency (for instance, of an infinite Bernoulli process). He did so by appealing to infinitesimal probabilities (pp.~30--31):
 \begin{quote}
 If we extend our language so that we can talk in it about limiting relative frequencies in an infinite sequence of trials and make a few assumptions about limiting probabilities, we can state what appears to be a more powerful version of the law of large numbers: the probability that, in a given sequence of independent and identically distributed trials, the limiting relative frequency will either fail to exist or diverge by some positive real number from the probability of the outcome is infinitesimal. Then, if our coin is flipped an infinite number of times, the probability that the limiting relative frequency fails to be one-half is infinitesimal.
@@ -862,7 +862,7 @@ He then went on to show that this viewpoint is not compatible with the idea ``th
 \end{quote}
 Here, Skyrms used infinitesimal probabilities to illustrate the qualitative difference between possible events and the impossible event. In particular, in cases of equiprobability it may be certain that a highly unlikely event will occur. This seems to be diametrically opposed to Cournot's principle and similar ideas such as the Lockean thesis (but see also section~\ref{sec:LT}).
 
-\paragraph{Lewis on infinitesimal chances and credences}
+\paragraph{Lewis on Infinitesimal Chances and Credences}
 David \citet{Lewis:1980} introduced his ``Principal Principle'' as a way to connect subjective credences to objective chances. In this context, he discussed how infinitesimal chances lead to the introduction of infinitesimal credences (p.~269):
 \begin{quote}
 The Principal Principle may be applied as follows: you are sure that some spinner is fair, hence that it has infinitesimal chance of coming to rest at any particular point; therefore (if your total evidence is admissible) you should believe only to an infinitesimal degree that it will come to rest at any particular point.
@@ -873,7 +873,7 @@ I should like to assume that it makes sense to conditionalize on any but the emp
 out with an irregular credence function (and who then learned from experience by conditionalizing) would stubbornly refuse to believe some propositions no matter what the evidence in their favor.
 \end{quote}
 
-\paragraph{Skyrms on regularity and ultra-additivity}\label{sec:Zenonian}
+\paragraph{Skyrms on Regularity and Ultra-additivity}\label{sec:Zenonian}
 \citet{Skyrms:1983a} gave an intriguing analysis of the Zenonian intuition of regularity. His text focused on length measurement, but the argument carries over to probability measures; hence, we present it in some detail. Zeno's paradox of measure is a scholarly reconstruction of an argument against plurality emerging from Zeno's four paradoxes of motion. The conclusion of this argument is that something of non-zero, finite length cannot be composed of infinitely many parts. The Zenonian argument starts by assuming the opposite: if the whole is composed of infinitely many parts, then either those parts all have no magnitude or they all have a non-zero magnitude, but then the whole would either have no magnitude or an infinite magnitude, respectively, both of which are in contradiction with the whole having a non-zero, finite length.
 Skyrms argued that this argument crucially relies on some implicit assumptions: that the parts all have equal size (invariance), that they are not infinitesimal (Archimedean axiom), and that we can make sense of an infinite sum of the individual magnitudes (ultra-additivity).
 As such, Zeno's paradox of measure has a very similar structure to the proof that shows that there is no real-valued, countably additive probability function that assigns equal probabilities to single tickets in a lottery on the natural numbers (\textit{cf.}\ section~\ref{sec:AdditivityOfP}): it shows that either assigning zero probability or non-zero probability to individual tickets both fail to yield a normalizable measure, because either the sum over all tickets is zero or it diverges. Analogous assumptions are in place in both arguments: an invariant partition such that the parts have equal magnitudes versus equiprobability; no infinitesimal magnitudes versus real-valued probability; and a way to make sense of infinite sums of magnitudes versus countable additivity.
@@ -889,14 +889,14 @@ Skyrms wrote (p.~235): ``It is ironic that it is just here that the standard mod
 
 In the context of measure theory, and thus of standard probability, the principle of ultra-additivity is formalized---and thereby restricted to countable collections---in terms of CA. However, as the failure of the existence of a countably additive fair probability measure on the natural numbers demonstrates, it does not do justice to the underlying intuition of universal summability.
 
-\paragraph{Lewis on infinitesimal chances}
+\paragraph{Lewis on Infinitesimal Chances}
 In a postscript to ``Causation'' (an article that appeared in 1973) and in a passage that appears between brackets, \citet[pp.~175--176]{Lewis:1986} discussed infinitesimal chances and presented real-valued probabilities as a rounding off of the true hyperreal chances (with original italics):\footnote{\citet{Hajek:2012a} cites this passage and calls Lewis work on this topic ``[t]he most important philosophical defence of regularity'' of which he is aware (p.~414).}
 \begin{quote}
 They say that things with no chance at all of occurring, that is with probability zero, do nevertheless happen; for instance when a fair spinner stops at one angle instead of another, yet any precise angle has probability zero. I think these people are making a rounding error: they fail to distinguish zero chance from infinitesimal chance. Zero chance is \emph{no} chance, and nothing with zero chance ever happens. The spinner's chance of stopping exactly where it did was not zero; it was infinitesimal, and infinitesimal chance is still \emph{some} chance.
 \end{quote}
 Although they are not mentioned here, Lewis' wording is very reminiscent of \citet{BernsteinWattenberg:1969}, who wrote ``there is still some chance of hitting the point.'' Also observe that according to the definition that we gave in the introduction, zero is an infinitesimal. Hence, what Lewis is arguing for must be called ``non-zero infinitesimals'' in our terminology.
 
-\paragraph{Nelson's radically elementary probability theory}
+\paragraph{Nelson's Radically Elementary Probability Theory}
 Previously, Edward \citet{Nelson:1977} had provided the first axiomatic approach to NSA, which he called ``Internal Set Theory'' (IST),\footnote{According to \citet[p.~xi]{Luxemburg:2007}:
 \begin{quote}
 [F]rom the beginning Robinson was very interested in the formulation of an axiom system catching his non-standard methodology. Unfortunately he did not live to see the solution of his problem by E.~Nelson presented in the 1977 paper entitled ``Internal Set Theory''.
