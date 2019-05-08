@@ -91,7 +91,7 @@ fields. These differences will likely become less pronounced in the future.
 What is less often remarked upon is traditional epistemology's focus on
 individual beliefs, rather than entire systems of belief, as is typical in
 formal epistemology. Traditional philosophers are interested in what it means
-for an agent $S$ to believe a particular propostion $P$. Representationalist
+for an agent $S$ to believe a particular proposition $P$. Representationalist
 philosopher of mind wonder how intentional states, or states that involve
 ``aboutness'' arise at all, especially if the agents involved are correctly
 understood as purely physical systems. Formal epistemologists tend to take
@@ -251,7 +251,7 @@ would encounter, including both propositional and first-order logic.
 There is, of course, a systematic way to map sentences in a language to
 propositions. A {\em valuation function} $V$  maps every atomic sentence $a$ in
 $\Lambda$ to a proposition $V(a)$,  the set of worlds in which $a$ is true under
-that interpretation of the atoms. The valuation function also interepts the
+that interpretation of the atoms. The valuation function also interprets the
 non-atomic sentences in a way that respects the intended meanings of the logical
 connectives, i.e. so that $V(\top)=W$, $V(\neg p)=W\setminus V(p)$, and
 $V(p\wedge q)= V(p)\cap V(q).$ In this fashion, each sentence in $\Lambda$ is
@@ -375,11 +375,11 @@ non-monotonicity go hand in hand in all paradigmatic cases.
 The field of artificial intelligence has, since its inception, been concerned
 with implementing some form of rational, ampliative, non-monotonic reasoning in
 artificial agents. For these purposes, deductive consequence relations are
-unhelpfully restrictive. That does not preclude the possibilty that there is
+unhelpfully restrictive. That does not preclude the possibility that there is
 some other logic that governs good ampliative reasoning. The past forty years
 have seen the creation of many logics for non-monotonic inference, often
 developed to model a specific kind of defeasible reasoning. See
-\citet{sep-logic-nonmonotonic} for an excellent overiew.
+\citet{sep-logic-nonmonotonic} for an excellent overview.
 
 In view of this profusion of specialized logics, {\em non-monotonic logic}
 investigates which properties a logic of defeasible consequence must have in
@@ -410,14 +410,14 @@ examples.
 Let $\Lambda$ be a formal language, and let $\Cn(\cdot)$ be a deductive
 consequence relation, as discussed in \autoref{objects}. There are in fact two
 closely related approaches to the study of non-montonic consequence relations.
-The finitary approach studes a relation between individual sentences $p \nc q$.
+The finitary approach studies a relation between individual sentences $p \nc q$.
 That approach is taken, for example, in the very influential
 \citet{kraus1990nonmonotonic}. The infinitary approach studies a relation
 $\Gamma \nc p$ between an arbitrary set of sentences on the left and individual
 sentences on the right. That approach is taken in the canonical reference work
 \citet{makinson1994general} and cannot in general be simulated by the finitary
 approach. For the most part we will follow \citet{makinson1994general}. However,
-some results are known to hold only for the finitary settings. Furtheremore, the
+some results are known to hold only for the finitary settings. Furthermore, the
 more general infinitary principles are sometimes better appreciated by their
 finitary consequences. For that reason, we will  sometimes switch back and forth
 between the infinitary and the finitary approach. We write $C(\Gamma)$ for the
@@ -517,7 +517,7 @@ $q$, it ought to follow from their disjunction. Any consequence relation that
 satisfies Supraclassicality, Left Absorption and Case Reasoning must also
 satisfy the following principle:
 \begin{itemize}
-\item[] $\Gamma \cup \{p\} \nc q$ imples $\Gamma \nc p \rightarrow q$.
+\item[] $\Gamma \cup \{p\} \nc q$ implies $\Gamma \nc p \rightarrow q$.
 \hfill(Conditionalization)
 \end{itemize}
 To prove that entailment suppose that $\Gamma \cup \{p\} \nc q.$ Since
@@ -544,7 +544,7 @@ After a null result failing to detect any {\em significant} difference between
 the speed of light in the prevailing direction of the presumed aether wind, and
 the speed at right angles to the wind, physicists turned against the aether
 theory. If the physicists validated Conditionalization then, before the
-experiments, they must have believed that either there is no luminferous aether,
+experiments, they must have believed that either there is no luminiferous aether,
 or the aether wind blows quickly enough to be detected by their equipment. But
 why should they have been so confident that the aether wind is not too slow to
 be detectable? Even if there is nothing objectionable about an agent who
@@ -709,7 +709,7 @@ models {\em smooth} models.) \citet{makinson1994general} proves the following.
 \begin{theorem}\label{KLMconverse}
 Suppose that $\mathfrak{M}=\langle W,V, < \rangle$ is a preferential model. Then
 $C_<(\cdot)$ satisfies Inclusion, Cut, Supraclassicality, and Distribution. If
-$\mathfrak{M}$ is stoppered, then $C_<(\cdot)$ also satisifes Cautious Monotony.
+$\mathfrak{M}$ is stoppered, then $C_<(\cdot)$ also satisfies Cautious Monotony.
 \end{theorem}
 \citet{makinson1994general} also gives the following two partial converses. The
 latter essentially reports a result from \citet{kraus1990nonmonotonic}.
@@ -729,7 +729,7 @@ such that $<$ is a strict order.
 Taken together, \autoref{KLMconverse} and \autoref{KLM} say that, at least for
 finitary consequences, the consequence relations generated by preferential
 models are exactly the consequence relations satisfying Inclusion, Cut, Cautious
-Montonicity, Supraclassicality, and Distribution. In fact, one can always think
+Monotonicity, Supraclassicality, and Distribution. In fact, one can always think
 of these preferential models as generated by a strict (partial) order. The
 question remains whether there are any natural conditions on preferential models
 that ensure that Rational Monotony is also satisfied. It turns out that Rational
@@ -761,7 +761,7 @@ Monotony and those that do not is that the former correspond to those generated
 by a {\em ranked} partial order. This result is helpful to keep in mind because
 in the following we will see several models of belief that can be understood as
 arising from a {\em total} plausibility order, and some that arise from a merely
-{\em partial} plausbility order. In light of \autoref{KLM} and
+{\em partial} plausibility order. In light of \autoref{KLM} and
 \autoref{KLMratmon}, we can expect the former to satisfy System R and the latter
 to satisfy only the weaker System P. 
 
@@ -823,7 +823,7 @@ via the {\em Levi identity} (\citeyearhyper{levi1977subjunctives}): $\Beta*p =
 gardenfors1988revisions} proceed axiomatically: they postulate several
 principles that every rational contraction operation must satisfy.  Fundamental
 to AGM theory are several representation theorems showing that certain intuitive
-constructions give rise to contraction operations satsifying the basic
+constructions give rise to contraction operations satisfying the basic
 postulates and conversely, that every operation satisfying the basic postulates
 can be seen as the outcome of such a construction. See \citet{lin2019belief} for
 an introduction to these results.  
@@ -834,7 +834,7 @@ researchers might want to publish a data set, but make sure that it cannot be
 used to identify their patients. Privacy regulations may force data collectors
 to ``forget'' certain facts about you and, naturally, they would want to do this
 as conservatively as possible.  However, a plausible argument holds that all
-forms of rational belief change occuring ``in the wild'' involve learning new
+forms of rational belief change occurring ``in the wild'' involve learning new
 information, rather than conservatively removing an old belief. All the other
 formalisms covered in the article focus on this form of belief change. For this
 reason, we focus on the AGM theory of revision and neglect contraction.
@@ -842,7 +842,7 @@ reason, we focus on the AGM theory of revision and neglect contraction.
 Before delving into some of the technical development, we mention some important
 objections and alternatives to the AGM framework. As we have mentioned, the
 belief state of an agent is represented by the (deductively closed) set $\Beta$
-of sentences the agent is commited to believe. The structure of the agent's {\em
+of sentences the agent is committed to believe. The structure of the agent's {\em
 reasons} is not represented: you cannot tell of any two $p,q\in \Beta$ whether
 one is a reason for the other. \citet{gardenfors1992beliefrevision}
 distinguishes between {\em foundations} theories, that keep track of which
@@ -923,7 +923,7 @@ straightforward to interpret. These postulates impose synchronic constraints on
 $B*p$. Preservation and Inclusion are the only norms that are really about {\em
 revision}---they capture the diachronic spirit of AGM revision. Inclusion says
 that revision by $p$ should yield {\em no more} new beliefs than expansion by
-$p$. In other words, any setence $q$ that you come to believe after revising by
+$p$. In other words, any sentence $q$ that you come to believe after revising by
 $p$ is a deductive consequence of $p$ and your prior beliefs.  Consider the
 following principle:
 \begin{itemize}
@@ -964,7 +964,7 @@ postulates, closely related to Inclusion and Preservation.
 \item[] If $\neg q \notin \Cn(B*p),$ \\ $\phantom{M}$\hspace{1.5em} then
 $(B*p)+q \subseteq B*(p \wedge q)$. \hfill(Conjunctive Preservation)
 \end{itemize}
-It is possible to make the connection between belief revision and nonmonotontic
+It is possible to make the connection between belief revision and nonmonotonic
 logic precise. Given a belief set $\Beta$ and a revision operation $*,$ we can
 define a single-premise consequence relation by setting $$p\nc q \text{ iff } q
 \in \Beta*p.$$ Similarly, given a single-premise consequence relation $\nc$ we
@@ -1059,7 +1059,7 @@ $(C^*_\leq)$ satisfies the five entrenchment postulates.
 So far we have thought of belief revision syntactically: a revision operation
 $*$ takes in a set $B$ of syntactic objects and a sentence $p$ and outputs
 another set of sentences $B*p.$ \citet{grove1988two} gives a perspicuous way to
-represent the revision postulates semnatically, i.e. in terms of the possible
+represent the revision postulates semantically, i.e. in terms of the possible
 worlds in which the sentences are true or false.
 
 As before, let $W$ be a set of possible worlds and let $V:\Lambda \rightarrow
@@ -1174,7 +1174,7 @@ like this. A famous theorist has just finished her latest book. As is customary
 for such works, she includes a passage in the preface thanking her colleagues
 and students for their help in editing and proofreading, but accepting sole
 responsibility for the mistakes that inevitably remain. She seems to be saying
-that, despite her best efforts, she believes that not everthing that she asserts
+that, despite her best efforts, she believes that not everything that she asserts
 in the book is true. Let $s_1, \ldots, s_n$ be the claims she asserts in the
 book. Presumably, she believes each of the $s_i$ or else she would not have
 asserted them. Yet in the preface she claims to believe
@@ -1440,7 +1440,7 @@ assumes that the information received acquires the maximal degree of belief.
 Jeffrey conditionalization allows for the situation in which no proposition is
 upgraded to full certainty when new information is acquired.
 
-For all propostions $A,B\in \mathcal{F}$ such that $p(A)>0,$ the conditional
+For all propositions $A,B\in \mathcal{F}$ such that $p(A)>0$, the conditional
 probability of $B$ given $A$ is defined as: $$p(B \given A) := \frac{p(A\cap
 B)}{p(A)}.$$ Conditionalization by $A$ restricts all possibilities to those
 compatible with $A$ and then renormalizes by the probability of $A$ to ensure
@@ -1475,7 +1475,7 @@ principle of Conditionalization we discussed in \autoref{nonmonprinciples}:
 however confident a Bayesian agent becomes in $H$ after updating on $E,$ she
 must have been at least as confident that $H$ is a material consequence of $E$.
 \citet{popper1983proof} took this observation to be ``completely devastating to
-the inductive interpration of the calculus of probability.'' For the history of
+the inductive interpretation of the calculus of probability.'' For the history of
 the Popper-Miller debate see Chapter 4 in \citet{earman1992bayes}. A similar
 property can be demonstrated for Jeffrey conditioning
 \citep{genin2017howinductive}.
@@ -1602,7 +1602,7 @@ only an {\em ordinal} structure, which admits of qualitative, but not
 quantitative, comparison. Keynes even suggests that the strength of some pairs
 of partial beliefs cannot be compared at all. \citet{koopman1940axioms} and
 \citet{fine1973theories} pursue Keynes' suggestions, developing axiomatic
-theoris of qualitative probability. See \citet{konek2019comparative} for an
+theories of qualitative probability. See \citet{konek2019comparative} for an
 introduction to qualitative probability comparisons. 
 
 \subsection{Ranking Theory}
@@ -1614,7 +1614,7 @@ contemporary Bayesianism. But Cohen traces a rival tradition back to Francis
 Bacon. Roughly, these two can be distinguished by the {\em scale} they select
 for the strength of belief. On the Pascalian scale a degree of belief of zero in
 some proposition implies maximal conviction in its negation. On the Baconian
-scale, a degree of belief of zero implies no convinction in either the
+scale, a degree of belief of zero implies no conviction in either the
 proposition or its negation. Thus, the Pascalian scale runs from ``disproof to
 proof'' whereas the Baconian runs from ``no evidence, or non-proof to proof''
 \citep[p. 224]{cohen1980some}.  \citet{cohen1977probable} argues that despite
@@ -1785,7 +1785,7 @@ because it would require more of a revision of one's view\ldots \citep[p.
 On this picture, almost all of our explicit beliefs are qualitative. Partial
 beliefs are not graded {\em belief attitudes} toward propositions, but rather
 dispositions to revise our {\em full} beliefs. The correct theory of partial
-belief, according to Harman, has more to do with entrechment orders (see
+belief, according to Harman, has more to do with entrenchment orders (see
 \autoref{entrenchment}) or ranking-theoretic degrees of belief (see
 \autoref{rankingtheory}) than with probabilities. Other apparently partial
 belief attitudes are explained as full beliefs {\em about} objective
@@ -1922,7 +1922,7 @@ consistent with  current belief $\cap \Bel,$ $$\cap \Bel_E = \cap \Bel \cap E.$$
 If $\mathcal{F}$ is a collection of propositions and for all $E\in \mathcal{F},$
 the belief sets $\cb,\cb_E$ satisfy the AGM principles, we say that
 $\cb_{\mathcal{F}},$ the agent's disposition to update her qualitative beliefs
-given information from $\mathcal{F}$, satsifies the basic AGM principles.
+given information from $\mathcal{F}$, satisfies the basic AGM principles.
 
 We will use $p(\cdot)$ to denote the probability function representing the
 agent's partial beliefs. Of course, $p(\cdot)$ is defined on a $\sigma$-algebra
@@ -1933,7 +1933,7 @@ $p(E)>0,$ $p(\cdot \given E)$ is the partial belief function resulting from
 learning $E.$ We will sometimes use $p_E$ as a shorthand for $p(\cdot \given
 E)$. Almost always, partial belief is updated via conditioning: $$p(A \given E)
 = \frac{p(A\cap E)}{p(E)}, \text{ whenever } p(E)>0.$$ Let $\mathcal{F}_p^+$ be
-the set of propositions with posive probability according to $p$, i.e $\{ A
+the set of propositions with positive probability according to $p$, i.e $\{ A
 \subseteq W : p(A)>0\}.$
   \subsection{Belief as Extremal Probability}
 The first bridge principle that suggests itself is that full belief is just the
@@ -2145,7 +2145,7 @@ s\}$ for all $E\in\mathcal{F}_p^+$. Then $\cb_{\mathcal{F}_p^+}$ satisfies
 Inclusion, Success, and Extensionality.  
 \end{theorem}
 In \autoref{AGMrevision}, we argued that Inclusion and Preservation capture the
-spirit of AGM revision. If Lockean revision also satsified Preservation, we
+spirit of AGM revision. If Lockean revision also satisfied Preservation, we
 would have a clean sweep of the AGM principles, with the exception of Deductive
 Cogency.
 
