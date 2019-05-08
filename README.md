@@ -10,7 +10,7 @@ Code for a book in progress, *The Open Handbook of Formal Epistemology*. Find th
 - "Comparative Probabilities", by Jason Konek: no work yet.
 - "Belief Revision Theory", by Hanti Lin: needs final pass before page-proofs.
 - "Ranking Theory", by Franz Huber: needs final pass before page-proofs.
-- "Full & Partial Belief", by Konstantin Genin: no work yet.
+- "Full & Partial Belief", by Konstantin Genin: needs final pass before page-proofs.
 - "Doxastic Logic", by Michael Caie: needs final pass before page-proofs.
 - "Conditionals", by R. A. Briggs: needs final pass before page-proofs.
 
