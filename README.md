@@ -7,7 +7,7 @@ Code for a book in progress, *The Open Handbook of Formal Epistemology*. Find th
 - "Imprecise Probabilities", by Anna Mahtani: needs final pass before page-proofs.
 - "Primitive Conditional Probabilities", by Kenny Easwaran: needs final pass before page-proofs.
 - "Infinitesimal Probabilities", by Sylvia Wenmackers: needs final pass before page-proofs.
-- "Comparative Probabilities", by Jason Konek: no work yet.
+- "Comparative Probabilities", by Jason Konek: needs final pass before page-proofs.
 - "Belief Revision Theory", by Hanti Lin: needs final pass before page-proofs.
 - "Ranking Theory", by Franz Huber: needs final pass before page-proofs.
 - "Full & Partial Belief", by Konstantin Genin: needs final pass before page-proofs.

@@ -119,6 +119,48 @@ every node/.style={text ragged, inner sep=1mm}
 \newtheorem{definition}{Definition}
 
 
+%********
+% Konek 
+%********
+
+\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{matrix}
+
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
+
+\newcommand*\ov[1]{\overline{#1}}
+\newcommand*\un[1]{\underline{#1}}
+\newcommand*\tre[1]{\trianglerighteq{#1}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+
+\newcommand{\Exp}{\mathrm{Exp}}
+\newcommand{\est}{\textit{est}}
+
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakg}{\mathfrak{g}}
+
+
 %******
 % Lin 
 %******

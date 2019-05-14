@@ -273,9 +273,9 @@ where $V'$ ranges over random variables that only take finitely many distinct va
 \end{definition}
 This is the definition of the Lebesgue integral of $V$ with respect to probability function $p$, and is the final generalized definition of expected value. It agrees with \autoref{finiteexp} and \autoref{lowerexp} in the cases where they apply. 
 
-With this new definition, we can try to save the Law of Total Probability in a slightly different form. Let $\mathbf{A_I}$ be a partition. We can consider $p(B \given \mathbf{A_I})$ as a random variable whose value is given by $p(B \given A_i)$ for whichever proposition $A_i$ is the unique one from $\mathbf{A_I}$ that is true. If $\mathbf{A_I}$ is finite, then the Law of Total Probability takes the form $p(B)=\text{\textit{exp}}(p(B \given \mathbf{A_i}))$. This motivates the following definition.
+With this new definition, we can try to save the Law of Total Probability in a slightly different form. Let $\mathbf{A_I}$ be a partition. We can consider $p(B \given \mathbf{A_I})$ as a random variable whose value is given by $p(B \given A_i)$ for whichever proposition $A_i$ is the unique one from $\mathbf{A_I}$ that is true. If $\mathbf{A_I}$ is finite, then the Law of Total Probability takes the form $p(B)=\text{\textit{exp}}(p(B \given \mathbf{A_I}))$. This motivates the following definition.
 \begin{definition}\label{disintegrable}
-$B$ is \emph{Disintegrable} over the partition $\mathbf{A_I}$ iff $$p(B)=\int p(B \given \mathbf{A_i}) \dif p.$$
+$B$ is \emph{Disintegrable} over the partition $\mathbf{A_I}$ iff $$p(B)=\int p(B \given \mathbf{A_I}) \dif p.$$
 \end{definition}
 Disintegrability is thus another generalization of the Law of Total Probability, formulated with integrals rather than (potentially infinite) sums.
 
