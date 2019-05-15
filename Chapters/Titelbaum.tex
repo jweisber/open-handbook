@@ -39,9 +39,9 @@ The most generally-accepted rational credence norms are \citepos{Kolmogorov} axi
 
 Given this setup, Kolmogorov's axioms become the following.
 \begin{description}
-\item[Non-Negativity] {For any $X \in \Ell$, $\Cr(X) \ge 0$.}
-\item[Normality] {For any tautology $\sansT \in \Ell$, $\Cr(\sansT)=1$.}
-\item[Finite Additivity] {For any mutually exclusive $X, Y \in \Ell$,\\ $\Cr(X \OR Y)=\Cr(X)+\Cr(Y)$.}  
+\item[Non-Negativity.\,] {For any $X \in \Ell$, $\Cr(X) \ge 0$.}
+\item[Normality.\,] {For any tautology $\sansT \in \Ell$, $\Cr(\sansT)=1$.}
+\item[Finite Additivity.\,] {For any mutually exclusive $X, Y \in \Ell$,\\ $\Cr(X \OR Y)=\Cr(X)+\Cr(Y)$.}  
 \end{description}  
 Mathematicians often call these \textit{the probability axioms}, and call any distribution satisfying them a \textit{probability function}. Probabilism is the position that rational credences form a probability function; in other words, rational credences satisfy the Kolmogorov axioms.\footnote
 {Probabilism is often described as the doctrine that rational \emph{agents} have credences satisfying the probability axioms, or (if that's considered too unrealistic) that \emph{ideally rational agents} have probabilistic credences. Both of these formulations make agents (real or ideal) the targets of evaluation. Strictly speaking, I prefer to evaluate credences (or sets of credences) for rationality, rather than agents. But for ease of locution I will largely treat the two as interchangeable here.} 
@@ -96,7 +96,7 @@ So far we have discussed unconditional credence---an agent's degree of confidenc
  
 An agent's conditional credence in $X$ given $Y$ is denoted $\Cr(X \given Y)$, and is usually taken to be governed by the Ratio Formula.
 \begin{description}
-\item[Ratio Formula] {For any $X, Y \in \Ell$ with $\Cr(Y)>0$,
+\item[Ratio Formula.\,] {For any $X, Y \in \Ell$ with $\Cr(Y)>0$,
 $$\Cr(X \given Y)=\frac{\Cr(X \AND Y)}{\Cr(Y)}.$$}
 \end{description}
 The Ratio Formula can be read as either a descriptive truth or as a normative requirement. On the former approach, an agent's conditional credence $X$ given $Y$ takes a particular value just in case her unconditional credences in $X \AND Y$ and $Y$ stand in that ratio. This reading is most natural if one wants to reduce one type of credence to the other:\ one could hold that to have a conditional credence just is to have unconditional credences standing in a particular ratio; or one could hold that conditional credences are basic and unconditional credences are a proper subset of those.\footnote
@@ -108,7 +108,7 @@ Note that as I've defined the Ratio Formula, it remains silent when the agent as
 
 Combining the Ratio Formula and Kolmogorov's Axioms yields the handy Law of Total Probability.
 \begin{description}\label{p:LTP}
-\item[Law of Total Probability] {For any $X, Y_1, \ldots, Y_n \in \Ell$ such that the $Y_1, \ldots, Y_n$ form a finite partition, $$\Cr(X)=\Cr(X \given Y_1) \CD \Cr(Y_1) + \ldots + \Cr(X \given Y_n) \CD \Cr(Y_n).$$}
+\item[Law of Total Probability.\,] {For any $X, Y_1, \ldots, Y_n \in \Ell$ such that the $Y_1, \ldots, Y_n$ form a finite partition, $$\Cr(X)=\Cr(X \given Y_1) \CD \Cr(Y_1) + \ldots + \Cr(X \given Y_n) \CD \Cr(Y_n).$$}
 \end{description} 
 The Law of Total Probability calculates the unconditional credence of $X$ as a weighted average of $X$'s credences conditional on members of the $Y$-partition, weighted by the unconditional credences in the $Y$s.\footnote
 {Put another way, the Law of Total Probability requires an agent's unconditional credence in $X$ to equal her expectation of her credence in $X$ conditional on the true element of the $Y$-partition.}
@@ -161,7 +161,7 @@ The rational constraints on credence listed to this point have been synchronic--
 
 Suppose we have two times, $t_i$ and $t_j$, with the latter occurring after the former. Let $\PI$ and $\PJ$ be the agent's credences functions at these two times. The most traditional, well-established, and well-known diachronic credal constraint is Conditionalization.
 \begin{description}
-\item[Conditionalization]{If $E \in \Ell$ represents everything the agent learns between $t_i$ and $t_j$, then for any $X \in \Ell$, $\PJ(X)=\PI(X \given E)$.}
+\item[Conditionalization.\,]{If $E \in \Ell$ represents everything the agent learns between $t_i$ and $t_j$, then for any $X \in \Ell$, $\PJ(X)=\PI(X \given E)$.}
 \end{description}
 The intuitive idea of Conditionalization is simple. Suppose that at $t_i$ you don't know whether $E$ is true. I ask you to hypothetically suppose $E$ (temporarily add it to your stock of assumptions about what the world is like), then ask for your conditional credence in $X$ given this supposition. You offer some number. Then, between $t_i$ and $t_j$, you learn that $E$ is actually true (and learn nothing else besides). If I now ask you at $t_j$ for your unconditional credence in $X$, it seems you should offer the same number you reported as a conditional credence before. After all, the set of real-world conditions against which you're assessing $X$ is the same at both times; it's just that at $t_i$ you were supposing $E$ as a fact about the world, while at $t_j$ you know $E$ to be true.
 
@@ -169,7 +169,7 @@ Conditionalization integrates nicely with our other credal constraints. For inst
 
 For a conditionalizing agent, current credences interact in an interesting way with predictions about future credences. Suppose an agent is certain at $t_i$ that her $t_j$ credences will be formed by conditionalizing on a proposition she will learn from some particular finite partition. (Perhaps she will conduct an experiment between $t_i$ and $t_j$, and the propositions in the partition represent all of its possible outcomes.) Assuming she meets a few other plausible side-conditions, such an agent will satisfy the Reflection Principle.
 \begin{description}
-\item[Reflection Principle]{For any $X \in \Ell$, $\PI(X \given \PJ(X)=r)=r$.} 
+\item[Reflection Principle.\,]{For any $X \in \Ell$, $\PI(X \given \PJ(X)=r)=r$.} 
 \end{description}
 This principle, introduced by \citet{vanFraassenWill}, sets the agent's $t_i$ unconditional credence in $X$ equal to her $t_i$ expectation of her unconditional $t_j$ credence in $X$.\footnote
 {To see why, return to our formulation of the Law of Total Probability on page \pageref{p:LTP}, and let each $Y_i$ there assert that the agent's unconditional $t_j$ credence in $X$ will take some particular real value $r$.}
@@ -177,7 +177,7 @@ This principle, introduced by \citet{vanFraassenWill}, sets the agent's $t_i$ un
 
 When an agent repeatedly updates by Conditionalization, she often finds herself calculating the value of $\Cr(X \given E)$. This calculation can be streamlined by a famous theorem.
 \begin{description}
-\item[Bayes' Theorem]{For any $X, E \in \Ell$ with non-zero $\Cr$-values, $$\Cr(X \given E)=\frac{\Cr(E \given X) \CD \Cr(X)}{\Cr(E)}.$$}
+\item[Bayes' Theorem.\,]{For any $X, E \in \Ell$ with non-zero $\Cr$-values, $$\Cr(X \given E)=\frac{\Cr(E \given X) \CD \Cr(X)}{\Cr(E)}.$$}
 \end{description}
 Bayes' Theorem has proved so central to the application of Conditionalization that theorists who work with degrees of belief are often called ``Bayesians'' (or ``subjective Bayesians,'' or ``Bayesian epistemologists''). In a moment I'll describe why Bayes' Theorem is so useful. But first, it's worth noting that Bayes' Theorem is indeed a \emph{theorem}, easily derivable from the Kolmogorov Axioms and Ratio Formula.\footnote
 {The theorem is traditionally attributed to the Reverend Thomas Bayes. Though Bayes never published the theorem, Richard Price found it in his notes and published it after Bayes' death in 1761. Pierre-Simon Laplace rediscovered the theorem independently later on, and was responsible for much of its early popularization.} 
@@ -209,7 +209,7 @@ If there were a proposition $E$ in [the agent's] preference ranking which descri
 
 Jeffrey proposes an updating rule he called ``probability kinematics''; nowadays everyone calls it ``Jeffrey Conditionalization.'' The rule applies when an agent's experience impinges on her credences by altering her degree of belief distribution across a particular finite partition in $\Ell$; any other changes in her credences are caused by the changes to this partition. If the originating partition is $B_1, \ldots, B_n$, then Jeffrey's rule is as follows.
 \begin{description}
-\item[Jeffrey Conditionalization]{For any $A \in \Ell$, $$\PJ(A)=\PI(A \given B_1) \CD \PJ(B_1) + \ldots + \PI(A \given B_n) \CD \PJ(B_n).$$}
+\item[Jeffrey Conditionalization.\,]{For any $A \in \Ell$, $$\PJ(A)=\PI(A \given B_1) \CD \PJ(B_1) + \ldots + \PI(A \given B_n) \CD \PJ(B_n).$$}
 \end{description}
 Jeffrey did not mean to rule out the possibility that some learning occurs by certainty acquisition. He just wanted to allow for the possibility of other types of learning experiences as well. So in the case where one of the $B_m$ goes to certainty (and therefore every other member of the partition goes to credence-$0$), Jeffrey Conditionalization reduces to traditional Conditionalization.
 
@@ -233,7 +233,7 @@ Notice how this change in credence is effected. The agent's visual experience ch
 
 Against the background of the Kolmogorov axioms and Ratio Formula, Jeffrey Conditionalization is equivalent to the following condition.
 \begin{description}
-\item[Rigidity]{For any $A \in \Ell$ and any $B_m$, $\PJ(A \given B_m)=\PI(A \given B_m)$.}
+\item[Rigidity.\,]{For any $A \in \Ell$ and any $B_m$, $\PJ(A \given B_m)=\PI(A \given B_m)$.}
 \end{description}
 In a Jeffrey Conditionalization, experience alters an agent's credences across the $B$-partition. The agent's credences in other propositions conditional on the $B_m$s don't change. So the agent sets her posteriors by adopting unconditional credences in the $B_m$s from experience, copying over her old conditional credences, then applying the Law of Total Probability to calculate her unconditional credences in non-$B$ propositions.
 
@@ -245,7 +245,7 @@ One extreme position about the strength of rational constraints is sometimes cal
 
 What might these further rational constraints be? A constraint that might considerably narrow the field of what's rationally permissible is the 
 \begin{description}
-\item[Principle of Indifference]{If an agent has no evidence favoring any possibility in a partition over any other, then she should assign equal credence to each element of the partition.\footnote
+\item[Principle of Indifference.\,]{If an agent has no evidence favoring any possibility in a partition over any other, then she should assign equal credence to each element of the partition.\footnote
 {The basic idea here dates back at least to \citet{LaplaceEssay}, who saw it as an application of what \citet{BernoulliArs} called the ``principle of insufficient reason.''}}
 \end{description}
 The traditional objection to this principle is that it seems to give conflicting advice when we repartition the same space of possibilities. Following \citet{vanFraassenSymmetry}, suppose I tell you that a cube has been produced from a factory, and its side length is between $0$ and $1$ meter. Given the paucity of further evidence, if I ask how confident you are that the side length is less than $0.5$ meters, the Principle of Indifference seems to require a credence of $1/2$. But if I now ask how confident you are that the volume (which must be between $0$ and $1$ cubic meter) is less than $0.5$ cubic meters, the Principle of Indifference also seems to require a credence of $1/2$. Since a side length of $0.5$ meters corresponds to a volume of $0.125$ cubic meters, the only way to assign both these credences consistently with the probability axioms is to be absolutely certain that the volume in cubic meters is not between $0.125$ and $0.5$!\footnote
@@ -316,14 +316,14 @@ Second, the Ratio Formula we've provided only relates the conditional credence $
 
 Third and most importantly, we'll want a way to sum credences over infinite disjunctions. Finite Additivity only covers disjunctions with finitely many disjuncts---what if we want to calculate our agent's credence that the selected integer is even? A natural extension of Finite Additivity is the following.
 \begin{description}
-\item[Countable Additivity]{For any countable partition $\{Q_1, Q_2, Q_3, \ldots\} \subseteq \Ell$,
+\item[Countable Additivity.\,]{For any countable partition $\{Q_1, Q_2, Q_3, \ldots\} \subseteq \Ell$,
 \begin{equation*}
 \Cr(Q_1 \OR Q_2 \OR Q_3 \OR \ldots)=\Cr(Q_1)+\Cr(Q_2)+\Cr(Q_3)+\ldots.
 \end{equation*}}
 \end{description}
 Countable Additivity is not only natural; it also allows us to establish a very important constraint on credences.
 \begin{description}
-\item[Conglomerability]{For any proposition $P \in \Ell$ and partition $\{Q_1, Q_2, \allowbreak Q_3, \ldots\} \subseteq \Ell$, $\Cr(P)$ is no greater than the largest $\Cr(P \given Q_i)$ and no less than the least $\Cr(P \given Q_i)$.}
+\item[Conglomerability.\,]{For any proposition $P \in \Ell$ and partition $\{Q_1, Q_2, \allowbreak Q_3, \ldots\} \subseteq \Ell$, $\Cr(P)$ is no greater than the largest $\Cr(P \given Q_i)$ and no less than the least $\Cr(P \given Q_i)$.}
 \end{description} 
 Given Conglomerability, the $\Cr(P \given Q_i)$ establish upper and lower bounds on the value of $\Cr(P)$. This makes sense if you think of $\Cr(P)$ as a weighted average of the credences the agent would assign to $P$ conditional on all the different possible $Q_i$. And it's especially important when the agent has a partition $\{E_1, E_2, E_3, \ldots\}$ of possible new pieces of evidence she might receive before her next update. Assuming she plans to update by Conditionalization, she knows that her future credence in $P$ will be one of her current $\Cr(P \given E_i)$; Reflection then demands she satisfy Conglomerability.\footnote
 {Notice that my statement of Conglomerability doesn't specify the cardinality of the $Q_i$ partition. For finite partitions, Conglomerability can be proven from the standard probability axioms. Adopting Countable Additivity extends Conglomerability to countable partitions. For an agent who entertains larger disjunctions than that, \citet{SeidenfeldNonconglomerability} show that at each cardinality we need the relevant Additivity principle to secure conglomerability for partitions of that size.}
@@ -555,14 +555,14 @@ Having surveyed some arguments in \emph{favor} of various rational constraints o
 
 Savage's discussion initiated a literature on what is known as ``the problem of logical omniscience.'' I actually think there are multiple, related problems here, which we might label as follows.\footnote{The ``Logical Learning'' label is common in the literature; I invented the other two labels for our discussion here.}
 \begin{description}
-\item[Credal Completeness]{Probabilism requires an agent to assign a credence to each proposition in her language.}
-\item[Logical Discernment]{Probabilism forbids an agent from assigning a credence other than $1$ to any tautology.}
-\item[Logical Learning]{A probabilistic agent will never pass from a lower credence in a tautology to a higher credence.} 
+\item[Credal Completeness.\,]{Probabilism requires an agent to assign a credence to each proposition in her language.}
+\item[Logical Discernment.\,]{Probabilism forbids an agent from assigning a credence other than $1$ to any tautology.}
+\item[Logical Learning.\,]{A probabilistic agent will never pass from a lower credence in a tautology to a higher credence.} 
 \end{description}
 
 The problem of Credal Completeness is that the probability axioms require an agent to assign a credence to every proposition in her language. For instance, Non-Negativity says that every $X \in \Ell$ receives some non-negative credence value. Even in a language with finitely many atomic propositions, closure under truth-functional connectives will generate a language of infinite size. Yet it seems not only impossible for a finite agent to assign that many credences, but also inadvisable under \citepos{HarmanChange} principle of Clutter Avoidance.
 \begin{description}
-\item[Clutter Avoidance]{One should not clutter one's mind with trivialities.} 
+\item[Clutter Avoidance.\,]{One should not clutter one's mind with trivialities.} 
 \end{description}
 Yet we can slightly alter our formalism so that it no longer demands credal completeness and evades clutter avoidance concerns. The idea is to require not that an agent's credence distribution actually satisfy the probability axioms, but only that it be \emph{extendable} to a distribution that does. In other words, we permit an agent to adopt a partial credence distribution that assigns numerical values to only some of the propositions in $\Ell$, but we require that there be some possible way of assigning values to the rest of $\Ell$ so that the resulting full distribution satisfies the axioms. This approach recovers intuitive results such as the stricture that if an agent assigns credences to both $P$ and $\NOT P$, those credences must sum to $1$. But it will not fault an agent if she fails to adopt attitudes towards $P$, $\NOT P$, or both.
 
