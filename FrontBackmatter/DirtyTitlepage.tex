@@ -1,9 +1,9 @@
 %*******************************************************
 % Titlepage
 %*******************************************************
-%\begin{titlepage}
+\begin{titlepage}
+    %\pdfbookmark[1]{\myTitle}{titlepage}
     % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
-    \begin{addmargin}[-2cm]{-2cm}
     \begin{center}
         \large
 
@@ -12,25 +12,20 @@
         \vfill
 
         \begingroup
-            \color{Maroon}\spacedallcaps{\myTitle} \\ \bigskip
+            \color{CTtitle}\spacedallcaps{\myTitle} \\ \bigskip
         \endgroup
 
-        \textls[120]{\scshape \myName}
+        \spacedlowsmallcaps{\myName}
 
         \vfill
 
-        \includegraphics[width=3cm]{PhilPapers} \\ \medskip
+        %\includegraphics[width=6cm]{gfx/philpeople250} \\ \medskip
 
         %\mySubtitle \\ \medskip
-        %\myDegree \\
-        %\myDepartment \\
-        %\myFaculty \\
-        %\myUni \\ \bigskip
 
-        \myTime%\ -- \myVersion
+        %Draft of \today
 
         \vfill
 
     \end{center}
-  \end{addmargin}
-%\end{titlepage}
+\end{titlepage}
