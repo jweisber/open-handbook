@@ -2,7 +2,7 @@
 
 Code for a book in progress, *The Open Handbook of Formal Epistemology*. Find the latest version in `main.pdf`. Entries and their current statuses are:
 
-- "Precise Credences", by Michael G. Titelbaum: no work yet.
+- "Precise Credences", by Michael G. Titelbaum: needs final pass before page-proofs.
 - "Decision Theory", by Johanna Thoma: needs final pass before page-proofs.
 - "Imprecise Probabilities", by Anna Mahtani: needs final pass before page-proofs.
 - "Primitive Conditional Probabilities", by Kenny Easwaran: needs final pass before page-proofs.
