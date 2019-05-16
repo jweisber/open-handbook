@@ -26,13 +26,15 @@
 \renewcommand*\thefigure{\arabic{figure}}
 
 % Convenience macro for adding chapters
+\defbibheading{subbibliography}[\refname]{\addsec{#1}} %So headers on References pages aren't overriden
 \newcommand{\addchapter}[3]{%
 \begin{refsection}%
   \author{#2}%
   \chapter{#1}%
   \cftaddtitleline{toc}{chapter}{\hspace{3em}\itshape#2}{}%
+  \markboth{\spacedlowsmallcaps{#2}}{\spacedlowsmallcaps{#1}}%
+  \renewcommand{\sectionmark}[1]{\markboth{\spacedlowsmallcaps{#2}}{\spacedlowsmallcaps{#1}}}%
   \input{#3}%
-  \markright{\spacedlowsmallcaps{References}}%
   \printbibliography[heading=subbibliography]%
 \end{refsection}
 }
