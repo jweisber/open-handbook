@@ -486,7 +486,7 @@ So let an agent start by having a plausibility order $\ge$ and believing that th
 $$\xymatrix{
 	\ge \ar[r] & \ge_{*(\phi_1)} \ar[r] & \ge_{*(\phi_1, \phi_2)} \ar[r] & \ge_{*(\phi_1, \phi_2, \phi_3)} \ar[r] & \cdots
 }$$
-and let it generate iterated revisions of beliefs (as byproducts or epiphenomena):
+and let it generate iterated revisions of beliefs (as byproducts or epiphenomona):
 $$\xymatrix{
 	\ge \ar[r]\ar[d]
 		& \ge_{*(\phi_1)} \ar[r]\ar[d] 
@@ -545,7 +545,12 @@ So, to construct a formal theory of iterated belief revision, we can proceed by 
 
 But which ones to put into $\cal S$? There are at least two dimensions to consider. First, do we want to allow some strategies in $\cal S$ to output incomplete orders, or do we want to require every strategy in $\cal S$ to output only complete preorders? Prefer the former option if you like Preservation; otherwise prefer the latter option. Second, do we want to require that every strategy $\ge_{*}$ in $\cal S$ always follow canonical revision, i.e. the revision from $\ge_{*(\ldots)}$ to $\ge_{*(\ldots, \phi)}$ must be a canonical revision on $\phi$? If we do, do we want to require something more, such as that every strategy in $\cal S$ always follow radical revision, or that every strategy in $\cal S$ always follow conservative revision, or some other constraint? 
 
-\citet{darwiche1997logic}, for example, opt for complete preorders together with canonical revision. Some think that the requirement of canonical revision is too weak: \citet{boutilier1996iterated} adds the requirement of conservative revision; \citet{jin2007iterated} add the requirement that, for all worlds $w, u$ such that $w \in |\phi|$ and $u \not\in |\phi|$, if $w \ge_{\rev(\ldots)} u$, then $w >_{\rev(\ldots, \phi)} u$. Some others think that even the requirement of canonical revision is too strong: \citet{stalnaker2009iterated} proposes a counterexample, which we will discuss in section \ref{sec-misspecification}. 
+
+\citet{darwiche1997logic}, for example, opt for complete preorders together with canonical revision. Some think that the requirement of canonical revision is too weak: \citet{boutilier1996iterated} adds the requirement of conservative revision; \citet{jin2007iterated} add the requirement that, for all worlds $w, u$ such that $w \in |\phi|$ and $u \not\in |\phi|$, if $w \ge_{\rev(\ldots)} u$, then $w >_{\rev(\ldots, \phi)} u$. 
+
+This subsection has presented a reductionist approach that tries to reduce iterated belief revision to revision of orders, but there has been the worry that a reductionist approach is too restrictive. See \citet{stalnaker2009iterated} for an example meant to support this worry (this example will be discussed in section \ref{sec-misspecification}). Also see \citet{booth2017irreducibility} for more examples, meant to argue against any reductionist approach that reduces iterated belief revisions to functions that send a plausibility order and a piece of information to a plausibility order.
+
+
 
 % It is interesting to note that almost all authors writing on iterated belief revision, including those just mentioned, require that the preorders in use be complete. So they are committed to the Preservation constraint. 
 
@@ -556,52 +561,52 @@ But which ones to put into $\cal S$? There are at least two dimensions to consid
 \subsection{Learning-Theoretic Analysis}\label{sec-Ockham}
 
 
-Perhaps a belief revision strategy is better insofar as it better serves the goal of one's inquiry, e.g. the goal of {\em learning} whether all ravens are black. In this subsection, we will construct a belief revision theory by addressing the issue of how to choose belief revision strategies that serve the goal of learning well---this is an issue typically addressed in {\em formal learning theory}. We will be guided by two questions. First, how are we to define when a belief revision strategy performs well with respect to the goal of learning? No matter how we are to define learning performance, the performance of a strategy is typically contingent upon what the world is like, something that we have no control over and lack knowledge about. There might be a strategy that performs well in one case but poorly in another case, and an alternative strategy that performs in the opposite way. This brings out the second question: which strategy is better and which is to be ruled out by our belief revision theory? This is essentially a decision problem, and we will need some decision theory to help us out. 
+Perhaps a belief revision strategy is better insofar as it better serves the goal of one's inquiry, e.g. the goal of {\em learning} whether all ravens are black. In this subsection, we will construct a belief revision theory by addressing the issue of how to choose belief revision strategies that serve the goal of learning well---this is an issue typically addressed in {\em formal learning theory}. We will be guided by two questions. First, how are we to define when a belief revision strategy performs well with respect to the goal of learning? No matter how we are to define learning performance, the performance of a strategy is typically contingent upon what the world is like, something that we have no control over and lack knowledge about. There might be a strategy that performs well in one case but poorly in another case, and an alternative strategy that performs in the opposite way. This brings out the second question: which strategy is better and which is to be ruled out by our belief revision theory? The following illustrates a learning-theoretic answer with a case study on the Raven Problem section \ref{sec-raven}: ``Are all ravens black?'' 
 
-Recall the Raven Problem of section \ref{sec-raven}: ``are all ravens black?'' To choose among belief revision strategies for solving that problem, let us draw a decision table.
+To choose among belief revision strategies for tackling the Raven Problem, let us draw a payoff table.
 \begin{table}[ht]
 \centering
 \begin{tabular}{lcccccc}
-	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, b_2, \ldots, n_{101}$ & \ldots 
+	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, \ldots, b_{100}, n_{101}$ & \ldots 
 \\ \hline\hline
-  	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ &&&&&& \\
-  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ &&&&&& \\
+  	$S_{\textrm{ind}}$ &&&&&& \\
+  	$S_{\textrm{count}}$ &&&&&& \\
   	$S_{\textrm{skep}}$ &&&&&& \\
 \end{tabular}
-\caption{A decision table for the Raven Problem}\label{lin-table1}
+\caption{An incomplete payoff table for the Raven Problem}\label{lin-table1}
 \end{table}
-Table \ref{lin-table1}, like any typical decision table, has three kinds of elements: (i) columns, (ii) rows, and (iii) cells. The {\em columns} correspond to the relevant, mutually exclusive possibilities. Recall that $h$ is the hypothesis that all ravens are black, $b_i$ means that the $i$-th raven observed is black, and $n_i$ means that it is nonblack. So, for example, the first column ``$h$'' corresponds to the possibility in which $h$ is true and, hence, all ravens are black. The column ``$\neg h, b_1, \dots, b_i, n_{i+1}$'' corresponds to the possibility in which not all ravens are black and the first nonblack raven to be observed is the $(i+1)$-th one. The {\em rows} correspond to the options to choose from. In the above table there are only three options---three belief revision strategies---which I will define soon. Each row and each column intersects at a {\em cell}, in which we will specify the outcome of the corresponding option in the corresponding possibility. Each of those outcomes will concern {\em how well} a belief revision strategy serves the goal of learning---in the present case, learning whether all ravens are black. Then, with all those outcomes specified, we will use a decision rule to sort out the options that are ``OK'' from those that are not ``OK.'' 
+Table \ref{lin-table1}, like any typical decision table, has three kinds of elements: (i) columns, (ii) rows, and (iii) cells. The {\em columns} correspond to the relevant, mutually exclusive possibilities. Recall that $h$ is the hypothesis that all ravens are black, $b_i$ means that the $i$-th raven observed is black, and $n_i$ means that it is nonblack. So, for example, the first column ``$h$'' corresponds to the possibility in which $h$ is true and, hence, all ravens are black. The column ``$\neg h, b_1, \dots, b_i, n_{i+1}$'' corresponds to the possibility in which not all ravens are black and the first nonblack raven to be observed is the $(i+1)$-th one. The {\em rows} correspond to the options to choose from. In the above table there are only three options---three belief revision strategies---which I will define soon. Each row and each column intersects at a {\em cell}, in which we will specify the outcome of the corresponding option in the corresponding possibility. Each of those outcomes will concern {\em how well} a belief revision strategy serves the goal of learning the true answer to the question posed: ``Are all ravens black?'' When all those outcomes are specified, we will try to figure out which options that are ``OK'', or at least which are not ``OK.'' 
 
-The three strategies listed in the decision table are defined as follows. The {\em skeptic} strategy $S_{\textrm{skep}}$ always asks one to believe the logical consequences of one's accumulated information, no more and no less. That is:
+The three strategies listed in the decision table are defined as follows. The {\em skeptical} strategy $S_{\textrm{skep}}$ always asks one to believe the logical consequences of one's accumulated information, no more and no less. That is:
 $$S_{\textrm{skep}}(\phi_1, \ldots, \phi_i) =_\text{def} \mathsf{Cn}\{\phi_1, \ldots, \phi_i\},$$
-where $\mathsf{Cn}\,X$ denotes the set of logical consequences of $X$, for any set $X$ of sentences. So, for example, $S_{\textrm{skep}}(b_1, b_2, \dots, b_{i-1}, n_i)$ contains $\neg h$ because $n_i$ entails $\neg h$. But $S_{\textrm{skep}}(b_1, b_2, \dots, b_i)$ excludes $h$ no matter how large $i$ is---so this strategy is what the inductive skeptic would recommend.  
+where $\mathsf{Cn}\,X$ denotes the set of logical consequences of $X$. So, for example, $S_{\textrm{skep}}(b_1, b_2, \dots, b_{i-1}, n_i)$ contains $\neg h$ because $n_i$ entails $\neg h$. But $S_{\textrm{skep}}(b_1, b_2, \dots, b_i)$ excludes $h$ no matter how large $i$ is---so this strategy is what the inductive skeptic would recommend.  
 
-A non-skeptic {\em Ockham} strategy is a strategy that starts from asking one to believe just the logical consequences of the accumulated information, but after observing sufficiently many black ravens in a row without any counterexample, it asks one to believe $h$, the simpler hypothesis between $h$ and $\neg h$, following a form of {\em Ockham's Razor}. For example, consider the following strategy:
-$$S_{\textrm{non-skep}}^{\textrm{\,ock}} (\phi_1, \ldots, \phi_i) =_\text{def} 
+An {\em inductive} strategy is a strategy that starts from asking one to believe just the logical consequences of the accumulated information, but after observing a certain amount of black ravens in a row without any counterexample, it asks one to believe $h$, the inductive hypothesis that all ravens are black. Here is an example:
+$$S_{\textrm{ind}} (\phi_1, \ldots, \phi_i) =_\text{def} 
 	\begin{cases}
-	{\mathsf Cn}\{\phi_1, \ldots, \phi_i, h\} & \parbox[t]{.35\textwidth}{if $i \ge 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
-	{\mathsf Cn}\{\phi_1, \ldots, \phi_i\} & \mbox{otherwise.}
+	\mathsf{Cn}\{\phi_1, \ldots, \phi_i, h\} & \parbox[t]{.35\textwidth}{if $i \ge 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
+	\mathsf{Cn}\{\phi_1, \ldots, \phi_i\} & \mbox{otherwise.}
 	\end{cases}$$
-This strategy says that $100$ black ravens suffice for the inductive leap. We can replace $100$ with another positive integer, which would generate another non-skeptic Ockham strategy.
+This strategy decides to make the inductive leap at the $100$th black ravens. We could replace $100$ with another positive integer, which would generate another inductive strategy.
 
-A non-skeptic {\em non-Ockham} strategy works as follows: when seeing more and more black ravens in a row without any nonblack raven, this strategy will start to ask one to believe $\neg h$ at some point---violating Ockham's Razor---and it will ask one to believe $h$ at a later point. For example, consider the following strategy:
+A {\em counter-inductive} strategy works as follows: when seeing more and more black ravens in a row without any nonblack raven, this strategy will start to ask one to believe $\neg h$ at some point---violating Ockham's Razor---and it will ask one to believe $h$ only at a later point. Here is an example:
 $$
-S_{\textrm{non-skep}}^{\textrm{\,non-ock}} (\phi_1, \ldots, \phi_i) =_\text{def} 
+S_{\textrm{count}} (\phi_1, \ldots, \phi_i) =_\text{def} 
 	\begin{cases}
-	{\mathsf Cn}\{\phi_1, \ldots, \phi_i, \neg h\} & \parbox[t]{.3\textwidth}{if $50 \le i < 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
+	\mathsf{Cn}\{\phi_1, \ldots, \phi_i, \neg h\} & \parbox[t]{.3\textwidth}{if $50 \le i < 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
 
-	{\mathsf Cn}\{\phi_1, \ldots, \phi_i, h\} & \parbox[t]{.3\textwidth}{if $i \ge 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
+	\mathsf{Cn}\{\phi_1, \ldots, \phi_i, h\} & \parbox[t]{.3\textwidth}{if $i \ge 100$ and $\phi_{j} = b_{j}$ for all $j \le i$,}\\
 
-	{\mathsf Cn}\{\phi_1, \ldots, \phi_i\} & \mbox{otherwise.}
+	\mathsf{Cn}\{\phi_1, \ldots, \phi_i\} & \mbox{otherwise.}
 	\end{cases}
 $$
-What makes it non-Ockham is the first clause. Replacement of $50$ and $100$ with other numbers $m$ and $n$ (where $m < n$) would generate other non-skeptic non-Ockham strategies. 
+What makes it counter-inductive is the first clause. Replacement of $50$ and $100$ with other numbers $m$ and $n$ (with $m < n$) would generate other counter-inductive strategies. 
 
-For the sake of simplicity, let us compare just the three strategies explicitly defined above, although infinitely many more can be considered if we wish. So we have only three rows in the decision table to think about.
+For the sake of simplicity, let us compare just the three strategies explicitly defined above, although infinitely many more can be considered if we wish. So we have only three rows in the payoff table to think about.
 
-Next: fill the cells  with specifications of outcomes. The kind of outcome to be specified should say how well a strategy performs to help one achieve the goal, where the present goal is set to learn whether all ravens are black. The following introduces two performance criteria.
+Next: fill the cells with outcomes. The kind of outcome to be specified should say how well a strategy performs to help one achieve the goal, where the present goal is set to learn whether all ravens are black. The following introduces two performance criteria.
 
-Say that a strategy {\em will learn} whether $h$ is true given a column $C$ iff, whenever $C$ holds and one obtains more and more information, there will be a ``learning moment'' at which the strategy asks one to believe the unique answer in $\{h, \neg h\}$ that is true given $C$, and to hold on to that answer henceforth. To be more precise: \op
+Say that a strategy {\em will learn} whether $h$ is true given a column $C$ iff, whenever $C$ holds and one obtains more and more information, there will be a ``learning moment'' at which the strategy asks one to believe, and always continue to believe, the unique answer in $\{h, \neg h\}$ that is true given $C$. To be more precise: \op
 
 	\xm \textsc{Definition (Learning with Respect to the Raven Problem).} A strategy $S$ {\em will learn} whether $h$ is true given column $C$ iff: \op
 
@@ -622,65 +627,73 @@ We are now in a position to fill some cells with (partial) outcomes: see Table \
 \begin{table}[ht]
 \centering
 \begin{tabular}{lcccccc}
-	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, b_2, \ldots, n_{101}$ & \ldots \\
+	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, \ldots, b_{100}, n_{101}$ & \ldots \\
 	\hline\hline
-  	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ &&&&&& \\
-  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ &&&&&& \\
-	$S_{\textrm{skep}}$ & No & Yes & Yes & \ldots & Yes & \ldots
+  	$S_{\textrm{ind}}$ &&&&&& \\
+  	$S_{\textrm{count}}$ &&&&&& \\
+	$S_{\textrm{skep}}$ & N & Y & Y & \ldots & Y & \ldots
 \end{tabular}
-\caption{Decision table for the Raven Problem continued}\label{lin-table2}
+\caption{Payoff table for the Raven Problem continued}\label{lin-table2}
 \end{table}
-An occurrence of ``Yes'' in a cell means: ``yes, the strategy will learn whether $h$ is true given the column.'' Similarly, ``No'' means: ``no, it won't learn.'' Just to check that we get this part right: given the first column ``$h$'' (``all ravens are black''), when more and more black ravens are observed, the skeptic strategy will never ask one to believe the true answer $h$, and hence, it will not learn whether $h$ is true given column ``$h$.'' That said, the skeptic strategy will learn whether $h$ is true given any other column ``$\neg h, b_1, \ldots, n_{i+1}$'': the right answer is obtained, and held on to, beginning from the $(i+1)$-th observation, because $n_{i+1}$ entails $\neg h$. It is not hard to verify that the cells left blank in the above should all be filled with ``Yes.''
+An occurrence of ``Y'' in a cell means: ``yes, the strategy will learn whether $h$ is true given this column.'' Similarly, ``N'' means: ``no, it won't learn.'' Just to check that we get this part right: given the first column ``$h$'' (``all ravens are black''), when more and more black ravens are observed, the skeptic strategy will never ask one to believe the true answer $h$, and hence, it will not learn whether $h$ is true given column ``$h$.'' That said, the skeptic strategy will learn whether $h$ is true given any other column ``$\neg h, b_1, \ldots, n_{i+1}$'': the right answer is obtained, and held on to, beginning from the $(i+1)$-th observation, because $n_{i+1}$ entails $\neg h$. It is not hard to verify that the cells left blank in the above should all be filled with ``Yes.''
 
-We want to think about, not just whether a strategy will learn, but also how well it learns. Consider this situation: one believes $X$ and then comes to believe something else that contradicts $X$ and then comes (back!) to believe $X$. In that case, say that one has an {\em opinion cycle}. The more opinion cycles a strategy incurs, the worse it performs. Now, for each cell, let us specify (i) whether the strategy will learn and (ii) how many opinion cycles it will incur: see Table \ref{lin-table3}.
+We want to think about, not just whether a strategy will learn, but also how well it learns. It would be great to have a strategy that might occasionally points to a falsehood but, once it points to the truth, it will never let it go. If a strategy has that property given a column, say that it is {\em stable} given that column (which is arguably a virtue that Plato praises towards the end of {\em Meno}). For example, the counter-inductive strategy is not stable given the column ``$\neg h, b_1, \dots, b_100, n_101$'': it asks one to believe the truth $\neg h$ on the $50$th observation, but fails to continue to do so on the $100$th, violating stability. Now, for each cell, let us specify (i) whether the strategy will learn and (ii) whether it is stable: see \autoref{lin-table3}. The answers to (i) and (ii) for each cell are specified in the first and second components of the ordered pair, respectively.
 \begin{table}[ht]
 \centering
 \begin{tabular}{lcccccc}
-	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, b_2, \ldots, n_{101}$ & \ldots \\
+	& $h$ & $\neg h, n_1$ & $\neg h, b_1, n_2$ & \ldots & $\neg h, b_1, \ldots, b_{100}, n_{101}$ & \ldots \\
 	\hline\hline
-	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ & (Yes, $0$) & (Yes, $0$) & (Yes, $0$) & \ldots & (Yes, $0$) & \ldots \\
-  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ & (Yes, $0$) & (Yes, $0$) & (Yes, $0$) & \ldots & (Yes, $1$) & \ldots \\
-  	$S_{\textrm{skep}}$ & (No, $0$) & (Yes, $0$) & (Yes, $0$) & \ldots & (Yes, $0$) & \ldots 
+	$S_{\textrm{ind}}$ & (Y, Y) & (Y, Y) & (Y, Y) & \ldots & (Y, Y) & \ldots \\
+  	$S_{\textrm{count}}$ & (Y, Y) & (Y, Y) & (Y, Y) & \ldots & (Y, \textbf{N}) & \ldots \\
+  	$S_{\textrm{skep}}$ & (\textbf{N}, Y) & (Y, Y) & (Y, Y) & \ldots & (Y, Y) & \ldots 
 \end{tabular}
-\caption{Decision table for the Raven Problem complete}\label{lin-table3}
+\caption{Payoff table for the Raven Problem completed. The first component concerns whether it will learn; the second, whether it is stable.}\label{lin-table3}
 \end{table}
-For example, given the column ``$\neg h, b_1, \dots, b_i, n_{i+1}$'' with $i \ge 100$, the non-skeptic non-Ockham strategy will generate $1$ opinion cycle: it asks one to believe $\neg h$ on the $50$th observation, believe $h$ on the $100$th, and switch back to the belief in $\neg h$ on the $(i+1)$-th, which forms an opinion cycle. 
 
-With our decision table complete, it is time to apply a decision rule to sort out the strategies that are ``OK.'' Let us try applying the so-called {\em Maximin} rule. According to Maximin, we are to, first, figure out the worst possible outcome of each option, and then judge that an option is ``OK'' iff\footnote
-	{In case you want to be more careful: to make the Maximin rule compatible with the Weak Dominance principle, `iff' should be weakened to `only if'.} 
-its worst outcome is one of the best among the worst outcomes of the options on the table. Namely, Maximin asks one to {\em maxi}mize the {\em min}imal payoff. Presumably, learning is better than failing to learn, and less opinion cycles are better than more opinion cycles. So we identify the worst outcomes as in Table \ref{lin-table4}.
+
+With the payoff table completed, it is time to think about which strategies are ``OK'' and which are not. Presumably, learning is better than failing to learn; stability is better than instability. With that in mind, a learning theorist would be interested in arguing that both the skeptical strategy $S_{\textrm{skep}}$ and the counter-inductive strategy $S_{\textrm{count}}$ are not ``OK''. Three styles of arguments are available for consideration. 
+
+\textsc{Style 1.} We can argue that both the skeptical strategy $S_{\textrm{skep}}$ and the counter-inductive strategy $S_{\textrm{count}}$ are not ``OK'' if we are happy to apply the Dominance Principle, which says that an option is not ``OK'' if it is dominated in the sense that some alternative option performs at least as well in all columns and does strictly better in some column. 
+
+\textsc{Style 2.} To argue for the same conclusion, we do not have to apply the dominance principle. An alternative is to apply the so-called {\em Maximin} rule. According to Maximin, we are to, first, figure out the worst possible outcome of each option, and then judge that an option is not ``OK'' if\footnote
+	{Note that the Maximin rule is formulated here in terms of `only if' rather than `if and only if'; this is to ensure that the Maximin rule is in general compatible with the Weak Dominance principle, `iff' should be weakened to .} 
+its worst outcome is worse than the worst outcome of some alternative option. Namely, Maximin asks one to {\em maxi}mize the {\em min}imal payoff. The worst outcomes are identified in Table \ref{lin-table4}.
 \begin{table}[ht]
 \centering
 \begin{tabular}{lc}
 	& worst outcome
 \\ \hline\hline
-  	$S_{\textrm{non-skep}}^{\textrm{\,ock}}$ & (Yes, $0$) \\
-  	$S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$ & (Yes, $1$) \\
-  	$S_{\textrm{skep}}$ & (No, $0$)
+  	$S_{\textrm{ind}}$ & (Y, Y) \\
+  	$S_{\textrm{count}}$ & (Y, \textbf{N}) \\
+  	$S_{\textrm{skep}}$ & (\textbf{N}, Y)
 \end{tabular}
 \caption{Worst possible outcomes for the Raven Problem}\label{lin-table4}
 \end{table}
-It follows that, according to Maximin, only the non-skeptic Ockham strategy is ``OK.''  
+So, according to Maximin, both the skeptical strategy $S_{\textrm{skep}}$ and the counter-inductive strategy $S_{\textrm{count}}$ are not ``OK''. 
 
-The above considers only three specific revision strategies---just for the sake of illustration. It is straightforward to cover all possible revision strategies for solving the Raven Problem: just add a row to the decision table for each of those strategies, and specify the outcomes in the new cells. Once that is done, we can apply the Maximin rule to the fully completed decision table, and single out the revision strategies that Maximin judges to be ``OK.'' These ``OK'' revision strategies form a set, i.e. a formal theory of belief revision. If we only consider the two performance criteria just presented---(i) whether a strategy will learn and (ii) how many opinion cycles it will incur---then Maximin favors only the non-skeptical Ockham strategies.
+\textsc{Style 3.} Perhaps the minimal argument that suffices to obtain the same conclusion is to rely on a premise of this form:
+	\op 
+	\xm \textsc{Template for Achievabilist Theses.} If the empirical problem in question is easy enough to allow a revision strategy to achieve epistemic standard $X$, then a revision strategy for that empirical problem has to be achieve (at least) $X$ in order to be ``OK''. 
+	\ed 
+Now, let $X$ be ``learning the truth with stability in all the columns (all the possibilities under consideration)''. The Raven Problem is indeed that easy, as witnessed by the first row of the payoff table. So, we are happy to accept that premise, we can argue that an ``OK'' revision strategy for the Raven Problem must (at least) achieve learning and stability in all the columns, ruling out the skeptical and the counter-inductive strategies. 
 
-To sum up: a belief revision theory can be constructed in terms of the learning performances of belief revision strategies, together with decision-theoretic tools such as decision tables, decision rules, and preference relations between outcomes. This idea admits of many possible implementations: \op
 
-	\im {\em We may consider drawing the decision table in a different way.}
-	
-		Have we considered all the relevant, possible columns? Are the columns fine-grained enough? If a column $C$ is so unspecific that it does not determine the total number of opinion cycles that a strategy $S$ will incur, should we fine-grain column $C$ into more specific possibilities?
+The learning-theoretic analysis presented above is just a ``baby version'' for the sake of illustration. It is adapted from \citet{genin2015theory} and \citet*{kelly2016realism}, which build on \citet{schulte1999means} and \citet{kelly2007simplicity}. More generally, a belief revision theory can be constructed by considering the learning performances of belief revision strategies in possible scenarios. This idea admits of many possible implementations: \op
 
 	\im {\em We may consider enriching the specifications of outcomes.}
 	
-		We have only talked about whether one will learn and how many opinion cycles one will produce. But do we also want to consider other kinds of learning performance? Think about these: how many retractions of beliefs will be incurred? How many times will one conjecture a false answer? how fast will the true answer be learned?
+		We have only talked about whether a revision strategy will learn and whether it is stable. But do we also want to consider other kinds of learning performance? Think about these: How many retractions of beliefs will be incurred? How many times will a false answer be believed? How fast will the true answer be learned?
 
-	\im {\em We may consider other decision rules.} 
+	\im {\em We need to find a way to evaluate revision strategies in terms of the payoff table.} 
 	
-		How about other decision rules like Minimax Regret, Maximax, or even Maximization of Expected Utility if this does not beg the inductive skeptic's question? 
+		We may consider using a decision rule such as Dominance and Maximin. But how about other decision rules like Minimax Regret, Maximax, or even Maximization of Expected Utility (if the use of prior probabilities does not beg the inductive skeptic's question)? We may also consider relying on one achievabilist thesis or another, or even a set of such theses. But what achievabilist theses are correct? That is, what epistemic standards have to be achieved when achievable?
 
 \ed All those considerations and their possible variants, in combination, provide what we may call the learning-theoretic toolkit for constructing various formal theories of belief revision. But which specific tools {\em should} we use in order to construct a belief revision theory that has a plausible normative interpretation? This issue will be revisited in section \ref{sec-arg-construction-2}.
 
-The learning-theoretic analysis presented above is just a ``baby version'' for the sake of illustration. It is adapted from \citet{genin2015theory} and \citet*{kelly2016realism}, which build on \citet{schulte1999means} and \citet{kelly2007simplicity}. Also see \citet{kelly1999iterated} for an application of learning-theoretic analysis to iterated belief revision, where we care about the possibility of receiving mutually contradictory pieces of information.
+
+Also see \citet{kelly1999iterated} for an application of learning-theoretic analysis to iterated belief revision, which considers the possibility of receiving mutually contradictory pieces of information.
+
+The learning-theoretic analysis need not be a rival to the aforementioned approaches to belief revision theory. Indeed, as we have seen, the learning-theoretic analysis is able to rule out some notable revision strategies, such as the skeptical and counter-inductive strategies. This ability seems to {\em complement} the more standard, AGM belief revision theory: the skeptical strategy is not ruled out by the AGM theory because it can be modeled by a complete order of relative plausibility that takes every possible world to be equally plausible; the counter-inductive strategy is not ruled out by the AGM theory, either, because it can also be modeled by an appropriate complete order of relative plausibility. Perhaps the right theory of belief revision should be constrained jointly by the learning-theoretic considerations and the considerations that follow, generalize, or weaken the AGM theory. See \citet{baltag2016solvability} and \citet{genin2015theory} for more on such a joint project.
 
 
 \subsection{Other Construction Techniques}\label{sec-other}
@@ -887,33 +900,26 @@ So there are a number of issues to address if we want to take seriously the cons
 
 \subsection{Argument from Construction: Learning-Theoretic Analysis}\label{sec-arg-construction-2}
 
-Let us examine another technique for constructing belief revision theories: learning-theoretic analysis. Recall that this construction selects belief revision strategies according to some decision rule (section \ref{sec-Ockham}). This suggests the following argument schema, where $T$ is a formal theory of belief revision, i.e. a set of revision strategies.\op
 
-	\xm \textsc{Premise (I).} Decision rule $D$ judges every strategy not in $T$ to be inferior to some strategy in $T$.
 
-	\xm \textsc{Premise (II).} If decision rule $D$ judges a strategy $S$ to be inferior to some other strategy, then $S$ is not rational (or epistemically justified, or the like).
+Let us examine another technique for constructing belief revision theories: learning-theoretic analysis. Recall that this construction selects belief revision strategies according to some decision rule or achievabilist thesis (section \ref{sec-Ockham}). This suggests the following argument schema, where $T$ is a formal theory of belief revision, i.e. a set of revision strategies.\op
+
+	\xm \textsc{Premise (I).} $J$ as a decision rule or achievability thesis judges a strategy to be ``OK'' only if it is in $T$.
+
+	\xm \textsc{Premise (II).} If $J$ judges a strategy to be not ``OK'', then $S$ is not rational (or epistemically justified, or the like).
 
 	\xm \textsc{Putative Conclusion.} Therefore, a strategy is rational (or epistemically justified, or the like) only if it is in $T$.  
 
-\ed Now we can turn the learning-theoretic analysis in section \ref{sec-Ockham} into an explicit argument for a belief revision theory. Let $D$ be the Maxmin rule, $T$ be the set of all belief revision strategies for the Raven Problem except the following two kinds: the skeptic strategies $S_{\textrm{skep}}$ and the non-skeptic non-Ockham strategies $S_{\textrm{non-skep}}^{\textrm{\,non-ock}}$. Recall that strategies of these two kinds are judged by the Maximin rule to be inferior to some strategy in ${T}$, e.g. some non-skeptic Ockham strategy $S_{\textrm{non-skep}}^{\textrm{\,ock}}$.
+\ed 
 
-So we have formulated an explicit argument. Since that argument is valid, let us turn to worries about its two premises.
+A candidate for $J$ is the dominance principle, as mentioned in section \ref{sec-Ockham}. When outcomes, or learning performances, are specified in greater detail, it is likely that only very few strategies are dominated, judged to be not ``OK''. Indeed, a general feature of the dominance principle is that it becomes weaker when outcomes are specified in greater detail. So, in general, it would be difficult to use the dominance principle to argue for a strong normative thesis. 
 
-The more urgent worry is about Premise (II): which decision rule is the right one to apply? In section \ref{sec-Ockham}, we apply the Maximin decision rule. But is Maximin the right decision rule for singling out rational or epistemically justified strategies of belief revision? Many decision theorists think that, in many situations, the Maximin rule is too pessimistic to be the right rule to apply. Indeed, the dominant view in decision theory is that a correct decision rule has to involve one's degrees of belief over the columns in the decision table, rather than (pessimistically) focusing on the worst possible outcomes.
+In that case, one might considering resorting to another candidate for $J$ mentioned in section \ref{sec-Ockham}: the Maximin decision rule. But there is a longstanding worry that, in many situations, the Maximin rule is too pessimistic to be the right rule to apply. Indeed, the dominant view in decision theory is that a correct decision rule has to involve one's degrees of belief over the columns in the decision table, rather than (pessimistically) focusing on the worst possible outcomes. There is a possible response in favor of applying Maximin to {\em some contexts}. The learning-theoretic analysis is actually developed to address the so-called problem of induction. Namely, it is meant to respond to the inductive skeptic's questions: ``How can we justify induction?'' ``How can we justify inductive strategies rather than skeptical strategies?'' ``How can we justify the use of a particular inductive strategy rather than an alternative inductive strategy?'' To properly address these tough questions, we cannot rely on anyone's degrees of belief over the columns in the decision table, for fear of begging the skeptic's question---or so \citet{lange2002okasha} argues. So, to make a decision without begging the skeptic's question, the right decision rule, if there is one, has to be a qualitative decision rule. And the Maximin rule seems a good candidate---or so this response suggests and promises to elaborate. This idea, which favors the use of Maximin in some contexts, may be traced at least back to the Maximin foundation of statistical inference due to \citet{wald1950statistical}. Note that those sympathetic to the above line of thought do not have to stick with Maximin but can switch to, and argue for, another qualitative decision rule that does not presuppose degrees of belief. \citet{kelly2007simplicity}, for example, proposes a kind of dominance principle that applies to the worst-case bounds of ``complexity classes''---a decision rule inspired by how computer scientists evaluate the efficiency of problem-solving algorithms.
 
-There is a possible response in favor of applying Maximin to {\em some contexts}. The learning-theoretic analysis is actually developed to address the so-called problem of induction. Namely, it is meant to respond to the inductive skeptic's questions: ``how can we justify induction?'', ``how can we justify inductive strategies rather than skeptical strategies?'', and ``how can we justify the use of a particular inductive strategy rather than an alternative inductive strategy?'' To properly address these tough questions, we cannot rely on anyone's degrees of belief over the columns in the decision table---for fear of begging the skeptic's question. So, to make a decision without begging the skeptic question, the right decision rule, if there is one, has to be a qualitative decision rule. And the Maximin rule seems a good candidate---or so this response suggests and promises to elaborate. This idea, which favors the use of Maximin in some contexts, may be traced at least back to \citepos{wald1950statistical} Maximin foundation of statistical inference.
-
-Note that those sympathetic to the above line of thought do not have to stick with Maximin but can switch to, and argue for, another qualitative decision rule that does not presuppose degrees of belief. \citet{kelly2007simplicity}, for example, proposes a kind of dominance principle that applies to the worst-case bounds of ``complexity classes''---a decision rule inspired by how computer scientists evaluate the efficiency of problem-solving algorithms.
-
-Let us now turn to Premise (I). Even if Maximin (or some other qualitative decision rule) is the right one to apply when we respond to the inductive skeptic's challenge, does it really rule out the skeptic strategy and the non-skeptic non-Ockham strategy? What if Maximin is {\em misapplied} in section \ref{sec-Ockham}? Here are some possibilities of misapplication to think about. \op
-
-	\im First, is there a missing column? Think about the unfortunate possibility in which (a) not all ravens are black, (b) we will observe one black raven after another {\em ad infinitum}, but (c) we will never observe a nonblack raven. We did {\em not} put this column into the decision table in section \ref{sec-Ockham}. Are we justified in missing that column? After we add this additional column, will Maximin still favor the non-skeptic Ockham strategy? 
-
-	\im Second, have the outcomes in the cells been specified with sufficient detail? Why care just about whether a strategy will learn and how many opinion cycles will be produced? If we add more epistemic considerations into the cells, will Maximin still favor the non-skeptic Ockham strategy? 
-
-\ed It remains to explore how these two questions may be answered. See \citet{kelly2007simplicity} for further discussion.
+There is another kind of candidate mentioned in section \ref{sec-Ockham}, achievabilist theses, which take this form: ``If the empirical problem in question is easy enough to allow a revision strategy to achieve epistemic standard $X$, then a revision strategy for that empirical problem is ``OK'' only it achieves (at least) $X$.'' Achievabilist theses have seldom been formulated explicitly in learning theory, and they seem to be central to the way \citet{putnam1965trial} and \cite{gold1967language} created formal learning theory in the 1960's---or so \citet{kelly1996logic} seems to suggest. But which achievabilist theses are correct and how should they be defended or at least motivated? There have been very few systematic discussions on this issue in the literature, but see \citet{kelly2016realism} and \citet{genin2015theory} for examples of how certain epistemic standards may be motivated and put to use in achievabilist theses. 
 
 % Premise I is typically a logical consequence of the definitions of the $D$ and $T$ under discussion {\em plus} an assumed preference relation over the outcomes that we specify in the decision table. So a debate might arise regarding whether the assumed preference is ``OK'' in one sense or another.
+
 
 
 \section{Concluding Remarks}\label{lin-conclusion}
@@ -926,7 +932,7 @@ We have discussed a number of foundational issues about belief revision theory. 
 
 % There are many philosophical issues about belief revision theory that we have not discussed, and it is even impossible to give a comprehensive list here. Let me mention just one more issue in passing, if only to show how much connected belief revision theory is to some other fields in philosophy.
 
-For discussions of other philosophical issues, see \citet{levi1983enterprise}, \citet{levi1991fixation}, \citet{levi2004mild}, \citet{gardenfors1988knowledge}, \citet{rott2000two}, \citet{rott2001change}, \citet{hansson1999textbook}, \citet{hansson2003ten}, and \citet{gillies2004epistemic}. 
+For discussions of other philosophical issues, see \citet{levi1983enterprise}, \citet{levi1991fixation}, \citet{levi2004mild}, \citet{gardenfors1988knowledge}, \citet{rott2000two}, \citet{rott2001change}, \citet{hansson1999textbook}, \citet{hansson2003ten}, \citet{gillies2004epistemic}, and \citet{genin2015theory}. 
 
 
 \section{Appendix}
@@ -965,4 +971,4 @@ Let an information space $\cal I$ be given, which contains some finite sequences
 
 \section*{Acknowledgements}
 
-I am indebted to Kevin Kelly and Horacio Arl\'{o}-Costa for teaching me so much about belief revision theory. This article, and I as a belief revision theorist, would have been impossible without them. I am indebted to the two editors, Jonathan Weisberg and Richard Pettigrew, for their endless patience and very helpful comments. I am also indebted to Ted Shear for his incredibly detailed comments and useful suggestions, and to Adam Sennet and Rachel Boddy for their stimulating questions.
+I am indebted to Kevin Kelly and Horacio Arl\'{o}-Costa for teaching me so much about belief revision theory. This article would have been impossible without them. I am indebted to the two editors, Jonathan Weisberg and Richard Pettigrew, for their endless patience and very helpful comments. I am also indebted to Ted Shear for his incredibly detailed comments and useful suggestions, and to Adam Sennet and Rachel Boddy for their stimulating questions.
