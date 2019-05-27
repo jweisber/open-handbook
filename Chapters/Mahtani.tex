@@ -8,10 +8,10 @@ To explain imprecise probabilism in more depth, I must first set out the classic
 
 Now consider a set $\mathcal{F} = \{A_1, A_2, \ldots, A_m\}$ of these propositions (which are themselves each sets of possible worlds). To make this set a sigma algebra ($\sigma$-algebra), the set must be closed under  union, intersection, and complementation.  For the set to be closed under union, it must be the case that for two propositions $A_i$ and $A_j$ in the set, the union ($A_i \cup A_j$) is also in the set; similarly, for the set to be closed under intersection, it must be the case that for any two propositions $A_i$ and $A_j$ in the set, the intersection ($A_i \cap A_j$) must also be in the set; and for the set to be closed under complementation it must be the case that for any proposition $A_i$ in the set, the proposition $\Omega - A_i$ must also be in the set.
 
-Finally we introduce a  function $p$ mapping $\mathcal{F}$ to $[0,1]$. Thus for example, if $\mathcal{F}$ contains some proposition $A$, then our function $p$ will map that proposition $A$ to some number between $0$ and $1$. If the function is a probability function, then it will meet these three conditions (the probability axioms): 
+Finally we introduce a  function $p$ mapping $\mathcal{F}$ to $[0,1]$. Thus for example, if $\mathcal{F}$ contains some proposition $A$, then our function $p$ will map that proposition $A$ to some number between $0$ and $1$. If the function is a probability function, then it will meet these three conditions (the probability axioms).
 \begin{enumerate}  
-\item $p(A) \geq 0$, for all $A$ in $\mathcal{F}$,
-\item $p(\Omega) = 1$,
+\item $p(A) \geq 0$, for all $A$ in $\mathcal{F}$.
+\item $p(\Omega) = 1$.
 \item If $A_i \cap A_j = \emptyset$ then $p(A_i \cup A_j) = p(A_i) + p(A_j)$.
 \end{enumerate}
 

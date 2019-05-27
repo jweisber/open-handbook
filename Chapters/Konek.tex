@@ -41,11 +41,11 @@ The fact that it is extremely probable, in your view, that Manchester City will 
 So, probabilities seem to do quite a lot of explanatory work. But no single thing is shouldering the whole explanatory load in (1)--(6). Different kinds of probability do the explaining in different examples. In (1)--(2), it is the \emph{physical probability} or \emph{chance} of the singular event in question that helps to explain why the event actually occurs. (See \citealp{Hajek2009b}, \citealp{Gillies2000}, and \citealp{Hitchcock2012}, for discussion of different theories of chance.) In (3)--(4), it is the \emph{logical probability} or \emph{degree of confirmation} of the hypothesis in question (conditional on the current evidence) that helps to explain why we ought to accept it. (See \citealp{Earman1992}, \citealp{Hajek2008}, and \citealp{Paris2011}, for discussion of Bayesian confirmation theory and some of its issues.) Finally, in (5)--(6), it is the \emph{subjective probability}, or \emph{degree of belief}, or \emph{credence}, of the agent in question that helps to explain and rationalise her choice.
 
 Formally, a \emph{probability function} is just a particular type of real-valued function. Let $\Omega$ be a \emph{universal set}, which we can think of as the set of ``possible worlds'' or ``basic possibilities.'' And let $\F$ be a \emph{Boolean algebra} of subsets of $\Omega$, which we can think of as a set of ``propositions.'' More carefully, we can think of each $X\in\F$ as the proposition that is true at each world $w\in\F$, and false at each $w^*\not\in\F$. A Boolean algebra $\F$ of subsets of $\Omega$ has three important properties: (\emph{i}) $\F$ contains $\Omega$ (\emph{i.e.}, $\Omega\in\F$); (\emph{ii}) $\F$ is closed under complementation (\emph{i.e.}, if $X\in\F$, then $\Omega-X\in\F$); and (\emph{iii}) $\F$ is closed under unions (\emph{i.e.}, if $X,Y\in\F$, then $X\cup Y\in\F$). A real-valued function $p:\F\rightarrow\mathbb{R}$ is a \emph{probability function} if and only if it satisfies the laws of (finitely additive) probability.
-\begin{description}
-\item[]1. \textsc{Normalization.}\, $p(\Omega)=1$.
-\item[]2. \textsc{Nonnegativity.}\, $p(X)\geq p(\varnothing)$.
-\item[]3. \textsc{Finite Additivity.}\, If $X\cap Y=\varnothing$, then $p(X\cup Y)=p(X)+p(Y)$.
-\end{description}
+\begin{enumerate}
+\item\textsc{Normalization.}\, $p(\Omega)=1$.
+\item\textsc{Nonnegativity.}\, $p(X)\geq p(\varnothing)$.
+\item\textsc{Finite Additivity.}\, If $X\cap Y=\varnothing$, then $p(X\cup Y)=p(X)+p(Y)$.
+\end{enumerate}
 Axiom 1 says that $p$ must assign probability $1$ to the tautologous proposition $\Omega$. Axiom 2 says that $p$ must assign at least as high a probability to every proposition $X$ as it does to the contradiction $\varnothing$. Axiom 3 says that the probability that $p$ invests in a disjunction of incompatible propositions $X$ and $Y$ must be the sum of the probabilities that it invests in $X$ and $Y$, respectively.
 
 The three main interpretations of probability---\emph{physical probability}, or \emph{chance}; \emph{logical probability}, or \emph{degree of confirmation}; and \emph{subjective probability}, or \emph{degree of belief}, or \emph{credence}---correspond to the three main types of phenomena that we use probability functions to model. For example, according to propensity theories of chance, chance functions measure how strongly a causal system is disposed to produce one outcome or other on a particular occasion. Chance functions, on this view, are just probability functions that are used to model one type of physical system (causal systems) as having one type of gradable property (causal dispositions of varying strengths). Likewise, logical probability functions measure how strongly a body of evidence $E$ supports or confirms a given hypothesis $H$. Logical probability functions are just probability functions that are used to model another type of target system (systems of propositions describing data and hypotheses) as having another type of gradable property (as having hypotheses which are supported to varying degrees by data propositions). Finally, subjective probability functions, or credence functions, measure (roughly) how confident an agent with some range of doxastic attitudes can be said to be of various propositions. Subjective probability functions are just probability functions that are used to model yet another type of system (an agent's doxastic attitudes) as having yet another type of gradable property (as either constituting or licensing varying degrees of confidence).
@@ -53,13 +53,13 @@ The three main interpretations of probability---\emph{physical probability}, or 
 Of course, sorting out the precise relationship between these various models---probability functions---and their respective target systems is a delicate task. The ``interpretations'' above provide only rough, first-pass descriptions of that relationship. Part of this chapter's goal is to explore the relationship between \emph{subjective} probability functions, in particular, and the underlying system of doxastic attitudes that they model.
 
 Just as there are a few main interpretations of \emph{quantitative probability functions}, corresponding to the main types of phenomena that we use those probability functions to model, so too are there a few main interpretations of ``comparative probability orderings.'' Formally, a comparative probability ordering is just particular type of relation $\succeq$ on a Boolean algebra $\F$ of subsets of $\Omega$. On each of the three main interpretations, ``$X\succeq Y$'' means roughly that \emph{X is at least as probable as Y}. (What \emph{exactly} this amounts to, however, will vary from interpretation to interpretation.) Traditionally, a relation $\succeq$ on $\F$ is said to be a \emph{comparative probability ordering} if and only if it satisfies de Finetti's (\citeyearhyper{deFinetti1964}, pp. 100--101) axioms of comparative probability.
-\begin{description}
-\item[]1. \textsc{Nontriviality}.\, $\Omega\succeq \varnothing$ and $\varnothing\not\succeq \Omega$.
-\item[]2. \textsc{Nonnegativity}.\, $X\succeq \varnothing$.
-\item[]3. \textsc{Transitivity}.\, If $X\succeq Y$ and $Y\succeq Z$, then $X\succeq Z$.
-\item[]4. \textsc{Totality}.\, $X\succeq Y$ or $Y\succeq X$.
-\item[]5. \textsc{Quasi-Additivity}.\, If $X\cap Z=Y\cap Z=\varnothing$, then $X\succeq Y$ if and only if $X\cup Z\succeq Y\cup Z$.
-\end{description}
+\begin{enumerate}
+\item \textsc{Nontriviality}.\, $\Omega\succeq \varnothing$ and $\varnothing\not\succeq \Omega$.
+\item \textsc{Nonnegativity}.\, $X\succeq \varnothing$.
+\item \textsc{Transitivity}.\, If $X\succeq Y$ and $Y\succeq Z$, then $X\succeq Z$.
+\item \textsc{Totality}.\, $X\succeq Y$ or $Y\succeq X$.
+\item \textsc{Quasi-Additivity}.\, If $X\cap Z=Y\cap Z=\varnothing$, then $X\succeq Y$ if and only if $X\cup Z\succeq Y\cup Z$.
+\end{enumerate}
 Axiom 1 says that the tautology $\Omega$ is strictly more probable than the contradiction $\varnothing$. Axiom 2 says that every proposition $X$ is at least as probable as the contradiction $\varnothing$. Axioms 3 and 4 guarantee that $\succeq$ is a total preorder (\textit{i.e.}, reflexive, transitive, and total). Finally, axiom 5 says that disjoining $X$ and $Y$ with some incompatible $Z$ does nothing to alter their comparative probability; so $X$ is at least as probable as $Y$ if and only if the disjunction of $X$ and $Z$ is at least as probable as the disjunction of $Y$ and $Z$.
 
 The three main interpretations of comparative probability correspond to the three main types of phenomena that we use comparative probability orderings to model. \emph{Physical comparative probability orderings}, or \emph{chance orderings}---on one theory of chance anyway, \textit{viz.}, propensity theory---model causal systems. In particular, they model causal systems $\C$ as being more or less strongly disposed to produce one outcome or another on a particular occasion:
@@ -1048,7 +1048,7 @@ These representation theorems tell us what it takes to count as having \textit{p
 
 Weaker notions of agreement set weaker standards for ``structure preservation.'' They thereby make it easier for a real-valued function (or set of functions) to count as a structure-preserving numerical measurement system for $\succeq$. In turn, your comparative beliefs need not satisfy such strict constraints for you to count as having credences. For example, \textit{every} comparative belief relation $\succeq$ \textit{almost} agrees with a real-valued function $c$. So if all that is required for structure-preservation is almost-agreement, then \textit{nothing whatsoever} is required of $\succeq$ for you to count as having credences. Any comparative belief relation will do. More interestingly, $\succeq$ \textit{strongly} agrees with a real-valued function $c$ if and only if $\succeq$ satisfies \textit{weak transitivity} (see the appendix for proof).\footnote{The proof strategy for this theorem is due to Catrin Campbell-Moore.}
 \begin{description}
-\item[]\textsc{Weak Transitivity}. If $X\succeq Y_1\succeq\hdots\succeq Y_n\succeq Z$, then $X\not\prec Z$.
+\item[Weak Transitivity] If $X\succeq Y_1\succeq\hdots\succeq Y_n\succeq Z$, then $X\not\prec Z$.
 \end{description}
 So if structure-preservation requires strong-agreement and nothing more, then you count as having precise credences just in case $\succeq$ satisfies Weak Transitivity.
 
@@ -1192,7 +1192,7 @@ To reiterate: coherence is strictly stronger than avoiding sure loss. \citet[Sec
 
 All is not lost, though. Even if Dutch books arguments don't do the trick, another argument might. For example, in the spirit of \citet{Icard2016} and \citet[p. 338]{Fishburn1986}, we might propose constraints of rationality governing how one's comparative beliefs and preferences, or judgments of almost-desirability, ought to hang together. In particular, we might suggest that the set $\mathbb{D}$ of gambles that an agent finds almost desirable (\textit{i.e.}, that she weakly prefers to the status quo) ought to be exactly the set $\D$ of gambles that are almost desirable relative to her comparative belief relation $\succeq$. 
 \begin{description}
-\item[] \textsc{Belief-Preference Coherence}. $\mathbb{D}=\D$.
+\item[Belief-Preference Coherence] $\mathbb{D}=\D$.
 \end{description}
 Recall, a gamble $\G$ is almost desirable relative to $\succeq$ iff it is a non-negative linear combination of components
 \[
@@ -1208,7 +1208,7 @@ The basic thought here is this. $X_i-Y_i$ is the gamble that pays out \textsterl
 
 Now suppose that rationality not only demands comparative beliefs and preferences hang together as per Belief-Preference Coherence, but that it also demands that comparative beliefs on their own satisfy the Generalised Finite-Cancellation axiom.
 \begin{description}
-\item[] \textsc{Generalised Finite-Cancellation}.\, If
+\item[Generalised Finite-Cancellation] If
 	$$
 	  X_1+\ldots+X_n+\underbrace{A+\hdots+A}_{\text{$k$ times}} = \
 	    Y_1+\ldots+Y_n+\underbrace{B+\hdots+B}_{\text{$k$ times}}

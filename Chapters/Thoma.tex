@@ -156,10 +156,10 @@ We can also define an indifference relation $\sim$ and a strict preference relat
 Representation theorems take such preference relations as their starting point. They then proceed by formulating various axioms that pose restrictions on the preference relation, some of which are interpreted as conditions of rationality. Let $X$ be the domain of the preference relation. What representation theorems prove is the following. If an agent's preferences conform to the axioms, there will be a probability function and a utility function such that:
 $$\textrm{for all $x$ and $y \in X$, } EU(x) \geq EU(y) \textrm{ if and only if } x \succcurlyeq y.$$
 
-All the representation theorems described in the following assume that the preference relation is a {\em weak ordering} of the elements in its domain. That means that the preference relation is transitive and complete:
+All the representation theorems described in the following assume that the preference relation is a {\em weak ordering} of the elements in its domain. That means that the preference relation is transitive and complete.
 \begin{description}
-\item[Transitivity:] For all $x, y$ and $z \in X, x \succcurlyeq y$ and $y \succcurlyeq z$ implies that $x \succcurlyeq z$.
-\item[Completeness:] For all $x$ and $y \in X, x \succcurlyeq y$ or $y \succcurlyeq x$.
+\item[Transitivity] For all $x, y$ and $z \in X, x \succcurlyeq y$ and $y \succcurlyeq z$ implies that $x \succcurlyeq z$.
+\item[Completeness] For all $x$ and $y \in X, x \succcurlyeq y$ or $y \succcurlyeq x$.
 \end{description}
 \autoref{s4} will discuss potential problems with both completeness and transitivity.
 
@@ -304,10 +304,10 @@ Similar claims are often made about cases of incommensurable values. In a famous
 These kinds of examples are more convincing if our notion of preference is that of a judgement of choiceworthiness. In these examples, agents have not made, or are unable to make judgements of choiceworthiness about some of the elements of the relevant set. If one thinks of preference as disposition to choose instead, one might think that even if an agent never thought about a particular comparison of outcomes, there can still be a fact of the matter what she would be disposed to choose if she faced the choice. Moreover, if this is our notion of preference, we simply draw no distinction between indifference and incommensurability.\footnote{In fact, \citet{Joyce1999} considers this an important argument against more behaviourist interpretations of preference.}
 
 However, this alternative notion of preference may get into trouble when some of the acts in the relevant set are ones that the agent could not possibly choose between. The completeness condition in standard expected utility theory may require the agent to have what \citet{Broome1991} calls `impractical preferences'. For instance, it might require an agent to have a preference between
-\begin{description}
-\item[$O_1:$] an orange, and
+\begin{itemize}
+\item[$O_1:$] an orange,
 \item[$O_2:$] an apple when the alternative is a banana.
-\end{description}
+\end{itemize}
 Choosing between these alternatives is impossible in the sense that $O_2$ will not come about unless the alternative is a banana, not an orange. And so it seems like we cannot determine the agent's choice disposition between them.
 
 Incompleteness in preference is often dealt with by replacing the completeness axiom in the various representation theorems with a condition of {\em coherent extendibility}.\footnote{This is the strategy taken by \citet{Kaplan1983}, \citet{Jeffrey1983}, and \citet{Joyce1999}.} That is, we only require that an agent's preferences are such that we could extend her set of preferences in a way that is consistent with the other axioms of the representation theorem. The problem with this strategy is that any representation in terms of probability or utility that the representation theorem furnishes us with will only be a representation relative to an extension. There will usually be several extensions that are consistent with an agent's incomplete preferences and the axioms of the theorem. And thus, there will be several possible representations of the agent's preferences. The representation theorem will no longer furnish us with a unique probability function, and a utility function that is unique up to positive linear transformations. For this reason, incompleteness of preference is often associated with imprecise probabilities.
@@ -358,19 +358,19 @@ The imprecision and incompleteness of our attitudes discussed in \autoref{s4} ma
 
 In von Neumann and Morgenstern's representation theorem (see \autoref{subs22}), separability is expressed by the independence axiom. Let $\mathscr{L}$ be the space of lotteries over all possible outcomes. Then independence requires the following:
 \begin{description}
-\item[Independence:] For all $L_x, L_y, L_z \in \mathscr{L}$ and all $p \in (0, 1)$, $L_x \succcurlyeq L_y$ if and only if $p \cdot L_x + (1 - p) \cdot L_z \succcurlyeq p \cdot L_y + (1 - p) \cdot L_z$.
+\item[Independence] For all $L_x, L_y, L_z \in \mathscr{L}$ and all $p \in (0, 1)$, $L_x \succcurlyeq L_y$ if and only if $p \cdot L_x + (1 - p) \cdot L_z \succcurlyeq p \cdot L_y + (1 - p) \cdot L_z$.
 \end{description}
 Independence claims that my preference between two lotteries will not be changed when those lotteries become sub-lotteries in a lottery which mixes each with some probability of a third lottery. For instance, suppose I know I get to play a game tonight. I prefer to play a game that gives me a 10\% chance of winning a pitcher of beer to a game that gives me a 20\% chance of winning a pint of beer. The independence axiom says that this preference will not be affected when the chances of me getting to play at all today change. The possibility of not playing at all tonight should not affect how I evaluate my options in the case that I do get to play.
 
-In Savage's framework (see \autoref{subs23}), separability is expressed by his famous sure-thing principle. To state it, we need to define a set of events, which are disjunctions of states. Let $A_i (E)$ be the act $A_i$ when event $E$ occurs. The sure-thing principle then requires the following:
+In Savage's framework (see \autoref{subs23}), separability is expressed by his famous sure-thing principle. To state it, we need to define a set of events, which are disjunctions of states. Let $A_i (E)$ be the act $A_i$ when event $E$ occurs. The sure-thing principle then requires the following.
 \begin{description}
-\item[Sure-thing principle:] For any two actions $A_i$ and $A_j$, and any mutually exclusive and exhaustive events $E$ and $F$, if $A_i (E) \succcurlyeq A_j (E)$ and $A_i (F) \succcurlyeq A_j (F)$, then $A_i \succcurlyeq A_j$.
+\item[Sure-thing Principle] For any two actions $A_i$ and $A_j$, and any mutually exclusive and exhaustive events $E$ and $F$, if $A_i (E) \succcurlyeq A_j (E)$ and $A_i (F) \succcurlyeq A_j (F)$, then $A_i \succcurlyeq A_j$.
 \end{description}
 The idea behind the sure-thing principle is that an agent can determine her overall preferences between acts through event-wise comparisons. She can partition the set of states into events, and compare the outcomes of each of her acts for each event separately. If an act is preferred given each of the events, it will be preferred overall. That is, if a particular act is preferred no matter which event occurs, then it is also preferred when the agent does not know which event occurs.
 
-In Jeffrey's decision theory (see \autoref{subs24}), separability is expressed by the averaging axiom. Remember that for him, acts, states and outcomes are all propositions, and all objects of preference. The averaging axiom claims the following:
+In Jeffrey's decision theory (see \autoref{subs24}), separability is expressed by the averaging axiom. Remember that for him, acts, states and outcomes are all propositions, and all objects of preference. The averaging axiom claims the following.
 \begin{description}
-\item[Averaging:] If $A$ and $B$ are mutually incompatible propositions, and $A \succcurlyeq B$, then $A \succcurlyeq (A$ or $B) \succcurlyeq B$.
+\item[Averaging] If $A$ and $B$ are mutually incompatible propositions, and $A \succcurlyeq B$, then $A \succcurlyeq (A$ or $B) \succcurlyeq B$.
 \end{description}
 The averaging axiom claims that how much an agent values a disjunction should depend on the value she assigns to the disjuncts in such a way that the disjunction cannot be more or less desirable than any of the disjuncts. When the propositions involved are outcomes that occur in different states of the world, this requirement, too, expresses the idea that there is an independence in value between what happens in separate states of the world. Knowing only that I will end up with one of two outcomes cannot be worse than ending up with any of the individual outcomes.
 
@@ -568,9 +568,9 @@ This has been held to be problematic for a variety of reasons. Firstly, for the 
 
 Similar dynamic choice problems can be formulated whenever there is a violation of separability. In Savage's framework, whenever the agent's attitudes are non-separable for two events, one can construct decision problems where the two events are de facto `separated' by revealing which of the events occurs before the agent gets to decide. And then parallel problems will arise. In fact, if we find the previous argument against Allais preferences convincing, we can formulate a very general argument in favour of expected utility theory. Spelling out the argument from consequentialism in \citet{Hammond1988} in more precise terms, \citet{McClennen1990} shows that, given some technical assumptions, expected utility theory can be derived from versions of the following principles:
 \begin{description}
-\item[NEC (normal-form/extensive-form coincidence):] In any dyn\-amic decision problem, the agent should choose the same as she would, were she to simply choose one course of action at the beginning of the decision problem.
-\item[SEP (dynamic separability):] Within dynamic decision problems, the agent treats continuation trees as if they were new trees.
-\item[DS (dynamic consistency):] The agent does not make plans she foreseeably will not execute.
+\item[NEC (Normal-form/Extensive-form Coincidence)] In any dyn\-amic decision problem, the agent should choose the same as she would, were she to simply choose one course of action at the beginning of the decision problem.
+\item[SEP (Dynamic Separability)] Within dynamic decision problems, the agent treats continuation trees as if they were new trees.
+\item[DS (Dynamic Consistency)] The agent does not make plans she foreseeably will not execute.
 \end{description}
 
 A similar argument is made by \citet{Seidenfeld1988}. The third condition in McClennen's formulation is fairly uncontroversial. However, those defending alternatives to expected utility theory have called into question both NEC and SEP. \citet{Buchak2013} discusses both the strategy of abandoning SEP and that of abandoning NEC, and argues that at least one of them works.
