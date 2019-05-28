@@ -48,6 +48,12 @@
   {}
 \newcommand{\citepos}[1]{\citeauthor{#1}'s (\citeyearhyper{#1})}
 
+\DeclareCiteCommand{\citethisvolume}
+  {}
+  {\bibhyperref{this volume}}
+  {\multicitedelim}
+  {}
+
 \renewcommand\labelitemi{$\circ$}
 \renewcommand\labelitemii{$\diamond$}
 
