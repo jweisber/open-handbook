@@ -4,6 +4,7 @@
 \begin{titlepage}
     %\pdfbookmark[1]{\myTitle}{titlepage}
     % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
+  \begin{addmargin}[-2cm]{-2cm}
     \begin{center}
         \large
 
@@ -15,7 +16,7 @@
             \color{CTtitle}\spacedallcaps{\myTitle} \\ \bigskip
         \endgroup
 
-        \spacedlowsmallcaps{\myName}
+        \textls[120]{\scshape \myName}
 
         \vfill
 
@@ -28,4 +29,5 @@
         \vfill
 
     \end{center}
+  \end{addmargin}
 \end{titlepage}
