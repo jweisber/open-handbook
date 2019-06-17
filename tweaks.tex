@@ -169,8 +169,10 @@ every node/.style={text ragged, inner sep=1mm}
 
 \usepackage{tikz-cd}
 \usetikzlibrary{cd}
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[chapter]
+\renewcommand*\thetheorem{\arabic{theorem}}
+\newtheorem{definition}{Definition}[chapter]
+\renewcommand*\thedefinition{\arabic{definition}}
 
 
 %********
@@ -220,7 +222,8 @@ every node/.style={text ragged, inner sep=1mm}
 %******
 
 \usepackage[all]{xy}
-\newtheorem{proposition}{Proposition}
+\newtheorem{proposition}{Proposition}[chapter]
+\renewcommand*\theproposition{\arabic{proposition}}
 
 \newcommand{\ii}{[\![}
 \newcommand{\jj}{]\!]}
@@ -251,6 +254,9 @@ every node/.style={text ragged, inner sep=1mm}
 \usepackage[eulergreek]{sansmath}
 \usepackage[euler]{textgreek}
 \usetikzlibrary{calc}
+
+\newtheorem{update}{Update Rule}[chapter]
+\renewcommand*\theupdate{\arabic{update}}
 
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
 \newcommand{\powersetsubscr}{\raisebox{.15\baselineskip}{\small\ensuremath{\wp}}}
