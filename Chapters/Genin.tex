@@ -53,8 +53,8 @@ Formal epistemologists are traditionally interested in both full and partial
 belief, although most would probably take partial belief as the primary object
 of study. \citet{moss2018probabilistic} even argues that there are instances of
 probabilistic {\em knowledge} that do not involve any full beliefs.  On the
-other hand, traditional analytic epistemology and philosophy of mind routinely
-studied full belief and related all-or-nothing attitudes such as knowledge and
+other hand, traditional analytic epistemologists and philosophers of mind routinely
+study full belief and related all-or-nothing attitudes such as knowledge and
 desire, but only rarely show interest in their graded counterparts. The
 differential emphasis on partial beliefs, although often commented upon, may
 reflect sociological factors more than any essential difference between the
@@ -160,7 +160,7 @@ intersections, i.e. if $\mathcal{S}\subseteq \mathcal{F}$ is a countable
 collection of propositions, then the intersection of all its elements $\cap
 \mathcal{S}$ is also an element of $\mathcal{F}.$ That definition implies that a
 $\sigma$-field is also closed under countable unions. It is not difficult to
-prove that the intersection of $\sigma$-fields is also a $\sigma$-field. That
+prove that an intersection of $\sigma$-fields is also a $\sigma$-field. That
 implies that every collection of propositions $\mathcal{F}$ generates
 $\sigma(\mathcal{F})$, the least $\sigma$-field containing $\mathcal{F}$, by
 intersecting the set of all $\sigma$-fields containing $\mathcal{F}$. 
@@ -599,19 +599,6 @@ there does not seem to be anything irrational about how you have reasoned. This
 seems to be an illustration of \citepos{pollock1987defeasible} point: the logic
 is going wrong because it is ignoring the structure of the agent's reasons.
 
-It is also possible to understand Rational Monotony as a thesis about what
-counts as a legitimate {\em input} to a belief revision, rather than as a
-restriction on how one can rationally assimilate such an input. Let $d$ be a new
-datum that I have collected. Let $q$ be a sentence expressing the total
-evidential import of $d$. Suppose that upon assimilating the total evidential
-import of the data $d,$ I would give up belief in $p.$ Then one might argue that
-the total evidential import of $d$ is logically inconsistent with $p$. Moreover,
-if my initial belief set is consistent, I must have disbelieved $q$ {\em ex
-ante}. Thus Rational Monotony can be understood as saying that the appropriate
-input to a belief revision is not merely a set of data, but rather their total
-evidential import. From this perspective it can be seen as an expression of
-\citepos{carnap1947application} principle of total evidence.
-
 We end this section on a terminological note. It is common in the literature to
 use \textit{System P} (Preferential) to refer to the following set of
 single-premise principles, labeled so that the reader can identify their
@@ -649,8 +636,8 @@ which all sentences in $\Gamma$ are true. As we have discussed, non-monotonic
 logics are ampliative, and therefore must violate Soundness.
 \citet{shoham1987semantical} inaugurated a semantics for non-monotonic logics in
 which $\Gamma\nc p$ only if $p$ is true in a ``preferred'' set of worlds in
-which $\Gamma$ is true. On a typical interpretation, these are the most typical,
-or most normal worlds in which all sentences in $\Gamma$ are true.  If $\Gamma$
+which $\Gamma$ is true. These are usually interpreted as the ``most typical,'' or 
+``most normal'' worlds in which all sentences in $\Gamma$ are true.   If $\Gamma$
 is a set of sentences in $\Lambda$ and $V$ is a valuation function, we write
 $V(\Gamma)$ as shorthand for $\cap_{q\in \Gamma} V(q).$ See \autoref{objects} if
 you need a refresher on valuation functions. \citet{kraus1990nonmonotonic} first
@@ -843,7 +830,7 @@ suggesting that some hybrid theory is possible and perhaps even preferable:
   cautiously (p. 67).
 \end{quote}
 Previously, we have seen \citet{pollock1987defeasible} advocating for
-foundationalism. In artificial intelligence, Doyle's \citepos{doyle1979truth}
+foundationalism. In artificial intelligence, \citepos{doyle1979truth}
 {\em reason maintenance system} is taken to exemplify the foundations approach.
 \citet{horty2012reasons} argues that default logic aptly represents the
 structure of reasons. For a defense of foundationalism, as well as a useful
@@ -1060,7 +1047,7 @@ propositions, all entailed by $V(B),$ with the following property: if $p$ is a
 consistent sentence, then there is a logically strongest element of
 $\mathcal{S}$ consistent with $V(p)$. If $p$ is a consistent sentence, let
 $\mathcal{S}(p)$ be $E\cap V(p),$ where $E$ is the logically strongest element
-of $\mathcal{S}$ consistent with $V(p)$. Otherwise, let $V(p)=\varnothing$. In
+of $\mathcal{S}$ consistent with $V(p)$. Otherwise, let $\mathcal{S}(p)=\varnothing$. In
 other words: $\mathcal{S}(p)$ is the set of worlds compatible with $V(p)$ that
 is ``closest'' to $V(B)$ according to the sphere system. Note that if $V(p) \cap
 V(B)\neq \varnothing,$ then $\mathcal{S}(p)=V(B)\cap V(p).$ If $V(p)\cap V(B) =
@@ -1253,8 +1240,9 @@ necessity, be rather brief. For an article-length introduction see
 \citet{weisberg2011varieties}. For a book-length introduction see
 \citet{earman1992bayes} or \citet{howson2006scientific}. For an article-length
 introduction to Bayesian models of rational action, see
-\citet{sep-rationality-normative-utility}. For an approachable book-length
-introduction to the theory of rational choice see \citet{resnik1987choices}. 
+\citet{sep-rationality-normative-utility} or Thoma (\citethisvolume{thisvolume:thoma}). 
+For an approachable book-length introduction to the theory of rational choice see 
+\citet{resnik1987choices}. 
 
 The heart of the Bayesian theory is roughly the following:
 \begin{enumerate}
@@ -1644,8 +1632,9 @@ It is clear from the definition of conditioning that, as in the Bayesian case,
 the rank of the material conditional is a lower bound for the conditional rank:
 $\beta(A\rightarrow B) \leq \beta(B \given A).$ It also satisfies a version of
 Rational Monotony: if $\beta(\neg A)=0$ and $\beta(B)>0,$ then $\beta(B \given
-A)>0.$\footnote{Rational Monotony is not satisfied if we set the threshold for
-full belief at some number greater than zero.} Therefore, ranking-theoretic
+A)>0.$\footnote{Rational Monotony is not satisfied if we set the the threshold for 
+full belief at some number greater than zero \citep[footnote 26]{raidl2018completeness}.}
+Therefore, ranking-theoretic
 update satisfies the ``spirit'' of AGM update. Note however, that ranking theory
 has no trouble with iterated belief revision: a revision takes as input a
 ranking function and an evidential proposition and outputs a new ranking
@@ -1866,7 +1855,7 @@ the following formulation:
 In other words, Deductive Cogency means that there is a single, non-empty
 proposition, which is the logically strongest proposition that the agent
 believes,  entailing all her other beliefs. When the two formulations of
-Deductive Cogency come apart, we will always mean the latter one.% Note that
+Deductive Cogency come apart, we will always mean the latter one. % Note that
 Deductive Cogency only mentions the set of full beliefs $\Bel,$ and is therefore
 not a bridge principle at all. Bridge principles are expressed as constraints
 holding for pairs $\langle \Bel,p \rangle$.   
@@ -1979,8 +1968,8 @@ beliefs are updated via Bayesian conditioning, I can never cease to believe any
 of my full beliefs since if $p(A)=1$ it follows that $p(A \given E)=1$ for all
 $E$ such that $p(E)>0$. If we believe in Bayesian conditioning, extremal
 probability seems to entail that I cannot revise any of my full beliefs in light
-of new information.% Most theorists working in the area take these three
-objections to be decisive against extremal probability. 
+of new information.
+% Most theorists working in the area take these three objections to be decisive against extremal probability. 
 
 \subsection{The Lockean Threshold}
 \label{lockeanthreshold}
@@ -2207,7 +2196,7 @@ after conditioning on new information. Leitgeb calls this view the {\em Humean
 thesis}, due to Hume's conception of belief as an idea of superior vivacity, but
 also of superior steadiness.\footnote{See \citet{loeb2002stability,
 loeb2010reflection} for a detailed development of the stability theme in Hume's
-conception of belief..} \citet{leitgeb2017stability} formalizes Hume's
+conception of belief.} \citet{leitgeb2017stability} formalizes Hume's
 definition, articulating the following version of the thesis:
 \begin{description}
 \item[Humean Thesis (HT)] For all rational pairs  $\langle \Bel, p \rangle$
@@ -2233,10 +2222,7 @@ belief}. \citet{raidl2017bridging} claim that Leitgeb's stability condition is
 more appropriate in an analysis of knowledge and too stringent a condition on
 belief. A defender of the Humean thesis might say that every {\em rational}
 belief is possibly an instance of knowledge. Since knowledge is necessarily
-stable, unstable beliefs are {\em ipso facto} not known.%Such a position would,
-however, be out of step with several decades of work in epistemology. The
-Gettier cases are celebrated cases of unstable beliefs, but widely believed to
-be justified. If they are justified, then surely they are rational as well.
+stable, unstable beliefs are {\em ipso facto} not known.
 
 Leitgeb demonstrates the following relationships between the Humean thesis,
 Deductive Cogency, and the weak Lockean thesis.
@@ -2310,7 +2296,7 @@ believe that Job will be dead in two months without running afoul of the Humean
 thesis.
 
 So far we have inquired  only into the synchronic content of the Humean
-proposal. What sort principles of qualitative belief update does it underwrite?
+proposal. What sort of principles of qualitative belief update does it underwrite?
 Leitgeb demonstrates an intimate relationship between the AGM revision principles
 and the Humean thesis: every agent that satisfies the AGM principles, as well as
 a weak version of the Lockean thesis, must also satisfy the Humean thesis. So if
@@ -2505,7 +2491,7 @@ non-opinionated} iff there is a non-negligible set of probability functions $p$
 where judgement is suspended, i.e. where $\cap \alpha(p)=W$. An acceptance rule
 is {\em consistent} iff for all $p$, $\alpha(p)$ is deductively cogent.  The
 intuition behind corner-monotony is that if $H_i$ is accepted at $p$, then $H_i$
-should still be accepted if $H_i$ is made more probable.   More precisely an
+should still be accepted if $H_i$ is made more probable. More precisely, an
 acceptance rule is {\em corner-monotone} iff  $H_i\in\alpha(p)$ implies that
 $H_i \in \alpha(p')$ for all $p'$ such that $$p' = p(\cdot \given  {H_i}) \cdot
 q +  p(\cdot \given {\neg H_i}) \cdot (1-q), $$ and $q>p(H_i)$.
