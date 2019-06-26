@@ -1,17 +1,17 @@
 # The Open Handbook of Formal Epistemology
 
-Code for a book in progress, *The Open Handbook of Formal Epistemology*. Find the latest version in `main.pdf`. Entries and their current statuses are:
+Code for *The Open Handbook of Formal Epistemology*, published by PhilPapers, with Richard Pettigrew and Jonathan Weisberg as editors. Included entries are:
 
-- "Precise Credences", by Michael G. Titelbaum: page-proofs ready
-- "Decision Theory", by Johanna Thoma: page-proofs ready
-- "Imprecise Probabilities", by Anna Mahtani: page-proofs ready
-- "Primitive Conditional Probabilities", by Kenny Easwaran: finished
-- "Infinitesimal Probabilities", by Sylvia Wenmackers: page-proofs ready
-- "Comparative Probabilities", by Jason Konek: page-proofs ready
-- "Belief Revision Theory", by Hanti Lin: page-proofs ready
-- "Ranking Theory", by Franz Huber: page-proofs ready
-- "Full & Partial Belief", by Konstantin Genin: page-proofs ready
-- "Doxastic Logic", by Michael Caie: page-proofs ready
-- "Conditionals", by R. A. Briggs: page-proofs ready
+- "Precise Credences", by Michael G. Titelbaum
+- "Decision Theory", by Johanna Thoma
+- "Imprecise Probabilities", by Anna Mahtani
+- "Primitive Conditional Probabilities", by Kenny Easwaran
+- "Infinitesimal Probabilities", by Sylvia Wenmackers
+- "Comparative Probabilities", by Jason Konek
+- "Belief Revision Theory", by Hanti Lin
+- "Ranking Theory", by Franz Huber
+- "Full & Partial Belief", by Konstantin Genin
+- "Doxastic Logic", by Michael Caie
+- "Conditionals", by R. A. Briggs
 
-To compile run `latexmk -pdf main` in the project directory.
+To compile run `latexmk -pdf main` in the project's root directory.
